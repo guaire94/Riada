@@ -806,7 +806,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Riada.app.Riada;
+				PRODUCT_BUNDLE_IDENTIFIER = com.socialSport.app.SocialSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.myfzone.app.Riada";
 				SWIFT_VERSION = 5.0;
@@ -831,7 +831,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Riada.app.Riada;
+				PRODUCT_BUNDLE_IDENTIFIER = com.socialSport.app.SocialSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.myfzone.app.Riada";
 				SWIFT_VERSION = 5.0;

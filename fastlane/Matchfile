@@ -1,4 +1,4 @@
 storage_mode("git")
 git_url("git@github.com:guaire94/Riada-certificates.git")
-app_identifier("com.myfzone.app.Riada")
-username("amadou_g@hotmail.fr")
+app_identifier("com.socialSport.app.SocialSport")
+username("quentin.gallois.epitech@gmail.com")

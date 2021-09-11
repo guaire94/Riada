@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  Riada
+
+  Created by Quentin Gallois on 20/10/2020.
+  
+*/
+
+"GLOBAL_ACTION_OK"="Ok";
+"GLOBAL_ACTION_CANCEL"="Cancel";
+"GLOBAL_ACTION_CONFIRM"="Confirm";
+
+"SPORT_SOCCER"="Soccer";
+"SPORT_TENNIS"="Tennis";
+"SPORT_GYM"="Gym";
+"SPORT_GOLF"="Golf";
+
+"ONBOARDING_TITLE"="Welcome on Social Sport";
+"ONBOARDING_APP_DESCRIPTION"="We want to help creating sport events\n&\nMake you able to meet people around it";
+"ONBOARDING_FAVORITE_SPORT_DESCRIPTION"="Let us know which sports you like,\nThat will help us to send relevant notifications";
+"ONBOARDING_LETS_PLAY"="Let's play";
+
+"VERSION_NEW"="New version";
+"VERSION_AVAILABLE"="New version is available on AppStore";
+"VERSION_REDIRECT_APPSTORE"="Check it out";
+"VERSION_UPDATE_LATER"="Maybe later";

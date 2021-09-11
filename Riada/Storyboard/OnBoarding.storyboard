@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7aL-FY-voB">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--On BoardingVC-->
+        <scene sceneID="YTS-KK-lNL">
+            <objects>
+                <viewController id="7aL-FY-voB" customClass="OnBoardingVC" customModule="Riada" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="waq-gq-TNj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVq-DB-al4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome on Social Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVB-lk-Yu7">
+                                        <rect key="frame" x="51.5" y="81" width="311" height="34"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.34509803921568627" green="0.67843137254901964" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="xVB-lk-Yu7" firstAttribute="centerX" secondItem="WVq-DB-al4" secondAttribute="centerX" id="HiT-Ld-vqX"/>
+                                    <constraint firstAttribute="height" constant="135" id="kTM-dH-Xef"/>
+                                    <constraint firstAttribute="bottom" secondItem="xVB-lk-Yu7" secondAttribute="bottom" constant="20" id="qFh-eR-uSG"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="A09-UF-gxe">
+                                <rect key="frame" x="16" y="155" width="382" height="140"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J14-pV-5eF">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="65"/>
+                                        <string key="text">We want to help creating sport events
+&amp;
+Make you able to meet people around it</string>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
+                                        <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHM-QC-uak">
+                                        <rect key="frame" x="0.0" y="85" width="382" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="00n-BT-WkO"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6F-hp-lXq">
+                                        <rect key="frame" x="0.0" y="106" width="382" height="34"/>
+                                        <string key="text">Let us know which sports you like,
+That will help us to send relevant notifications</string>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                        <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RGb-wg-Y4l">
+                                <rect key="frame" x="16" y="315" width="382" height="467"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkX-8t-mEn">
+                                <rect key="frame" x="0.0" y="782" width="414" height="114"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bH-Uj-ykD">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1R-pG-54B">
+                                                <rect key="frame" x="24" y="15" width="366" height="50"/>
+                                                <color key="backgroundColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="24"/>
+                                                <state key="normal" title="LET'S PLAY">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="letsPlayToggle:" destination="7aL-FY-voB" eventType="touchUpInside" id="G9f-9g-FvK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="u1R-pG-54B" firstAttribute="top" secondItem="9bH-Uj-ykD" secondAttribute="top" constant="15" id="Ivo-mx-cEv"/>
+                                            <constraint firstAttribute="trailing" secondItem="u1R-pG-54B" secondAttribute="trailing" constant="24" id="LMv-kN-4n0"/>
+                                            <constraint firstAttribute="bottom" secondItem="u1R-pG-54B" secondAttribute="bottom" constant="15" id="Yn4-vS-bOh"/>
+                                            <constraint firstItem="u1R-pG-54B" firstAttribute="leading" secondItem="9bH-Uj-ykD" secondAttribute="leading" constant="24" id="uWI-Jj-76m"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="9bH-Uj-ykD" firstAttribute="leading" secondItem="UkX-8t-mEn" secondAttribute="leading" id="6tw-zK-xai"/>
+                                    <constraint firstAttribute="height" constant="114" id="PBS-eH-DYT"/>
+                                    <constraint firstItem="9bH-Uj-ykD" firstAttribute="top" secondItem="UkX-8t-mEn" secondAttribute="top" id="Zcy-t4-l7H"/>
+                                    <constraint firstAttribute="bottom" secondItem="9bH-Uj-ykD" secondAttribute="bottom" constant="34" id="drd-Zn-BPk"/>
+                                    <constraint firstAttribute="trailing" secondItem="9bH-Uj-ykD" secondAttribute="trailing" id="hqW-74-I3K"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ocO-Bz-ozq"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ocO-Bz-ozq" firstAttribute="trailing" secondItem="WVq-DB-al4" secondAttribute="trailing" id="8sk-KL-CyE"/>
+                            <constraint firstItem="A09-UF-gxe" firstAttribute="leading" secondItem="ocO-Bz-ozq" secondAttribute="leading" constant="16" id="CdD-tS-vBB"/>
+                            <constraint firstItem="WVq-DB-al4" firstAttribute="top" secondItem="waq-gq-TNj" secondAttribute="top" id="IYW-9m-nrf"/>
+                            <constraint firstItem="A09-UF-gxe" firstAttribute="top" secondItem="WVq-DB-al4" secondAttribute="bottom" constant="20" id="OxQ-Ca-QPq"/>
+                            <constraint firstItem="RGb-wg-Y4l" firstAttribute="leading" secondItem="ocO-Bz-ozq" secondAttribute="leading" constant="16" id="QXi-NX-PLG"/>
+                            <constraint firstItem="ocO-Bz-ozq" firstAttribute="trailing" secondItem="A09-UF-gxe" secondAttribute="trailing" constant="16" id="WTb-e0-84B"/>
+                            <constraint firstItem="RGb-wg-Y4l" firstAttribute="top" secondItem="A09-UF-gxe" secondAttribute="bottom" constant="20" id="dhO-wa-Emb"/>
+                            <constraint firstItem="WVq-DB-al4" firstAttribute="leading" secondItem="ocO-Bz-ozq" secondAttribute="leading" id="fQ1-sH-axc"/>
+                            <constraint firstItem="UkX-8t-mEn" firstAttribute="leading" secondItem="waq-gq-TNj" secondAttribute="leading" id="lM5-R1-Fd2"/>
+                            <constraint firstItem="ocO-Bz-ozq" firstAttribute="trailing" secondItem="RGb-wg-Y4l" secondAttribute="trailing" constant="16" id="paz-dH-iRX"/>
+                            <constraint firstAttribute="trailing" secondItem="UkX-8t-mEn" secondAttribute="trailing" id="qLK-XM-AWB"/>
+                            <constraint firstAttribute="bottom" secondItem="UkX-8t-mEn" secondAttribute="bottom" id="ufr-y6-ryh"/>
+                            <constraint firstItem="UkX-8t-mEn" firstAttribute="top" secondItem="RGb-wg-Y4l" secondAttribute="bottom" id="yZ2-H5-KnV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appDescriptionLabel" destination="J14-pV-5eF" id="2zC-vP-ZwY"/>
+                        <outlet property="favoriteSportDescriptionLabel" destination="t6F-hp-lXq" id="L2P-pC-e9n"/>
+                        <outlet property="favoriteSportTableView" destination="RGb-wg-Y4l" id="ie2-pF-RxG"/>
+                        <outlet property="letsPlayButton" destination="u1R-pG-54B" id="F5a-n2-UPD"/>
+                        <outlet property="titleLabel" destination="xVB-lk-Yu7" id="2e8-8L-x8z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2aq-Nq-7cm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76.811594202898561" y="284.59821428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

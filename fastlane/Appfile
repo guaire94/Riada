@@ -1,0 +1,8 @@
+app_identifier("com.myfzone.app.Riada") # The bundle identifier of your app
+apple_id("amadou_g@hotmail.fr") # Your Apple email address
+
+itc_team_id("122243633") # App Store Connect Team ID
+team_id("Q6J6G98354") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

@@ -19,7 +19,6 @@ struct FavoriteSport: Identifiable, Codable {
     
     var toData: [String : Any] {
         [
-           "id": self.id ?? "",
            "name": self.name
         ]
     }

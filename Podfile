@@ -20,6 +20,7 @@ target 'Riada' do
   pod 'Firebase/Functions'  
   pod 'CodableFirebase'
   pod 'FirebaseFirestoreSwift'
+  pod 'GeoFire/Utils'
 
   pod 'Applanga'
   pod 'Wormholy'

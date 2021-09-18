@@ -20,21 +20,22 @@ class OnBoardingCell: UITableViewCell {
     }
     
     // MARK: - IBOutlet
-    @IBOutlet weak private var view: UIView!
+    @IBOutlet weak private var content: UIView!
     @IBOutlet weak private var nameLabel: UILabel!
     @IBOutlet weak private var markAsFavoriteImage: UIImageView!
     
     // MARK: - Privates
-    override var isSelected: Bool {
+    var isMark: Bool = false {
         didSet {
-            markAsFavoriteImage.image = isSelected ? #imageLiteral(resourceName: "starFull") : #imageLiteral(resourceName: "star")
+            markAsFavoriteImage.image = isMark ? #imageLiteral(resourceName: "starFull") : #imageLiteral(resourceName: "star")
         }
     }
 
     // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        view.layer.cornerRadius = Constants.contentCornerRadius
+        content.layer.cornerRadius = Constants.contentCornerRadius
+        content.clipsToBounds = true
         selectionStyle = .none
     }
         

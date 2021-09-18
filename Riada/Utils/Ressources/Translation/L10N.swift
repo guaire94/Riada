@@ -24,6 +24,16 @@ struct L10N {
         static let letsPlay: String = NSLocalizedString("ONBOARDING_LETS_PLAY", comment: "")
     }
     
+    struct searchLocation {
+        static let text: String = NSLocalizedString("SEARCH_LOCATION_TEXT", comment: "")
+        static let placeHolder: String = NSLocalizedString("SEARCH_LOCATION_PLACEHOLDER", comment: "")
+    }
+    
+    struct event {
+        static let nbAcceptedPlayer: String = NSLocalizedString("EVENT_NB_ACCEPTED_PLAYER", comment: "")
+        static let emptyPlaceHolder: String = NSLocalizedString("EVENT_EMPTY_PLACEHOLDER", comment: "")
+    }
+    
     struct version {
         static let new: String = NSLocalizedString("VERSION_NEW", comment: "")
         static let available: String = NSLocalizedString("VERSION_AVAILABLE", comment: "")

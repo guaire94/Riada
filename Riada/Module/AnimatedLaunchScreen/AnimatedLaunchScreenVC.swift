@@ -54,12 +54,12 @@ class AnimateLaunchScreenVC: UIViewController {
     }
     
     private func loadUserIfNeeded() {
-        guard ManagerAuth.shared.isConnected else {
+        guard ManagerUser.shared.isConnected else {
             HelperRouting.shared.routeToOnBoarding()
             return
         }
         
-        ManagerAuth.shared.synchronise {
+        ManagerUser.shared.synchronise {
             HelperRouting.shared.routeToHome()
         }
     }

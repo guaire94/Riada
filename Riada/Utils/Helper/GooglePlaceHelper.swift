@@ -9,72 +9,55 @@
 import CoreLocation
 
 public typealias ArrayBlock<T> = ((Array<T>,Error?)->Void)
-
-enum GoogleAutocompleteTypes:String {
-    case urlScheme = "https"
-    case urlDomain = "maps.googleapis.com"
-    case urlEndpoint = "/maps/api/place/autocomplete/json"
-}
-
-let kGoogleAutocompleteAPIKey = "AIzaSyCxwGtt2_ejkbSEtal7zFk44PS3JzmRsYc"
+public typealias Block<T> = ((T)->Void)
 
 class GooglePlace: NSObject {
-    var name:String
-    var detail:String
-    private var address:String
-    var addressWithDetail: String {
-        get {
-            return name + ", " + detail
-        }
+    var name: String
+    var id: String
+
+    init(name: String, id: String) {
+        self.name = name
+        self.id = id
     }
     
-    init(info:[String:Any]) {
-        let structured = (info["structured_formatting"] as? NSObject)
-        
-        name = structured?["main_text"] as? String ?? ""
-        detail = structured?["secondary_text"] as? String ?? ""
-        address = info["description"] as? String ?? ""
-    }
-    
-    func getLocation(block:@escaping (CLLocationCoordinate2D) -> Void?) {
-        CLGeocoder().geocodeAddressString(address) { (placeList, error) in
-            if let coordinate = placeList?.first?.location?.coordinate {
-                block(coordinate)
-            }
-        }
+    init?(info: [String:Any]) {
+        guard let description = info["description"] as? String,
+              let placeId = info["place_id"] as? String else { return nil }
+        self.name = description
+        self.id = placeId
     }
 }
 
 class GooglePlaceHelper: NSObject {
     
+    private enum Constants {
+        static let urlScheme = "https"
+        static let urlDomain = "maps.googleapis.com"
+        static let autocompleteEndpoint = "/maps/api/place/autocomplete/json"
+        static let placeDetailsEndpoint = "/maps/api/place/details/json"
+    }
+    
     static let shared = GooglePlaceHelper()
     var activeTask:URLSessionDataTask?
     
-    func getUrlRequest(string:String, type:String) -> URLRequest? {
+    func getPlaces(searchString: String, block: @escaping ArrayBlock<GooglePlace>) {
+        if searchString.count == 0 {
+            block([], nil)
+            return
+        }
         var urlComponents = URLComponents()
-        urlComponents.scheme = GoogleAutocompleteTypes.urlScheme.rawValue
-        urlComponents.host = GoogleAutocompleteTypes.urlDomain.rawValue
-        urlComponents.path = GoogleAutocompleteTypes.urlEndpoint.rawValue
+        urlComponents.scheme = Constants.urlScheme
+        urlComponents.host = Constants.urlDomain
+        urlComponents.path = Constants.autocompleteEndpoint
         
-        let params = ["input" : string, "key" : kGoogleAutocompleteAPIKey, "radius" : "50000", "types": type]
+        let params = ["input" : searchString, "key" : Config.googleAPIKey, "type" : "(cities)"]
         let items = params.map { (arg) -> URLQueryItem in
             let (key, value) = arg
             return URLQueryItem(name: key, value: value)
         }
         urlComponents.queryItems = items
-        guard let url = urlComponents.url else { return nil }
-        return URLRequest(url: url)
-    }
-    
-    func getPlaces(searchString:String, type:String = "address", block:@escaping ArrayBlock<GooglePlace>) {
-        if searchString.count == 0 {
-            block([],nil)
-            return
-        }
-        guard let request = getUrlRequest(string: searchString, type:type ) else {
-            block([],nil)
-            return
-        }
+        guard let url = urlComponents.url else { return block([], nil) }
+        let request = URLRequest(url: url)
         if let task = activeTask {
             task.cancel()
         }
@@ -86,19 +69,59 @@ class GooglePlaceHelper: NSObject {
             self.activeTask = nil
             let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSObject
             let list = json?["predictions"] as? [[String:Any]]
-            let places =  list?.map { GooglePlace(info: $0) }
+            let places = list?.compactMap { GooglePlace(info: $0) }
             DispatchQueue.main.async {
                 block(places ?? [], error)
             }
         }
         activeTask?.resume()
     }
+    
+    func getPlaceDetails(placeId: String, block: @escaping Block<(CLLocation)?>) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = Constants.urlScheme
+        urlComponents.host = Constants.urlDomain
+        urlComponents.path = Constants.placeDetailsEndpoint
+
+        let params = ["place_id" : placeId, "key" : Config.googleAPIKey, "fields" : "name,geometry"]
+        let items = params.map { (arg) -> URLQueryItem in
+            let (key, value) = arg
+            return URLQueryItem(name: key, value: value)
+        }
+        urlComponents.queryItems = items
+        guard let url = urlComponents.url else { return block(nil) }
+        let request = URLRequest(url: url)
+        if let task = activeTask {
+            task.cancel()
+        }
+        activeTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.activeTask = nil
+            
+            guard let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSObject,
+                  let result = json["result"] as? [String: Any],
+                  let geometry = result["geometry"] as? [String: Any],
+                  let location = geometry["location"] as? [String: Any],
+                  let lat = location["lat"] as? Double,
+                  let lng = location["lng"] as? Double else {
+                return block(nil)
+            }
+            DispatchQueue.main.async {
+                block(CLLocation(latitude: lat, longitude: lng))
+            }
+        }
+        activeTask?.resume()
+    }
+
 }
 
 extension NSObject {
     subscript(key:String) -> NSObject? {
         get {
-            return self.value(forKey: key) as? NSObject
+            value(forKey: key) as? NSObject
         }
     }
 }

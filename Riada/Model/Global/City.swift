@@ -12,8 +12,8 @@ struct City {
     var lat: Double
     var lng: Double
 
-    private var location: CLLocationCoordinate2D {
-         CLLocation(latitude: lat, longitude: lng).coordinate
+    var location: CLLocationCoordinate2D {
+        CLLocation(latitude: lat, longitude: lng).coordinate
     }
 }
 
@@ -30,6 +30,17 @@ enum PlaceHolderCity: CaseIterable {
             return "Abu Dhabi"
         case .sharjah:
             return "Sharjah"
+        }
+    }
+    
+    var placeId: String {
+        switch self {
+        case .dubai:
+            return "ChIJRcbZaklDXz4RYlEphFBu5r0"
+        case .abuDhabi:
+            return "ChIJufI-cg9EXj4RCBGXQZMuzMc"
+        case .sharjah:
+            return "ChIJS5bn7V9fXz4RiW0fnKEKgyo"
         }
     }
     

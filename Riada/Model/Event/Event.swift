@@ -11,19 +11,24 @@ import MapKit
 
 struct Event: Identifiable, Codable {
     @DocumentID var id: String?
-    var tile: String
+    var title: String
     var description: String
-    var nbPlayer: String
+    var nbPlayer: Int
+    var nbAcceptedPlayer: Int
     var date: Timestamp
     var placeId: String
+    var placeName: String
     var placeAddress: String
-    var placeLng: Double
-    var placeLat: Double
+    var placeCoordinate: GeoPoint
     var sportId: String
     var sportName: String
     var createdDate: Timestamp
     
     var location: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: placeLng, longitude: placeLng)
+        CLLocationCoordinate2D(latitude: placeCoordinate.latitude, longitude: placeCoordinate.longitude)
+    }
+    
+    var sportLocalizedName: String {
+        NSLocalizedString(sportName, comment: "")
     }
 }

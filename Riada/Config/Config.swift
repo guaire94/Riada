@@ -8,6 +8,7 @@
 
 enum Config {
     static var AppStoreLink = "itms-apps://itunes.apple.com/app/id1105748988" // TODO: replace appstore id
+    static var googleAPIKey = "AIzaSyDTIlQBgK72dpao2XPISx1U60psDeshcGc"
     
     #if DEBUG
         static var WormholyIsEnabled = true

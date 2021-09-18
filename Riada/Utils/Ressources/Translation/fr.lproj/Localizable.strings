@@ -15,10 +15,16 @@
 "SPORT_GYM"="Musculation";
 "SPORT_GOLF"="Golf";
 
-"ONBOARDING_TITLE"="Bienvenue sur Social Sport";
+"ONBOARDING_TITLE"="Bienvenue sur Riada";
 "ONBOARDING_APP_DESCRIPTION"="Nous souhaitons aider l'organisation des évènements sportifs\n&\nt'aider a rencontrer de nouvelles personnes";
 "ONBOARDING_FAVORITE_SPORT_DESCRIPTION"="Dis nous quelles sont tes sports favoris\nCela permettra de t'envoyer des notifications pertinentes";
 "ONBOARDING_LETS_PLAY"="Je veux jouer!";
+
+"SEARCH_LOCATION_TEXT"="Emplacement";
+"SEARCH_LOCATION_PLACEHOLDER"="Rechercher une ville...";
+
+"EVENT_NB_ACCEPTED_PLAYER"="%d/%d Joueurs";
+"EVENT_EMPTY_PLACEHOLDER"="Pas d'évènements disponibles dans votre région";
 
 "VERSION_NEW" = "Nouvelle version";
 "VERSION_AVAILABLE" = "Une nouvelle version de l'application est disponible";

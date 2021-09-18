@@ -18,7 +18,6 @@ class OnBoardingVC: UIViewController {
     
     // MARK: - IBOutlet
     private var sports: [Sport] = []
-    private var favoriteSports: [FavoriteSport] = []
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -56,12 +55,6 @@ class OnBoardingVC: UIViewController {
 private extension OnBoardingVC {
         
     @IBAction func letsPlayToggle(_ sender: Any) {
-        guard !favoriteSports.isEmpty else {
-            HelperRouting.shared.routeToHome()
-            return
-        }
-        ServiceUser.setFavoriteSports(favoriteSports: favoriteSports)
-        ManagerAuth.shared.favoritesSport = favoriteSports
         HelperRouting.shared.routeToHome()
     }
 }
@@ -92,14 +85,13 @@ extension OnBoardingVC: UITableViewDataSource {
 extension OnBoardingVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? OnBoardingCell else { return }
+        cell.isMark = !cell.isMark
         let sport = sports[indexPath.row]
-        let favoriteSport = FavoriteSport(from: sport)
-        favoriteSports.append(favoriteSport)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let sport = sports[indexPath.row]
-        guard let index = favoriteSports.firstIndex(where: { $0.id == sport.id }) else { return }
-        favoriteSports.remove(at: index)
+        if cell.isMark {
+            ManagerUser.shared.addFavoriteSport(sport: sport)
+        } else {
+            ManagerUser.shared.removeFavoriteSport(sport: sport)
+        }
     }
 }

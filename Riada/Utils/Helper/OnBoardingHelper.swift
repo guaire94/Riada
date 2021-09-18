@@ -13,7 +13,7 @@ class OnBoardingHelper: NSObject {
     
     var haveSeenWelcomeMessage: Bool {
         get {
-            guard ManagerAuth.shared.isConnected == false else {
+            guard ManagerUser.shared.isConnected == false else {
                 UserDefaults.standard.set(true, forKey: "haveSeenWelcomeMessage")
                 return true
             }

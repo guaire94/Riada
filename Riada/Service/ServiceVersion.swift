@@ -12,8 +12,8 @@ class ServiceVersion {
     
     static func check(completion: @escaping (Version?) -> Void) {
         FFirestoreReference.version.getDocument { (document, error) in
-            guard let document = document, document.exists, let data = document.data(),
-                  let version = try? FirebaseDecoder().decode(Version.self, from: data) else {
+            guard let document = document, document.exists,
+                  let version = try? document.data(as: Version.self) else {
                 completion(nil)
                 return
             }

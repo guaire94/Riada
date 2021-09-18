@@ -18,7 +18,7 @@ class ServiceSport {
                 return
             }
             for document in documents {
-                if let sport = try? FirebaseDecoder().decode(Sport.self, from: document.data()) {
+                if let sport = try? document.data(as: Sport.self) {
                     sports.append(sport)
                 }
             }

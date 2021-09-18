@@ -15,10 +15,16 @@
 "SPORT_GYM"="Gym";
 "SPORT_GOLF"="Golf";
 
-"ONBOARDING_TITLE"="Welcome on Social Sport";
+"ONBOARDING_TITLE"="Welcome on Riada";
 "ONBOARDING_APP_DESCRIPTION"="We want to help creating sport events\n&\nMake you able to meet people around it";
 "ONBOARDING_FAVORITE_SPORT_DESCRIPTION"="Let us know which sports you like,\nThat will help us to send relevant notifications";
 "ONBOARDING_LETS_PLAY"="Let's play";
+
+"SEARCH_LOCATION_TEXT"="Location";
+"SEARCH_LOCATION_PLACEHOLDER"="Seach a city...";
+
+"EVENT_NB_ACCEPTED_PLAYER"="%d/%d Players";
+"EVENT_EMPTY_PLACEHOLDER"="No event available for your location";
 
 "VERSION_NEW"="New version";
 "VERSION_AVAILABLE"="New version is available on AppStore";

@@ -22,12 +22,17 @@ class ServiceUser {
         }
     }
     
-    static func setFavoriteSports(favoriteSports: [FavoriteSport]) {
+    static func addFavoriteSports(favoriteSport: FavoriteSport) {
         guard let user = Auth.auth().currentUser else { return }
-        for favoriteSport in favoriteSports {
-            if let favoriteSportId = favoriteSport.id {
-                FFirestoreReference.userFavoriteSports(user.uid).document(favoriteSportId).setData(favoriteSport.toData, merge: true)
-            }
+        if let favoriteSportId = favoriteSport.id {
+            FFirestoreReference.userFavoriteSports(user.uid).document(favoriteSportId).setData(favoriteSport.toData, merge: true)
+        }
+    }
+    
+    static func removeFavoriteSports(favoriteSport: FavoriteSport) {
+        guard let user = Auth.auth().currentUser else { return }
+        if let favoriteSportId = favoriteSport.id {
+            FFirestoreReference.userFavoriteSports(user.uid).document(favoriteSportId).delete()
         }
     }
     
@@ -38,8 +43,8 @@ class ServiceUser {
             return
         }
         FFirestoreReference.users.document(user.uid).getDocument { (document, error) in
-            guard let document = document, document.exists, let data = document.data(),
-                  let user = try? FirebaseDecoder().decode(User.self, from: data) else {
+            guard let document = document, document.exists,
+                  let user = try? document.data(as: User.self) else {
                 completion(nil)
                 return
             }
@@ -60,7 +65,7 @@ class ServiceUser {
             }
             for document in documents {
                 if document.exists,
-                   let event = try? FirebaseDecoder().decode(RelatedEvent.self, from: document.data()) {
+                   let event = try? document.data(as: RelatedEvent.self) {
                     events.append(event)
                 }
             }
@@ -81,7 +86,7 @@ class ServiceUser {
             }
             for document in documents {
                 if document.exists,
-                   let event = try? FirebaseDecoder().decode(RelatedEvent.self, from: document.data()) {
+                   let event = try? document.data(as: RelatedEvent.self) {
                     events.append(event)
                 }
             }
@@ -101,7 +106,7 @@ class ServiceUser {
                 return
             }
             for document in documents {
-                if let favoriteSport = try? FirebaseDecoder().decode(FavoriteSport.self, from: document.data()) {
+                if let favoriteSport = try? document.data(as: FavoriteSport.self) {
                     favoriteSports.append(favoriteSport)
                 }
             }

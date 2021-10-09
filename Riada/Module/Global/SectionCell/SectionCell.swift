@@ -9,19 +9,20 @@
 import Firebase
 import Foundation
 
-class DateSectionCell: UITableViewHeaderFooterView {
+class SectionCell: UITableViewHeaderFooterView {
     
     //MARK: - Constant
     enum Constants {
-        static let identifier = "DateSectionCell"
+        static let identifier = "SectionCell"
+        static let nib = UINib(nibName: Constants.identifier, bundle: nil)
         static let height: CGFloat = 32.0
     }
         
     // MARK: IBOutlet
-    @IBOutlet weak private var dateLabel: UILabel!
+    @IBOutlet weak private var descriptionLabel: UILabel!
 
     // MARK: LifeCycle
-    func setUp(date: String) {
-        dateLabel.text = date
+    func setUp(desc: String) {
+        descriptionLabel.text = desc
     }
 }

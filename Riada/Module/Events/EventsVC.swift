@@ -18,9 +18,16 @@ class EventsVC: UIViewController {
     @IBOutlet weak private var sportLabel: UILabel!
     @IBOutlet weak private var cityLabel: UILabel!
     @IBOutlet weak private var eventsTableView: UITableView!
-    
+    @IBOutlet weak private var loaderView: UIView!
+
     // MARK: - Properties
     var sport: Sport?
+    private var events: [Event] = [] {
+        didSet {
+            sortEventByDate()
+        }
+    }
+
     private var eventsByDate: [(date: Date, events: [Event])] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -28,7 +35,6 @@ class EventsVC: UIViewController {
             }
         }
     }
-    private var selectedEvent: Event?
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -38,10 +44,14 @@ class EventsVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == SearchLocationVC.Constants.identifier {
-//            guard let vc = segue.destination as? SearchLocationVC else { return }
-//            vc.delegate = self
-//        }
+        if segue.identifier == EventDetailsAsParticipantVC.Constants.identifier {
+            guard let vc = segue.destination as? EventDetailsAsParticipantVC,
+                  let eventCell = sender as? EventCell else {
+                return
+            }
+            vc.event = eventCell.event
+            vc.organizer = eventCell.organizer
+        }
     }
     
     // MARK: - Privates
@@ -54,27 +64,52 @@ class EventsVC: UIViewController {
     }
 
     private func setupTableView() {
-        eventsTableView.register(UINib(nibName: EventCell.Constants.identifier, bundle: nil),
+        eventsTableView.register(EventCell.Constants.nib,
                            forCellReuseIdentifier: EventCell.Constants.identifier)
-        eventsTableView.register(UINib(nibName: DateSectionCell.Constants.identifier, bundle: nil),
-                           forHeaderFooterViewReuseIdentifier: DateSectionCell.Constants.identifier)
+        eventsTableView.register(SectionCell.Constants.nib,
+                           forHeaderFooterViewReuseIdentifier: SectionCell.Constants.identifier)
         eventsTableView.dataSource = self
         eventsTableView.delegate = self
     }
     
     private func syncEvents() {
-        ServiceEvent.getNextEvents { (events) in
-            var sortedEvent: [(date: Date, events: [Event])] = []
-            let dict = Dictionary(grouping: events, by: { $0.date })
-            let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedAscending })
-            
-            for key in sortedKeys {
-                if let events = dict[key] {
-                    sortedEvent.append((date: key.dateValue(), events: events))
-                }
+        guard let sportId = sport?.id else { return }
+        loaderView.isHidden = false
+        ServiceEvent.getNextEvents(sportId: sportId, delegate: self)
+    }
+    
+    private func sortEventByDate() {
+        var sortedEvent: [(date: Date, events: [Event])] = []
+        let dict = Dictionary(grouping: events, by: { $0.date })
+        let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedAscending })
+        
+        for key in sortedKeys {
+            if let events = dict[key] {
+                sortedEvent.append((date: key.dateValue(), events: events))
             }
-            self.eventsByDate = sortedEvent
         }
+        self.eventsByDate = sortedEvent
+    }
+}
+
+// MARK: - IBAction
+extension EventsVC: ServiceNextEventDelegate  {
+    func dataAdded(event: Event) {
+        events.append(event)
+    }
+    
+    func dataModified(event: Event) {
+        guard let index = events.firstIndex(where: { $0.id == event.id }) else { return }
+        events[index] = event
+    }
+    
+    func dataRemoved(event: Event) {
+        guard let index = events.firstIndex(where: { $0.id == event.id }) else { return }
+        events.remove(at: index)
+    }
+    
+    func didFinishLoading() {
+        loaderView.isHidden = true
     }
 }
 
@@ -104,12 +139,12 @@ extension EventsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        DateSectionCell.Constants.height
-     }
+        SectionCell.Constants.height
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DateSectionCell.Constants.identifier) as? DateSectionCell else { return UITableViewHeaderFooterView() }
-        header.setUp(date: eventsByDate[section].date.long)
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionCell.Constants.identifier) as? SectionCell else { return UITableViewHeaderFooterView() }
+        header.setUp(desc: eventsByDate[section].date.long)
         return header
     }
     
@@ -136,7 +171,7 @@ extension EventsVC: UITableViewDataSource {
 extension EventsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedEvent = eventsByDate[indexPath.section].events[indexPath.row]
-        // TODO: Redirect to events details
+        guard let cell = eventsTableView.cellForRow(at: indexPath) as? EventCell else { return }
+        performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: cell)
     }
 }

@@ -14,7 +14,7 @@ class OnBoardingVC: UIViewController {
     @IBOutlet weak var appDescriptionLabel: UILabel!
     @IBOutlet weak var favoriteSportDescriptionLabel: UILabel!
     @IBOutlet weak var favoriteSportTableView: UITableView!
-    @IBOutlet weak var letsPlayButton: UIButton!
+    @IBOutlet weak var letsPlayButton: MButton!
     
     // MARK: - IBOutlet
     private var sports: [Sport] = []
@@ -32,7 +32,7 @@ class OnBoardingVC: UIViewController {
         titleLabel.text = L10N.onBoarding.title
         appDescriptionLabel.text = L10N.onBoarding.appDescription
         favoriteSportDescriptionLabel.text = L10N.onBoarding.favoriteSportDescription
-        letsPlayButton.setTitle(L10N.onBoarding.letsPlay, for: .normal)
+        letsPlayButton.setTitle(L10N.onBoarding.letsPlay.uppercased(), for: .normal)
     }
     
     private func setupTableView() {

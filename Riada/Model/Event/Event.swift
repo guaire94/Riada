@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseFirestoreSwift
 import MapKit
+import EventKitUI
 
 struct Event: Identifiable, Codable {
     @DocumentID var id: String?
@@ -24,11 +25,35 @@ struct Event: Identifiable, Codable {
     var sportName: String
     var createdDate: Timestamp
     
-    var location: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: placeCoordinate.latitude, longitude: placeCoordinate.longitude)
+    var location: CLLocation {
+        CLLocation(latitude: placeCoordinate.latitude, longitude: placeCoordinate.longitude)
     }
     
     var sportLocalizedName: String {
         NSLocalizedString(sportName, comment: "")
+    }
+    
+    func toCalendarEvent(with eventStore: EKEventStore) -> EKEvent {
+        let event = EKEvent(eventStore: eventStore)
+        
+        let calendar = Calendar.current
+        let endDate = calendar.date(byAdding: .hour, value: 3, to: date.dateValue())
+        
+        event.title = "\(sportName) - \(title)"
+        event.startDate = date.dateValue()
+        event.endDate = endDate
+        event.isAllDay = false
+        
+        let structuredLocation = EKStructuredLocation(title: placeName)
+        structuredLocation.geoLocation = location
+        event.structuredLocation = structuredLocation
+
+        // TODO: add deeplink
+//        if let urlString = self.event.webLink,
+//           let url = URL(string: urlString) {
+//            event.url = url
+//        }
+        
+        return event
     }
 }

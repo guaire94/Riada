@@ -7,9 +7,9 @@
 
 import Foundation
 
-class OnBoardingHelper: NSObject {
+class HelperOnBoarding: NSObject {
     
-    static let shared = OnBoardingHelper()
+    static let shared = HelperOnBoarding()
     
     var haveSeenWelcomeMessage: Bool {
         get {

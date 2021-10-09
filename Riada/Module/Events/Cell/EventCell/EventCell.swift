@@ -15,7 +15,8 @@ class EventCell: UITableViewCell {
     enum Constants {
         static let height: CGFloat = 130
         static let identifier: String = "EventCell"
-        static let contentCornerRadius: CGFloat = 10
+        static let nib = UINib(nibName: Constants.identifier, bundle: nil)
+        fileprivate static let contentCornerRadius: CGFloat = 10
     }
     
     // MARK: - IBOutlet
@@ -28,8 +29,22 @@ class EventCell: UITableViewCell {
     @IBOutlet weak private var numberOfPlayerLabel: UILabel!
 
     // MARK: - Properties
-    var event: Event?
-    private lazy var dispatchGroup = DispatchGroup()
+    var event: Event? {
+        didSet {
+            setEvent()
+        }
+    }
+    var organizer: Organizer? {
+        didSet {
+            organizerNameLabel.text = organizer?.userNickName
+            if let userAvatar = organizer?.userAvatar {
+                let storage = Storage.storage().reference(forURL: userAvatar)
+                organizerAvatar.sd_setImage(with: storage)
+            } else {
+                organizerAvatar.image = #imageLiteral(resourceName: "avatar")
+            }
+        }
+    }
 
     // MARK: - LifeCycle
     override func prepareForReuse() {
@@ -46,9 +61,7 @@ class EventCell: UITableViewCell {
     
     func setUp(event: Event) {
         setUpUI()
-        
         self.event = event
-        setEvent()
     }
     
     private func setUpUI() {
@@ -66,19 +79,13 @@ class EventCell: UITableViewCell {
         placeAddressLabel.text = event.placeAddress
         timeLabel.text = event.date.hour
         numberOfPlayerLabel.text = String(format: L10N.event.nbAcceptedPlayer, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
-        syncOwner()
+        syncOrganizer()
    }
     
-    private func syncOwner() {
+    private func syncOrganizer() {
         guard let eventId = event?.id else { return }
-        ServiceEvent.getEventOwner(eventId: eventId) { (organizer) in
-            self.organizerNameLabel.text = organizer?.userNickName
-            if let userAvatar = organizer?.userAvatar {
-                let storage = Storage.storage().reference(forURL: userAvatar)
-                self.organizerAvatar.sd_setImage(with: storage)
-            } else {
-                self.organizerAvatar.image = #imageLiteral(resourceName: "avatar")
-            }
+        ServiceEvent.getEventOrganizer(eventId: eventId) { (organizer) in
+            self.organizer = organizer
         }
    }
 }

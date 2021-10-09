@@ -43,6 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
+    
+    // MARK: - DeepLink
+    func application(_ application: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:] ) -> Bool {
+        if let scheme = url.scheme, scheme.localizedCaseInsensitiveCompare("riada") == .orderedSame {
+            ManagerDeepLink.shared.setDeeplinkFromDeepLink(url: url)
+            HelperRouting.shared.redirect()
+        }
+        return false
+    }
 }
 
 // MARK: Notification
@@ -72,10 +83,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print(error.localizedDescription)
     }
-        
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if let info = userInfo as? [String: Any] {
-            NotificationHelper.shared.setCurrentNotification(info: info)
+        guard let info = userInfo as? [String: Any] else { return }
+        
+        ManagerDeepLink.shared.setDeeplinkFromNotification(info: info)
+        if application.applicationState != .inactive {
+            HelperRouting.shared.redirect()
         }
     }
     
@@ -98,7 +112,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
         switch response.actionIdentifier {
         case UNNotificationDefaultActionIdentifier:
-            NotificationHelper.shared.setCurrentNotification(info: info)
+            HelperNotification.shared.setCurrentNotification(info: info)
 //            NotificationCenter.default.post(name: .OpenRemoteNotification, object: nil)
             print("Open Action")
         default:

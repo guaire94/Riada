@@ -11,7 +11,7 @@ protocol SearchLocationVCDelegate: class {
     func didSelectLocation(city: City)
 }
 
-class SearchLocationVC: UIViewController {
+class SearchLocationVC: MKeyboardVC {
     
     //MARK: - Constant
     enum Constants {
@@ -32,7 +32,6 @@ class SearchLocationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setUpNotification()
     }
     
     // MARK: - Privates
@@ -56,25 +55,6 @@ class SearchLocationVC: UIViewController {
         locationTextField.placeHolder = L10N.searchLocation.placeHolder
         locationTextField.delegate = self
         locationTextField.returnKeyType = .search
-    }
-    
-    private func setUpNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        view.frame.origin.y = 0 - keyboardSize.height
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = 0
     }
 }
 
@@ -110,7 +90,7 @@ extension SearchLocationVC: UITableViewDelegate {
         
         let place = places[indexPath.row]
         
-        GooglePlaceHelper.shared.getPlaceDetails(placeId: place.id) { [weak self] (location) in
+        ServiceGooglePlace.shared.getPlaceDetails(placeId: place.id) { [weak self] (location) in
             cell.isLoading = false
             guard let location = location else { return }
             let city = City(name: place.name, lat: location.coordinate.latitude, lng: location.coordinate.longitude)
@@ -148,7 +128,7 @@ extension SearchLocationVC: UITextFieldDelegate {
     }
 
     func searchCity(_ query: String) {
-        GooglePlaceHelper.shared.getPlaces(searchString: query) { (places, error) in
+        ServiceGooglePlace.shared.getPlaces(searchString: query) { (places, error) in
             self.places = places
             DispatchQueue.main.async {
                 self.citiesTableView.reloadData()

@@ -30,7 +30,7 @@ extension Date {
 
     var long: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
+        dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.current
         return dateFormatter.string(from: self)

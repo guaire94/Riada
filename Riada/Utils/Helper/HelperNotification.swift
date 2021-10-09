@@ -9,8 +9,8 @@
 import UIKit
 import UserNotifications
 
-class NotificationHelper {
-    static let shared = NotificationHelper()
+class HelperNotification {
+    static let shared = HelperNotification()
     
     var currentNotification: CurrentNotification?
     

@@ -16,10 +16,18 @@ class ServiceUser {
         Auth.auth().signInAnonymously { (_, _) in
             guard let user = Auth.auth().currentUser else { return }
             let data: [String : Any] = [
-                "id": user.uid
+                "createdDate": Timestamp()
             ]
             FFirestoreReference.users.document(user.uid).setData(data, merge: true)
         }
+    }
+    static func updateNickName(nickName: String) {
+        guard let user = Auth.auth().currentUser else { return }
+        let data: [String : Any] = [
+            "nickName": nickName
+        ]
+        FFirestoreReference.users.document(user.uid).setData(data, merge: true)
+        ManagerUser.shared.user?.nickName = nickName
     }
     
     static func addFavoriteSports(favoriteSport: FavoriteSport) {

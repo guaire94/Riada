@@ -10,15 +10,39 @@ import CodableFirebase
 import CoreLocation
 import GeoFire
 
+protocol ServiceNextEventDelegate {
+    func dataAdded(event: Event)
+    func dataModified(event: Event)
+    func dataRemoved(event: Event)
+    func didFinishLoading()
+}
+
+protocol ServiceEventParticipantDelegate {
+    func dataAdded(participant: Participant)
+    func dataModified(participant: Participant)
+    func dataRemoved(participant: Participant)
+}
+
+protocol ServiceEventGuestDelegate {
+    func dataAdded(guest: Guest)
+    func dataModified(guest: Guest)
+    func dataRemoved(guest: Guest)
+}
+
 class ServiceEvent {
     
+    // MARK: - Constants
     enum Constant {
         static var maxMilesDistance: Double = 20
         static var OneMileLat: Double = 0.0144927536231884
         static var OneMileLng: Double = 0.0181818181818182
     }
     
-    static func getNextEvents(completion: @escaping ([Event]) -> Void) {
+    // MARK: - Properties
+    private static var nextEventsListener: ListenerRegistration?
+    
+    // MARK: - GET
+    static func getNextEvents(sportId: String, delegate: ServiceNextEventDelegate) {
         let lat = ManagerUser.shared.currentCity.lat
         let lng = ManagerUser.shared.currentCity.lng
         
@@ -31,22 +55,33 @@ class ServiceEvent {
         let lesserGeopoint = GeoPoint(latitude: lowerLat, longitude: lowerLon)
         let greaterGeopoint = GeoPoint(latitude: greaterLat, longitude: greaterLon)
         
-        FFirestoreReference.events.order(by: "placeCoordinate").whereField("placeCoordinate", isGreaterThan: lesserGeopoint).whereField("placeCoordinate", isLessThan: greaterGeopoint).start(after: [Timestamp()]).getDocuments() { (querySnapshot, err) in
-            var events: [Event] = []
-            guard err == nil, let documents = querySnapshot?.documents else {
-                completion(events)
-                return
+        nextEventsListener?.remove()
+        nextEventsListener = FFirestoreReference.events.order(by: "placeCoordinate").whereField("placeCoordinate", isGreaterThan: lesserGeopoint).whereField("placeCoordinate", isLessThan: greaterGeopoint).whereField("sportId", isEqualTo: sportId).start(after: [Timestamp()]).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            var numberOfItems = snapshot.count
+            if numberOfItems == .zero {
+                delegate.didFinishLoading()
             }
-            for document in documents {
-                if let event = try? document.data(as: Event.self) {
-                    events.append(event)
+            snapshot.documentChanges.forEach { diff in
+                if let event = try? diff.document.data(as: Event.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(event: event)
+                    case .modified:
+                        delegate.dataModified(event: event)
+                    case .removed:
+                        delegate.dataRemoved(event: event)
+                    }
+                }
+                numberOfItems -= 1
+                if numberOfItems == .zero {
+                    delegate.didFinishLoading()
                 }
             }
-            completion(events)
         }
     }
     
-    static func getEventOwner(eventId: String, completion: @escaping (Organizer?) -> Void) {
+    static func getEventOrganizer(eventId: String, completion: @escaping (Organizer?) -> Void) {
         FFirestoreReference.eventOrganizer(eventId).getDocuments() { (querySnapshot, err) in
             guard err == nil,
                   let document = querySnapshot?.documents.first,
@@ -58,35 +93,67 @@ class ServiceEvent {
         }
     }
     
-    static func getEventParticipants(eventId: String, completion: @escaping ([Participant]) -> Void) {
-        FFirestoreReference.eventParticipants(eventId).getDocuments() { (querySnapshot, err) in
-            var participants: [Participant] = []
-            guard err == nil, let documents = querySnapshot?.documents else {
-                completion(participants)
-                return
-            }
-            for document in documents {
-                if let participant = try? document.data(as: Participant.self) {
-                    participants.append(participant)
+    static func getEventParticipantsAsParticipant(eventId: String, delegate: ServiceEventParticipantDelegate) {
+        FFirestoreReference.eventParticipants(eventId).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            snapshot.documentChanges.forEach { diff in
+                if let participant = try? diff.document.data(as: Participant.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(participant: participant)
+                    case .modified:
+                        delegate.dataModified(participant: participant)
+                    case .removed:
+                        delegate.dataRemoved(participant: participant)
+                    }
                 }
             }
-            completion(participants)
         }
     }
     
-    static func getNbEventGuests(eventId: String, completion: @escaping ([Guest]) -> Void) {
-        FFirestoreReference.eventParticipants(eventId).getDocuments() { (querySnapshot, err) in
-            var guests: [Guest] = []
-            guard err == nil, let documents = querySnapshot?.documents else {
-                completion(guests)
-                return
-            }
-            for document in documents {
-                if let guest = try? document.data(as: Guest.self) {
-                    guests.append(guest)
+    static func getEventGuestsAsParticipant(eventId: String, delegate: ServiceEventGuestDelegate) {
+        FFirestoreReference.eventGuests(eventId).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            snapshot.documentChanges.forEach { diff in
+                if let guest = try? diff.document.data(as: Guest.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(guest: guest)
+                    case .modified:
+                        delegate.dataModified(guest: guest)
+                    case .removed:
+                        delegate.dataRemoved(guest: guest)
+                    }
                 }
             }
-            completion(guests)
         }
+    }
+
+    // MARK: - UPDATE
+    static func participate(eventId: String) {
+        guard let userId = ManagerUser.shared.user?.id,
+              let data = ManagerUser.shared.user?.toParticipantData else {
+            return
+        }
+        
+        FFirestoreReference.eventParticipants(eventId).document(userId).setData(data, merge: false)
+    }
+    
+    static func addGuest(eventId: String, nickName: String) {
+        guard var data = ManagerUser.shared.user?.toAddGuestData else {
+            return
+        }
+        
+        data["guestNickName"] = nickName
+        FFirestoreReference.eventGuests(eventId).document(UUID().uuidString).setData(data, merge: false)
+    }
+    
+    static func decline(eventId: String) {
+        guard let userId = ManagerUser.shared.user?.id else { return }
+        let data = [
+           "status": ParticipationStatus.declined.rawValue
+        ]
+        
+        FFirestoreReference.eventParticipants(eventId).document(userId).setData(data, merge: true)
     }
 }

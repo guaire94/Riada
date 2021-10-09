@@ -1,5 +1,5 @@
 //
-//  GooglePlaceHelper.swift
+//  ServiceGooglePlace.swift
 //  Mooddy
 //
 //  Created by Quentin Gallois on 07/09/2019.
@@ -28,16 +28,17 @@ class GooglePlace: NSObject {
     }
 }
 
-class GooglePlaceHelper: NSObject {
+class ServiceGooglePlace: NSObject {
     
     private enum Constants {
         static let urlScheme = "https"
         static let urlDomain = "maps.googleapis.com"
         static let autocompleteEndpoint = "/maps/api/place/autocomplete/json"
         static let placeDetailsEndpoint = "/maps/api/place/details/json"
+        static let photoEndpoint = "/maps/api/place/photo"
     }
     
-    static let shared = GooglePlaceHelper()
+    static let shared = ServiceGooglePlace()
     var activeTask:URLSessionDataTask?
     
     func getPlaces(searchString: String, block: @escaping ArrayBlock<GooglePlace>) {
@@ -115,7 +116,66 @@ class GooglePlaceHelper: NSObject {
         }
         activeTask?.resume()
     }
+    
+    func getPlacePhotos(placeId: String, block: @escaping Block<([URL])>) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = Constants.urlScheme
+        urlComponents.host = Constants.urlDomain
+        urlComponents.path = Constants.placeDetailsEndpoint
 
+        let params = ["place_id" : placeId, "key" : Config.googleAPIKey, "fields" : "photos"]
+        let items = params.map { (arg) -> URLQueryItem in
+            let (key, value) = arg
+            return URLQueryItem(name: key, value: value)
+        }
+        urlComponents.queryItems = items
+        guard let url = urlComponents.url else { return block([]) }
+        let request = URLRequest(url: url)
+        if let task = activeTask {
+            task.cancel()
+        }
+        activeTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.activeTask = nil
+            
+            guard let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSObject,
+                  let result = json["result"] as? [String: Any],
+                  let photos = result["photos"] as? [[String: Any]] else {
+                return block([])
+            }
+            
+            var photosUrl: [URL] = []
+            for photo in photos {
+                if let ref = photo["photo_reference"] as? String {
+                    if let url = self.buildPhotoUrl(photoRef: ref) {
+                        photosUrl.append(url)
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                block(photosUrl)
+            }
+        }
+        activeTask?.resume()
+    }
+    
+    private func buildPhotoUrl(photoRef: String) -> URL? {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = Constants.urlScheme
+        urlComponents.host = Constants.urlDomain
+        urlComponents.path = Constants.photoEndpoint
+
+        let params = ["maxwidth": "200", "key": Config.googleAPIKey, "photo_reference": photoRef]
+        let items = params.map { (arg) -> URLQueryItem in
+            let (key, value) = arg
+            return URLQueryItem(name: key, value: value)
+        }
+        urlComponents.queryItems = items
+        return urlComponents.url
+    }
 }
 
 extension NSObject {

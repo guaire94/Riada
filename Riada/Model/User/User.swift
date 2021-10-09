@@ -14,4 +14,30 @@ struct User: Identifiable, Codable {
     var nickName: String?
     var avatar: String?
     var createdDate: Timestamp
+    
+    var toParticipantData: [String: Any]? {
+        guard let userId = self.id, let nickName = self.nickName else { return nil }
+        var data = [
+           "userId": userId,
+           "userNickName": nickName,
+           "status": ParticipationStatus.pending.rawValue
+        ]
+        if let avatar = self.avatar {
+            data["userAvatar"] = avatar
+        }
+        return data
+    }
+    
+    var toAddGuestData: [String: Any]? {
+        guard let userId = self.id, let nickName = self.nickName else { return nil }
+        var data = [
+           "associatedUserId": userId,
+           "associatedUserNickName": nickName,
+           "status": ParticipationStatus.pending.rawValue
+        ]
+        if let avatar = self.avatar {
+            data["associatedUserAvatar"] = avatar
+        }
+        return data
+    }
 }

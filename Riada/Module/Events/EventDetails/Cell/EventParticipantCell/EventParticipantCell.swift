@@ -1,0 +1,77 @@
+//
+//  CommentCell.swift
+//  Mooddy
+//
+//  Created by Quentin Gallois on 15/03/2019.
+//  Copyright © 2019 Quentin Gallois. All rights reserved.
+//
+
+import UIKit
+import Firebase
+
+class EventParticipantCell: UITableViewCell {
+
+    //MARK: - Constant
+    enum Constants {
+        static let height: CGFloat = 78
+        static let identifier: String = "EventParticipantCell"
+        static let nib = UINib(nibName: Constants.identifier, bundle: nil)
+        fileprivate static let contentCornerRadius: CGFloat = 10
+    }
+    
+    // MARK: - IBOutlet
+    @IBOutlet weak private var content: UIView!
+    @IBOutlet weak private var avatar: UIImageView!
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var statusImageView: UIImageView!
+
+    // MARK: - LifeCycle
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        selectionStyle = .none
+        avatar.sd_cancelCurrentImageLoad()
+        avatar.image = nil
+        nameLabel.text = ""
+    }
+    
+    func setUp(participant: Participant) {
+        setUpUI()
+        if participant.userId == ManagerUser.shared.user?.id {
+            nameLabel.text = String(format: L10N.event.details.currentUserParticipate, arguments: [participant.userNickName])
+        } else {
+            nameLabel.text = participant.userNickName
+        }
+        if let userAvatar = participant.userAvatar {
+            let storage = Storage.storage().reference(forURL: userAvatar)
+            avatar.sd_setImage(with: storage)
+        } else {
+            avatar.image = #imageLiteral(resourceName: "avatar")
+        }
+        statusImageView.backgroundColor = participant.participationStatus.color
+    }
+    
+    func setUp(guest: Guest) {
+        setUpUI()
+        
+        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedUserNickName])
+
+        if let userAvatar = guest.associatedUserAvatar {
+            let storage = Storage.storage().reference(forURL: userAvatar)
+            avatar.sd_setImage(with: storage)
+        } else {
+            avatar.image = #imageLiteral(resourceName: "avatar")
+        }
+        statusImageView.backgroundColor = guest.participationStatus.color
+    }
+
+    // MARK: - Private
+    private func setUpUI() {
+        selectionStyle = .none
+        content.layer.cornerRadius = Constants.contentCornerRadius
+        content.clipsToBounds = true
+        avatar.layer.cornerRadius = avatar.frame.height/2
+        avatar.clipsToBounds = true
+        statusImageView.layer.cornerRadius = statusImageView.frame.height/2
+        statusImageView.clipsToBounds = true
+    }
+}

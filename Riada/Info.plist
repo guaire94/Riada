@@ -75,5 +75,14 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>We need calendar permission to allow you to add event in your personal calendar</string>
+	<key>NSContactsUsageDescription</key>
+	<string>We need contact permission to allow you to specify a contact when adding an event</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+		<string>waze</string>
+	</array>
 </dict>
 </plist>

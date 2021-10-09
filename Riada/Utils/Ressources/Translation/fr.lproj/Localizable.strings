@@ -25,6 +25,26 @@
 
 "EVENT_NB_ACCEPTED_PLAYER"="%d/%d Joueurs";
 "EVENT_EMPTY_PLACEHOLDER"="Pas d'évènements disponibles dans votre région";
+"EVENT_DETAILS_ORGANIZER"="Organisateur";
+"EVENT_DETAILS_INFORMATIONS"="Informations";
+"EVENT_DETAILS_PLACE"="Lieu";
+"EVENT_DETAILS_PHOTOS"="Photos";
+"EVENT_DETAILS_CURRENT_USER_PARTICIPATE"="%@ (Moi)";
+"EVENT_DETAILS_GUEST_BY"="%@ - Invité par %@";
+"EVENT_DETAILS_PARTICIPANTS"="Participants (%d/%d)";
+"EVENT_DETAILS_BUTTONS_PARTICIPATE"="Participer";
+"EVENT_DETAILS_BUTTONS_ADD_GUEST"="Ajoute un invité";
+"EVENT_DETAILS_BUTTONS_DECLINE"="Se retirer";
+"EVENT_DETAILS_PARTICIPATION_STATUS_ACCEPTED"="L'organisateur a accepté ta participation";
+"EVENT_DETAILS_PARTICIPATION_STATUS_REFUSED"="Désolé, L'organisateur a refusé ta participation";
+"EVENT_DETAILS_PARTICIPATION_STATUS_DECLINED"="Tu as annulé ta participation";
+"EVENT_DETAILS_PARTICIPATION_STATUS_PENDING"="En attente de validation";
+"EVENT_DETAILS_PARTICIPATE_NICKNAME_TEXT"="Participer";
+"EVENT_DETAILS_PARTICIPATE_NICKNAME_PLACEHOLDER"="Entres ton surnom...";
+"EVENT_DETAILS_ADD_GUEST_NICKNAME_TEXT"="Ajoutes un invité";
+"EVENT_DETAILS_ADD_GUEST_NICKNAME_PLACEHOLDER"="Entre le surnom de ton invité…";
+"EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_TITLE"="Ajout au calendrier";
+"EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_MESSAGE"="Impossible d'ajouter cet évènement à ton calendrier";
 
 "VERSION_NEW" = "Nouvelle version";
 "VERSION_AVAILABLE" = "Une nouvelle version de l'application est disponible";

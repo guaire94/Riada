@@ -18,6 +18,7 @@ target 'Riada' do
   pod 'FirebaseUI/Storage'
   pod 'Firebase/Firestore'
   pod 'Firebase/Functions'  
+  pod 'Firebase/DynamicLinks'
   pod 'CodableFirebase'
   pod 'FirebaseFirestoreSwift'
   pod 'GeoFire/Utils'

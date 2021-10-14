@@ -11,26 +11,46 @@ import Foundation
 class HelperDynamicLink {
     
     enum Constants {
-        static var domainURIPrefix = "https://riada.page.link"
-        static var deeplink = "https://social-sport-c41f3.firebaseapp.com/"
-        static var eventDetailsLink = Constants.deeplink + "?eventId="
+        static var domain = "https://socialsport.page.link"
+        static var scheme = "https"
+        static var host = "social-sport-c41f3.firebaseapp.com"
+        static var eventDetailsPath = "/eventDetails"
     }
         
-    static func generateEventDetails(eventId: String, completion: @escaping (URL?) -> Void) {
-        guard let link = URL(string: Constants.eventDetailsLink + eventId),
-        let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: Constants.domainURIPrefix) else {
-            return completion(nil)
+    static func generateEventDetails(event: Event, completion: @escaping (URL?) -> Void) {
+        guard let eventId = event.id else { return }
+        
+        var components = URLComponents()
+        components.scheme = Constants.scheme
+        components.host = Constants.domain
+        components.path = Constants.eventDetailsPath
+        
+        let itemIDQueryItem = URLQueryItem(name: "eventId", value: eventId)
+        components.queryItems = [itemIDQueryItem]
+                
+        guard let link = components.url,
+              let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: Constants.domain) else {
+                  return
+              }
+        
+        if let myBundleId = Bundle.main.bundleIdentifier {
+          linkBuilder.iOSParameters = DynamicLinkIOSParameters(bundleID: myBundleId)
         }
-        
-        linkBuilder.iOSParameters = DynamicLinkIOSParameters(bundleID: "com.socialSport.app.SocialSport")
         linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "com.riada")
-        
-        let options = DynamicLinkComponentsOptions()
-        options.pathLength = .short
-        linkBuilder.options = options
-        
-        guard let longDynamicLink = linkBuilder.url else { return completion(nil) }
-        print("The long URL is: \(longDynamicLink)")
-        completion(longDynamicLink)
+        linkBuilder.iOSParameters?.appStoreID = Config.AppStoreId
+        linkBuilder.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
+        linkBuilder.socialMetaTagParameters?.title = "\(event.sportLocalizedName) - \(event.title)"
+        linkBuilder.socialMetaTagParameters?.descriptionText = event.description
+        linkBuilder.socialMetaTagParameters?.imageURL = URL(string: "https://social-sport-c41f3.firebaseapp.com/logo.png")!
+
+        linkBuilder.shorten { url, warnings, error in
+            if let warnings = warnings {
+                for warning in warnings {
+                    print("Warning: \(warning)")
+                }
+            }
+            guard let url = url else { return }
+            completion(url)
+        }
     }
 }

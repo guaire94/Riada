@@ -12,9 +12,9 @@ import Applanga
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         setUpWormholy()
@@ -33,26 +33,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Applanga.update { (success: Bool) in }
         }
     }
-
-    // MARK: UISceneSession Lifecycle
-    @available(iOS 13.0, *)
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    @available(iOS 13.0, *)
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
     
     // MARK: - DeepLink
-    func application(_ application: UIApplication,
+    func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:] ) -> Bool {
-        if let scheme = url.scheme, scheme.localizedCaseInsensitiveCompare("riada") == .orderedSame {
+        application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: "")
+    }
+    
+    
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?,
+                     annotation: Any) -> Bool {
+        if let url = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)?.url {
             ManagerDeepLink.shared.setDeeplinkFromDeepLink(url: url)
-            HelperRouting.shared.redirect()
+            HelperRouting.shared.routeToHome()
+            return true
         }
         return false
+    }
+    
+    func application(_ application: UIApplication,
+                     continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+              let webpageURL = userActivity.webpageURL else {
+                  return false
+              }
+        
+        let isDynamicLinkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(webpageURL) { dynamicLink, error in
+            guard error == nil, let dynamicLink = dynamicLink, let url = dynamicLink.url else { return }
+            
+            ManagerDeepLink.shared.setDeeplinkFromDeepLink(url: url)
+            HelperRouting.shared.routeToHome()
+        }
+        return isDynamicLinkHandled
     }
 }
 
@@ -89,7 +104,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         ManagerDeepLink.shared.setDeeplinkFromNotification(info: info)
         if application.applicationState != .inactive {
-            HelperRouting.shared.redirect()
+            HelperRouting.shared.routeToHome()
         }
     }
     
@@ -113,7 +128,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         switch response.actionIdentifier {
         case UNNotificationDefaultActionIdentifier:
             HelperNotification.shared.setCurrentNotification(info: info)
-//            NotificationCenter.default.post(name: .OpenRemoteNotification, object: nil)
+            //            NotificationCenter.default.post(name: .OpenRemoteNotification, object: nil)
             print("Open Action")
         default:
             print("default")

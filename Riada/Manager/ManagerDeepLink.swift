@@ -9,7 +9,6 @@ import Foundation
 
 enum DeepLinkType {
     case eventDetails(eventId: String)
-    case newsDetails(newsId: String)
 }
 
 class ManagerDeepLink {
@@ -21,7 +20,7 @@ class ManagerDeepLink {
         }
         
         enum host {
-            static let eventDetails = "eventDetails"
+            static let eventDetails = "/eventDetails"
         }
         
         enum notification {
@@ -55,19 +54,16 @@ class ManagerDeepLink {
     }
     
     // MARK: - Private
-    private func parseDeeplink(url: URL) {
-        guard let host = url.host else { return }
-        
+    private func parseDeeplink(url: URL) {        
         var parameters: [String: String] = [:]
         URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {
             parameters[$0.name] = $0.value
         }
         
         currentDeepLink = nil
-        switch host {
+        switch url.path {
         case Constants.host.eventDetails:
             guard let eventId = parameters[Constants.id.event] else { return }
-            
             currentDeepLink = .eventDetails(eventId: eventId)
         default:
             currentDeepLink = nil

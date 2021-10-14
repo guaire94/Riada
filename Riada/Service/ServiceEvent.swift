@@ -42,6 +42,17 @@ class ServiceEvent {
     private static var nextEventsListener: ListenerRegistration?
     
     // MARK: - GET
+    static func getEventDetails(eventId: String, completion: @escaping (Event?) -> Void) {
+        FFirestoreReference.events.document(eventId).getDocument { (document, error) in
+            guard let document = document, document.exists,
+                  let event = try? document.data(as: Event.self) else {
+                completion(nil)
+                return
+            }
+            completion(event)
+        }
+    }
+
     static func getNextEvents(sportId: String, delegate: ServiceNextEventDelegate) {
         let lat = ManagerUser.shared.currentCity.lat
         let lng = ManagerUser.shared.currentCity.lng

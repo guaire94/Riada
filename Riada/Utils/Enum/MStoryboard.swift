@@ -9,8 +9,9 @@ import UIKit
 
 enum MStoryboard: String {
     case AnimateLaunchScreen = "AnimateLaunchScreen"
-    case Home = "Home"
     case OnBoarding = "OnBoarding"
+    case Home = "Home"
+    case Event = "Event"
 
     var storyboard: UIStoryboard {
         UIStoryboard(name: rawValue, bundle: nil)

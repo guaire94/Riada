@@ -357,18 +357,12 @@ extension EventDetailsAsParticipantVC {
     }
     
     @IBAction func shareToggle(_ sender: Any) {
-        guard let event = event, let eventId = event.id else { return }
+        guard let event = event else { return }
         
-        HelperDynamicLink.generateEventDetails(eventId: eventId, completion: { url in
+        HelperDynamicLink.generateEventDetails(event: event, completion: { url in
             guard let url = url else { return }
             DispatchQueue.main.async {
-                let sharedObjects:[Any] = [
-                    event.sportLocalizedName + " - " + event.title,
-                    url,
-                    event.description,
-                    event.date.long + " - " + event.date.hour
-                ]
-                let activityViewController = UIActivityViewController(activityItems : sharedObjects, applicationActivities: nil)
+                let activityViewController = UIActivityViewController(activityItems : [url], applicationActivities: nil)
                 activityViewController.popoverPresentationController?.sourceView = self.view
                 
                 self.present(activityViewController, animated: true, completion: nil)

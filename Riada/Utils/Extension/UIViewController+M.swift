@@ -28,4 +28,12 @@ extension UIViewController {
         }
         UIApplication.shared.keyWindow?.rootViewController = vc
     }
+    
+    static var eventDetailsVC: EventDetailsAsParticipantVC {
+        guard let eventDetails = MStoryboard.Event.storyboard.instantiateViewController(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier) as? EventDetailsAsParticipantVC else {
+            fatalError("Load initial view controller from '\(MStoryboard.Event.rawValue)' Storyboard have failed")
+        }
+        
+        return eventDetails
+    }
 }

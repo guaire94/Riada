@@ -22,7 +22,8 @@ class AddGuestVC: MKeyboardVC {
 
     // MARK: - Properties
     var event: Event?
-    
+    var asOrganizer: Bool = false
+
     var addGuestButtonIsEnabled: Bool = false {
         didSet {
             addGuestButton.alpha = addGuestButtonIsEnabled ? 1 : 0.5
@@ -88,7 +89,7 @@ private extension AddGuestVC {
             return
         }
         
-        ServiceEvent.addGuest(eventId: eventId, nickName: nickName)
+        ServiceEvent.addGuest(eventId: eventId, nickName: nickName, asOrganizer: asOrganizer)
         dismiss(animated: true, completion: nil)
     }
 }

@@ -172,12 +172,15 @@ class ServiceEvent {
         FFirestoreReference.eventParticipants(eventId).document(userId).setData(data, merge: false)
     }
     
-    static func addGuest(eventId: String, nickName: String) {
+    static func addGuest(eventId: String, nickName: String, asOrganizer: Bool) {
         guard var data = ManagerUser.shared.user?.toAddGuestData else {
             return
         }
         
         data["guestNickName"] = nickName
+        if asOrganizer {
+            data["status"] = ParticipationStatus.accepted.rawValue
+        }
         FFirestoreReference.eventGuests(eventId).document(UUID().uuidString).setData(data, merge: false)
     }
     
@@ -189,4 +192,37 @@ class ServiceEvent {
         
         FFirestoreReference.eventParticipants(eventId).document(userId).setData(data, merge: true)
     }
+    
+    static func acceptParticipant(eventId: String, participant: Participant) {
+        guard let participantId = participant.id else { return }
+        let data = [
+            "status": ParticipationStatus.accepted.rawValue
+        ]
+        FFirestoreReference.eventParticipants(eventId).document(participantId).setData(data, merge: true)
+    }
+    
+    static func refuseParticipant(eventId: String, participant: Participant) {
+        guard let participantId = participant.id else { return }
+        let data = [
+            "status": ParticipationStatus.refused.rawValue
+        ]
+        FFirestoreReference.eventParticipants(eventId).document(participantId).setData(data, merge: true)
+    }
+    
+    static func acceptGuest(eventId: String, guest: Guest) {
+        guard let guestId = guest.id else { return }
+        let data = [
+            "status": ParticipationStatus.accepted.rawValue
+        ]
+        FFirestoreReference.eventGuests(eventId).document(guestId).setData(data, merge: true)
+    }
+    
+    static func refuseGuest(eventId: String, guest: Guest) {
+        guard let guestId = guest.id else { return }
+        let data = [
+            "status": ParticipationStatus.refused.rawValue
+        ]
+        FFirestoreReference.eventGuests(eventId).document(guestId).setData(data, merge: true)
+    }
+
 }

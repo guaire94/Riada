@@ -88,6 +88,7 @@ class EventDetailsAsParticipantVC: UIViewController {
         } else if segue.identifier == AddGuestVC.Constants.identifier {
             guard let vc = segue.destination as? AddGuestVC else { return }
             vc.event = event
+            vc.asOrganizer = false
         }
     }
     
@@ -147,19 +148,23 @@ class EventDetailsAsParticipantVC: UIViewController {
         
         let eventStore = EKEventStore()
         eventStore.requestAccess( to: EKEntityType.event, completion:{ granted, error in
-            DispatchQueue.main.async {
-                guard granted, error == nil else {
-                    self.showError(title: L10N.event.details.addToCalendar.error.title,
-                                   message: L10N.event.details.addToCalendar.error.message)
-                    return
+            HelperDynamicLink.generateEventDetails(event: event, completion: { url in
+                guard let url = url else { return }
+                DispatchQueue.main.async {
+                    guard granted, error == nil else {
+                        self.showError(title: L10N.event.details.addToCalendar.error.title,
+                                       message: L10N.event.details.addToCalendar.error.message)
+                        return
+                    }
+                    
+
+                    let eventController = EKEventEditViewController()
+                    eventController.event = event.toCalendarEvent(deeplink: url, with: eventStore)
+                    eventController.eventStore = eventStore
+                    eventController.editViewDelegate = self
+                    self.present(eventController, animated: true, completion: nil)
                 }
-                
-                let eventController = EKEventEditViewController()
-                eventController.event = event.toCalendarEvent(with: eventStore)
-                eventController.eventStore = eventStore
-                eventController.editViewDelegate = self
-                self.present(eventController, animated: true, completion: nil)
-            }
+            })
         })
     }
     

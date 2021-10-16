@@ -17,5 +17,5 @@ struct Participant: Identifiable, Codable {
     
     var participationStatus: ParticipationStatus {
         ParticipationStatus(rawValue: status) ?? .pending
-    }
+    }    
 }

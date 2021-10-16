@@ -50,6 +50,16 @@ class EventsVC: UIViewController {
             }
             vc.event = eventCell.event
             vc.organizer = eventCell.organizer
+        } else if segue.identifier == EventDetailsAsOrganizerVC.Constants.identifier {
+            guard let vc = segue.destination as? EventDetailsAsOrganizerVC,
+                  let eventCell = sender as? EventCell else {
+                return
+            }
+            vc.event = eventCell.event
+            vc.organizer = eventCell.organizer
+        } else if segue.identifier == OrganizeEventVC.Constants.identifier {
+            guard let vc = segue.destination as? OrganizeEventVC else { return }
+            vc.delegate = self
         }
     }
     
@@ -88,6 +98,18 @@ class EventsVC: UIViewController {
             }
         }
         self.eventsByDate = sortedEvent
+    }
+    
+    private func shareEvent(event: Event) {
+        HelperDynamicLink.generateEventDetails(event: event, completion: { url in
+            guard let url = url else { return }
+            DispatchQueue.main.async {
+                let activityViewController = UIActivityViewController(activityItems : [url], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+        })
     }
 }
 
@@ -170,11 +192,28 @@ extension EventsVC: UITableViewDataSource {
     }
 }
 
+// MARK: - OrganizeEventVCDelegate
+extension EventsVC: OrganizeEventVCDelegate {
+
+    func didCreateEvent(event: Event) {
+        shareEvent(event: event)
+    }
+}
+
 // MARK: - UITableViewDelegate
 extension EventsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = eventsTableView.cellForRow(at: indexPath) as? EventCell else { return }
-        performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: cell)
+        guard let cell = eventsTableView.cellForRow(at: indexPath) as? EventCell,
+              let userId = ManagerUser.shared.user?.id,
+              let organizer = cell.organizer else {
+                  return
+        }
+        
+        if organizer.userId == userId {
+            performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: cell)
+        } else {
+            performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: cell)
+        }
     }
 }

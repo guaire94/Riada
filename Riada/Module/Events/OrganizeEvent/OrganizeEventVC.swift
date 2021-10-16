@@ -9,6 +9,10 @@ import UIKit
 import CoreLocation
 import Firebase
 
+protocol OrganizeEventVCDelegate: class {
+    func didCreateEvent(event: Event)
+}
+
 class OrganizeEventVC: UIViewController {
     
     // MARK: - Constants
@@ -36,6 +40,8 @@ class OrganizeEventVC: UIViewController {
     private var selectedPlaceAddress: String?
     private var selectedPlaceLocation: CLLocation?
 
+    weak var delegate: OrganizeEventVCDelegate?
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,6 +164,7 @@ extension OrganizeEventVC {
         let feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator.notificationOccurred(.success)
         dismiss(animated: true)
+        delegate?.didCreateEvent(event: event)
     }
 }
 

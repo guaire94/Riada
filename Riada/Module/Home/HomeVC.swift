@@ -31,6 +31,9 @@ class HomeVC: UIViewController {
             vc.delegate = self
             vc.searchType = .city
             vc.places = PlaceHolderCity.allCases.map({ GooglePlace(name: $0.name, id: $0.placeId) })
+        } else if segue.identifier == OrganizeEventVC.Constants.identifier {
+            guard let vc = segue.destination as? OrganizeEventVC else { return }
+            vc.delegate = self
         }
     }
     
@@ -49,6 +52,18 @@ class HomeVC: UIViewController {
     private func syncSports() {
         sports = ManagerSport.shared.sports
         sportsTableView.reloadData()
+    }
+    
+    private func shareEvent(event: Event) {
+        HelperDynamicLink.generateEventDetails(event: event, completion: { url in
+            guard let url = url else { return }
+            DispatchQueue.main.async {
+                let activityViewController = UIActivityViewController(activityItems : [url], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+        })
     }
 }
 
@@ -112,5 +127,13 @@ extension HomeVC: SearchLocationVCDelegate {
         ManagerUserPreferences.shared.save(city: city)
         ManagerUser.shared.currentCity = city
         cityButton.setTitle(ManagerUser.shared.currentCity.name, for: .normal)
+    }
+}
+
+// MARK: - OrganizeEventVCDelegate
+extension HomeVC: OrganizeEventVCDelegate {
+
+    func didCreateEvent(event: Event) {
+        shareEvent(event: event)
     }
 }

@@ -44,6 +44,7 @@ struct L10N {
                 static let participate: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_PARTICIPATE", comment: "")
                 static let addGuest: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_ADD_GUEST", comment: "")
                 static let decline: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_DECLINE", comment: "")
+                static let edit: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_EDIT", comment: "")
             }
             
             struct participationStatus {

@@ -35,6 +35,7 @@
 "EVENT_DETAILS_BUTTONS_PARTICIPATE"="Participer";
 "EVENT_DETAILS_BUTTONS_ADD_GUEST"="Ajoute un invité";
 "EVENT_DETAILS_BUTTONS_DECLINE"="Se retirer";
+"EVENT_DETAILS_BUTTONS_EDIT"="Modifer";
 "EVENT_DETAILS_PARTICIPATION_STATUS_ACCEPTED"="L'organisateur a accepté ta participation";
 "EVENT_DETAILS_PARTICIPATION_STATUS_REFUSED"="Désolé, L'organisateur a refusé ta participation";
 "EVENT_DETAILS_PARTICIPATION_STATUS_DECLINED"="Tu as annulé ta participation";

@@ -16,6 +16,7 @@ class EventParticipantCell: UITableViewCell {
         static let height: CGFloat = 78
         static let identifier: String = "EventParticipantCell"
         static let nib = UINib(nibName: Constants.identifier, bundle: nil)
+        fileprivate static let goToProfileImage = UIImage(named: "next")
         fileprivate static let contentCornerRadius: CGFloat = 10
     }
     
@@ -24,6 +25,7 @@ class EventParticipantCell: UITableViewCell {
     @IBOutlet weak private var avatar: UIImageView!
     @IBOutlet weak private var nameLabel: UILabel!
     @IBOutlet weak private var statusImageView: UIImageView!
+    @IBOutlet weak private var goToProfileImageView: UIImageView!
 
     // MARK: - LifeCycle
     override func prepareForReuse() {
@@ -32,14 +34,17 @@ class EventParticipantCell: UITableViewCell {
         avatar.sd_cancelCurrentImageLoad()
         avatar.image = nil
         nameLabel.text = ""
+        goToProfileImageView.image = nil
     }
     
     func setUp(participant: Participant) {
         setUpUI()
         if participant.userId == ManagerUser.shared.user?.id {
             nameLabel.text = String(format: L10N.event.details.currentUserParticipate, arguments: [participant.userNickName])
+            goToProfileImageView.image = nil
         } else {
             nameLabel.text = participant.userNickName
+            goToProfileImageView.image = Constants.goToProfileImage
         }
         if let userAvatar = participant.userAvatar {
             let storage = Storage.storage().reference(forURL: userAvatar)
@@ -53,6 +58,11 @@ class EventParticipantCell: UITableViewCell {
     func setUp(guest: Guest) {
         setUpUI()
         
+        if guest.associatedUserId == ManagerUser.shared.user?.id {
+            goToProfileImageView.image = nil
+        } else {
+            goToProfileImageView.image = Constants.goToProfileImage
+        }
         nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedUserNickName])
 
         if let userAvatar = guest.associatedUserAvatar {

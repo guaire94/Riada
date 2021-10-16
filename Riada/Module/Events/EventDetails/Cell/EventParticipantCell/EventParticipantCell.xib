@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,8 +80,9 @@
             <connections>
                 <outlet property="avatar" destination="C46-0L-fTA" id="YzK-I0-BTY"/>
                 <outlet property="content" destination="y2M-Ya-Olm" id="K4L-gu-pgx"/>
+                <outlet property="goToProfileImageView" destination="Mhs-fN-Je3" id="1Pg-hE-8hd"/>
                 <outlet property="nameLabel" destination="PbK-lA-SMv" id="glZ-bh-Eqd"/>
-                <outlet property="statusImageView" destination="wnj-ke-GCP" id="ohZ-24-Ssj"/>
+                <outlet property="statusImageView" destination="wnj-ke-GCP" id="Vk8-jl-Soq"/>
             </connections>
             <point key="canvasLocation" x="169.59999999999999" y="168.21589205397302"/>
         </tableViewCell>

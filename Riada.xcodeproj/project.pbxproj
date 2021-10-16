@@ -66,6 +66,10 @@
 		EE58372126ECFF2E00ED203D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE58372026ECFF2E00ED203D /* GoogleService-Info.plist */; };
 		EE5A0B13271B27B2009A951B /* MSwitchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A0B11271B27B2009A951B /* MSwitchField.swift */; };
 		EE5A0B14271B27B2009A951B /* MSwitchField.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE5A0B12271B27B2009A951B /* MSwitchField.xib */; };
+		EE5A0B18271B5D2B009A951B /* MEventSectionAsOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A0B16271B5D2B009A951B /* MEventSectionAsOrganizer.swift */; };
+		EE5A0B19271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A0B17271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift */; };
+		EE5A0B1B271B638E009A951B /* ParticipantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A0B1A271B638E009A951B /* ParticipantVC.swift */; };
+		EE5A0B1D271B6837009A951B /* GuestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5A0B1C271B6837009A951B /* GuestVC.swift */; };
 		EE603BAD26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE603BAC26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift */; };
 		EE603BBC26F6356C008D2E41 /* EventOrganizerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE603BB826F6356B008D2E41 /* EventOrganizerCell.swift */; };
 		EE603BBF26F6356C008D2E41 /* EventOrganizerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE603BBB26F6356C008D2E41 /* EventOrganizerCell.xib */; };
@@ -177,6 +181,10 @@
 		EE58372026ECFF2E00ED203D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE5A0B11271B27B2009A951B /* MSwitchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSwitchField.swift; sourceTree = "<group>"; };
 		EE5A0B12271B27B2009A951B /* MSwitchField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSwitchField.xib; sourceTree = "<group>"; };
+		EE5A0B16271B5D2B009A951B /* MEventSectionAsOrganizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MEventSectionAsOrganizer.swift; sourceTree = "<group>"; };
+		EE5A0B17271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsAsOrganizerVC.swift; sourceTree = "<group>"; };
+		EE5A0B1A271B638E009A951B /* ParticipantVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantVC.swift; sourceTree = "<group>"; };
+		EE5A0B1C271B6837009A951B /* GuestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestVC.swift; sourceTree = "<group>"; };
 		EE603BAC26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsAsParticipantVC.swift; sourceTree = "<group>"; };
 		EE603BB826F6356B008D2E41 /* EventOrganizerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventOrganizerCell.swift; sourceTree = "<group>"; };
 		EE603BBB26F6356C008D2E41 /* EventOrganizerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventOrganizerCell.xib; sourceTree = "<group>"; };
@@ -556,12 +564,23 @@
 			path = MSwitchField;
 			sourceTree = "<group>";
 		};
+		EE5A0B15271B5D0B009A951B /* AsOrganizer */ = {
+			isa = PBXGroup;
+			children = (
+				EE5A0B17271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift */,
+				EE5A0B16271B5D2B009A951B /* MEventSectionAsOrganizer.swift */,
+				EE5A0B1A271B638E009A951B /* ParticipantVC.swift */,
+				EE5A0B1C271B6837009A951B /* GuestVC.swift */,
+			);
+			path = AsOrganizer;
+			sourceTree = "<group>";
+		};
 		EE603BB226F63493008D2E41 /* EventDetails */ = {
 			isa = PBXGroup;
 			children = (
+				EE5A0B15271B5D0B009A951B /* AsOrganizer */,
 				EEB8F1F026FF629E005ABC27 /* AsParticipant */,
 				EE603BB726F634E9008D2E41 /* Cell */,
-				EEB8F1EE26FE0EC3005ABC27 /* ParticipateVC.swift */,
 				EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */,
 			);
 			path = EventDetails;
@@ -617,6 +636,7 @@
 			children = (
 				EE603BAC26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift */,
 				EEB8F1F126FF62C7005ABC27 /* MEventSectionAsParticipant.swift */,
+				EEB8F1EE26FE0EC3005ABC27 /* ParticipateVC.swift */,
 			);
 			path = AsParticipant;
 			sourceTree = "<group>";
@@ -932,6 +952,7 @@
 			files = (
 				EE5836F026ECF8BF00ED203D /* HomeVC.swift in Sources */,
 				EE5836E326ECE55700ED203D /* OnBoadingVC.swift in Sources */,
+				EE5A0B1B271B638E009A951B /* ParticipantVC.swift in Sources */,
 				EEBBD46E27184DF600519EBC /* OrganizeEventVC.swift in Sources */,
 				EEBBD47E271863FB00519EBC /* NbPlayersPickerSource.swift in Sources */,
 				EEE1F48426F3C0C400754DDD /* EventCell.swift in Sources */,
@@ -944,6 +965,7 @@
 				EE27196726EBD42000A3F281 /* RelatedEvent.swift in Sources */,
 				B836B6252548E73400AAF48A /* Event.swift in Sources */,
 				EE6B7F6926FF7B6A00E44B7C /* MKeyboardVC.swift in Sources */,
+				EE5A0B18271B5D2B009A951B /* MEventSectionAsOrganizer.swift in Sources */,
 				EE5836F826ECF97300ED203D /* SportCell.swift in Sources */,
 				658720F42594ABFF00775520 /* HelperOnBoarding.swift in Sources */,
 				B84ECBB725403235007F8E9E /* ServiceUser.swift in Sources */,
@@ -956,6 +978,7 @@
 				B84ECBC025403840007F8E9E /* Config.swift in Sources */,
 				EE27197B26EBD67D00A3F281 /* Organizer.swift in Sources */,
 				EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */,
+				EE5A0B19271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift in Sources */,
 				EEDC9A9C26FDCB5E00627C73 /* UICollectionView+M.swift in Sources */,
 				EE5A0B13271B27B2009A951B /* MSwitchField.swift in Sources */,
 				EEE1F48F26F3CCFC00754DDD /* UITableView+M.swift in Sources */,
@@ -1002,6 +1025,7 @@
 				EEDC9AA626FDCBE700627C73 /* PhotoCell.swift in Sources */,
 				EEE1F48326F3C0C400754DDD /* SectionCell.swift in Sources */,
 				EEB8F1EA26FE01AC005ABC27 /* UIColor+M.swift in Sources */,
+				EE5A0B1D271B6837009A951B /* GuestVC.swift in Sources */,
 				EEB8F1ED26FE05E8005ABC27 /* MButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

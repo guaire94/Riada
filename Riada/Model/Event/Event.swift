@@ -34,7 +34,7 @@ struct Event: Identifiable, Codable {
         NSLocalizedString(sportName, comment: "")
     }
     
-    func toCalendarEvent(with eventStore: EKEventStore) -> EKEvent {
+    func toCalendarEvent(deeplink: URL, with eventStore: EKEventStore) -> EKEvent {
         let event = EKEvent(eventStore: eventStore)
         
         let calendar = Calendar.current
@@ -49,12 +49,7 @@ struct Event: Identifiable, Codable {
         structuredLocation.geoLocation = location
         event.structuredLocation = structuredLocation
 
-        // TODO: add deeplink
-//        if let urlString = self.event.webLink,
-//           let url = URL(string: urlString) {
-//            event.url = url
-//        }
-        
+        event.url = deeplink        
         return event
     }
     

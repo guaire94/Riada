@@ -121,6 +121,7 @@
                         <outlet property="loaderView" destination="Mvm-vi-ZjI" id="qop-AI-9Qc"/>
                         <outlet property="sportLabel" destination="htT-Tt-vyl" id="o9h-qY-gKH"/>
                         <segue destination="3Ov-S0-l9h" kind="show" identifier="EventDetailsAsParticipantVC" id="i0f-gI-M7G"/>
+                        <segue destination="FTr-pF-Nlo" kind="presentation" identifier="OrganizeEventVC" id="fW6-4z-ASU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKr-KQ-86R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -436,10 +437,212 @@
             </objects>
             <point key="canvasLocation" x="-259" y="1295"/>
         </scene>
+        <!--Organize EventVC-->
+        <scene sceneID="EfO-7j-fOb">
+            <objects>
+                <viewController storyboardIdentifier="OrganizeEventVC" id="FTr-pF-Nlo" customClass="OrganizeEventVC" customModule="Riada" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bsH-jo-IBC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Re-rD-OhW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dCm-FT-0JV">
+                                        <rect key="frame" x="112.5" y="87" width="189" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organize event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miZ-PW-KK8">
+                                                <rect key="frame" x="0.0" y="0.0" width="189" height="34"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="28"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zhh-8o-4Ma">
+                                        <rect key="frame" x="16" y="89" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="LO4-yw-l2A"/>
+                                            <constraint firstAttribute="width" constant="30" id="sEU-G9-GhT"/>
+                                        </constraints>
+                                        <state key="normal" image="back_white"/>
+                                        <connections>
+                                            <action selector="dimissToggle" destination="FTr-pF-Nlo" eventType="touchUpInside" id="Wbd-4m-eXP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Zhh-8o-4Ma" firstAttribute="centerY" secondItem="dCm-FT-0JV" secondAttribute="centerY" id="4sd-Se-S8a"/>
+                                    <constraint firstAttribute="height" constant="135" id="RRF-bt-hxf"/>
+                                    <constraint firstAttribute="bottom" secondItem="dCm-FT-0JV" secondAttribute="bottom" constant="14" id="VQT-I1-PC2"/>
+                                    <constraint firstItem="Zhh-8o-4Ma" firstAttribute="leading" secondItem="5Re-rD-OhW" secondAttribute="leading" constant="16" id="diz-e1-SVg"/>
+                                    <constraint firstItem="dCm-FT-0JV" firstAttribute="centerX" secondItem="5Re-rD-OhW" secondAttribute="centerX" id="th0-az-SEN"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="A9d-oC-CPE">
+                                <rect key="frame" x="0.0" y="135" width="414" height="707"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Odh-4h-24V">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="609"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmZ-KR-y3j">
+                                                <rect key="frame" x="20" y="8" width="374" height="601"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OGX-sO-WNE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="580"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNL-Zi-kzS" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="60" id="75e-hX-WZX"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2F-Lj-ZtB" customClass="MTextField" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="80" width="374" height="60"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="60" id="cQv-TM-gWt"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHA-X0-qe3" customClass="MTextField" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="160" width="374" height="60"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="60" id="4fz-0H-fxt"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2z-Xe-xVW" customClass="MDatePickerField" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="240" width="374" height="60"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MbE-zg-RIy" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="320" width="374" height="60"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="60" id="xLA-2g-unp"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-7m-5vl" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="400" width="374" height="60"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="60" id="4MV-mZ-LI6"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w53-20-ZI6" customClass="MSwitchField" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="480" width="374" height="40"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="4f4-pp-TTM"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJC-O0-4ZU" customClass="MSwitchField" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="540" width="374" height="40"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="Rdh-ok-add"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="OGX-sO-WNE" firstAttribute="trailing" secondItem="Nkg-BU-Zx4" secondAttribute="trailing" id="GuI-vY-UJ6"/>
+                                                    <constraint firstItem="OGX-sO-WNE" firstAttribute="top" secondItem="Nkg-BU-Zx4" secondAttribute="top" id="R1o-Jc-J9x"/>
+                                                    <constraint firstItem="OGX-sO-WNE" firstAttribute="bottom" secondItem="Nkg-BU-Zx4" secondAttribute="bottom" id="VK8-Ny-0O1"/>
+                                                    <constraint firstItem="OGX-sO-WNE" firstAttribute="leading" secondItem="Nkg-BU-Zx4" secondAttribute="leading" id="qC0-x0-F1n"/>
+                                                    <constraint firstItem="OGX-sO-WNE" firstAttribute="width" secondItem="ZmZ-KR-y3j" secondAttribute="width" id="sZp-fc-FnD"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="contentLayoutGuide" id="Nkg-BU-Zx4"/>
+                                                <viewLayoutGuide key="frameLayoutGuide" id="3yk-qn-8RF"/>
+                                            </scrollView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ZmZ-KR-y3j" secondAttribute="bottom" id="1bH-ff-qeo"/>
+                                            <constraint firstItem="ZmZ-KR-y3j" firstAttribute="top" secondItem="Odh-4h-24V" secondAttribute="top" constant="8" id="9Tj-Tb-TBJ"/>
+                                            <constraint firstItem="ZmZ-KR-y3j" firstAttribute="leading" secondItem="Odh-4h-24V" secondAttribute="leading" constant="20" id="xIQ-ZK-oj4"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZmZ-KR-y3j" secondAttribute="trailing" constant="20" id="xUK-7v-naG"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdC-I0-W7w">
+                                        <rect key="frame" x="0.0" y="609" width="414" height="98"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="UrI-HT-NeQ">
+                                                <rect key="frame" x="15" y="24" width="384" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sER-Kg-I4n" customClass="MButton" customModule="Riada" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="50"/>
+                                                        <color key="backgroundColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
+                                                        <state key="normal" title="CREATE EVENT">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="validToggle" destination="FTr-pF-Nlo" eventType="touchUpInside" id="ePy-mS-naA"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="UrI-HT-NeQ" firstAttribute="leading" secondItem="DdC-I0-W7w" secondAttribute="leading" constant="15" id="0Ea-8i-UUM"/>
+                                            <constraint firstAttribute="trailing" secondItem="UrI-HT-NeQ" secondAttribute="trailing" constant="15" id="JJz-vp-ajQ"/>
+                                            <constraint firstItem="UrI-HT-NeQ" firstAttribute="top" secondItem="DdC-I0-W7w" secondAttribute="top" constant="24" id="VRc-V2-a0Y"/>
+                                            <constraint firstAttribute="bottom" secondItem="UrI-HT-NeQ" secondAttribute="bottom" constant="24" id="rAd-fr-R3D"/>
+                                            <constraint firstAttribute="height" constant="98" id="uot-CM-1B6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="O4i-Kl-aWp"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="A9d-oC-CPE" firstAttribute="top" secondItem="5Re-rD-OhW" secondAttribute="bottom" id="IyP-1A-OKe"/>
+                            <constraint firstItem="A9d-oC-CPE" firstAttribute="leading" secondItem="O4i-Kl-aWp" secondAttribute="leading" id="aGt-kh-Bma"/>
+                            <constraint firstItem="O4i-Kl-aWp" firstAttribute="trailing" secondItem="5Re-rD-OhW" secondAttribute="trailing" id="bPv-xb-Xjd"/>
+                            <constraint firstItem="5Re-rD-OhW" firstAttribute="leading" secondItem="O4i-Kl-aWp" secondAttribute="leading" id="bT1-91-8qT"/>
+                            <constraint firstItem="O4i-Kl-aWp" firstAttribute="trailing" secondItem="A9d-oC-CPE" secondAttribute="trailing" id="eQZ-aB-MLF"/>
+                            <constraint firstAttribute="bottom" secondItem="A9d-oC-CPE" secondAttribute="bottom" id="fbs-U8-0j6"/>
+                            <constraint firstItem="5Re-rD-OhW" firstAttribute="top" secondItem="bsH-jo-IBC" secondAttribute="top" id="qEg-ex-kwc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gZH-Yu-NT8"/>
+                    <connections>
+                        <outlet property="addressPickerField" destination="MbE-zg-RIy" id="kOD-ln-zoH"/>
+                        <outlet property="createEventButton" destination="sER-Kg-I4n" id="ANn-qf-Pva"/>
+                        <outlet property="dateAndHourPickerField" destination="e2z-Xe-xVW" id="HFl-Rd-DYv"/>
+                        <outlet property="descTextField" destination="mHA-X0-qe3" id="fDS-xh-BWO"/>
+                        <outlet property="isParticipateSwitchField" destination="w53-20-ZI6" id="F10-rn-HNa"/>
+                        <outlet property="isPrivateSwitchField" destination="JJC-O0-4ZU" id="Ccs-Bc-9is"/>
+                        <outlet property="nbPlayerPickerField" destination="Jdv-7m-5vl" id="pS5-QH-Tzo"/>
+                        <outlet property="sportPickerField" destination="hNL-Zi-kzS" id="ngI-tc-S8h"/>
+                        <outlet property="titleLabel" destination="miZ-PW-KK8" id="RpK-yD-12f"/>
+                        <outlet property="titleTextField" destination="W2F-Lj-ZtB" id="h86-KX-oAu"/>
+                        <segue destination="E8h-0Q-MFu" kind="presentation" identifier="SearchLocationVC" id="b3W-dn-es6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tVN-EF-Jys" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1800" y="1626"/>
+        </scene>
+        <!--SearchLocationVC-->
+        <scene sceneID="2FG-Mq-O3s">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="SearchLocationVC" id="E8h-0Q-MFu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qfo-Oi-MgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1799" y="2070"/>
+        </scene>
     </scenes>
     <resources>
         <image name="add" width="60" height="60"/>
         <image name="back" width="10" height="20"/>
+        <image name="back_white" width="20" height="10"/>
         <image name="share" width="30" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

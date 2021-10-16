@@ -8,14 +8,19 @@
 
 import UIKit
 
-class MTextField: UIView {
+protocol MPickerFieldDelegate: class {
+    func didTogglePicker(sender: MPickerField)
+}
+
+class MPickerField: UIView {
     
     // MARK: - IBOutlet
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak private var contentView: UIView!
+    @IBOutlet weak private var label: UILabel!
+    @IBOutlet weak private var textField: UITextField!
     
     // MARK: - Variables
+    weak var delegate: MPickerFieldDelegate?
     var text: String? {
         get {
             textField.text
@@ -25,39 +30,12 @@ class MTextField: UIView {
         }
     }
     
-    var placeHolder: String? {
+    var labelText: String? {
         get {
-            textField.placeholder
+            label.text
         }
         set {
-            textField.placeholder = newValue
-        }
-    }
-    
-    var delegate: UITextFieldDelegate? {
-        get {
-            textField.delegate
-        }
-        set {
-            textField.delegate = newValue
-        }
-    }
-    
-    var textContentType: UITextContentType {
-        get {
-            textField.textContentType
-        }
-        set {
-            textField.textContentType = newValue
-        }
-    }
-    
-    var returnKeyType: UIReturnKeyType {
-        get {
-            textField.returnKeyType
-        }
-        set {
-            textField.returnKeyType = newValue
+            label.text = newValue
         }
     }
     
@@ -72,16 +50,23 @@ class MTextField: UIView {
         commonInit()
     }
             
-    
     // MARK: - Private
     private func commonInit() {
         setUpView()
     }
 
     private func setUpView() {
-        Bundle.main.loadNibNamed("MTextField", owner: self, options: nil)
+        Bundle.main.loadNibNamed("MPickerField", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+}
+
+// MARK: - IBAction
+extension MPickerField {
+    
+    @IBAction func toggleField(_ sender: Any) {
+        delegate?.didTogglePicker(sender: self)
     }
 }

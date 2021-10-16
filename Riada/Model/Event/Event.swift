@@ -24,7 +24,8 @@ struct Event: Identifiable, Codable {
     var sportId: String
     var sportName: String
     var createdDate: Timestamp
-    
+    var isPrivate: Bool
+
     var location: CLLocation {
         CLLocation(latitude: placeCoordinate.latitude, longitude: placeCoordinate.longitude)
     }
@@ -55,5 +56,25 @@ struct Event: Identifiable, Codable {
 //        }
         
         return event
+    }
+    
+    var toData: [String: Any]? {
+        guard let _ = self.id else { return nil }
+        let data: [String: Any] = [
+           "title": title,
+           "description": description,
+           "nbPlayer": nbPlayer,
+           "nbAcceptedPlayer": nbAcceptedPlayer,
+           "date": date,
+           "placeId": placeId,
+           "placeName": placeName,
+           "placeAddress": placeAddress,
+           "placeCoordinate": placeCoordinate,
+           "sportId": sportId,
+           "sportName": sportName,
+           "createdDate": createdDate,
+           "isPrivate": isPrivate,
+        ]
+        return data
     }
 }

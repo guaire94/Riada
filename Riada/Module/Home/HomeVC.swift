@@ -17,7 +17,6 @@ class HomeVC: UIViewController {
     
     // MARK: - Properties
     private var sports: [Sport] = []
-    private var selectedSport: Sport?
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -30,9 +29,8 @@ class HomeVC: UIViewController {
         if segue.identifier == SearchLocationVC.Constants.identifier {
             guard let vc = segue.destination as? SearchLocationVC else { return }
             vc.delegate = self
-        } else if segue.identifier == EventsVC.Constants.identifier {
-            guard let vc = segue.destination as? EventsVC else { return }
-            vc.sport = selectedSport
+            vc.searchType = .city
+            vc.places = PlaceHolderCity.allCases.map({ GooglePlace(name: $0.name, id: $0.placeId) })
         }
     }
     
@@ -49,10 +47,8 @@ class HomeVC: UIViewController {
     }
     
     private func syncSports() {
-        ServiceSport.getSports { (sports) in
-            self.sports = sports
-            self.sportsTableView.reloadData()
-        }
+        sports = ManagerSport.shared.sports
+        sportsTableView.reloadData()
     }
 }
 
@@ -60,7 +56,7 @@ class HomeVC: UIViewController {
 private extension HomeVC {
 
     @IBAction func locationToggle(_ sender: Any) {
-        performSegue(withIdentifier: SearchLocationVC.Constants.identifier, sender: nil)
+        performSegue(withIdentifier: SearchLocationVC.Constants.identifier, sender: self)
     }
     
     @IBAction func profileToggle(_ sender: Any) {
@@ -68,7 +64,11 @@ private extension HomeVC {
     }
 
     @IBAction func organizeEventToggle(_ sender: Any) {
-        // TODO: Reidrect to organize event
+        if let _ = ManagerUser.shared.user?.nickName {
+            performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
+        } else {
+            // TODO: Reidrect signIn/signUp
+        }
     }
 }
 
@@ -100,15 +100,15 @@ extension HomeVC: UITableViewDataSource {
 extension HomeVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSport = sports[indexPath.row]
-        performSegue(withIdentifier: EventsVC.Constants.identifier, sender: nil)
+        ManagerSport.shared.selectedSport = sports[indexPath.row]
+        performSegue(withIdentifier: EventsVC.Constants.identifier, sender: self)
     }
 }
 
 // MARK:- SearchLocationVCDelegate
 extension HomeVC: SearchLocationVCDelegate {
     
-    func didSelectLocation(city: City) {
+    func didSelectCity(city: City) {
         ManagerUserPreferences.shared.save(city: city)
         ManagerUser.shared.currentCity = city
         cityButton.setTitle(ManagerUser.shared.currentCity.name, for: .normal)

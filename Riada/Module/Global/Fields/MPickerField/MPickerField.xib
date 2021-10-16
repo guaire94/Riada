@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MTextField" customModule="Riada" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Rml-9r-DYb"/>
                 <outlet property="label" destination="lSz-Ds-74e" id="7ha-5r-A8o"/>
@@ -36,16 +36,27 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="e7K-rx-qDN"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                     <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PlaceHolder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZQC-Zb-yXF">
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGu-XF-Ar3">
                                     <rect key="frame" x="0.0" y="24" width="330" height="35"/>
-                                    <color key="textColor" red="0.1058823529" green="0.1058823529" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
-                                </textField>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZQC-Zb-yXF">
+                                            <rect key="frame" x="0.0" y="0.0" width="295" height="35"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_black" translatesAutoresizingMaskIntoConstraints="NO" id="3e9-5u-Mj8">
+                                            <rect key="frame" x="295" y="0.0" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="35" id="rgd-5G-mRR"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1i-42-nf2">
                                     <rect key="frame" x="0.0" y="59" width="330" height="1"/>
                                     <color key="backgroundColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,13 +66,23 @@
                                 </view>
                             </subviews>
                         </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlc-qj-gYx">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="60"/>
+                            <connections>
+                                <action selector="toggleField:" destination="-1" eventType="touchUpInside" id="DVR-pF-enc"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="MGP-JP-Av3" firstAttribute="top" secondItem="dBY-Zi-pKc" secondAttribute="top" id="BTe-98-RrP"/>
                         <constraint firstAttribute="bottom" secondItem="MGP-JP-Av3" secondAttribute="bottom" id="DDq-uN-e8t"/>
+                        <constraint firstItem="wlc-qj-gYx" firstAttribute="leading" secondItem="MGP-JP-Av3" secondAttribute="leading" id="Phd-LX-ETF"/>
+                        <constraint firstItem="wlc-qj-gYx" firstAttribute="trailing" secondItem="MGP-JP-Av3" secondAttribute="trailing" id="QQP-4p-8rL"/>
+                        <constraint firstItem="wlc-qj-gYx" firstAttribute="bottom" secondItem="MGP-JP-Av3" secondAttribute="bottom" id="RtZ-ZF-vbt"/>
                         <constraint firstAttribute="trailing" secondItem="MGP-JP-Av3" secondAttribute="trailing" id="VHR-sb-0v2"/>
                         <constraint firstItem="MGP-JP-Av3" firstAttribute="leading" secondItem="dBY-Zi-pKc" secondAttribute="leading" id="rEC-kU-qP8"/>
+                        <constraint firstItem="wlc-qj-gYx" firstAttribute="top" secondItem="MGP-JP-Av3" secondAttribute="top" id="uyc-td-K6I"/>
                     </constraints>
                 </view>
             </subviews>
@@ -77,4 +98,7 @@
             <point key="canvasLocation" x="413.04347826086962" y="113.16964285714285"/>
         </view>
     </objects>
+    <resources>
+        <image name="back_black" width="14" height="7"/>
+    </resources>
 </document>

@@ -45,6 +45,19 @@
 "EVENT_DETAILS_ADD_GUEST_NICKNAME_PLACEHOLDER"="Tap guest nickname…";
 "EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_TITLE"="Add to calendar";
 "EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_MESSAGE"="We aren't able to add this event to your calendar";
+"EVENT_ORGANIZE_TITLE"="Organize event";
+"EVENT_ORGANIZE_FORM_SPORT"="Sport";
+"EVENT_ORGANIZE_FORM_TITLE"="Title";
+"EVENT_ORGANIZE_FORM_TITLE_PLACEHOLDER"="Indoor / Outdoor - Nb teams - Level";
+"EVENT_ORGANIZE_FORM_DESC"="Description";
+"EVENT_ORGANIZE_FORM_DESC_PLACEHOLDER"="Give more details about your event";
+"EVENT_ORGANIZE_FORM_DATE_AND_HOUR"="Date & Time";
+"EVENT_ORGANIZE_FORM_ADDRESS"="Location";
+"EVENT_ORGANIZE_FORM_NB_PLAYERS"="Number of players";
+"EVENT_ORGANIZE_FORM_IS_PARTICIPATE"="I will participate";
+"EVENT_ORGANIZE_FORM_IS_PRIVATE"="Make it private";
+"EVENT_ORGANIZE_FORM_CREATE_EVENT"="Create event";
+"EVENT_ORGANIZE_FORM_ERROR_UNFILL"="Please fill all field before confirm";
 
 "VERSION_NEW"="New version";
 "VERSION_AVAILABLE"="New version is available on AppStore";

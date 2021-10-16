@@ -6,10 +6,18 @@
 //
 
 import UIKit
+import MapKit
 
 protocol SearchLocationVCDelegate: class {
-    func didSelectLocation(city: City)
+    func didSelectCity(city: City)
+    func didSelectPlace(place: GooglePlace, address: String, location: CLLocation)
 }
+
+extension SearchLocationVCDelegate {
+    func didSelectCity(city: City) {}
+    func didSelectPlace(place: GooglePlace, address: String, location: CLLocation) {}
+}
+
 
 class SearchLocationVC: MKeyboardVC {
     
@@ -24,8 +32,10 @@ class SearchLocationVC: MKeyboardVC {
     @IBOutlet weak private var locationTextField: MTextField!
     @IBOutlet weak private var citiesTableView: UITableView!
     
+    var searchType: SearchType?
+    
     // MARK: - Properties
-    private var places: [GooglePlace] = PlaceHolderCity.allCases.map({ GooglePlace(name: $0.name, id: $0.placeId) })
+    var places: [GooglePlace] = []
     weak var delegate: SearchLocationVCDelegate?
 
     // MARK: - LifeCycle
@@ -51,7 +61,7 @@ class SearchLocationVC: MKeyboardVC {
     }
     
     private func setupTextField() {
-        locationTextField.label.text = L10N.searchLocation.text
+        locationTextField.labelText = L10N.searchLocation.text
         locationTextField.placeHolder = L10N.searchLocation.placeHolder
         locationTextField.delegate = self
         locationTextField.returnKeyType = .search
@@ -90,12 +100,18 @@ extension SearchLocationVC: UITableViewDelegate {
         
         let place = places[indexPath.row]
         
-        ServiceGooglePlace.shared.getPlaceDetails(placeId: place.id) { [weak self] (location) in
+        ServiceGooglePlace.shared.getPlaceCoordinate(placeId: place.id) { [weak self] (placeCoordinate) in
             cell.isLoading = false
-            guard let location = location else { return }
-            let city = City(name: place.name, lat: location.coordinate.latitude, lng: location.coordinate.longitude)
-            self?.delegate?.didSelectLocation(city: city)
-            self?.dismiss(animated: true, completion: nil)
+            guard let placeCoordinate = placeCoordinate, let searchType = self?.searchType else { return }
+            switch searchType {
+            case .city:
+                let city = City(name: place.name, lat: placeCoordinate.location.coordinate.latitude, lng: placeCoordinate.location.coordinate.longitude)
+                self?.delegate?.didSelectCity(city: city)
+                self?.dismiss(animated: true, completion: nil)
+            case .place:
+                self?.delegate?.didSelectPlace(place: place, address: placeCoordinate.address, location: placeCoordinate.location)
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }
@@ -120,15 +136,16 @@ extension SearchLocationVC: UITextFieldDelegate {
             query.removeLast()
         }
         if query.count > 0 {
-            searchCity(query)
+            search(query)
         } else {
             citiesTableView.reloadData()
         }
         return true
     }
 
-    func searchCity(_ query: String) {
-        ServiceGooglePlace.shared.getPlaces(searchString: query) { (places, error) in
+    func search(_ query: String) {
+        guard let searchType = self.searchType else { return }
+        ServiceGooglePlace.shared.getPlaces(searchString: query, searchType: searchType) { (places, error) in
             self.places = places
             DispatchQueue.main.async {
                 self.citiesTableView.reloadData()

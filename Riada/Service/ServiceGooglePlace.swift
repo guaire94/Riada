@@ -11,6 +11,20 @@ import CoreLocation
 public typealias ArrayBlock<T> = ((Array<T>,Error?)->Void)
 public typealias Block<T> = ((T)->Void)
 
+enum SearchType {
+    case city
+    case place
+    
+    var type: String {
+        switch self {
+        case .city:
+            return "(cities)"
+        case .place:
+            return "establishment"
+        }
+    }
+}
+
 class GooglePlace: NSObject {
     var name: String
     var id: String
@@ -41,7 +55,7 @@ class ServiceGooglePlace: NSObject {
     static let shared = ServiceGooglePlace()
     var activeTask:URLSessionDataTask?
     
-    func getPlaces(searchString: String, block: @escaping ArrayBlock<GooglePlace>) {
+    func getPlaces(searchString: String, searchType: SearchType, block: @escaping ArrayBlock<GooglePlace>) {
         if searchString.count == 0 {
             block([], nil)
             return
@@ -51,7 +65,7 @@ class ServiceGooglePlace: NSObject {
         urlComponents.host = Constants.urlDomain
         urlComponents.path = Constants.autocompleteEndpoint
         
-        let params = ["input" : searchString, "key" : Config.googleAPIKey, "type" : "(cities)"]
+        let params = ["input" : searchString, "key" : Config.googleAPIKey, "type" : searchType.type]
         let items = params.map { (arg) -> URLQueryItem in
             let (key, value) = arg
             return URLQueryItem(name: key, value: value)
@@ -78,13 +92,13 @@ class ServiceGooglePlace: NSObject {
         activeTask?.resume()
     }
     
-    func getPlaceDetails(placeId: String, block: @escaping Block<(CLLocation)?>) {
+    func getPlaceCoordinate(placeId: String, block: @escaping Block<(location: CLLocation, address: String)?>) {
         var urlComponents = URLComponents()
         urlComponents.scheme = Constants.urlScheme
         urlComponents.host = Constants.urlDomain
         urlComponents.path = Constants.placeDetailsEndpoint
 
-        let params = ["place_id" : placeId, "key" : Config.googleAPIKey, "fields" : "name,geometry"]
+        let params = ["place_id" : placeId, "key" : Config.googleAPIKey, "fields" : "formatted_address,name,geometry"]
         let items = params.map { (arg) -> URLQueryItem in
             let (key, value) = arg
             return URLQueryItem(name: key, value: value)
@@ -105,13 +119,14 @@ class ServiceGooglePlace: NSObject {
             guard let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSObject,
                   let result = json["result"] as? [String: Any],
                   let geometry = result["geometry"] as? [String: Any],
+                  let formattedAddress = result["formatted_address"] as? String,
                   let location = geometry["location"] as? [String: Any],
                   let lat = location["lat"] as? Double,
                   let lng = location["lng"] as? Double else {
                 return block(nil)
             }
             DispatchQueue.main.async {
-                block(CLLocation(latitude: lat, longitude: lng))
+                block((CLLocation(latitude: lat, longitude: lng), formattedAddress))
             }
         }
         activeTask?.resume()

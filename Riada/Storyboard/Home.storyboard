@@ -120,6 +120,7 @@
                         <outlet property="userProfileButton" destination="qm4-fm-i7d" id="UBY-E6-5tG"/>
                         <segue destination="jiN-rz-yBn" kind="presentation" identifier="SearchLocationVC" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="qB8-je-WnN"/>
                         <segue destination="HKd-2E-otn" kind="show" identifier="EventsVC" id="tP3-Ys-dPc"/>
+                        <segue destination="CM7-ZC-S5B" kind="presentation" identifier="OrganizeEventVC" id="shF-SK-6RZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKr-KQ-86R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,10 +137,18 @@
             </objects>
             <point key="canvasLocation" x="-1178" y="852"/>
         </scene>
+        <!--OrganizeEventVC-->
+        <scene sceneID="naR-rs-itr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Event" referencedIdentifier="OrganizeEventVC" id="CM7-ZC-S5B" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iad-UA-yUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1799" y="1246"/>
+        </scene>
         <!--Search LocationVC-->
         <scene sceneID="5bZ-bp-ryX">
             <objects>
-                <viewController id="jiN-rz-yBn" customClass="SearchLocationVC" customModule="Riada" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchLocationVC" id="jiN-rz-yBn" customClass="SearchLocationVC" customModule="Riada" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YJV-tq-jtI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

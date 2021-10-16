@@ -72,7 +72,26 @@ struct L10N {
                     static let message: String = NSLocalizedString("EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_MESSAGE", comment: "")
                 }
             }
-
+        }
+        struct organize {
+            static let title: String = NSLocalizedString("EVENT_ORGANIZE_TITLE", comment: "")
+            struct form {
+                static let sport: String = NSLocalizedString("EVENT_ORGANIZE_FORM_SPORT", comment: "")
+                static let title: String = NSLocalizedString("EVENT_ORGANIZE_FORM_TITLE", comment: "")
+                static let titlePlaceHolder: String = NSLocalizedString("EVENT_ORGANIZE_FORM_TITLE_PLACEHOLDER", comment: "")
+                static let desc: String = NSLocalizedString("EVENT_ORGANIZE_FORM_DESC", comment: "")
+                static let descPlaceHolder: String = NSLocalizedString("EVENT_ORGANIZE_FORM_DESC_PLACEHOLDER", comment: "")
+                static let dateAndHour: String = NSLocalizedString("EVENT_ORGANIZE_FORM_DATE_AND_HOUR", comment: "")
+                static let address: String = NSLocalizedString("EVENT_ORGANIZE_FORM_ADDRESS", comment: "")
+                static let nbPlayers: String = NSLocalizedString("EVENT_ORGANIZE_FORM_NB_PLAYERS", comment: "")
+                static let isParticipate: String = NSLocalizedString("EVENT_ORGANIZE_FORM_IS_PARTICIPATE", comment: "")
+                static let isPrivate: String = NSLocalizedString("EVENT_ORGANIZE_FORM_IS_PRIVATE", comment: "")
+                static let createEvent: String = NSLocalizedString("EVENT_ORGANIZE_FORM_CREATE_EVENT", comment: "")
+                
+                struct error {
+                   static let unfill: String = NSLocalizedString("EVENT_ORGANIZE_FORM_ERROR_UNFILL", comment: "")
+               }
+            }
         }
     }
     

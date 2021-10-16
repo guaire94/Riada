@@ -45,6 +45,19 @@
 "EVENT_DETAILS_ADD_GUEST_NICKNAME_PLACEHOLDER"="Entre le surnom de ton invité…";
 "EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_TITLE"="Ajout au calendrier";
 "EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_MESSAGE"="Impossible d'ajouter cet évènement à ton calendrier";
+"EVENT_ORGANIZE_TITLE"="Organizer";
+"EVENT_ORGANIZE_FORM_SPORT"="Sport";
+"EVENT_ORGANIZE_FORM_TITLE"="Titre";
+"EVENT_ORGANIZE_FORM_TITLE_PLACEHOLDER"="Intérieur / Extérieur - Nbre d'équipes - Niveau";
+"EVENT_ORGANIZE_FORM_DESC"="Description";
+"EVENT_ORGANIZE_FORM_DESC_PLACEHOLDER"="Ajouter plus de détails a ton évènement";
+"EVENT_ORGANIZE_FORM_DATE_AND_HOUR"="Date & Heure";
+"EVENT_ORGANIZE_FORM_ADDRESS"="Adresse";
+"EVENT_ORGANIZE_FORM_NB_PLAYERS"="Nombre de joueurs";
+"EVENT_ORGANIZE_FORM_IS_PARTICIPATE"="Je participe";
+"EVENT_ORGANIZE_FORM_IS_PRIVATE"="Évènement privé";
+"EVENT_ORGANIZE_FORM_CREATE_EVENT"="Créer l'évènement";
+"EVENT_ORGANIZE_FORM_ERROR_UNFILL"="Renseigne tous les champs avant de valider";
 
 "VERSION_NEW" = "Nouvelle version";
 "VERSION_AVAILABLE" = "Une nouvelle version de l'application est disponible";

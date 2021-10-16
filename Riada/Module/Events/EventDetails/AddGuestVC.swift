@@ -46,7 +46,7 @@ class AddGuestVC: MKeyboardVC {
     }
     
     private func setupTextField() {
-        nickNameTextField.label.text = L10N.event.details.addGuest.nickName.text
+        nickNameTextField.labelText = L10N.event.details.addGuest.nickName.text
         nickNameTextField.placeHolder = L10N.event.details.addGuest.nickName.placeHolder
         nickNameTextField.delegate = self
         nickNameTextField.returnKeyType = .done

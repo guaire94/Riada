@@ -67,7 +67,7 @@ class ServiceEvent {
         let greaterGeopoint = GeoPoint(latitude: greaterLat, longitude: greaterLon)
         
         nextEventsListener?.remove()
-        nextEventsListener = FFirestoreReference.events.order(by: "placeCoordinate").whereField("placeCoordinate", isGreaterThan: lesserGeopoint).whereField("placeCoordinate", isLessThan: greaterGeopoint).whereField("sportId", isEqualTo: sportId).start(after: [Timestamp()]).addSnapshotListener { query, error in
+        nextEventsListener = FFirestoreReference.events.order(by: "placeCoordinate").whereField("placeCoordinate", isGreaterThan: lesserGeopoint).whereField("placeCoordinate", isLessThan: greaterGeopoint).whereField("sportId", isEqualTo: sportId).whereField("isPrivate", isEqualTo: false).start(after: [Timestamp()]).addSnapshotListener { query, error in
             guard let snapshot = query else { return }
             var numberOfItems = snapshot.count
             if numberOfItems == .zero {
@@ -140,10 +140,32 @@ class ServiceEvent {
         }
     }
 
+    // MARK: - POST
+    static func create(event: Event) {
+        guard let eventId = event.id,
+              let eventData = event.toData,
+              let userId = ManagerUser.shared.user?.id,
+              let organizerData = ManagerUser.shared.user?.toOrganizerData else {
+            return
+        }
+        
+        FFirestoreReference.events.document(eventId).setData(eventData, merge: false)
+        FFirestoreReference.eventOrganizer(eventId).document(userId).setData(organizerData, merge: false)
+    }
+
     // MARK: - UPDATE
     static func participate(eventId: String) {
         guard let userId = ManagerUser.shared.user?.id,
               let data = ManagerUser.shared.user?.toParticipantData else {
+            return
+        }
+        
+        FFirestoreReference.eventParticipants(eventId).document(userId).setData(data, merge: false)
+    }
+    
+    static func participateAsOrganizer(eventId: String) {
+        guard let userId = ManagerUser.shared.user?.id,
+              let data = ManagerUser.shared.user?.toParticipantAsOrganizerData else {
             return
         }
         

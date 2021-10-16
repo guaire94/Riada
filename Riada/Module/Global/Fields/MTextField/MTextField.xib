@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MTextField" customModule="Riada" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Rml-9r-DYb"/>
+                <outlet property="label" destination="lSz-Ds-74e" id="7ha-5r-A8o"/>
+                <outlet property="textField" destination="ZQC-Zb-yXF" id="W4f-BT-WSW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBY-Zi-pKc">
+                    <rect key="frame" x="0.0" y="0.0" width="330" height="60"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MGP-JP-Av3">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSz-Ds-74e">
+                                    <rect key="frame" x="0.0" y="0.0" width="330" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="e7K-rx-qDN"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                    <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PlaceHolder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZQC-Zb-yXF">
+                                    <rect key="frame" x="0.0" y="24" width="330" height="35"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
+                                </textField>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1i-42-nf2">
+                                    <rect key="frame" x="0.0" y="59" width="330" height="1"/>
+                                    <color key="backgroundColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="cDE-Sp-I7V"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="MGP-JP-Av3" firstAttribute="top" secondItem="dBY-Zi-pKc" secondAttribute="top" id="BTe-98-RrP"/>
+                        <constraint firstAttribute="bottom" secondItem="MGP-JP-Av3" secondAttribute="bottom" id="DDq-uN-e8t"/>
+                        <constraint firstAttribute="trailing" secondItem="MGP-JP-Av3" secondAttribute="trailing" id="VHR-sb-0v2"/>
+                        <constraint firstItem="MGP-JP-Av3" firstAttribute="leading" secondItem="dBY-Zi-pKc" secondAttribute="leading" id="rEC-kU-qP8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="dBY-Zi-pKc" secondAttribute="bottom" id="gPU-R8-ho5"/>
+                <constraint firstItem="dBY-Zi-pKc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="q7c-qS-qZo"/>
+                <constraint firstItem="dBY-Zi-pKc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tdL-Mr-aZe"/>
+                <constraint firstAttribute="trailing" secondItem="dBY-Zi-pKc" secondAttribute="trailing" id="vJU-8S-YyT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="413.04347826086962" y="113.16964285714285"/>
+        </view>
+    </objects>
+</document>

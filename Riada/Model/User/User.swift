@@ -28,6 +28,31 @@ struct User: Identifiable, Codable {
         return data
     }
     
+    var toOrganizerData: [String: Any]? {
+        guard let userId = self.id, let nickName = self.nickName else { return nil }
+        var data = [
+           "userId": userId,
+           "userNickName": nickName
+        ]
+        if let avatar = self.avatar {
+            data["userAvatar"] = avatar
+        }
+        return data
+    }
+    
+    var toParticipantAsOrganizerData: [String: Any]? {
+        guard let userId = self.id, let nickName = self.nickName else { return nil }
+        var data = [
+           "userId": userId,
+           "userNickName": nickName,
+           "status": ParticipationStatus.accepted.rawValue
+        ]
+        if let avatar = self.avatar {
+            data["userAvatar"] = avatar
+        }
+        return data
+    }
+    
     var toAddGuestData: [String: Any]? {
         guard let userId = self.id, let nickName = self.nickName else { return nil }
         var data = [

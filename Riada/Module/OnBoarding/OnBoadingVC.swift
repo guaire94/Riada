@@ -43,10 +43,8 @@ class OnBoardingVC: UIViewController {
     }
     
     private func syncSports() {
-        ServiceSport.getSports { (sports) in
-            self.sports = sports
-            self.favoriteSportTableView.reloadData()
-        }
+        sports = ManagerSport.shared.sports
+        favoriteSportTableView.reloadData()
     }
     
 }

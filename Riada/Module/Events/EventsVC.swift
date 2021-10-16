@@ -21,7 +21,6 @@ class EventsVC: UIViewController {
     @IBOutlet weak private var loaderView: UIView!
 
     // MARK: - Properties
-    var sport: Sport?
     private var events: [Event] = [] {
         didSet {
             sortEventByDate()
@@ -56,7 +55,7 @@ class EventsVC: UIViewController {
     
     // MARK: - Privates
     private func setupView() {
-        guard let sport = sport else { return }
+        guard let sport = ManagerSport.shared.selectedSport else { return }
         sportLabel.text = sport.localizedName
         cityLabel.text = ManagerUser.shared.currentCity.name
         
@@ -73,7 +72,7 @@ class EventsVC: UIViewController {
     }
     
     private func syncEvents() {
-        guard let sportId = sport?.id else { return }
+        guard let sportId = ManagerSport.shared.selectedSport?.id else { return }
         loaderView.isHidden = false
         ServiceEvent.getNextEvents(sportId: sportId, delegate: self)
     }
@@ -121,7 +120,11 @@ private extension EventsVC {
     }
     
     @IBAction func organizeEventToggle(_ sender: Any) {
-        // TODO: Reidrect to organize event
+        if let _ = ManagerUser.shared.user?.nickName {
+            performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
+        } else {
+            // TODO: Reidrect signIn/signUp
+        }
     }
 }
 

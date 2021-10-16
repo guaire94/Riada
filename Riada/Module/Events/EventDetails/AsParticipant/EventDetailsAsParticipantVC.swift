@@ -14,7 +14,7 @@ class EventDetailsAsParticipantVC: UIViewController {
     //MARK: - Constant
     enum Constants {
         static let identifier: String = "EventDetailsAsParticipantVC"
-        static let bottomContentInset: Double = 8.0
+        static let bottomContentInset: CGFloat = 8.0
         enum url{
             static func googleMap(coordinate: CLLocationCoordinate2D) -> URL? {
                 URL(string: "comgooglemaps://?daddr=\(coordinate.latitude),\(coordinate.longitude))&directionsmode=driving&zoom=14&views=traffic")

@@ -71,5 +71,16 @@
 		<string>comgooglemaps</string>
 		<string>waze</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.889872739996-3svle3fdolegpku8216neitc5i1rqgpj</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

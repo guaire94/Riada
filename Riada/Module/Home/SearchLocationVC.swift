@@ -61,8 +61,8 @@ class SearchLocationVC: MKeyboardVC {
     }
     
     private func setupTextField() {
-        locationTextField.labelText = L10N.searchLocation.text
-        locationTextField.placeHolder = L10N.searchLocation.placeHolder
+        locationTextField.labelText = searchType?.title
+        locationTextField.placeHolder = searchType?.placeHolder
         locationTextField.delegate = self
         locationTextField.returnKeyType = .search
     }

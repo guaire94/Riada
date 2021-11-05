@@ -125,8 +125,8 @@ class EventDetailsAsParticipantVC: UIViewController {
         ServiceGooglePlace.shared.getPlacePhotos(placeId: placeId) { [weak self] (photoUrls) in
             self?.photoUrls = photoUrls
         }
-        ServiceEvent.getEventParticipantsAsParticipant(eventId: eventId, delegate: self)
-        ServiceEvent.getEventGuestsAsParticipant(eventId: eventId, delegate: self)
+        ServiceEvent.getEventParticipants(eventId: eventId, delegate: self)
+        ServiceEvent.getEventGuests(eventId: eventId, delegate: self)
     }
     
     private func updateStatusBarState() {
@@ -391,7 +391,13 @@ extension EventDetailsAsParticipantVC {
     }
     
     @IBAction func declineToggle(_ sender: Any) {
-        guard let eventId = self.event?.id else { return }
+        guard let event = event,
+              let eventId = event.id else {
+            return
+        }
         ServiceEvent.decline(eventId: eventId)
+        let nbAcceptedPlayer = event.nbAcceptedPlayer-1
+        self.event?.nbAcceptedPlayer = nbAcceptedPlayer
+        ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
     }
 }

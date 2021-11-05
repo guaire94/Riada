@@ -15,6 +15,24 @@ enum SearchType {
     case city
     case place
     
+    var title: String {
+        switch self {
+        case .city:
+            return L10N.searchLocation.city.text
+        case .place:
+            return L10N.searchLocation.place.text
+        }
+    }
+    
+    var placeHolder: String {
+        switch self {
+        case .city:
+            return L10N.searchLocation.city.placeHolder
+        case .place:
+            return L10N.searchLocation.place.placeHolder
+        }
+    }
+    
     var type: String {
         switch self {
         case .city:

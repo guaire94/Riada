@@ -65,4 +65,9 @@ extension Date {
     func isBetween(_ date1: Date, and date2: Date) -> Bool {
         (min(date1, date2) ... max(date1, date2)).contains(self)
     }
+    
+    var onlyDate: Date {
+        let components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: self)
+        return Calendar.current.date(from: components) ?? Date()
+    }
 }

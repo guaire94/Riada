@@ -20,8 +20,10 @@
 "ONBOARDING_FAVORITE_SPORT_DESCRIPTION"="Let us know which sports you like,\nThat will help us to send relevant notifications";
 "ONBOARDING_LETS_PLAY"="Let's play";
 
-"SEARCH_LOCATION_TEXT"="Location";
-"SEARCH_LOCATION_PLACEHOLDER"="Seach a city...";
+"SEARCH_LOCATION_CITY_TEXT"="Location";
+"SEARCH_LOCATION_CITY_PLACEHOLDER"="Seach a city...";
+"SEARCH_LOCATION_PLACE_TEXT"="Location";
+"SEARCH_LOCATION_PLACE_PLACEHOLDER"="Seach a place...";
 
 "EVENT_NB_ACCEPTED_PLAYER"="%d/%d Players";
 "EVENT_EMPTY_PLACEHOLDER"="No event available for your location";
@@ -37,7 +39,7 @@
 "EVENT_DETAILS_BUTTONS_DECLINE"="Decline";
 "EVENT_DETAILS_BUTTONS_EDIT"="Edit";
 "EVENT_DETAILS_PARTICIPATION_STATUS_ACCEPTED"="You are in!";
-"EVENT_DETAILS_PARTICIPATION_STATUS_REFUSED"="So sorry, organizer refuse your participation";
+"EVENT_DETAILS_PARTICIPATION_STATUS_REFUSED"="So sorry, the organizer refused your participation";
 "EVENT_DETAILS_PARTICIPATION_STATUS_DECLINED"="You decline participate to this event";
 "EVENT_DETAILS_PARTICIPATION_STATUS_PENDING"="Waiting for organizer approuval";
 "EVENT_DETAILS_PARTICIPATE_NICKNAME_TEXT"="Participate";
@@ -59,6 +61,22 @@
 "EVENT_ORGANIZE_FORM_IS_PRIVATE"="Make it private";
 "EVENT_ORGANIZE_FORM_CREATE_EVENT"="Create event";
 "EVENT_ORGANIZE_FORM_ERROR_UNFILL"="Please fill all field before confirm";
+"EVENT_EDIT_TITLE"="Edit event";
+"EVENT_EDIT_FORM_SAVE_EVENT"="Save";
+"EVENT_EDIT_FORM_CANCEL_EVENT"="Cancel";
+"EVENT_EDIT_FORM_CANCEL_MESSAGE_EVENT"="Are you sure you want to cancel this event?";
+"EVENT_EDIT_FORM_ERROR_UNFILL"="Please fill all field before confirm";
+
+"SIGNUP_WELCOME"="Welcome";
+"SIGNUP_ANONYMOUSLY"="Sign Up Anonymously";
+"SIGNUP_SIGNIN"="Sign In";
+"SIGNUP_SIGNIN_WITH_APPLE"="Sign In with Apple";
+"SIGNUP_SIGNIN_WITH_GOOGLE"="Sign In with Google";
+"SIGNUP_FORM_NICKNAME"="Nickname";
+"SIGNUP_FORM_NICKNAME_PLACEHOLDER"="Enter a nickname";
+"SIGNUP_FORM_SIGNUP"="Sign Up";
+"SIGNUP_FORM_ERROR_UNFILL"="Please fill a nickname before confirm";
+"SIGNUP_ERROR_WITH_APPLE"="Impossible to sign in with Apple";
 
 "VERSION_NEW"="New version";
 "VERSION_AVAILABLE"="New version is available on AppStore";

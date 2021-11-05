@@ -23,6 +23,11 @@
 "SEARCH_LOCATION_TEXT"="Emplacement";
 "SEARCH_LOCATION_PLACEHOLDER"="Rechercher une ville...";
 
+"SEARCH_LOCATION_CITY_TEXT"="Emplacement";
+"SEARCH_LOCATION_CITY_PLACEHOLDER"="Rechercher une ville...";
+"SEARCH_LOCATION_PLACE_TEXT"="Emplacement";
+"SEARCH_LOCATION_PLACE_PLACEHOLDER"="Rechercher un endroit...";
+
 "EVENT_NB_ACCEPTED_PLAYER"="%d/%d Joueurs";
 "EVENT_EMPTY_PLACEHOLDER"="Pas d'évènements disponibles dans votre région";
 "EVENT_DETAILS_ORGANIZER"="Organisateur";
@@ -33,7 +38,7 @@
 "EVENT_DETAILS_GUEST_BY"="%@ - Invité par %@";
 "EVENT_DETAILS_PARTICIPANTS"="Participants (%d/%d)";
 "EVENT_DETAILS_BUTTONS_PARTICIPATE"="Participer";
-"EVENT_DETAILS_BUTTONS_ADD_GUEST"="Ajoute un invité";
+"EVENT_DETAILS_BUTTONS_ADD_GUEST"="+1";
 "EVENT_DETAILS_BUTTONS_DECLINE"="Se retirer";
 "EVENT_DETAILS_BUTTONS_EDIT"="Modifer";
 "EVENT_DETAILS_PARTICIPATION_STATUS_ACCEPTED"="L'organisateur a accepté ta participation";
@@ -42,7 +47,7 @@
 "EVENT_DETAILS_PARTICIPATION_STATUS_PENDING"="En attente de validation";
 "EVENT_DETAILS_PARTICIPATE_NICKNAME_TEXT"="Participer";
 "EVENT_DETAILS_PARTICIPATE_NICKNAME_PLACEHOLDER"="Entres ton surnom...";
-"EVENT_DETAILS_ADD_GUEST_NICKNAME_TEXT"="Ajoutes un invité";
+"EVENT_DETAILS_ADD_GUEST_NICKNAME_TEXT"="+1";
 "EVENT_DETAILS_ADD_GUEST_NICKNAME_PLACEHOLDER"="Entre le surnom de ton invité…";
 "EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_TITLE"="Ajout au calendrier";
 "EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_MESSAGE"="Impossible d'ajouter cet évènement à ton calendrier";
@@ -59,6 +64,22 @@
 "EVENT_ORGANIZE_FORM_IS_PRIVATE"="Évènement privé";
 "EVENT_ORGANIZE_FORM_CREATE_EVENT"="Créer l'évènement";
 "EVENT_ORGANIZE_FORM_ERROR_UNFILL"="Renseigne tous les champs avant de valider";
+"EVENT_EDIT_TITLE"="Modifier l'évènement";
+"EVENT_EDIT_FORM_SAVE_EVENT"="Sauvegarder";
+"EVENT_EDIT_FORM_CANCEL_EVENT"="Annuler";
+"EVENT_EDIT_FORM_CANCEL_MESSAGE_EVENT"="Es-tu sur de vouloir annuler cet évènement?";
+"EVENT_EDIT_FORM_ERROR_UNFILL"="Renseigne tous les champs avant de valider";
+
+"SIGNUP_WELCOME"="Bienvenue";
+"SIGNUP_ANONYMOUSLY"="S'inscrire anonymement";
+"SIGNUP_SIGNIN"="Se connecter";
+"SIGNUP_SIGNIN_WITH_APPLE"="Se connecter avec Apple";
+"SIGNUP_SIGNIN_WITH_GOOGLE"="Continuer avec Google";
+"SIGNUP_FORM_NICKNAME"="Surnom";
+"SIGNUP_FORM_NICKNAME_PLACEHOLDER"="Entrer un surnom";
+"SIGNUP_FORM_SIGNUP"="S'inscrire";
+"SIGNUP_FORM_ERROR_UNFILL"="Renseigne un surnom avant de valider";
+"SIGNUP_ERROR_WITH_APPLE"="Impossible de se connecter avec Apple";
 
 "VERSION_NEW" = "Nouvelle version";
 "VERSION_AVAILABLE" = "Une nouvelle version de l'application est disponible";

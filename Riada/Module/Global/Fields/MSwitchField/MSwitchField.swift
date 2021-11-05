@@ -17,7 +17,12 @@ class MSwitchField: UIView {
     
     // MARK: - Variables
     var isOn: Bool {
-        uiSwitch.isOn
+        get {
+            uiSwitch.isOn
+        }
+        set {
+            uiSwitch.isOn = newValue
+        }
     }
     
     var labelText: String? {

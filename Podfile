@@ -22,9 +22,10 @@ target 'Riada' do
   pod 'CodableFirebase'
   pod 'FirebaseFirestoreSwift'
   pod 'GeoFire/Utils'
-
+  pod 'GoogleSignIn'
+  
   pod 'Applanga'
   pod 'Wormholy'
-  pod 'Kingfisher', '~> 5.0'  
+  pod 'Kingfisher', '~> 5.0'
 end
 

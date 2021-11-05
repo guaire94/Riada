@@ -55,6 +55,7 @@
 		EE27197F26EBD70400A3F281 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27197E26EBD70400A3F281 /* Participant.swift */; };
 		EE27198226EBD77000A3F281 /* ParticipationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27198126EBD77000A3F281 /* ParticipationStatus.swift */; };
 		EE27198626EBD7F500A3F281 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27198526EBD7F500A3F281 /* Guest.swift */; };
+		EE27D2BF2731D7F500051743 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27D2BE2731D7F500051743 /* ProfileVC.swift */; };
 		EE5836DA26ECE35100ED203D /* HelperRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5836D926ECE35100ED203D /* HelperRouting.swift */; };
 		EE5836DE26ECE50500ED203D /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE5836DD26ECE50500ED203D /* OnBoarding.storyboard */; };
 		EE5836E326ECE55700ED203D /* OnBoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5836E226ECE55700ED203D /* OnBoadingVC.swift */; };
@@ -80,6 +81,15 @@
 		EE6B7F6B270077C800E44B7C /* ManagerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */; };
 		EE75D5682707481F004B7973 /* HelperDynamicLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75D5672707481F004B7973 /* HelperDynamicLink.swift */; };
 		EE8E664B26ED0DD200FB3FDB /* applanga_settings.applanga in Resources */ = {isa = PBXBuildFile; fileRef = EE8E664A26ED0DD000FB3FDB /* applanga_settings.applanga */; };
+		EE9B6FAA27352BAD00A12AF7 /* MProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */; };
+		EE9B6FB027352E6B00A12AF7 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FAF27352E6B00A12AF7 /* CustomSegmentControl.swift */; };
+		EEABEE282725B8C800F3E64C /* String+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEABEE272725B8C800F3E64C /* String+M.swift */; };
+		EEABEE2B2725BA9F00F3E64C /* PersonNameComponents+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */; };
+		EEAE66032725A4470048F559 /* SignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAE66012725A4470048F559 /* SignInCell.xib */; };
+		EEAE66042725A4470048F559 /* SignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAE66022725A4470048F559 /* SignInCell.swift */; };
+		EEAE66072725A50F0048F559 /* AnonymouslyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAE66052725A50F0048F559 /* AnonymouslyCell.swift */; };
+		EEAE66082725A50F0048F559 /* AnonymouslyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAE66062725A50F0048F559 /* AnonymouslyCell.xib */; };
+		EEAF6F742723D54B00D330C6 /* EditEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAF6F732723D54B00D330C6 /* EditEventVC.swift */; };
 		EEB8F1EA26FE01AC005ABC27 /* UIColor+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F1E926FE01AC005ABC27 /* UIColor+M.swift */; };
 		EEB8F1ED26FE05E8005ABC27 /* MButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F1EC26FE05E8005ABC27 /* MButton.swift */; };
 		EEB8F1EF26FE0EC3005ABC27 /* ParticipateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F1EE26FE0EC3005ABC27 /* ParticipateVC.swift */; };
@@ -92,6 +102,9 @@
 		EEBBD47E271863FB00519EBC /* NbPlayersPickerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD47C271863FB00519EBC /* NbPlayersPickerSource.swift */; };
 		EEBBD47F271863FB00519EBC /* SportPickerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD47D271863FB00519EBC /* SportPickerSource.swift */; };
 		EEBBD482271866C900519EBC /* ManagerSport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD481271866C900519EBC /* ManagerSport.swift */; };
+		EED3CF0027245FC40072ED2B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED3CEFF27245FC40072ED2B /* Profile.storyboard */; };
+		EED3CF03272460620072ED2B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3CF02272460620072ED2B /* SignUpVC.swift */; };
+		EED3CF07272460CC0072ED2B /* MSignUpSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3CF05272460CC0072ED2B /* MSignUpSection.swift */; };
 		EEDC9A9826FDC0C100627C73 /* EventPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC9A9626FDC0C100627C73 /* EventPlaceCell.swift */; };
 		EEDC9A9926FDC0C100627C73 /* EventPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDC9A9726FDC0C100627C73 /* EventPlaceCell.xib */; };
 		EEDC9A9C26FDCB5E00627C73 /* UICollectionView+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC9A9B26FDCB5E00627C73 /* UICollectionView+M.swift */; };
@@ -169,6 +182,7 @@
 		EE27197E26EBD70400A3F281 /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		EE27198126EBD77000A3F281 /* ParticipationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipationStatus.swift; sourceTree = "<group>"; };
 		EE27198526EBD7F500A3F281 /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
+		EE27D2BE2731D7F500051743 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		EE5698472711E93300F215C8 /* Riada.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Riada.entitlements; sourceTree = "<group>"; };
 		EE5836D926ECE35100ED203D /* HelperRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperRouting.swift; sourceTree = "<group>"; };
 		EE5836DD26ECE50500ED203D /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
@@ -195,6 +209,15 @@
 		EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDeepLink.swift; sourceTree = "<group>"; };
 		EE75D5672707481F004B7973 /* HelperDynamicLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDynamicLink.swift; sourceTree = "<group>"; };
 		EE8E664A26ED0DD000FB3FDB /* applanga_settings.applanga */ = {isa = PBXFileReference; lastKnownFileType = file; path = applanga_settings.applanga; sourceTree = "<group>"; };
+		EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MProfileSection.swift; sourceTree = "<group>"; };
+		EE9B6FAF27352E6B00A12AF7 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
+		EEABEE272725B8C800F3E64C /* String+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+M.swift"; sourceTree = "<group>"; };
+		EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonNameComponents+M.swift"; sourceTree = "<group>"; };
+		EEAE66012725A4470048F559 /* SignInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInCell.xib; sourceTree = "<group>"; };
+		EEAE66022725A4470048F559 /* SignInCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInCell.swift; sourceTree = "<group>"; };
+		EEAE66052725A50F0048F559 /* AnonymouslyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnonymouslyCell.swift; sourceTree = "<group>"; };
+		EEAE66062725A50F0048F559 /* AnonymouslyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnonymouslyCell.xib; sourceTree = "<group>"; };
+		EEAF6F732723D54B00D330C6 /* EditEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventVC.swift; sourceTree = "<group>"; };
 		EEB8F1E926FE01AC005ABC27 /* UIColor+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+M.swift"; sourceTree = "<group>"; };
 		EEB8F1EC26FE05E8005ABC27 /* MButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MButton.swift; sourceTree = "<group>"; };
 		EEB8F1EE26FE0EC3005ABC27 /* ParticipateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipateVC.swift; sourceTree = "<group>"; };
@@ -207,6 +230,9 @@
 		EEBBD47C271863FB00519EBC /* NbPlayersPickerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NbPlayersPickerSource.swift; sourceTree = "<group>"; };
 		EEBBD47D271863FB00519EBC /* SportPickerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportPickerSource.swift; sourceTree = "<group>"; };
 		EEBBD481271866C900519EBC /* ManagerSport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSport.swift; sourceTree = "<group>"; };
+		EED3CEFF27245FC40072ED2B /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		EED3CF02272460620072ED2B /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		EED3CF05272460CC0072ED2B /* MSignUpSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSignUpSection.swift; sourceTree = "<group>"; };
 		EEDC9A9626FDC0C100627C73 /* EventPlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPlaceCell.swift; sourceTree = "<group>"; };
 		EEDC9A9726FDC0C100627C73 /* EventPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventPlaceCell.xib; sourceTree = "<group>"; };
 		EEDC9A9B26FDCB5E00627C73 /* UICollectionView+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+M.swift"; sourceTree = "<group>"; };
@@ -346,6 +372,8 @@
 				EEE1F48E26F3CCFC00754DDD /* UITableView+M.swift */,
 				EEDC9A9B26FDCB5E00627C73 /* UICollectionView+M.swift */,
 				EEB8F1E926FE01AC005ABC27 /* UIColor+M.swift */,
+				EEABEE272725B8C800F3E64C /* String+M.swift */,
+				EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -415,6 +443,7 @@
 				EE5836DD26ECE50500ED203D /* OnBoarding.storyboard */,
 				B8B7DAED255857AC00B33BDB /* Home.storyboard */,
 				EEE1F47A26F3BEF200754DDD /* Event.storyboard */,
+				EED3CEFF27245FC40072ED2B /* Profile.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -427,6 +456,7 @@
 				EE5836E126ECE54500ED203D /* OnBoarding */,
 				EE5836EE26ECF8B300ED203D /* Home */,
 				EEE1F47526F3BEBF00754DDD /* Events */,
+				EED3CF01272460380072ED2B /* Profile */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -623,6 +653,59 @@
 			path = VIewController;
 			sourceTree = "<group>";
 		};
+		EE9B6FAB27352BBB00A12AF7 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				EED3CF05272460CC0072ED2B /* MSignUpSection.swift */,
+				EED3CF02272460620072ED2B /* SignUpVC.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		EE9B6FAD27352BC900A12AF7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */,
+				EE27D2BE2731D7F500051743 /* ProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EE9B6FAE27352E5900A12AF7 /* CustomSegmentControl */ = {
+			isa = PBXGroup;
+			children = (
+				EE9B6FAF27352E6B00A12AF7 /* CustomSegmentControl.swift */,
+			);
+			path = CustomSegmentControl;
+			sourceTree = "<group>";
+		};
+		EEAE65FE2725A3660048F559 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAE66002725A3E60048F559 /* AnonymouslyCell */,
+				EEAE65FF2725A3D20048F559 /* SignInCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EEAE65FF2725A3D20048F559 /* SignInCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAE66022725A4470048F559 /* SignInCell.swift */,
+				EEAE66012725A4470048F559 /* SignInCell.xib */,
+			);
+			path = SignInCell;
+			sourceTree = "<group>";
+		};
+		EEAE66002725A3E60048F559 /* AnonymouslyCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAE66052725A50F0048F559 /* AnonymouslyCell.swift */,
+				EEAE66062725A50F0048F559 /* AnonymouslyCell.xib */,
+			);
+			path = AnonymouslyCell;
+			sourceTree = "<group>";
+		};
 		EEB8F1EB26FE05D0005ABC27 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +729,7 @@
 			children = (
 				EEBBD47B271863DA00519EBC /* PickerSource */,
 				EEBBD46D27184DF600519EBC /* OrganizeEventVC.swift */,
+				EEAF6F732723D54B00D330C6 /* EditEventVC.swift */,
 			);
 			path = OrganizeEvent;
 			sourceTree = "<group>";
@@ -686,6 +770,16 @@
 			path = PickerSource;
 			sourceTree = "<group>";
 		};
+		EED3CF01272460380072ED2B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EEAE65FE2725A3660048F559 /* Cell */,
+				EE9B6FAB27352BBB00A12AF7 /* SignUp */,
+				EE9B6FAD27352BC900A12AF7 /* Profile */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		EEDC9A9526FDC09B00627C73 /* EventPlaceCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,6 +811,7 @@
 		EEE1F46226F23A2800754DDD /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				EE9B6FAE27352E5900A12AF7 /* CustomSegmentControl */,
 				EE6B7F6726FF7B4700E44B7C /* VIewController */,
 				EEB8F1EB26FE05D0005ABC27 /* Buttons */,
 				EEE1F48726F3C36D00754DDD /* SectionCell */,
@@ -858,8 +953,10 @@
 				B8B7DAEE255857AC00B33BDB /* Home.storyboard in Resources */,
 				EE5836E926ECEC6A00ED203D /* OnBoardingCell.xib in Resources */,
 				EE603BBF26F6356C008D2E41 /* EventOrganizerCell.xib in Resources */,
+				EEAE66082725A50F0048F559 /* AnonymouslyCell.xib in Resources */,
 				B8CE19CD253DBAE7002AC5A5 /* LaunchScreen.storyboard in Resources */,
 				EE603BD726F6437F008D2E41 /* EventInformationsCell.xib in Resources */,
+				EEAE66032725A4470048F559 /* SignInCell.xib in Resources */,
 				B84ECBE72541ABD0007F8E9E /* PGCPickerViewController.storyboard in Resources */,
 				B87B2649254232B5007D4A4D /* AnimatedLaunchScreen.storyboard in Resources */,
 				EEE1F47B26F3BEF200754DDD /* Event.storyboard in Resources */,
@@ -878,6 +975,7 @@
 				EE8E664B26ED0DD200FB3FDB /* applanga_settings.applanga in Resources */,
 				EE5A0B14271B27B2009A951B /* MSwitchField.xib in Resources */,
 				B8FDE3B8253F79B800BD29B2 /* Lato-Regular.ttf in Resources */,
+				EED3CF0027245FC40072ED2B /* Profile.storyboard in Resources */,
 				B8FDE3B6253F79B800BD29B2 /* Lato-Bold.ttf in Resources */,
 				EE58372126ECFF2E00ED203D /* GoogleService-Info.plist in Resources */,
 			);
@@ -958,9 +1056,11 @@
 				EEE1F48426F3C0C400754DDD /* EventCell.swift in Sources */,
 				EE27198626EBD7F500A3F281 /* Guest.swift in Sources */,
 				B87B2658254236AA007D4A4D /* MStoryboard.swift in Sources */,
+				EED3CF07272460CC0072ED2B /* MSignUpSection.swift in Sources */,
 				EEB8F1EF26FE0EC3005ABC27 /* ParticipateVC.swift in Sources */,
 				B836B6212548E45B00AAF48A /* UIButton+M.swift in Sources */,
 				EEE1F48B26F3C9A600754DDD /* ServiceEvent.swift in Sources */,
+				EEAF6F742723D54B00D330C6 /* EditEventVC.swift in Sources */,
 				EEB8F1F226FF62C7005ABC27 /* MEventSectionAsParticipant.swift in Sources */,
 				EE27196726EBD42000A3F281 /* RelatedEvent.swift in Sources */,
 				B836B6252548E73400AAF48A /* Event.swift in Sources */,
@@ -969,22 +1069,27 @@
 				EE5836F826ECF97300ED203D /* SportCell.swift in Sources */,
 				658720F42594ABFF00775520 /* HelperOnBoarding.swift in Sources */,
 				B84ECBB725403235007F8E9E /* ServiceUser.swift in Sources */,
+				EEAE66072725A50F0048F559 /* AnonymouslyCell.swift in Sources */,
 				EE75D5682707481F004B7973 /* HelperDynamicLink.swift in Sources */,
 				B87BDA0C253F8E0A00252B96 /* UIViewController+M.swift in Sources */,
 				656272A92586537C00CDA0F9 /* CurrentNotification.swift in Sources */,
 				EEE1F47326F3BEB500754DDD /* EventsVC.swift in Sources */,
 				EE5836EA26ECEC6A00ED203D /* OnBoardingCell.swift in Sources */,
+				EE9B6FB027352E6B00A12AF7 /* CustomSegmentControl.swift in Sources */,
 				B84ECBF52541AFD8007F8E9E /* Sport.swift in Sources */,
 				B84ECBC025403840007F8E9E /* Config.swift in Sources */,
 				EE27197B26EBD67D00A3F281 /* Organizer.swift in Sources */,
+				EE27D2BF2731D7F500051743 /* ProfileVC.swift in Sources */,
 				EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */,
 				EE5A0B19271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift in Sources */,
 				EEDC9A9C26FDCB5E00627C73 /* UICollectionView+M.swift in Sources */,
 				EE5A0B13271B27B2009A951B /* MSwitchField.swift in Sources */,
 				EEE1F48F26F3CCFC00754DDD /* UITableView+M.swift in Sources */,
 				EEE1F46626F23A4900754DDD /* MTextField.swift in Sources */,
+				EE9B6FAA27352BAD00A12AF7 /* MProfileSection.swift in Sources */,
 				EEBBD4742718638D00519EBC /* MPickerField.swift in Sources */,
 				EE27197F26EBD70400A3F281 /* Participant.swift in Sources */,
+				EEABEE282725B8C800F3E64C /* String+M.swift in Sources */,
 				EEDC9AB026FDEA7D00627C73 /* EventParticipantCell.swift in Sources */,
 				EEDC9A9826FDC0C100627C73 /* EventPlaceCell.swift in Sources */,
 				EE27193D26EBD2E000A3F281 /* User.swift in Sources */,
@@ -995,6 +1100,7 @@
 				6562729D2584B2AC00CDA0F9 /* MNotificationType.swift in Sources */,
 				EE603BAD26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift in Sources */,
 				EE27196B26EBD50600A3F281 /* FavoriteSport.swift in Sources */,
+				EED3CF03272460620072ED2B /* SignUpVC.swift in Sources */,
 				B87B264C254232C6007D4A4D /* AnimatedLaunchScreenVC.swift in Sources */,
 				B8F71AD1254B985B00D686B4 /* UIView+M.swift in Sources */,
 				B83BF57B255EED99006903A2 /* CollectionReference+M.swift in Sources */,
@@ -1005,6 +1111,7 @@
 				B82FE3BF255DFB4800B52099 /* ServiceGooglePlace.swift in Sources */,
 				EE27193926EBD21100A3F281 /* Notification.swift in Sources */,
 				EE603BD626F6437F008D2E41 /* EventInformationsCell.swift in Sources */,
+				EEAE66042725A4470048F559 /* SignInCell.swift in Sources */,
 				6562728C2581367300CDA0F9 /* MSetting.swift in Sources */,
 				B836B63A254B312200AAF48A /* City.swift in Sources */,
 				B8CE19C1253DBAE5002AC5A5 /* AppDelegate.swift in Sources */,
@@ -1013,6 +1120,7 @@
 				EEBBD482271866C900519EBC /* ManagerSport.swift in Sources */,
 				6562728F2581432C00CDA0F9 /* ServiceDeviceToken.swift in Sources */,
 				6562729A2584B01D00CDA0F9 /* ServiceNotification.swift in Sources */,
+				EEABEE2B2725BA9F00F3E64C /* PersonNameComponents+M.swift in Sources */,
 				B87B2655254234B9007D4A4D /* Version.swift in Sources */,
 				EEE1F46F26F23DF300754DDD /* CityCell.swift in Sources */,
 				B836B61B2548D94100AAF48A /* ManagerUser.swift in Sources */,

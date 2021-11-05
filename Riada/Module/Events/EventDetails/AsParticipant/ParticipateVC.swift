@@ -87,8 +87,7 @@ private extension ParticipateVC {
               let nickName = nickNameTextField.text else {
             return
         }
-        
-        ServiceUser.updateNickName(nickName: nickName)
+        ManagerUser.shared.updateNickName(nickName: nickName)
         ServiceEvent.participate(eventId: eventId)
         dismiss(animated: true, completion: nil)
     }

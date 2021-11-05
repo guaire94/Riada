@@ -67,14 +67,16 @@ class ServiceEvent {
         let greaterGeopoint = GeoPoint(latitude: greaterLat, longitude: greaterLon)
         
         nextEventsListener?.remove()
-        nextEventsListener = FFirestoreReference.events.order(by: "placeCoordinate").whereField("placeCoordinate", isGreaterThan: lesserGeopoint).whereField("placeCoordinate", isLessThan: greaterGeopoint).whereField("sportId", isEqualTo: sportId).whereField("isPrivate", isEqualTo: false).start(after: [Timestamp()]).addSnapshotListener { query, error in
+        nextEventsListener = FFirestoreReference.events.order(by: "placeCoordinate").whereField("placeCoordinate", isGreaterThan: lesserGeopoint).whereField("placeCoordinate", isLessThan: greaterGeopoint).whereField("sportId", isEqualTo: sportId).whereField("isPrivate", isEqualTo: false).addSnapshotListener { query, error in
             guard let snapshot = query else { return }
             var numberOfItems = snapshot.count
             if numberOfItems == .zero {
                 delegate.didFinishLoading()
             }
+            let timeStamp = Timestamp(date: Date().onlyDate)
             snapshot.documentChanges.forEach { diff in
-                if let event = try? diff.document.data(as: Event.self) {
+                if let event = try? diff.document.data(as: Event.self),
+                   event.date.compare(timeStamp) != .orderedAscending {
                     switch diff.type {
                     case .added:
                         delegate.dataAdded(event: event)
@@ -104,7 +106,7 @@ class ServiceEvent {
         }
     }
     
-    static func getEventParticipantsAsParticipant(eventId: String, delegate: ServiceEventParticipantDelegate) {
+    static func getEventParticipants(eventId: String, delegate: ServiceEventParticipantDelegate) {
         FFirestoreReference.eventParticipants(eventId).addSnapshotListener { query, error in
             guard let snapshot = query else { return }
             snapshot.documentChanges.forEach { diff in
@@ -122,7 +124,7 @@ class ServiceEvent {
         }
     }
     
-    static func getEventGuestsAsParticipant(eventId: String, delegate: ServiceEventGuestDelegate) {
+    static func getEventGuests(eventId: String, delegate: ServiceEventGuestDelegate) {
         FFirestoreReference.eventGuests(eventId).addSnapshotListener { query, error in
             guard let snapshot = query else { return }
             snapshot.documentChanges.forEach { diff in
@@ -143,7 +145,7 @@ class ServiceEvent {
     // MARK: - POST
     static func create(event: Event) {
         guard let eventId = event.id,
-              let eventData = event.toData,
+              let eventData = event.toCreateData,
               let userId = ManagerUser.shared.user?.id,
               let organizerData = ManagerUser.shared.user?.toOrganizerData else {
             return
@@ -154,6 +156,24 @@ class ServiceEvent {
     }
 
     // MARK: - UPDATE
+    static func edit(event: Event) {
+        guard let eventId = event.id,
+              let eventData = event.toUpdateData,
+              let userId = ManagerUser.shared.user?.id,
+              let organizerData = ManagerUser.shared.user?.toOrganizerData else {
+            return
+        }
+        
+        FFirestoreReference.events.document(eventId).setData(eventData, merge: true)
+        FFirestoreReference.eventOrganizer(eventId).document(userId).setData(organizerData, merge: true)
+    }
+    
+    static func updateNbAcceptedPlayer(eventId: String, nbAcceptedPlayer: Int) {
+        let eventData = ["nbAcceptedPlayer": nbAcceptedPlayer]        
+        FFirestoreReference.events.document(eventId).setData(eventData, merge: true)
+    }
+
+
     static func participate(eventId: String) {
         guard let userId = ManagerUser.shared.user?.id,
               let data = ManagerUser.shared.user?.toParticipantData else {
@@ -170,6 +190,12 @@ class ServiceEvent {
         }
         
         FFirestoreReference.eventParticipants(eventId).document(userId).setData(data, merge: false)
+    }
+    
+    static func unParticipateAsOrganizer(eventId: String) {
+        guard let userId = ManagerUser.shared.user?.id else { return }
+        
+        FFirestoreReference.eventParticipants(eventId).document(userId).delete()
     }
     
     static func addGuest(eventId: String, nickName: String, asOrganizer: Bool) {
@@ -224,5 +250,15 @@ class ServiceEvent {
         ]
         FFirestoreReference.eventGuests(eventId).document(guestId).setData(data, merge: true)
     }
-
+    
+    // MARK: DELETE
+    static func cancel(event: Event) {
+        guard let eventId = event.id,
+              let userId = ManagerUser.shared.user?.id else {
+            return
+        }
+        
+        FFirestoreReference.events.document(eventId).delete()
+        FFirestoreReference.eventOrganizer(eventId).document(userId).delete()
+    }
 }

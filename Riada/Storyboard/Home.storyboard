@@ -121,6 +121,8 @@
                         <segue destination="jiN-rz-yBn" kind="presentation" identifier="SearchLocationVC" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="qB8-je-WnN"/>
                         <segue destination="HKd-2E-otn" kind="show" identifier="EventsVC" id="tP3-Ys-dPc"/>
                         <segue destination="CM7-ZC-S5B" kind="presentation" identifier="OrganizeEventVC" id="shF-SK-6RZ"/>
+                        <segue destination="6qd-lf-dn7" kind="presentation" identifier="SignUpVC" id="8gc-Eo-W39"/>
+                        <segue destination="K59-oV-Urf" kind="presentation" identifier="ProfileVC" id="JVS-cT-hjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKr-KQ-86R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,7 +137,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6PQ-0C-7Wx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1178" y="852"/>
+            <point key="canvasLocation" x="-1180" y="852"/>
         </scene>
         <!--OrganizeEventVC-->
         <scene sceneID="naR-rs-itr">
@@ -199,6 +201,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnq-KT-Z19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1800" y="169"/>
+        </scene>
+        <!--SignUpVC-->
+        <scene sceneID="dFT-X6-mdt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="SignUpVC" id="6qd-lf-dn7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="faa-mU-gDk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PPq-o0-IDG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1180" y="595"/>
+        </scene>
+        <!--ProfileVC-->
+        <scene sceneID="G9b-BN-KDe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileVC" id="K59-oV-Urf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cDl-xc-GKx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wne-n1-ULu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1183" y="716"/>
         </scene>
     </scenes>
     <resources>

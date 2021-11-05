@@ -53,13 +53,32 @@ struct Event: Identifiable, Codable {
         return event
     }
     
-    var toData: [String: Any]? {
+    var toCreateData: [String: Any]? {
         guard let _ = self.id else { return nil }
         let data: [String: Any] = [
            "title": title,
            "description": description,
            "nbPlayer": nbPlayer,
            "nbAcceptedPlayer": nbAcceptedPlayer,
+           "date": date,
+           "placeId": placeId,
+           "placeName": placeName,
+           "placeAddress": placeAddress,
+           "placeCoordinate": placeCoordinate,
+           "sportId": sportId,
+           "sportName": sportName,
+           "createdDate": createdDate,
+           "isPrivate": isPrivate,
+        ]
+        return data
+    }
+    
+    var toUpdateData: [String: Any]? {
+        guard let _ = self.id else { return nil }
+        let data: [String: Any] = [
+           "title": title,
+           "description": description,
+           "nbPlayer": nbPlayer,
            "date": date,
            "placeId": placeId,
            "placeName": placeName,

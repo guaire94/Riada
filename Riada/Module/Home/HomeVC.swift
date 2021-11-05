@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeVC: UIViewController {
     
@@ -21,8 +22,10 @@ class HomeVC: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        syncSports()
+        ManagerUser.shared.synchronise {
+            self.setupView()
+            self.syncSports()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,14 +78,18 @@ private extension HomeVC {
     }
     
     @IBAction func profileToggle(_ sender: Any) {
-        // TODO: Reidrect to my profile
+        if let _ = ManagerUser.shared.user?.nickName {
+            performSegue(withIdentifier: ProfileVC.Constants.identifier, sender: self)
+        } else {
+            performSegue(withIdentifier: SignUpVC.Constants.identifier, sender: self)
+        }
     }
 
     @IBAction func organizeEventToggle(_ sender: Any) {
         if let _ = ManagerUser.shared.user?.nickName {
             performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
         } else {
-            // TODO: Reidrect signIn/signUp
+            performSegue(withIdentifier: SignUpVC.Constants.identifier, sender: self)
         }
     }
 }
@@ -135,5 +142,13 @@ extension HomeVC: OrganizeEventVCDelegate {
 
     func didCreateEvent(event: Event) {
         shareEvent(event: event)
+    }
+}
+
+// MARK: - SignUpVCDelegate
+extension HomeVC: SignUpVCDelegate {
+
+    func didSignUp() {
+        performSegue(withIdentifier: ProfileVC.Constants.identifier, sender: self)
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import Wormholy
 import Applanga
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,10 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:] ) -> Bool {
-        application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: "")
+        if let scheme = url.scheme, scheme.localizedCaseInsensitiveCompare("social-sport") == .orderedSame {
+            return application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: "")
+        } else {
+            return GIDSignIn.sharedInstance.handle(url)
+        }
     }
-    
-    
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?,
                      annotation: Any) -> Bool {

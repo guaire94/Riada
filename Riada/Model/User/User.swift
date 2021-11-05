@@ -13,6 +13,7 @@ struct User: Identifiable, Codable {
     var mail: String?
     var nickName: String?
     var avatar: String?
+    var favoritesSports: [String]
     var createdDate: Timestamp
     
     var toParticipantData: [String: Any]? {

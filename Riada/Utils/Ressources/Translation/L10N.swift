@@ -25,8 +25,14 @@ struct L10N {
     }
     
     struct searchLocation {
-        static let text: String = NSLocalizedString("SEARCH_LOCATION_TEXT", comment: "")
-        static let placeHolder: String = NSLocalizedString("SEARCH_LOCATION_PLACEHOLDER", comment: "")
+        struct city {
+            static let text: String = NSLocalizedString("SEARCH_LOCATION_CITY_TEXT", comment: "")
+            static let placeHolder: String = NSLocalizedString("SEARCH_LOCATION_CITY_PLACEHOLDER", comment: "")
+        }
+        struct place {
+            static let text: String = NSLocalizedString("SEARCH_LOCATION_PLACE_TEXT", comment: "")
+            static let placeHolder: String = NSLocalizedString("SEARCH_LOCATION_PLACE_PLACEHOLDER", comment: "")
+        }
     }
     
     struct event {
@@ -93,6 +99,41 @@ struct L10N {
                    static let unfill: String = NSLocalizedString("EVENT_ORGANIZE_FORM_ERROR_UNFILL", comment: "")
                }
             }
+        }
+        
+        struct edit {
+            static let title: String = NSLocalizedString("EVENT_EDIT_TITLE", comment: "")
+            struct form {
+                static let saveEvent: String = NSLocalizedString("EVENT_EDIT_FORM_SAVE_EVENT", comment: "")
+                static let cancelEvent: String = NSLocalizedString("EVENT_EDIT_FORM_CANCEL_EVENT", comment: "")
+                static let cancelMessageEvent: String = NSLocalizedString("EVENT_EDIT_FORM_CANCEL_MESSAGE_EVENT", comment: "")
+
+                struct error {
+                   static let unfill: String = NSLocalizedString("EVENT_EDIT_FORM_ERROR_UNFILL", comment: "")
+               }
+            }
+        }
+    }
+    
+    struct signUp {
+        static let welcome: String = NSLocalizedString("SIGNUP_WELCOME", comment: "")
+        static let anonymously: String = NSLocalizedString("SIGNUP_ANONYMOUSLY", comment: "")
+        static let signIn: String = NSLocalizedString("SIGNUP_SIGNIN", comment: "")
+        static let signInWithApple: String = NSLocalizedString("SIGNUP_SIGNIN_WITH_APPLE", comment: "")
+        static let signInWithGoogle: String = NSLocalizedString("SIGNUP_SIGNIN_WITH_GOOGLE", comment: "")
+
+        struct form {
+            static let nickName: String = NSLocalizedString("SIGNUP_FORM_NICKNAME", comment: "")
+            static let nickNamePlaceHolder: String = NSLocalizedString("SIGNUP_FORM_NICKNAME_PLACEHOLDER", comment: "")
+            static let signUp: String = NSLocalizedString("SIGNUP_FORM_SIGNUP", comment: "")
+
+            struct error {
+               static let unfill: String = NSLocalizedString("SIGNUP_FORM_ERROR_UNFILL", comment: "")
+           }
+        }
+        
+        struct error {
+            static let withApple: String = NSLocalizedString("SIGNUP_ERROR_WITH_APPLE", comment: "")
         }
     }
     

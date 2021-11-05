@@ -39,6 +39,16 @@ class MPickerField: UIView {
         }
     }
     
+    var isEnabled: Bool {
+        get {
+            textField.isEnabled
+        }
+        set {
+            textField.isEnabled = newValue
+            textField.textColor = newValue ? .black : .gray
+        }
+    }
+    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)

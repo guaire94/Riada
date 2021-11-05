@@ -15,7 +15,7 @@ class ManagerUser {
     private lazy var dispatchGroup = DispatchGroup()
     
     var user: User?
-    var favoriteSports: [FavoriteSport] = []
+    var favoriteSportIds: [String] = []
     var currentCity: City = PlaceHolderCity.dubai.city
     
     var isConnected: Bool {
@@ -23,7 +23,6 @@ class ManagerUser {
     }
 
     func synchronise(completion: @escaping () -> Void) {
-        dispatchGroup.enter()
         dispatchGroup.enter()
         
         ManagerUserPreferences.shared.load()
@@ -33,10 +32,7 @@ class ManagerUser {
         
         ServiceUser.getProfile() { (user) in
             self.user = user
-            self.dispatchGroup.leave()
-        }
-        ServiceUser.getFavoriteSports() { (sports) in
-            self.favoriteSports = sports
+            self.favoriteSportIds = user?.favoritesSports ?? []
             self.dispatchGroup.leave()
         }
         
@@ -48,28 +44,48 @@ class ManagerUser {
     func clear() {
         try? Auth.auth().signOut()
         user = nil
-        favoriteSports = []
+        favoriteSportIds = []
         currentCity = PlaceHolderCity.dubai.city
     }
 }
+
+// MARK: User informations
+extension ManagerUser {
+    
+    func updateNickName(nickName: String) {
+        user?.nickName = nickName
+        ServiceUser.updateNickName(nickName: nickName)
+    }
+}
+
 
 // MARK: Favorite Sport
 extension ManagerUser {
     
     func isFavoriteSport(sport: Sport) -> Bool {
-        favoriteSports.contains(where: {$0.id == sport.id})
+        guard let sportId = sport.id else { return false }
+        return favoriteSportIds.contains(where: {$0 == sportId})
     }
     
     func addFavoriteSport(sport: Sport) {
-        let favoriteSport = FavoriteSport(from: sport)
-        favoriteSports.append(favoriteSport)
-        ServiceUser.addFavoriteSports(favoriteSport: favoriteSport)
+        guard let sportId = sport.id else { return }
+        favoriteSportIds.append(sportId)
+        ServiceUser.updateFavoriteSports(favoriteSportIds: favoriteSportIds)
     }
     
     func removeFavoriteSport(sport: Sport) {
-        let favoriteSport = FavoriteSport(from: sport)
-        guard let index = favoriteSports.firstIndex(where: { $0.id == sport.id }) else { return }
-        favoriteSports.remove(at: index)
-        ServiceUser.removeFavoriteSports(favoriteSport: favoriteSport)
+        guard let sportId = sport.id,
+                let index = favoriteSportIds.firstIndex(where: { $0 == sportId }) else {
+                    return
+        }
+        favoriteSportIds.remove(at: index)
+        ServiceUser.updateFavoriteSports(favoriteSportIds: favoriteSportIds)
+    }
+    
+    func signOut() {
+        try? Auth.auth().signOut()
+        user = nil
+        favoriteSportIds = []
+        currentCity = PlaceHolderCity.dubai.city
     }
 }

@@ -31,7 +31,6 @@ enum FirebaseCollection {
     static var user: String = "User"
     static var organizeEvent: String = "OrganizeEvent"
     static var participateEvent: String = "ParticipateEvent"
-    static var favoriteSport: String = "FavoriteSport"
     static var notification: String = "Notification"
 
     // MARK: - EVENT
@@ -69,9 +68,6 @@ enum FFirestoreReference {
     static func userParticipateEvents(_ userId: String) -> CollectionReference {
         users.document(userId).collection(FirebaseCollection.participateEvent)
     }
-    static func userFavoriteSports(_ userId: String) -> CollectionReference {
-        users.document(userId).collection(FirebaseCollection.favoriteSport)
-    }
     static func userNotifications(_ userId: String) -> CollectionReference {
         users.document(userId).collection(FirebaseCollection.notification)
     }
@@ -88,6 +84,28 @@ enum FFirestoreReference {
     }
     static func eventGuests(_ eventId: String) -> CollectionReference {
         events.document(eventId).collection(FirebaseCollection.guest)
+    }
+}
+
+struct FFireStoreCollectionGroup {
+    
+    // MARK: - EVENT
+    static func relatedEvent(eventId: String) -> [Query] {
+        let collections: Set<String> = [
+            FirebaseCollection.organizeEvent,
+            FirebaseCollection.participateEvent,
+        ]
+        return collections.map { db.collectionGroup($0).whereField("eventId", isEqualTo: eventId) }
+    }
+    
+    static func relatedUser(userId: String) -> [Query] {
+        let collections: Set<String> = [
+            FirebaseCollection.organizer,
+            FirebaseCollection.participant,
+        ]
+        var colletionGroup = collections.map { db.collectionGroup($0).whereField("userId", isEqualTo: userId) }
+        colletionGroup.append(db.collectionGroup(FirebaseCollection.guest).whereField("associatedUserId", isEqualTo: userId))
+        return colletionGroup
     }
 }
 

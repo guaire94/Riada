@@ -83,13 +83,17 @@ extension AddGuestVC: UITextFieldDelegate {
 private extension AddGuestVC {
 
     @IBAction func addGuestToggle() {
-        guard let eventId = self.event?.id,
+        guard let event = event,
+              let eventId = event.id,
               addGuestButtonIsEnabled,
               let nickName = nickNameTextField.text else {
             return
         }
         
         ServiceEvent.addGuest(eventId: eventId, nickName: nickName, asOrganizer: asOrganizer)
+        if asOrganizer {
+            ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: event.nbAcceptedPlayer+1)
+        }
         dismiss(animated: true, completion: nil)
     }
 }

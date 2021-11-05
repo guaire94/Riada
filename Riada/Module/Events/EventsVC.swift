@@ -56,7 +56,6 @@ class EventsVC: UIViewController {
                 return
             }
             vc.event = eventCell.event
-            vc.organizer = eventCell.organizer
         } else if segue.identifier == OrganizeEventVC.Constants.identifier {
             guard let vc = segue.destination as? OrganizeEventVC else { return }
             vc.delegate = self
@@ -145,7 +144,7 @@ private extension EventsVC {
         if let _ = ManagerUser.shared.user?.nickName {
             performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
         } else {
-            // TODO: Reidrect signIn/signUp
+            performSegue(withIdentifier: SignUpVC.Constants.identifier, sender: self)
         }
     }
 }

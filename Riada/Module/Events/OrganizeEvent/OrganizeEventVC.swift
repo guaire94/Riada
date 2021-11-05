@@ -75,8 +75,8 @@ class OrganizeEventVC: UIViewController {
     }
     
     private func setUpTranslation() {
-        sportPickerField.labelText = L10N.event.organize.form.sport
         titleLabel.text = L10N.event.organize.title
+        sportPickerField.labelText = L10N.event.organize.form.sport
         titleTextField.labelText = L10N.event.organize.form.title
         titleTextField.placeHolder = L10N.event.organize.form.titlePlaceHolder
         descTextField.labelText = L10N.event.organize.form.desc
@@ -111,7 +111,6 @@ class OrganizeEventVC: UIViewController {
         sportPickerSource.currentIndexSelected = index
         guard let selectedSport = sportPickerSource.selectedSport else { return }
         sportPickerField.text = selectedSport.localizedName
-        didTogglePicker(sender: nbPlayerPickerField)
     }
     
     private func didSelectNbTeams(index: Int) {
@@ -137,6 +136,7 @@ extension OrganizeEventVC {
               let placeAddress = selectedPlaceAddress,
               let placeLocation = selectedPlaceLocation,
               let nbPlayers = nbPlayersPickerSource.selectedNbTeams else {
+                  showError(title: L10N.event.organize.title, message: L10N.event.organize.form.error.unfill)
             return
         }
         let eventId = UUID().uuidString

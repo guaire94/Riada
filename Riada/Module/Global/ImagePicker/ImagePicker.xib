@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImagePicker" customModule="Riada" customModuleProvider="target">
+            <connections>
+                <outlet property="avatar" destination="kqu-sE-TqO" id="LR1-xe-PJy"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="HxS-Za-wgv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="kqu-sE-TqO" customClass="CircularImageView" customModule="Riada" customModuleProvider="target">
+                    <rect key="frame" x="159" y="2" width="96" height="96"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kqu-sE-TqO" secondAttribute="height" multiplier="1:1" id="Oeb-fW-2yv"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyO-UF-JpM">
+                    <rect key="frame" x="159" y="2" width="96" height="96"/>
+                    <connections>
+                        <action selector="onImageTapped" destination="-1" eventType="touchUpInside" id="plX-Wu-ept"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="kqu-sE-TqO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Fcu-NR-hC8"/>
+                <constraint firstItem="lyO-UF-JpM" firstAttribute="top" secondItem="kqu-sE-TqO" secondAttribute="top" id="FfO-uT-OAe"/>
+                <constraint firstItem="kqu-sE-TqO" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" constant="-4" id="HlW-8k-ybH"/>
+                <constraint firstItem="lyO-UF-JpM" firstAttribute="bottom" secondItem="kqu-sE-TqO" secondAttribute="bottom" id="Kd0-ZI-Mw9"/>
+                <constraint firstItem="kqu-sE-TqO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="Xf3-KM-F8t"/>
+                <constraint firstItem="lyO-UF-JpM" firstAttribute="trailing" secondItem="kqu-sE-TqO" secondAttribute="trailing" id="aBg-97-yiR"/>
+                <constraint firstItem="lyO-UF-JpM" firstAttribute="leading" secondItem="kqu-sE-TqO" secondAttribute="leading" id="aHe-S3-E1O"/>
+                <constraint firstAttribute="bottom" secondItem="kqu-sE-TqO" secondAttribute="bottom" constant="2" id="k7Q-j1-CiX"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-178.2608695652174" y="-185.49107142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="userPlaceholder" width="612" height="612"/>
+    </resources>
+</document>

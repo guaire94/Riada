@@ -66,11 +66,10 @@
 	<string>We need calendar permission to allow you to add event in your personal calendar</string>
 	<key>NSContactsUsageDescription</key>
 	<string>We need contact permission to allow you to specify a contact when adding an event</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>comgooglemaps</string>
-		<string>waze</string>
-	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>We need camera permission to allow you to change your avatar</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>App collect anonymised data to have a better understanding on user experience and make update relevant</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

@@ -122,7 +122,7 @@
                         <segue destination="HKd-2E-otn" kind="show" identifier="EventsVC" id="tP3-Ys-dPc"/>
                         <segue destination="CM7-ZC-S5B" kind="presentation" identifier="OrganizeEventVC" id="shF-SK-6RZ"/>
                         <segue destination="6qd-lf-dn7" kind="presentation" identifier="SignUpVC" id="8gc-Eo-W39"/>
-                        <segue destination="K59-oV-Urf" kind="presentation" identifier="ProfileVC" id="JVS-cT-hjf"/>
+                        <segue destination="K59-oV-Urf" kind="show" identifier="ProfileVC" id="JVS-cT-hjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKr-KQ-86R" userLabel="First Responder" sceneMemberID="firstResponder"/>

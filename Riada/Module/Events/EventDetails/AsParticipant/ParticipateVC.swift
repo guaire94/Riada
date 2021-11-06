@@ -82,13 +82,13 @@ extension ParticipateVC: UITextFieldDelegate {
 private extension ParticipateVC {
 
     @IBAction func participateToggle() {
-        guard let eventId = self.event?.id,
+        guard let event = self.event,
               partcipateButtonIsEnabled,
               let nickName = nickNameTextField.text else {
             return
         }
         ManagerUser.shared.updateNickName(nickName: nickName)
-        ServiceEvent.participate(eventId: eventId)
+        ServiceEvent.participate(event: event)
         dismiss(animated: true, completion: nil)
     }
 }

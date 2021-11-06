@@ -57,7 +57,9 @@ class SignUpVC: UIViewController {
     private func handleSignIn(credential: AuthCredential, nickName: String) {
         ServiceUser.linkAccount(credential: credential) {
             ManagerUser.shared.synchronise {
-                ManagerUser.shared.updateNickName(nickName: nickName)
+                if !nickName.isEmpty {
+                    ManagerUser.shared.updateNickName(nickName: nickName)
+                }
                 self.dismiss(animated: true)
                 self.delegate?.didSignUp()
             }
@@ -126,8 +128,7 @@ extension SignUpVC: AnonymouslyCellDelegate {
             showError(title: L10N.signUp.form.signUp, message: L10N.signUp.form.error.unfill)
             return
         }
-        
-        ServiceUser.updateNickName(nickName: nickName)
+        ManagerUser.shared.updateNickName(nickName: nickName)
         dismiss(animated: true)
         delegate?.didSignUp()
     }

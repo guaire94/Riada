@@ -146,6 +146,7 @@ class ServiceEvent {
     static func create(event: Event) {
         guard let eventId = event.id,
               let eventData = event.toCreateData,
+              let relatedEventData = event.toRelatedData,
               let userId = ManagerUser.shared.user?.id,
               let organizerData = ManagerUser.shared.user?.toOrganizerData else {
             return
@@ -153,12 +154,14 @@ class ServiceEvent {
         
         FFirestoreReference.events.document(eventId).setData(eventData, merge: false)
         FFirestoreReference.eventOrganizer(eventId).document(userId).setData(organizerData, merge: false)
+        FFirestoreReference.userOrganizeEvents(userId).document(eventId).setData(relatedEventData, merge: false)
     }
 
     // MARK: - UPDATE
     static func edit(event: Event) {
         guard let eventId = event.id,
               let eventData = event.toUpdateData,
+              let relatedEventData = event.toRelatedData,
               let userId = ManagerUser.shared.user?.id,
               let organizerData = ManagerUser.shared.user?.toOrganizerData else {
             return
@@ -166,36 +169,43 @@ class ServiceEvent {
         
         FFirestoreReference.events.document(eventId).setData(eventData, merge: true)
         FFirestoreReference.eventOrganizer(eventId).document(userId).setData(organizerData, merge: true)
+        FFirestoreReference.userOrganizeEvents(userId).document(eventId).setData(relatedEventData, merge: true)
     }
     
     static func updateNbAcceptedPlayer(eventId: String, nbAcceptedPlayer: Int) {
-        let eventData = ["nbAcceptedPlayer": nbAcceptedPlayer]        
+        let eventData = ["nbAcceptedPlayer": nbAcceptedPlayer]
         FFirestoreReference.events.document(eventId).setData(eventData, merge: true)
     }
 
-
-    static func participate(eventId: String) {
-        guard let userId = ManagerUser.shared.user?.id,
+    static func participate(event: Event) {
+        guard let eventId = event.id,
+              let relatedEventData = event.toRelatedData,
+              let userId = ManagerUser.shared.user?.id,
               let data = ManagerUser.shared.user?.toParticipantData else {
             return
         }
         
         FFirestoreReference.eventParticipants(eventId).document(userId).setData(data, merge: false)
+        FFirestoreReference.userParticipateEvents(userId).document(eventId).setData(relatedEventData, merge: false)
     }
     
-    static func participateAsOrganizer(eventId: String) {
-        guard let userId = ManagerUser.shared.user?.id,
+    static func participateAsOrganizer(event: Event) {
+        guard let eventId = event.id,
+              let relatedEventData = event.toRelatedData,
+              let userId = ManagerUser.shared.user?.id,
               let data = ManagerUser.shared.user?.toParticipantAsOrganizerData else {
             return
         }
-        
+
         FFirestoreReference.eventParticipants(eventId).document(userId).setData(data, merge: false)
+        FFirestoreReference.userParticipateEvents(userId).document(eventId).setData(relatedEventData, merge: false)
     }
     
     static func unParticipateAsOrganizer(eventId: String) {
         guard let userId = ManagerUser.shared.user?.id else { return }
         
         FFirestoreReference.eventParticipants(eventId).document(userId).delete()
+        FFirestoreReference.userParticipateEvents(userId).document(eventId).delete()
     }
     
     static func addGuest(eventId: String, nickName: String, asOrganizer: Bool) {

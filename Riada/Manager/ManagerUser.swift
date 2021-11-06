@@ -56,6 +56,11 @@ extension ManagerUser {
         user?.nickName = nickName
         ServiceUser.updateNickName(nickName: nickName)
     }
+    
+    func updateAvatar(avatarUrl: String) {
+        user?.avatar = avatarUrl
+        ServiceUser.updateAvatar(avatarUrl: avatarUrl)
+    }
 }
 
 

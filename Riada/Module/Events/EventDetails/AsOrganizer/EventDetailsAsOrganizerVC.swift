@@ -159,19 +159,19 @@ class EventDetailsAsOrganizerVC: UIViewController {
         guard let event = self.event else { return }
         
         DispatchQueue.main.async {
-            let alertController = UIAlertController(title: event.placeName, message: "Go To", preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: event.placeName, message: L10N.event.details.goTo.title, preferredStyle: UIAlertController.Style.alert)
             if let url = Constants.url.waze(coordinate: event.location.coordinate), UIApplication.shared.canOpenURL(url) {
-                alertController.addAction(UIAlertAction(title: "Waze", style: .default, handler: { (action) in
+                alertController.addAction(UIAlertAction(title: L10N.event.details.goTo.waze, style: .default, handler: { (action) in
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }))
             }
             if let url = Constants.url.googleMap(coordinate: event.location.coordinate), UIApplication.shared.canOpenURL(url) {
-                alertController.addAction(UIAlertAction(title: "Google Maps", style: .default, handler: { (action) in
+                alertController.addAction(UIAlertAction(title: L10N.event.details.goTo.gmaps, style: .default, handler: { (action) in
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }))
             }
             if let url = Constants.url.plan, UIApplication.shared.canOpenURL(url) {
-                alertController.addAction(UIAlertAction(title: "Plan", style: .default, handler: { (action) in
+                alertController.addAction(UIAlertAction(title: L10N.event.details.goTo.plan, style: .default, handler: { (action) in
                     let regionDistance: CLLocationDistance = 10000
                     let regionSpan = MKCoordinateRegion(center: event.location.coordinate,
                                                         latitudinalMeters: regionDistance,
@@ -186,7 +186,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
                     mapItem.openInMaps(launchOptions: options)
                 }))
             }
-            alertController.addAction(UIAlertAction(title: "Je connais le chemin", style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: L10N.event.details.goTo.notNecessary, style: .cancel, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
     }

@@ -9,7 +9,17 @@ import FirebaseFirestore
 import FirebaseAuth
 import CodableFirebase
 
+protocol ServiceUserEventsDelegate {
+    func dataAdded(event: RelatedEvent)
+    func dataModified(event: RelatedEvent)
+    func dataRemoved(event: RelatedEvent)
+    func didFinishLoading()
+}
+
 class ServiceUser {
+    
+    // MARK: - Properties
+    private static var eventsListener: ListenerRegistration?
 
     // MARK: Set
     static func signUpAnonymously() {
@@ -46,6 +56,58 @@ class ServiceUser {
             "nickName": nickName
         ]        
         FFirestoreReference.users.document(user.uid).setData(data, merge: true)
+        
+        // related User
+        let relatedUserData: [String : Any] = [
+            "userNickName": nickName
+        ]
+        for collectionGroup in FFireStoreCollectionGroup.relatedUser(userId: user.uid) {
+            collectionGroup.getDocuments { (snapshot, err) in
+                guard err == nil, let documents = snapshot?.documents else { return }
+                documents.forEach { $0.reference.setData(relatedUserData, merge: true) }
+            }
+        }
+        
+        // related Guest
+        let relatedGuestData: [String : Any] = [
+            "associatedUserNickName": nickName
+        ]
+        for collectionGroup in FFireStoreCollectionGroup.relatedUser(userId: user.uid) {
+            collectionGroup.getDocuments { (snapshot, err) in
+                guard err == nil, let documents = snapshot?.documents else { return }
+                documents.forEach { $0.reference.setData(relatedGuestData, merge: true) }
+            }
+        }
+    }
+    
+    static func updateAvatar(avatarUrl: String) {
+        guard let user = Auth.auth().currentUser else { return }
+        let data: [String : Any] = [
+            "avatar": avatarUrl
+        ]
+        FFirestoreReference.users.document(user.uid).setData(data, merge: true)
+        
+        // related User
+        let relatedUserData: [String : Any] = [
+            "userAvatar": avatarUrl
+        ]
+        for collectionGroup in FFireStoreCollectionGroup.relatedUser(userId: user.uid) {
+            collectionGroup.getDocuments { (snapshot, err) in
+                guard err == nil, let documents = snapshot?.documents else { return }
+                documents.forEach { $0.reference.setData(relatedUserData, merge: true) }
+            }
+        }
+        
+        // related Guest
+        let relatedGuestData: [String : Any] = [
+            "associatedAvatar": avatarUrl
+        ]
+        for collectionGroup in FFireStoreCollectionGroup.relatedUser(userId: user.uid) {
+            collectionGroup.getDocuments { (snapshot, err) in
+                guard err == nil, let documents = snapshot?.documents else { return }
+                documents.forEach { $0.reference.setData(relatedGuestData, merge: true) }
+            }
+        }
     }
     
     static func updateFavoriteSports(favoriteSportIds: [String]) {
@@ -76,6 +138,7 @@ class ServiceUser {
 //        }
 //    }
     
+    // MARK: - Get
     static func getProfile(completion: @escaping (User?) -> Void) {
         guard let user = Auth.auth().currentUser else {
             completion(nil)
@@ -91,45 +154,61 @@ class ServiceUser {
         }
     }
     
-    static func getOrganizeEvents(completion: @escaping ([RelatedEvent]) -> Void) {
-        guard let user = Auth.auth().currentUser else {
-            completion([])
-            return
-        }
-        FFirestoreReference.userOrganizeEvents(user.uid).getDocuments() { (querySnapshot, err) in
-            var events: [RelatedEvent] = []
-            guard err == nil, let documents = querySnapshot?.documents else {
-                completion(events)
-                return
+    static func getOrganizeEvents(delegate: ServiceUserEventsDelegate) {
+        guard let userId = ManagerUser.shared.user?.id else { return }
+
+        eventsListener?.remove()
+        eventsListener = FFirestoreReference.userOrganizeEvents(userId).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            var numberOfItems = snapshot.count
+            if numberOfItems == .zero {
+                delegate.didFinishLoading()
             }
-            for document in documents {
-                if document.exists,
-                   let event = try? document.data(as: RelatedEvent.self) {
-                    events.append(event)
+            snapshot.documentChanges.forEach { diff in
+                if let event = try? diff.document.data(as: RelatedEvent.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(event: event)
+                    case .modified:
+                        delegate.dataModified(event: event)
+                    case .removed:
+                        delegate.dataRemoved(event: event)
+                    }
+                }
+                numberOfItems -= 1
+                if numberOfItems == .zero {
+                    delegate.didFinishLoading()
                 }
             }
-            completion(events)
         }
     }
     
-    static func getParticipateEvents(completion: @escaping ([RelatedEvent]) -> Void) {
-        guard let user = Auth.auth().currentUser else {
-            completion([])
-            return
-        }
-        FFirestoreReference.userParticipateEvents(user.uid).getDocuments() { (querySnapshot, err) in
-            var events: [RelatedEvent] = []
-            guard err == nil, let documents = querySnapshot?.documents else {
-                completion(events)
-                return
+    static func getParticipateEvents(delegate: ServiceUserEventsDelegate) {
+        guard let userId = ManagerUser.shared.user?.id else { return }
+
+        eventsListener?.remove()
+        eventsListener = FFirestoreReference.userParticipateEvents(userId).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            var numberOfItems = snapshot.count
+            if numberOfItems == .zero {
+                delegate.didFinishLoading()
             }
-            for document in documents {
-                if document.exists,
-                   let event = try? document.data(as: RelatedEvent.self) {
-                    events.append(event)
+            snapshot.documentChanges.forEach { diff in
+                if let event = try? diff.document.data(as: RelatedEvent.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(event: event)
+                    case .modified:
+                        delegate.dataModified(event: event)
+                    case .removed:
+                        delegate.dataRemoved(event: event)
+                    }
+                }
+                numberOfItems -= 1
+                if numberOfItems == .zero {
+                    delegate.didFinishLoading()
                 }
             }
-            completion(events)
         }
     }
     
@@ -153,5 +232,5 @@ class ServiceUser {
 //            }
 //            completion(favoriteSports)
 //        }
-    }    
+    }
 }

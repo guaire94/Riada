@@ -103,10 +103,13 @@ struct FFireStoreCollectionGroup {
             FirebaseCollection.organizer,
             FirebaseCollection.participant,
         ]
-        var colletionGroup = collections.map { db.collectionGroup($0).whereField("userId", isEqualTo: userId) }
-        colletionGroup.append(db.collectionGroup(FirebaseCollection.guest).whereField("associatedUserId", isEqualTo: userId))
-        return colletionGroup
+        return collections.map { db.collectionGroup($0).whereField("userId", isEqualTo: userId) }
     }
+    
+    static func relatedGuest(userId: String) -> [Query] {
+        [db.collectionGroup(FirebaseCollection.guest).whereField("associatedUserId", isEqualTo: userId)]
+    }
+
 }
 
 enum FStorageReference {

@@ -10,6 +10,12 @@ import Firebase
 
 class HomeVC: UIViewController {
     
+    //MARK: - Constant
+    enum Constants {
+        static let identifier: String = "HomeVC"
+        fileprivate static let cornerRadius: CGFloat = 30
+    }
+    
     // MARK: - IBOutlet
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var cityButton: UIButton!
@@ -23,7 +29,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ManagerUser.shared.synchronise {
-            self.setupView()
+            self.setUpView()
             self.syncSports()
         }
     }
@@ -37,16 +43,30 @@ class HomeVC: UIViewController {
         } else if segue.identifier == OrganizeEventVC.Constants.identifier {
             guard let vc = segue.destination as? OrganizeEventVC else { return }
             vc.delegate = self
+        } else if segue.identifier == ProfileVC.Constants.identifier {
+            guard let vc = segue.destination as? ProfileVC else { return }
+            vc.delegate = self
         }
     }
     
     // MARK: - Privates
-    private func setupView() {
+    private func setUpView() {
         cityButton.setTitle(ManagerUser.shared.currentCity.name, for: .normal)
-        setupTableView()
+        userProfileButton.layer.cornerRadius = Constants.cornerRadius
+        userProfileButton.clipsToBounds = true
+        setUpProfileInformations()
+        setUpTableView()
+    }
+    
+    private func setUpProfileInformations() {
+        if let avatar = ManagerUser.shared.user?.avatar, let url = URL(string: avatar) {
+            userProfileButton.sd_setImage(with: url, for: .normal, completed: nil)
+        } else {
+            userProfileButton.setImage(Config.defaultAvatar, for: .normal)
+        }
     }
 
-    private func setupTableView() {
+    private func setUpTableView() {
         sportsTableView.register(SportCell.Constants.nib, forCellReuseIdentifier: SportCell.Constants.identifier)
         sportsTableView.dataSource = self
         sportsTableView.delegate = self
@@ -150,5 +170,13 @@ extension HomeVC: SignUpVCDelegate {
 
     func didSignUp() {
         performSegue(withIdentifier: ProfileVC.Constants.identifier, sender: self)
+    }
+}
+
+// MARK: - SignUpVCDelegate
+extension HomeVC: ProfileVCDelegate {
+
+    func didUpdateAvatar() {
+        setUpProfileInformations()
     }
 }

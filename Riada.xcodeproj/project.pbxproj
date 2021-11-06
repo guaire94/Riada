@@ -79,10 +79,15 @@
 		EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */; };
 		EE6B7F6926FF7B6A00E44B7C /* MKeyboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6826FF7B6A00E44B7C /* MKeyboardVC.swift */; };
 		EE6B7F6B270077C800E44B7C /* ManagerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */; };
+		EE6E43152736C5A100A48B84 /* ImagePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6E43132736C5A100A48B84 /* ImagePicker.xib */; };
+		EE6E43162736C5A100A48B84 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E43142736C5A100A48B84 /* ImagePicker.swift */; };
+		EE6E43182736D6DE00A48B84 /* UIImage+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E43172736D6DE00A48B84 /* UIImage+M.swift */; };
 		EE75D5682707481F004B7973 /* HelperDynamicLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75D5672707481F004B7973 /* HelperDynamicLink.swift */; };
 		EE8E664B26ED0DD200FB3FDB /* applanga_settings.applanga in Resources */ = {isa = PBXBuildFile; fileRef = EE8E664A26ED0DD000FB3FDB /* applanga_settings.applanga */; };
 		EE9B6FAA27352BAD00A12AF7 /* MProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */; };
 		EE9B6FB027352E6B00A12AF7 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FAF27352E6B00A12AF7 /* CustomSegmentControl.swift */; };
+		EE9B6FB4273581E000A12AF7 /* RelatedEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FB2273581E000A12AF7 /* RelatedEventCell.swift */; };
+		EE9B6FB5273581E000A12AF7 /* RelatedEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE9B6FB3273581E000A12AF7 /* RelatedEventCell.xib */; };
 		EEABEE282725B8C800F3E64C /* String+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEABEE272725B8C800F3E64C /* String+M.swift */; };
 		EEABEE2B2725BA9F00F3E64C /* PersonNameComponents+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */; };
 		EEAE66032725A4470048F559 /* SignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAE66012725A4470048F559 /* SignInCell.xib */; };
@@ -207,10 +212,15 @@
 		EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGuestVC.swift; sourceTree = "<group>"; };
 		EE6B7F6826FF7B6A00E44B7C /* MKeyboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKeyboardVC.swift; sourceTree = "<group>"; };
 		EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDeepLink.swift; sourceTree = "<group>"; };
+		EE6E43132736C5A100A48B84 /* ImagePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePicker.xib; sourceTree = "<group>"; };
+		EE6E43142736C5A100A48B84 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EE6E43172736D6DE00A48B84 /* UIImage+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+M.swift"; sourceTree = "<group>"; };
 		EE75D5672707481F004B7973 /* HelperDynamicLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDynamicLink.swift; sourceTree = "<group>"; };
 		EE8E664A26ED0DD000FB3FDB /* applanga_settings.applanga */ = {isa = PBXFileReference; lastKnownFileType = file; path = applanga_settings.applanga; sourceTree = "<group>"; };
 		EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MProfileSection.swift; sourceTree = "<group>"; };
 		EE9B6FAF27352E6B00A12AF7 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
+		EE9B6FB2273581E000A12AF7 /* RelatedEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedEventCell.swift; sourceTree = "<group>"; };
+		EE9B6FB3273581E000A12AF7 /* RelatedEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RelatedEventCell.xib; sourceTree = "<group>"; };
 		EEABEE272725B8C800F3E64C /* String+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+M.swift"; sourceTree = "<group>"; };
 		EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonNameComponents+M.swift"; sourceTree = "<group>"; };
 		EEAE66012725A4470048F559 /* SignInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInCell.xib; sourceTree = "<group>"; };
@@ -374,6 +384,7 @@
 				EEB8F1E926FE01AC005ABC27 /* UIColor+M.swift */,
 				EEABEE272725B8C800F3E64C /* String+M.swift */,
 				EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */,
+				EE6E43172736D6DE00A48B84 /* UIImage+M.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -653,6 +664,15 @@
 			path = VIewController;
 			sourceTree = "<group>";
 		};
+		EE6E43122736C58B00A48B84 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				EE6E43142736C5A100A48B84 /* ImagePicker.swift */,
+				EE6E43132736C5A100A48B84 /* ImagePicker.xib */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
 		EE9B6FAB27352BBB00A12AF7 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,9 +699,19 @@
 			path = CustomSegmentControl;
 			sourceTree = "<group>";
 		};
+		EE9B6FB1273581C500A12AF7 /* RelatedEventCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE9B6FB2273581E000A12AF7 /* RelatedEventCell.swift */,
+				EE9B6FB3273581E000A12AF7 /* RelatedEventCell.xib */,
+			);
+			path = RelatedEventCell;
+			sourceTree = "<group>";
+		};
 		EEAE65FE2725A3660048F559 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EE9B6FB1273581C500A12AF7 /* RelatedEventCell */,
 				EEAE66002725A3E60048F559 /* AnonymouslyCell */,
 				EEAE65FF2725A3D20048F559 /* SignInCell */,
 			);
@@ -811,6 +841,7 @@
 		EEE1F46226F23A2800754DDD /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				EE6E43122736C58B00A48B84 /* ImagePicker */,
 				EE9B6FAE27352E5900A12AF7 /* CustomSegmentControl */,
 				EE6B7F6726FF7B4700E44B7C /* VIewController */,
 				EEB8F1EB26FE05D0005ABC27 /* Buttons */,
@@ -955,9 +986,11 @@
 				EE603BBF26F6356C008D2E41 /* EventOrganizerCell.xib in Resources */,
 				EEAE66082725A50F0048F559 /* AnonymouslyCell.xib in Resources */,
 				B8CE19CD253DBAE7002AC5A5 /* LaunchScreen.storyboard in Resources */,
+				EE9B6FB5273581E000A12AF7 /* RelatedEventCell.xib in Resources */,
 				EE603BD726F6437F008D2E41 /* EventInformationsCell.xib in Resources */,
 				EEAE66032725A4470048F559 /* SignInCell.xib in Resources */,
 				B84ECBE72541ABD0007F8E9E /* PGCPickerViewController.storyboard in Resources */,
+				EE6E43152736C5A100A48B84 /* ImagePicker.xib in Resources */,
 				B87B2649254232B5007D4A4D /* AnimatedLaunchScreen.storyboard in Resources */,
 				EEE1F47B26F3BEF200754DDD /* Event.storyboard in Resources */,
 				EEE1F46726F23A4900754DDD /* MTextField.xib in Resources */,
@@ -1075,6 +1108,7 @@
 				656272A92586537C00CDA0F9 /* CurrentNotification.swift in Sources */,
 				EEE1F47326F3BEB500754DDD /* EventsVC.swift in Sources */,
 				EE5836EA26ECEC6A00ED203D /* OnBoardingCell.swift in Sources */,
+				EE6E43162736C5A100A48B84 /* ImagePicker.swift in Sources */,
 				EE9B6FB027352E6B00A12AF7 /* CustomSegmentControl.swift in Sources */,
 				B84ECBF52541AFD8007F8E9E /* Sport.swift in Sources */,
 				B84ECBC025403840007F8E9E /* Config.swift in Sources */,
@@ -1106,8 +1140,10 @@
 				B83BF57B255EED99006903A2 /* CollectionReference+M.swift in Sources */,
 				B84ECBBA254036CF007F8E9E /* FirebaseConfig.swift in Sources */,
 				EEBBD47F271863FB00519EBC /* SportPickerSource.swift in Sources */,
+				EE6E43182736D6DE00A48B84 /* UIImage+M.swift in Sources */,
 				EE6B7F6B270077C800E44B7C /* ManagerDeepLink.swift in Sources */,
 				EEE1F46A26F23D0700754DDD /* SearchLocationVC.swift in Sources */,
+				EE9B6FB4273581E000A12AF7 /* RelatedEventCell.swift in Sources */,
 				B82FE3BF255DFB4800B52099 /* ServiceGooglePlace.swift in Sources */,
 				EE27193926EBD21100A3F281 /* Notification.swift in Sources */,
 				EE603BD626F6437F008D2E41 /* EventInformationsCell.swift in Sources */,

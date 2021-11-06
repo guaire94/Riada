@@ -158,7 +158,7 @@ extension OrganizeEventVC {
         ServiceEvent.create(event: event)
         
         if isParticipateSwitchField.isOn {
-            ServiceEvent.participateAsOrganizer(eventId: eventId)
+            ServiceEvent.participateAsOrganizer(event: event)
         }
         
         let feedbackGenerator = UINotificationFeedbackGenerator()

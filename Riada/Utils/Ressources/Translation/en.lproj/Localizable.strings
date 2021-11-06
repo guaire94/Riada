@@ -25,6 +25,7 @@
 "SEARCH_LOCATION_PLACE_TEXT"="Location";
 "SEARCH_LOCATION_PLACE_PLACEHOLDER"="Seach a place...";
 
+"EVENT_NB_PLAYER"="%d Players";
 "EVENT_NB_ACCEPTED_PLAYER"="%d/%d Players";
 "EVENT_EMPTY_PLACEHOLDER"="No event available for your location";
 "EVENT_DETAILS_ORGANIZER"="Organizer";
@@ -40,14 +41,19 @@
 "EVENT_DETAILS_BUTTONS_EDIT"="Edit";
 "EVENT_DETAILS_PARTICIPATION_STATUS_ACCEPTED"="You are in!";
 "EVENT_DETAILS_PARTICIPATION_STATUS_REFUSED"="So sorry, the organizer refused your participation";
-"EVENT_DETAILS_PARTICIPATION_STATUS_DECLINED"="You decline participate to this event";
+"EVENT_DETAILS_PARTICIPATION_STATUS_DECLINED"="You cancelled your participation to this event";
 "EVENT_DETAILS_PARTICIPATION_STATUS_PENDING"="Waiting for organizer approuval";
 "EVENT_DETAILS_PARTICIPATE_NICKNAME_TEXT"="Participate";
-"EVENT_DETAILS_PARTICIPATE_NICKNAME_PLACEHOLDER"="Tap your nickname...";
+"EVENT_DETAILS_PARTICIPATE_NICKNAME_PLACEHOLDER"="Enter your nickname...";
 "EVENT_DETAILS_ADD_GUEST_NICKNAME_TEXT"="Add a guest";
-"EVENT_DETAILS_ADD_GUEST_NICKNAME_PLACEHOLDER"="Tap guest nickname…";
+"EVENT_DETAILS_ADD_GUEST_NICKNAME_PLACEHOLDER"="Enter guest nickname…";
 "EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_TITLE"="Add to calendar";
 "EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_MESSAGE"="We aren't able to add this event to your calendar";
+"EVENT_DETAILS_GO_TO_TITLE"="Go to the location";
+"EVENT_DETAILS_GO_TO_WAZE"="Waze";
+"EVENT_DETAILS_GO_TO_GMAPS"="Google maps";
+"EVENT_DETAILS_GO_TO_PLAN"="Plan";
+"EVENT_DETAILS_GO_TO_NOT_NECESSARY"="I know the way";
 "EVENT_ORGANIZE_TITLE"="Organize event";
 "EVENT_ORGANIZE_FORM_SPORT"="Sport";
 "EVENT_ORGANIZE_FORM_TITLE"="Title";
@@ -77,6 +83,14 @@
 "SIGNUP_FORM_SIGNUP"="Sign Up";
 "SIGNUP_FORM_ERROR_UNFILL"="Please fill a nickname before confirm";
 "SIGNUP_ERROR_WITH_APPLE"="Impossible to sign in with Apple";
+
+"PROFILE_ORGANIZER"="Organizer";
+"EVENT_ORGANIZER_EMPTY_PLACEHOLDER"="No events organized yet";
+"PROFILE_PARTICIPATE"="Participate";
+"EVENT_PARTICIPATE_EMPTY_PLACEHOLDER"="No participations in event yet";
+"PROFILE_INFORMATIONS"="Informations";
+"PROFILE_IMAGE_PICKER_GALLERY" = "Load from gallery";
+"PROFILE_IMAGE_PICKER_TAKE_A_PHOTO" = "Take a picture";
 
 "VERSION_NEW"="New version";
 "VERSION_AVAILABLE"="New version is available on AppStore";

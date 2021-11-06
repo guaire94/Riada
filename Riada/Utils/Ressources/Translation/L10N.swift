@@ -36,6 +36,7 @@ struct L10N {
     }
     
     struct event {
+        static let nbPlayer: String = NSLocalizedString("EVENT_NB_PLAYER", comment: "")
         static let nbAcceptedPlayer: String = NSLocalizedString("EVENT_NB_ACCEPTED_PLAYER", comment: "")
         static let emptyPlaceHolder: String = NSLocalizedString("EVENT_EMPTY_PLACEHOLDER", comment: "")
         struct details {
@@ -78,6 +79,13 @@ struct L10N {
                     static let title: String = NSLocalizedString("EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_TITLE", comment: "")
                     static let message: String = NSLocalizedString("EVENT_DETAILS_ADD_TO_CALENDAR_ERROR_MESSAGE", comment: "")
                 }
+            }
+            struct goTo {
+                static let title: String = NSLocalizedString("EVENT_DETAILS_GO_TO_TITLE", comment: "")
+                static let waze: String = NSLocalizedString("EVENT_DETAILS_GO_TO_WAZE", comment: "")
+                static let gmaps: String = NSLocalizedString("EVENT_DETAILS_GO_TO_GMAPS", comment: "")
+                static let plan: String = NSLocalizedString("EVENT_DETAILS_GO_TO_PLAN", comment: "")
+                static let notNecessary: String = NSLocalizedString("EVENT_DETAILS_GO_TO_NOT_NECESSARY", comment: "")
             }
         }
         struct organize {
@@ -135,6 +143,19 @@ struct L10N {
         struct error {
             static let withApple: String = NSLocalizedString("SIGNUP_ERROR_WITH_APPLE", comment: "")
         }
+    }
+    
+    struct profile {
+        static let organizer: String = NSLocalizedString("PROFILE_ORGANIZER", comment: "")
+        static let organizerEmptyPlaceHolder: String = NSLocalizedString("EVENT_ORGANIZER_EMPTY_PLACEHOLDER", comment: "")
+        static let participate: String = NSLocalizedString("PROFILE_PARTICIPATE", comment: "")
+        static let participateEmptyPlaceHolder: String = NSLocalizedString("EVENT_PARTICIPATE_EMPTY_PLACEHOLDER", comment: "")
+        static let informations: String = NSLocalizedString("PROFILE_INFORMATIONS", comment: "")
+        
+        struct imagePicker {
+            static let loadFromGallery: String = NSLocalizedString("PROFILE_IMAGE_PICKER_GALLERY", comment: "")
+            static let takeAPhoto: String = NSLocalizedString("PROFILE_IMAGE_PICKER_TAKE_A_PHOTO", comment: "")
+       }
     }
     
     struct version {

@@ -9,15 +9,15 @@ import UIKit
 
 enum MProfileSection: Int {
     case organizer
-    case participations
+    case participate
     case informations
 
     var cellIdentifier: String {
         switch self {
         case .organizer:
-            return AnonymouslyCell.Constants.identifier
-        case .participations:
-            return SignInCell.Constants.identifier
+            return RelatedEventCell.Constants.identifier
+        case .participate:
+            return RelatedEventCell.Constants.identifier
         case .informations:
             return SignInCell.Constants.identifier
         }
@@ -26,9 +26,9 @@ enum MProfileSection: Int {
     var cellNib: UINib? {
         switch self {
         case .organizer:
-            return AnonymouslyCell.Constants.nib
-        case .participations:
-            return SignInCell.Constants.nib
+            return RelatedEventCell.Constants.nib
+        case .participate:
+            return RelatedEventCell.Constants.nib
         case .informations:
             return SignInCell.Constants.nib
         }
@@ -37,26 +37,35 @@ enum MProfileSection: Int {
     var cellHeight: CGFloat {
         switch self {
         case .organizer:
-            return AnonymouslyCell.Constants.height
-        case .participations:
-            return SignInCell.Constants.height
+            return RelatedEventCell.Constants.height
+        case .participate:
+            return RelatedEventCell.Constants.height
         case .informations:
             return SignInCell.Constants.height
+        }
+    }
+    
+    var sectionHeight: CGFloat {
+        switch self {
+        case .organizer, .participate:
+            return SectionCell.Constants.height
+        case .informations:
+            return .zero
         }
     }
     
     var title: String {
         switch self {
         case .organizer:
-            return "Organizer"
-        case .participations:
-            return "Participations"
+            return L10N.profile.organizer
+        case .participate:
+            return L10N.profile.participate
         case .informations:
-            return "Informations"
+            return L10N.profile.informations
         }
     }
 
     static func toDisplay() -> [MProfileSection] {
-        [organizer, participations, informations]
+        [organizer, participate, informations]
     }
 }

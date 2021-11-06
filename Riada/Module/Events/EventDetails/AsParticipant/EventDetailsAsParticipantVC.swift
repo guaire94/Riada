@@ -377,13 +377,13 @@ extension EventDetailsAsParticipantVC {
     }
     
     @IBAction func participateToggle(_ sender: Any) {
-        guard let eventId = self.event?.id,
+        guard let event = self.event,
               ManagerUser.shared.user?.nickName != nil else {
                   performSegue(withIdentifier: ParticipateVC.Constants.identifier, sender: nil)
                   return
               }
         
-        ServiceEvent.participate(eventId: eventId)
+        ServiceEvent.participate(event: event)
     }
     
     @IBAction func addGuestToggle(_ sender: Any) {

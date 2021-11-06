@@ -13,7 +13,7 @@ class HomeVC: UIViewController {
     //MARK: - Constant
     enum Constants {
         static let identifier: String = "HomeVC"
-        fileprivate static let cornerRadius: CGFloat = 30
+        fileprivate static let cornerRadius: CGFloat = 25
     }
     
     // MARK: - IBOutlet

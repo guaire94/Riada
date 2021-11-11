@@ -7,6 +7,7 @@
 
 import FirebaseAuth
 import MapKit
+import SDWebImage
 
 class ManagerUser {
     
@@ -59,6 +60,10 @@ extension ManagerUser {
     
     func updateAvatar(avatarUrl: String) {
         user?.avatar = avatarUrl
+        
+        SDImageCache.shared.clearMemory()
+        SDImageCache.shared.clearDisk(onCompletion: nil)
+
         ServiceUser.updateAvatar(avatarUrl: avatarUrl)
     }
 }

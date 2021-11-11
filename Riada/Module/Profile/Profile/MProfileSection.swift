@@ -19,7 +19,7 @@ enum MProfileSection: Int {
         case .participate:
             return RelatedEventCell.Constants.identifier
         case .informations:
-            return SignInCell.Constants.identifier
+            return InformationsCell.Constants.identifier
         }
     }
 
@@ -30,7 +30,7 @@ enum MProfileSection: Int {
         case .participate:
             return RelatedEventCell.Constants.nib
         case .informations:
-            return SignInCell.Constants.nib
+            return InformationsCell.Constants.nib
         }
     }
         
@@ -41,7 +41,7 @@ enum MProfileSection: Int {
         case .participate:
             return RelatedEventCell.Constants.height
         case .informations:
-            return SignInCell.Constants.height
+            return InformationsCell.Constants.height
         }
     }
     

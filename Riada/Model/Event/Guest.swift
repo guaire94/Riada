@@ -11,8 +11,8 @@ import FirebaseFirestoreSwift
 struct Guest: Identifiable, Codable {
     @DocumentID var id: String?
     var associatedUserId: String
-    var associatedUserNickName: String
-    var associatedUserAvatar: String?
+    var associatedNickName: String
+    var associatedAvatar: String?
     var guestNickName: String
     var status: String
     

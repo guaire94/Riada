@@ -55,7 +55,7 @@ class GuestVC: UIViewController {
     
     func setUpGuest() {
         guard let guest = self.guest else { return }
-        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedUserNickName])
+        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedNickName])
 
         if guest.associatedUserId == ManagerUser.shared.user?.id {
             goToProfileImageView.image = nil
@@ -63,7 +63,7 @@ class GuestVC: UIViewController {
             goToProfileImageView.image = Constants.goToProfileImage
         }
         
-        if let userAvatar = guest.associatedUserAvatar {
+        if let userAvatar = guest.associatedAvatar {
             let storage = Storage.storage().reference(forURL: userAvatar)
             avatar.sd_setImage(with: storage)
         } else {

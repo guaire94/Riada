@@ -169,7 +169,14 @@ class ServiceEvent {
         
         FFirestoreReference.events.document(eventId).setData(eventData, merge: true)
         FFirestoreReference.eventOrganizer(eventId).document(userId).setData(organizerData, merge: true)
-        FFirestoreReference.userOrganizeEvents(userId).document(eventId).setData(relatedEventData, merge: true)
+        
+        // Related Event
+        for collectionGroup in FFireStoreCollectionGroup.relatedEvent(eventId: eventId) {
+            collectionGroup.getDocuments { (snapshot, err) in
+                guard err == nil, let documents = snapshot?.documents else { return }
+                documents.forEach { $0.reference.setData(relatedEventData, merge: true) }
+            }
+        }
     }
     
     static func updateNbAcceptedPlayer(eventId: String, nbAcceptedPlayer: Int) {

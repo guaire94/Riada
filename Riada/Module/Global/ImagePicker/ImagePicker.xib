@@ -16,17 +16,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="kqu-sE-TqO" customClass="CircularImageView" customModule="Riada" customModuleProvider="target">
-                    <rect key="frame" x="159" y="2" width="96" height="96"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="kqu-sE-TqO" customClass="CircularImageView" customModule="Riada" customModuleProvider="target">
+                    <rect key="frame" x="2" y="2" width="56" height="56"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="kqu-sE-TqO" secondAttribute="height" multiplier="1:1" id="Oeb-fW-2yv"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyO-UF-JpM">
-                    <rect key="frame" x="159" y="2" width="96" height="96"/>
+                    <rect key="frame" x="2" y="2" width="56" height="56"/>
                     <connections>
                         <action selector="onImageTapped" destination="-1" eventType="touchUpInside" id="plX-Wu-ept"/>
                     </connections>
@@ -47,10 +47,10 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-178.2608695652174" y="-185.49107142857142"/>
+            <point key="canvasLocation" x="-142.02898550724638" y="-171.76339285714286"/>
         </view>
     </objects>
     <resources>
-        <image name="userPlaceholder" width="612" height="612"/>
+        <image name="avatar" width="50" height="50"/>
     </resources>
 </document>

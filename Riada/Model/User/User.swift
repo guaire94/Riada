@@ -58,11 +58,11 @@ struct User: Identifiable, Codable {
         guard let userId = self.id, let nickName = self.nickName else { return nil }
         var data = [
            "associatedUserId": userId,
-           "associatedUserNickName": nickName,
+           "associatedNickName": nickName,
            "status": ParticipationStatus.pending.rawValue
         ]
         if let avatar = self.avatar {
-            data["associatedUserAvatar"] = avatar
+            data["associatedAvatar"] = avatar
         }
         return data
     }

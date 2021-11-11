@@ -63,9 +63,9 @@ class EventParticipantCell: UITableViewCell {
         } else {
             goToProfileImageView.image = Constants.goToProfileImage
         }
-        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedUserNickName])
+        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedNickName])
 
-        if let userAvatar = guest.associatedUserAvatar {
+        if let userAvatar = guest.associatedAvatar {
             let storage = Storage.storage().reference(forURL: userAvatar)
             avatar.sd_setImage(with: storage)
         } else {

@@ -70,9 +70,9 @@ class ServiceUser {
         
         // related Guest
         let relatedGuestData: [String : Any] = [
-            "associatedUserNickName": nickName
+            "associatedNickName": nickName
         ]
-        for collectionGroup in FFireStoreCollectionGroup.relatedUser(userId: user.uid) {
+        for collectionGroup in FFireStoreCollectionGroup.relatedGuest(userId: user.uid) {
             collectionGroup.getDocuments { (snapshot, err) in
                 guard err == nil, let documents = snapshot?.documents else { return }
                 documents.forEach { $0.reference.setData(relatedGuestData, merge: true) }
@@ -102,7 +102,7 @@ class ServiceUser {
         let relatedGuestData: [String : Any] = [
             "associatedAvatar": avatarUrl
         ]
-        for collectionGroup in FFireStoreCollectionGroup.relatedUser(userId: user.uid) {
+        for collectionGroup in FFireStoreCollectionGroup.relatedGuest(userId: user.uid) {
             collectionGroup.getDocuments { (snapshot, err) in
                 guard err == nil, let documents = snapshot?.documents else { return }
                 documents.forEach { $0.reference.setData(relatedGuestData, merge: true) }

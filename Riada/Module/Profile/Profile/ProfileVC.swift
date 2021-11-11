@@ -233,6 +233,7 @@ extension ProfileVC: UITableViewDataSource {
             }
             return eventsByDate.count
         case .informations:
+            tableView.restore()
             return 1
         }
     }
@@ -257,7 +258,7 @@ extension ProfileVC: UITableViewDataSource {
         case MProfileSection.organizer, MProfileSection.participate:
             return eventsByDate[section].events.count
         case .informations:
-            return 0
+            return 1
         }
     }
     
@@ -275,7 +276,11 @@ extension ProfileVC: UITableViewDataSource {
             cell.setUp(event: event, isOrganizer: currentSection == MProfileSection.organizer)
             return cell
         case .informations:
-            return UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: currentSection.cellIdentifier, for: indexPath) as? InformationsCell else {
+                return UITableViewCell()
+            }
+            cell.setUp(delegate: self)
+            return cell
         }
     }
 }
@@ -321,6 +326,7 @@ extension ProfileVC: OrganizeEventVCDelegate {
 
     func didCreateEvent(event: Event) {
         if currentSection == MProfileSection.organizer {
+            events = []
             syncEventsIfNeeded()
         }
         shareEvent(event: event)
@@ -347,8 +353,12 @@ private extension ProfileVC {
         case MProfileSection.organizer:
             performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
         case MProfileSection.informations:
-            //TODO: edit profile validation
-            break
+            guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InformationsCell,
+                  let nickName = cell.nickName else {
+                      return
+            }
+            nickNameLabel.text = nickName
+            ManagerUser.shared.updateNickName(nickName: nickName)
         default:
             break
         }
@@ -363,6 +373,15 @@ private extension ProfileVC {
     
     @IBAction func backToggle(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension ProfileVC: UITextFieldDelegate {
+        
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

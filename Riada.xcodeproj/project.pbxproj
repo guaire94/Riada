@@ -82,6 +82,8 @@
 		EE6E43152736C5A100A48B84 /* ImagePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6E43132736C5A100A48B84 /* ImagePicker.xib */; };
 		EE6E43162736C5A100A48B84 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E43142736C5A100A48B84 /* ImagePicker.swift */; };
 		EE6E43182736D6DE00A48B84 /* UIImage+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E43172736D6DE00A48B84 /* UIImage+M.swift */; };
+		EE6E431C273C185400A48B84 /* InformationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E431A273C185400A48B84 /* InformationsCell.swift */; };
+		EE6E431D273C185400A48B84 /* InformationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6E431B273C185400A48B84 /* InformationsCell.xib */; };
 		EE75D5682707481F004B7973 /* HelperDynamicLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75D5672707481F004B7973 /* HelperDynamicLink.swift */; };
 		EE8E664B26ED0DD200FB3FDB /* applanga_settings.applanga in Resources */ = {isa = PBXBuildFile; fileRef = EE8E664A26ED0DD000FB3FDB /* applanga_settings.applanga */; };
 		EE9B6FAA27352BAD00A12AF7 /* MProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */; };
@@ -215,6 +217,8 @@
 		EE6E43132736C5A100A48B84 /* ImagePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePicker.xib; sourceTree = "<group>"; };
 		EE6E43142736C5A100A48B84 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		EE6E43172736D6DE00A48B84 /* UIImage+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+M.swift"; sourceTree = "<group>"; };
+		EE6E431A273C185400A48B84 /* InformationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationsCell.swift; sourceTree = "<group>"; };
+		EE6E431B273C185400A48B84 /* InformationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationsCell.xib; sourceTree = "<group>"; };
 		EE75D5672707481F004B7973 /* HelperDynamicLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDynamicLink.swift; sourceTree = "<group>"; };
 		EE8E664A26ED0DD000FB3FDB /* applanga_settings.applanga */ = {isa = PBXFileReference; lastKnownFileType = file; path = applanga_settings.applanga; sourceTree = "<group>"; };
 		EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MProfileSection.swift; sourceTree = "<group>"; };
@@ -673,6 +677,15 @@
 			path = ImagePicker;
 			sourceTree = "<group>";
 		};
+		EE6E4319273C182900A48B84 /* InformationsCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE6E431A273C185400A48B84 /* InformationsCell.swift */,
+				EE6E431B273C185400A48B84 /* InformationsCell.xib */,
+			);
+			path = InformationsCell;
+			sourceTree = "<group>";
+		};
 		EE9B6FAB27352BBB00A12AF7 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +724,7 @@
 		EEAE65FE2725A3660048F559 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EE6E4319273C182900A48B84 /* InformationsCell */,
 				EE9B6FB1273581C500A12AF7 /* RelatedEventCell */,
 				EEAE66002725A3E60048F559 /* AnonymouslyCell */,
 				EEAE65FF2725A3D20048F559 /* SignInCell */,
@@ -1006,6 +1020,7 @@
 				EE5836F926ECF97300ED203D /* SportCell.xib in Resources */,
 				EEE1F47026F23DF300754DDD /* CityCell.xib in Resources */,
 				EE8E664B26ED0DD200FB3FDB /* applanga_settings.applanga in Resources */,
+				EE6E431D273C185400A48B84 /* InformationsCell.xib in Resources */,
 				EE5A0B14271B27B2009A951B /* MSwitchField.xib in Resources */,
 				B8FDE3B8253F79B800BD29B2 /* Lato-Regular.ttf in Resources */,
 				EED3CF0027245FC40072ED2B /* Profile.storyboard in Resources */,
@@ -1150,6 +1165,7 @@
 				EEAE66042725A4470048F559 /* SignInCell.swift in Sources */,
 				6562728C2581367300CDA0F9 /* MSetting.swift in Sources */,
 				B836B63A254B312200AAF48A /* City.swift in Sources */,
+				EE6E431C273C185400A48B84 /* InformationsCell.swift in Sources */,
 				B8CE19C1253DBAE5002AC5A5 /* AppDelegate.swift in Sources */,
 				B811E8A7254F6835008DB735 /* Timestamp+M.swift in Sources */,
 				EE603BBC26F6356C008D2E41 /* EventOrganizerCell.swift in Sources */,

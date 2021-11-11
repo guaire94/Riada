@@ -163,7 +163,7 @@ extension SignUpVC: SignInCellDelegate {
                                                          accessToken: authentication.accessToken)
             
             let nickName = user?.profile?.name ?? ""
-            self.handleSignIn(credential: credential, nickName: nickName)
+            self.handleSignIn(credential: credential, nickName: nickName)            
         }
     }
 }

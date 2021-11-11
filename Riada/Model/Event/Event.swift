@@ -54,11 +54,13 @@ struct Event: Identifiable, Codable {
     }
     
     var toRelatedData: [String: Any]? {
-        guard let _ = self.id else { return nil }
+        guard let eventId = self.id else { return nil }
         let data: [String: Any] = [
+           "eventId": eventId,
            "title": title,
            "nbPlayer": nbPlayer,
            "date": date,
+           "sportName": sportName,
            "placeAddress": placeAddress,
            "placeCoordinate": placeCoordinate,
         ]

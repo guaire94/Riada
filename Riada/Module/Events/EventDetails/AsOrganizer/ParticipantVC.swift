@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 protocol ParticipantVCDelegate: class {
+    func didTapOnParticipantProfile(userId: String)
     func didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: Int)
 }
 
@@ -71,7 +72,8 @@ class ParticipantVC: UIViewController {
 private extension ParticipantVC {
     
     @IBAction func profileToggle() {
-       // TODO: go to participant profile
+        guard let userId = participant?.userId else { return }
+        delegate?.didTapOnParticipantProfile(userId: userId)
     }
 
     @IBAction func acceptToggle() {

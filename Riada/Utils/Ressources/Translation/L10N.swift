@@ -147,15 +147,22 @@ struct L10N {
     
     struct profile {
         static let organizer: String = NSLocalizedString("PROFILE_ORGANIZER", comment: "")
-        static let organizerEmptyPlaceHolder: String = NSLocalizedString("EVENT_ORGANIZER_EMPTY_PLACEHOLDER", comment: "")
+        static let organizerEmptyPlaceHolder: String = NSLocalizedString("PROFILE_ORGANIZER_EMPTY_PLACEHOLDER", comment: "")
         static let participate: String = NSLocalizedString("PROFILE_PARTICIPATE", comment: "")
-        static let participateEmptyPlaceHolder: String = NSLocalizedString("EVENT_PARTICIPATE_EMPTY_PLACEHOLDER", comment: "")
+        static let participateEmptyPlaceHolder: String = NSLocalizedString("PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER", comment: "")
         static let informations: String = NSLocalizedString("PROFILE_INFORMATIONS", comment: "")
         
         struct imagePicker {
             static let loadFromGallery: String = NSLocalizedString("PROFILE_IMAGE_PICKER_GALLERY", comment: "")
             static let takeAPhoto: String = NSLocalizedString("PROFILE_IMAGE_PICKER_TAKE_A_PHOTO", comment: "")
        }
+    }
+    
+    struct otherProfile {
+        static let organizer: String = NSLocalizedString("OTHER_PROFILE_ORGANIZER", comment: "")
+        static let organizerEmptyPlaceHolder: String = NSLocalizedString("OTHER_PROFILE_ORGANIZER_EMPTY_PLACEHOLDER", comment: "")
+        static let participate: String = NSLocalizedString("OTHER_PROFILE_PARTICIPATE", comment: "")
+        static let participateEmptyPlaceHolder: String = NSLocalizedString("OTHER_PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER", comment: "")
     }
     
     struct version {

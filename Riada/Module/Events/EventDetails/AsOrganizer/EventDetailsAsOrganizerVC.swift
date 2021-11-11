@@ -355,6 +355,12 @@ extension EventDetailsAsOrganizerVC: EditEventVCDelegate {
 
 // MARK: - ParticipantVCDelegate
 extension EventDetailsAsOrganizerVC: ParticipantVCDelegate {
+
+    func didTapOnParticipantProfile(userId: String) {
+        ServiceUser.getOtherProfile(userId: userId) { user in
+            self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
+        }
+    }
     
     func didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: Int) {
         event?.nbAcceptedPlayer = nbAcceptedPlayer
@@ -370,6 +376,12 @@ extension EventDetailsAsOrganizerVC: ParticipantVCDelegate {
 
 // MARK: - GuestVCDelegate
 extension EventDetailsAsOrganizerVC: GuestVCDelegate {
+    
+    func didTapOnGuestProfile(userId: String) {
+        ServiceUser.getOtherProfile(userId: userId) { user in
+            self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
+        }
+    }
     
     func didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: Int) {
         event?.nbAcceptedPlayer = nbAcceptedPlayer

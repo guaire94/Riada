@@ -88,12 +88,17 @@
 "SIGNUP_ERROR_WITH_APPLE"="Impossible de se connecter avec Apple";
 
 "PROFILE_ORGANIZER"="Organisateur";
-"EVENT_ORGANIZER_EMPTY_PLACEHOLDER"="Tu n'as pas encore organiser d'évènements";
+"PROFILE_ORGANIZER_EMPTY_PLACEHOLDER"="Tu n'as pas encore organiser d'évènements";
 "PROFILE_PARTICIPATE"="Participe";
-"EVENT_PARTICIPATE_EMPTY_PLACEHOLDER"="Tu n'as pas encore participer à des évènements";
+"PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER"="Tu n'as pas encore participer à des évènements";
 "PROFILE_INFORMATIONS"="Informations";
 "PROFILE_IMAGE_PICKER_GALLERY" = "Importer depuis la galerie";
 "PROFILE_IMAGE_PICKER_TAKE_A_PHOTO" = "Prendre une photo";
+
+"OTHER_PROFILE_ORGANIZER"="Organisateur";
+"OTHER_PROFILE_ORGANIZER_EMPTY_PLACEHOLDER"="Cet utilisateur n'a pas encore organiser d'évènements";
+"OTHER_PROFILE_PARTICIPATE"="Participe";
+"OTHER_PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER"="Cet utilisateur n'a pas encore participer à des évènements";
 
 "VERSION_NEW" = "Nouvelle version";
 "VERSION_AVAILABLE" = "Une nouvelle version de l'application est disponible";

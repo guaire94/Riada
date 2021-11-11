@@ -85,12 +85,17 @@
 "SIGNUP_ERROR_WITH_APPLE"="Impossible to sign in with Apple";
 
 "PROFILE_ORGANIZER"="Organizer";
-"EVENT_ORGANIZER_EMPTY_PLACEHOLDER"="No events organized yet";
+"PROFILE_ORGANIZER_EMPTY_PLACEHOLDER"="No events organized yet";
 "PROFILE_PARTICIPATE"="Participate";
-"EVENT_PARTICIPATE_EMPTY_PLACEHOLDER"="No participations in event yet";
+"PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER"="No participations in event yet";
 "PROFILE_INFORMATIONS"="Informations";
 "PROFILE_IMAGE_PICKER_GALLERY" = "Load from gallery";
 "PROFILE_IMAGE_PICKER_TAKE_A_PHOTO" = "Take a picture";
+
+"OTHER_PROFILE_ORGANIZER"="Organizer";
+"OTHER_PROFILE_ORGANIZER_EMPTY_PLACEHOLDER"="No events organized yet";
+"OTHER_PROFILE_PARTICIPATE"="Participate";
+"OTHER_PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER"="No participations in event yet";
 
 "VERSION_NEW"="New version";
 "VERSION_AVAILABLE"="New version is available on AppStore";

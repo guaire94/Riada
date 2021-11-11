@@ -89,6 +89,12 @@ class EventDetailsAsParticipantVC: UIViewController {
             guard let vc = segue.destination as? AddGuestVC else { return }
             vc.event = event
             vc.asOrganizer = false
+        } else if segue.identifier == OtherProfileVC.Constants.identifier {
+            guard let vc = segue.destination as? OtherProfileVC,
+                  let user = sender as? User else {
+                      return
+                  }
+            vc.user = user
         }
     }
     
@@ -331,18 +337,26 @@ extension EventDetailsAsParticipantVC: UITableViewDelegate {
         let section = sections[indexPath.section]
         switch section {
         case .organizer:
-            // TODO: open OrganizerProfile
-            break
+            guard let userId = organizer?.userId else { return }
+            ServiceUser.getOtherProfile(userId: userId) { user in
+                self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
+            }
         case .informations:
             addEventToCalendar()
         case .place:
             goTo()
         case .participants:
-            // TODO: Open Partipant profile
-            break
+            let userId = participants[indexPath.row].userId
+            guard userId != ManagerUser.shared.user?.id else { return }
+            ServiceUser.getOtherProfile(userId: userId) { user in
+                self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
+            }
         case .guests:
-            // TODO: Open Guest profile
-            break
+            let userId = guests[indexPath.row].associatedUserId
+            guard userId != ManagerUser.shared.user?.id else { return }
+            ServiceUser.getOtherProfile(userId: userId) { user in
+                self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
+            }
         }
     }
 }

@@ -309,6 +309,7 @@
                         <outlet property="titleLabel" destination="YRo-Th-UqN" id="hNV-Mk-vAn"/>
                         <segue destination="3xZ-DW-EzW" kind="presentation" identifier="ParticipateVC" id="VxZ-8S-UK1"/>
                         <segue destination="rw4-ps-H46" kind="presentation" identifier="AddGuestVC" id="DDw-Ar-Ctc"/>
+                        <segue destination="rf4-Ml-4vF" kind="show" identifier="OtherProfileVC" id="LDZ-ud-kU3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJF-Sf-DZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -788,6 +789,7 @@
                         <segue destination="s6d-Du-VRS" kind="presentation" identifier="ParticipantVC" id="rio-N3-d1B"/>
                         <segue destination="ccM-dy-3sS" kind="presentation" identifier="GuestVC" id="b6z-Fr-LaX"/>
                         <segue destination="vdM-gm-dfM" kind="show" identifier="EditEventVC" id="Ozu-hS-ja2"/>
+                        <segue destination="rf4-Ml-4vF" kind="show" identifier="OtherProfileVC" id="dPl-0I-Agp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mrr-ba-anq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1269,10 +1271,21 @@
             </objects>
             <point key="canvasLocation" x="-1136" y="1100"/>
         </scene>
+        <!--OtherProfileVC-->
+        <scene sceneID="8ui-CP-H4X">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OtherProfile" referencedIdentifier="OtherProfileVC" id="rf4-Ml-4vF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HSr-5k-jZ5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8b7-Jl-gJs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="180" y="1379"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="dPl-0I-Agp"/>
         <segue reference="b3W-dn-es6"/>
-        <segue reference="Uqu-8o-Qrg"/>
+        <segue reference="DDw-Ar-Ctc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="60" height="60"/>

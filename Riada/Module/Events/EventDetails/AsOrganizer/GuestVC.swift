@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 protocol GuestVCDelegate: class {
+    func didTapOnGuestProfile(userId: String)
     func didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: Int)
 }
 
@@ -77,7 +78,8 @@ class GuestVC: UIViewController {
 private extension GuestVC {
     
     @IBAction func profileToggle() {
-       // TODO: go to profile (which add this guest)
+        guard let userId = guest?.associatedUserId else { return }
+        delegate?.didTapOnGuestProfile(userId: userId)
     }
     
     @IBAction func acceptToggle() {

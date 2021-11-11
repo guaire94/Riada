@@ -84,6 +84,9 @@
 		EE6E43182736D6DE00A48B84 /* UIImage+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E43172736D6DE00A48B84 /* UIImage+M.swift */; };
 		EE6E431C273C185400A48B84 /* InformationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E431A273C185400A48B84 /* InformationsCell.swift */; };
 		EE6E431D273C185400A48B84 /* InformationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6E431B273C185400A48B84 /* InformationsCell.xib */; };
+		EE6E431F273D2CFC00A48B84 /* OtherProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE6E431E273D2CFB00A48B84 /* OtherProfile.storyboard */; };
+		EE6E4324273D2D8000A48B84 /* MOtherProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E4322273D2D8000A48B84 /* MOtherProfileSection.swift */; };
+		EE6E4325273D2D8000A48B84 /* OtherProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E4323273D2D8000A48B84 /* OtherProfileVC.swift */; };
 		EE75D5682707481F004B7973 /* HelperDynamicLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75D5672707481F004B7973 /* HelperDynamicLink.swift */; };
 		EE8E664B26ED0DD200FB3FDB /* applanga_settings.applanga in Resources */ = {isa = PBXBuildFile; fileRef = EE8E664A26ED0DD000FB3FDB /* applanga_settings.applanga */; };
 		EE9B6FAA27352BAD00A12AF7 /* MProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */; };
@@ -219,6 +222,9 @@
 		EE6E43172736D6DE00A48B84 /* UIImage+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+M.swift"; sourceTree = "<group>"; };
 		EE6E431A273C185400A48B84 /* InformationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationsCell.swift; sourceTree = "<group>"; };
 		EE6E431B273C185400A48B84 /* InformationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationsCell.xib; sourceTree = "<group>"; };
+		EE6E431E273D2CFB00A48B84 /* OtherProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OtherProfile.storyboard; sourceTree = "<group>"; };
+		EE6E4322273D2D8000A48B84 /* MOtherProfileSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOtherProfileSection.swift; sourceTree = "<group>"; };
+		EE6E4323273D2D8000A48B84 /* OtherProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherProfileVC.swift; sourceTree = "<group>"; };
 		EE75D5672707481F004B7973 /* HelperDynamicLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDynamicLink.swift; sourceTree = "<group>"; };
 		EE8E664A26ED0DD000FB3FDB /* applanga_settings.applanga */ = {isa = PBXFileReference; lastKnownFileType = file; path = applanga_settings.applanga; sourceTree = "<group>"; };
 		EE9B6FA927352BAD00A12AF7 /* MProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MProfileSection.swift; sourceTree = "<group>"; };
@@ -459,6 +465,7 @@
 				B8B7DAED255857AC00B33BDB /* Home.storyboard */,
 				EEE1F47A26F3BEF200754DDD /* Event.storyboard */,
 				EED3CEFF27245FC40072ED2B /* Profile.storyboard */,
+				EE6E431E273D2CFB00A48B84 /* OtherProfile.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -686,6 +693,15 @@
 			path = InformationsCell;
 			sourceTree = "<group>";
 		};
+		EE6E4321273D2D5900A48B84 /* OtherProfile */ = {
+			isa = PBXGroup;
+			children = (
+				EE6E4322273D2D8000A48B84 /* MOtherProfileSection.swift */,
+				EE6E4323273D2D8000A48B84 /* OtherProfileVC.swift */,
+			);
+			path = OtherProfile;
+			sourceTree = "<group>";
+		};
 		EE9B6FAB27352BBB00A12AF7 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,6 +836,7 @@
 				EEAE65FE2725A3660048F559 /* Cell */,
 				EE9B6FAB27352BBB00A12AF7 /* SignUp */,
 				EE9B6FAD27352BC900A12AF7 /* Profile */,
+				EE6E4321273D2D5900A48B84 /* OtherProfile */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1000,6 +1017,7 @@
 				EE603BBF26F6356C008D2E41 /* EventOrganizerCell.xib in Resources */,
 				EEAE66082725A50F0048F559 /* AnonymouslyCell.xib in Resources */,
 				B8CE19CD253DBAE7002AC5A5 /* LaunchScreen.storyboard in Resources */,
+				EE6E431F273D2CFC00A48B84 /* OtherProfile.storyboard in Resources */,
 				EE9B6FB5273581E000A12AF7 /* RelatedEventCell.xib in Resources */,
 				EE603BD726F6437F008D2E41 /* EventInformationsCell.xib in Resources */,
 				EEAE66032725A4470048F559 /* SignInCell.xib in Resources */,
@@ -1126,8 +1144,10 @@
 				EE6E43162736C5A100A48B84 /* ImagePicker.swift in Sources */,
 				EE9B6FB027352E6B00A12AF7 /* CustomSegmentControl.swift in Sources */,
 				B84ECBF52541AFD8007F8E9E /* Sport.swift in Sources */,
+				EE6E4324273D2D8000A48B84 /* MOtherProfileSection.swift in Sources */,
 				B84ECBC025403840007F8E9E /* Config.swift in Sources */,
 				EE27197B26EBD67D00A3F281 /* Organizer.swift in Sources */,
+				EE6E4325273D2D8000A48B84 /* OtherProfileVC.swift in Sources */,
 				EE27D2BF2731D7F500051743 /* ProfileVC.swift in Sources */,
 				EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */,
 				EE5A0B19271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift in Sources */,

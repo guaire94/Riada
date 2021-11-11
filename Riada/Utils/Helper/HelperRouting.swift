@@ -15,8 +15,10 @@ class HelperRouting {
     func routeToHome() {
         guard let navVC = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController,
               let _ = navVC.viewControllers.first as? HomeVC else {
-                  UIViewController.display(sb: .Home)
-                  handleRedirect()
+                  ManagerSport.shared.synchronise {
+                      UIViewController.display(sb: .Home)
+                      self.handleRedirect()
+                  }
                   return
               }
         navVC.popToRootViewController(animated: false)
@@ -29,27 +31,35 @@ class HelperRouting {
     
     // MARK: - Private
     private func handleRedirect() {
-        guard let currentDeepLink = ManagerDeepLink.shared.currentDeepLink,
-              let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-
+        guard let currentDeepLink = ManagerDeepLink.shared.currentDeepLink else { return }
+        ManagerDeepLink.shared.clear()
+        
         switch currentDeepLink {
         case let .eventDetails(eventId: eventId):
-            rootViewController.presentedViewController?.dismiss(animated: false, completion: nil)
-            
-            let eventDetailsVC = UIViewController.eventDetailsVC
-            
             ServiceEvent.getEventOrganizer(eventId: eventId) { organizer in
-                //TODO: verify if owner
                 ServiceEvent.getEventDetails(eventId: eventId) { event in
-                    eventDetailsVC.event = event
-                    eventDetailsVC.organizer = organizer
-                    DispatchQueue.main.async {
-                        let navigationController = UINavigationController(rootViewController: eventDetailsVC)
-                        navigationController.navigationBar.isHidden = true
-                        rootViewController.show(eventDetailsVC, sender: self)
+                    if let userId = organizer?.userId, userId == ManagerUser.shared.user?.id {
+                        let eventDetailsVC = UIViewController.eventDetailsAsOrganizerVC
+                        eventDetailsVC.event = event
+                        self.routeToVC(vc: eventDetailsVC)
+                    } else {
+                        let eventDetailsVC = UIViewController.eventDetailsAsParticipantVC
+                        eventDetailsVC.event = event
+                        eventDetailsVC.organizer = organizer
+                        self.routeToVC(vc: eventDetailsVC)
                     }
                 }
             }
         }
     }
+    
+    private func routeToVC(vc: UIViewController) {
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+        rootViewController.presentedViewController?.dismiss(animated: false, completion: nil)
+
+        DispatchQueue.main.async {
+            rootViewController.show(vc, sender: self)
+        }
+    }
+
 }

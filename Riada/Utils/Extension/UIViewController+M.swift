@@ -29,11 +29,19 @@ extension UIViewController {
         UIApplication.shared.keyWindow?.rootViewController = vc
     }
     
-    static var eventDetailsVC: EventDetailsAsParticipantVC {
-        guard let eventDetails = MStoryboard.Event.storyboard.instantiateViewController(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier) as? EventDetailsAsParticipantVC else {
+    static var eventDetailsAsParticipantVC: EventDetailsAsParticipantVC {
+        guard let eventDetailsAsParticipant = MStoryboard.Event.storyboard.instantiateViewController(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier) as? EventDetailsAsParticipantVC else {
             fatalError("Load initial view controller from '\(MStoryboard.Event.rawValue)' Storyboard have failed")
         }
         
-        return eventDetails
+        return eventDetailsAsParticipant
+    }
+    
+    static var eventDetailsAsOrganizerVC: EventDetailsAsOrganizerVC {
+        guard let eventDetailsAsOrganizer = MStoryboard.Event.storyboard.instantiateViewController(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier) as? EventDetailsAsOrganizerVC else {
+            fatalError("Load initial view controller from '\(MStoryboard.Event.rawValue)' Storyboard have failed")
+        }
+        
+        return eventDetailsAsOrganizer
     }
 }

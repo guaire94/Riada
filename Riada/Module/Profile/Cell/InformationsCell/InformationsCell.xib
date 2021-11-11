@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InformationsCell" rowHeight="96" id="KGk-i7-Jjw" customClass="InformationsCell" customModule="Riada" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="96"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2M-Ya-Olm">
+                        <rect key="frame" x="0.0" y="8" width="360" height="88"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUn-5W-QbG" customClass="MTextField" customModule="Riada" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="12" width="360" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="LxA-wJ-wzh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yUn-5W-QbG" secondAttribute="trailing" id="A7K-0f-rS8"/>
+                            <constraint firstItem="yUn-5W-QbG" firstAttribute="leading" secondItem="y2M-Ya-Olm" secondAttribute="leading" id="gLB-IQ-YAb"/>
+                            <constraint firstItem="yUn-5W-QbG" firstAttribute="top" secondItem="y2M-Ya-Olm" secondAttribute="top" constant="12" id="qdp-1k-2Sv"/>
+                            <constraint firstAttribute="bottom" secondItem="yUn-5W-QbG" secondAttribute="bottom" constant="16" id="zNh-eK-sZz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="y2M-Ya-Olm" secondAttribute="bottom" id="2H9-zQ-8QT"/>
+                    <constraint firstAttribute="trailing" secondItem="y2M-Ya-Olm" secondAttribute="trailing" id="CEl-aC-B3a"/>
+                    <constraint firstItem="y2M-Ya-Olm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Evg-DO-viR"/>
+                    <constraint firstItem="y2M-Ya-Olm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="wQg-dk-Jfc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="content" destination="y2M-Ya-Olm" id="K4L-gu-pgx"/>
+                <outlet property="nickNameTextField" destination="yUn-5W-QbG" id="07a-po-0Wz"/>
+            </connections>
+            <point key="canvasLocation" x="169.59999999999999" y="171.36431784107947"/>
+        </tableViewCell>
+    </objects>
+</document>

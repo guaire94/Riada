@@ -212,6 +212,72 @@ class ServiceUser {
         }
     }
     
+    static func getOtherProfile(userId: String, completion: @escaping (User?) -> Void) {
+        FFirestoreReference.users.document(userId).getDocument { (document, error) in
+            guard let document = document, document.exists,
+                  let user = try? document.data(as: User.self) else {
+                completion(nil)
+                return
+            }
+            completion(user)
+        }
+    }
+    
+    static func getOtherProfileOrganizeEvents(userId: String, delegate: ServiceUserEventsDelegate) {
+        eventsListener?.remove()
+        eventsListener = FFirestoreReference.userOrganizeEvents(userId).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            var numberOfItems = snapshot.count
+            if numberOfItems == .zero {
+                delegate.didFinishLoading()
+            }
+            snapshot.documentChanges.forEach { diff in
+                if let event = try? diff.document.data(as: RelatedEvent.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(event: event)
+                    case .modified:
+                        delegate.dataModified(event: event)
+                    case .removed:
+                        delegate.dataRemoved(event: event)
+                    }
+                }
+                numberOfItems -= 1
+                if numberOfItems == .zero {
+                    delegate.didFinishLoading()
+                }
+            }
+        }
+    }
+    
+    static func getOtherProfileParticipateEvents(userId: String, delegate: ServiceUserEventsDelegate) {
+        eventsListener?.remove()
+        eventsListener = FFirestoreReference.userParticipateEvents(userId).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            var numberOfItems = snapshot.count
+            if numberOfItems == .zero {
+                delegate.didFinishLoading()
+            }
+            snapshot.documentChanges.forEach { diff in
+                if let event = try? diff.document.data(as: RelatedEvent.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(event: event)
+                    case .modified:
+                        delegate.dataModified(event: event)
+                    case .removed:
+                        delegate.dataRemoved(event: event)
+                    }
+                }
+                numberOfItems -= 1
+                if numberOfItems == .zero {
+                    delegate.didFinishLoading()
+                }
+            }
+        }
+    }
+
+    
     static func getFavoriteSports(completion: @escaping ([FavoriteSport]) -> Void) {
         completion([])
         return

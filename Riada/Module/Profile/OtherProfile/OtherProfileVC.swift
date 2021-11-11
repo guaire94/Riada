@@ -8,32 +8,25 @@
 import UIKit
 import Firebase
 
-protocol ProfileVCDelegate: class {
-    func didUpdateAvatar()
-}
-
-class ProfileVC: UIViewController {
+class OtherProfileVC: UIViewController {
     
     //MARK: - Constant
     enum Constants {
-        static let identifier: String = "ProfileVC"
+        static let identifier: String = "OtherProfileVC"
         fileprivate static let bottomContentInset: CGFloat = 8.0
-        fileprivate static let imageContentType = "image/jpeg"
     }
     
     //MARK: - IBOutlet
     @IBOutlet weak private var nickNameLabel: UILabel!
-    @IBOutlet private weak var avatarPicker: ImagePicker!
+    @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet weak private var segmentControl: CustomSegmentedControl!
     @IBOutlet weak private var tableView: UITableView!
-    @IBOutlet weak private var actionButton: UIButton!
     
     //MARK: - Properties
-    weak var delegate: ProfileVCDelegate?
-    private var sections = MProfileSection.toDisplay()
-    private var currentSection = MProfileSection.organizer {
+    var user: User?
+    private var sections = MOtherProfileSection.toDisplay()
+    private var currentSection = MOtherProfileSection.organizer {
         didSet {
-            updateActionButton()
             events = []
             syncEventsIfNeeded()
         }
@@ -73,29 +66,27 @@ class ProfileVC: UIViewController {
                 return
             }
             vc.event = event
-        } else if segue.identifier == OrganizeEventVC.Constants.identifier {
-            guard let vc = segue.destination as? OrganizeEventVC else { return }
-            vc.delegate = self
         }
     }
         
     //MARK: - Privates
     private func setUpView() {
-        avatarPicker.parentViewController = self
-        avatarPicker.delegate = self
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height/2
+        avatarImageView.clipsToBounds = true
         setUpUserInformation()
         setUpSegmentControl()
         setUpTableView()
     }
     
     private func setUpUserInformation() {
-        guard let user = ManagerUser.shared.user else { return }
+        guard let user = self.user else { return }
         
         nickNameLabel.text = user.nickName
-        if let avatar = user.avatar, let url = URL(string: avatar) {
-            avatarPicker.loadImage(from: url)
+        if let userAvatar = user.avatar, !userAvatar.isEmpty {
+            let storage = Storage.storage().reference(forURL: userAvatar)
+            avatarImageView.sd_setImage(with: storage)
         } else {
-            avatarPicker.setDefaultAvatar()
+            avatarImageView.image = #imageLiteral(resourceName: "avatar")
         }
     }
     
@@ -117,13 +108,12 @@ class ProfileVC: UIViewController {
     }
     
     private func syncEventsIfNeeded() {
+        guard let userId = user?.id else { return }
         switch currentSection {
         case .organizer:
-            ServiceUser.getOrganizeEvents(delegate: self)
+            ServiceUser.getOtherProfileOrganizeEvents(userId: userId, delegate: self)
         case .participate:
-            ServiceUser.getParticipateEvents(delegate: self)
-        default:
-            tableView.reloadData()
+            ServiceUser.getOtherProfileParticipateEvents(userId: userId, delegate: self)
         }
     }
     
@@ -139,20 +129,6 @@ class ProfileVC: UIViewController {
         })
     }
     
-    private func updateActionButton() {
-        switch currentSection {
-        case .organizer:
-            actionButton.isHidden = false
-            actionButton.setImage(UIImage(named: "add"), for: .normal)
-        case .participate:
-            actionButton.isHidden = true
-            actionButton.setImage(nil, for: .normal)
-        case .informations:
-            actionButton.isHidden = false
-            actionButton.setImage(UIImage(named: "save"), for: .normal)
-        }
-    }
-    
     private func sortEventByDate() {
         var sortedEvent: [(date: Date, events: [RelatedEvent])] = []
         let dict = Dictionary(grouping: events, by: { $0.date })
@@ -165,28 +141,10 @@ class ProfileVC: UIViewController {
         }
         self.eventsByDate = sortedEvent
     }
-        
-    private func upload(image: UIImage, completion: @escaping (URL?) -> Void) {
-        guard let userId = Auth.auth().currentUser?.uid,
-            let scaledImage = image.scaledToSafeUploadSize,
-            let data = scaledImage.jpegData(compressionQuality: Config.jpegCompressionQuality) else {
-                completion(nil)
-                return
-        }
-        
-        let metadata = StorageMetadata()
-        metadata.contentType = Constants.imageContentType
-        
-        FStorageReference.user(userId: userId).putData(data, metadata: metadata) { meta, error in
-            FStorageReference.user(userId: userId).downloadURL { url, _ in
-                completion(url)
-            }
-        }
-    }
 }
 
 // MARK: - IBAction
-extension ProfileVC: ServiceUserEventsDelegate  {
+extension OtherProfileVC: ServiceUserEventsDelegate  {
     func dataAdded(event: RelatedEvent) {
         events.append(event)
     }
@@ -205,36 +163,33 @@ extension ProfileVC: ServiceUserEventsDelegate  {
 }
 
 // MARK: - CustomSegmentedControlDelegate
-extension ProfileVC: CustomSegmentedControlDelegate {
+extension OtherProfileVC: CustomSegmentedControlDelegate {
     
     func change(to index: Int) {
-        guard let section = MProfileSection(rawValue: index) else { return }
+        guard let section = MOtherProfileSection(rawValue: index) else { return }
         currentSection = section
     }
 }
 
 // MARK: - UITableViewDataSource
-extension ProfileVC: UITableViewDataSource {
+extension OtherProfileVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         switch currentSection {
         case .organizer:
             if eventsByDate.isEmpty {
-                tableView.setEmptyMessage(L10N.profile.organizerEmptyPlaceHolder)
+                tableView.setEmptyMessage(L10N.otherProfile.organizerEmptyPlaceHolder)
             } else {
                 tableView.restore()
             }
             return eventsByDate.count
         case .participate:
             if eventsByDate.isEmpty {
-                tableView.setEmptyMessage(L10N.profile.participateEmptyPlaceHolder)
+                tableView.setEmptyMessage(L10N.otherProfile.participateEmptyPlaceHolder)
             } else {
                 tableView.restore()
             }
             return eventsByDate.count
-        case .informations:
-            tableView.restore()
-            return 1
         }
     }
         
@@ -243,23 +198,13 @@ extension ProfileVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch currentSection {
-        case .organizer, .participate:
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionCell.Constants.identifier) as? SectionCell else { return nil }
-            header.setUp(desc: eventsByDate[section].date.long)
-            return header
-        case .informations:
-            return nil
-        }
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionCell.Constants.identifier) as? SectionCell else { return nil }
+        header.setUp(desc: eventsByDate[section].date.long)
+        return header
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch currentSection {
-        case .organizer, .participate:
-            return eventsByDate[section].events.count
-        case .informations:
-            return 1
-        }
+        eventsByDate[section].events.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -267,26 +212,17 @@ extension ProfileVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch currentSection {
-        case .organizer, .participate:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: currentSection.cellIdentifier, for: indexPath) as? RelatedEventCell else {
-                return UITableViewCell()
-            }
-            let event = eventsByDate[indexPath.section].events[indexPath.row]
-            cell.setUp(event: event, isOrganizer: currentSection == MProfileSection.organizer)
-            return cell
-        case .informations:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: currentSection.cellIdentifier, for: indexPath) as? InformationsCell else {
-                return UITableViewCell()
-            }
-            cell.setUp(delegate: self)
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: currentSection.cellIdentifier, for: indexPath) as? RelatedEventCell else {
+            return UITableViewCell()
         }
+        let event = eventsByDate[indexPath.section].events[indexPath.row]
+        cell.setUp(event: event, isOrganizer: currentSection == .organizer)
+        return cell
     }
 }
 
 // MARK: - UITableViewDelegate
-extension ProfileVC: UITableViewDelegate {
+extension OtherProfileVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch currentSection {
@@ -314,74 +250,15 @@ extension ProfileVC: UITableViewDelegate {
                     self.performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: tuple)
                 }
             }
-        case .informations:
-            break
-        }
-    }
-}
-
-
-// MARK: - OrganizeEventVCDelegate
-extension ProfileVC: OrganizeEventVCDelegate {
-
-    func didCreateEvent(event: Event) {
-        if currentSection == MProfileSection.organizer {
-            events = []
-            syncEventsIfNeeded()
-        }
-        shareEvent(event: event)
-    }
-}
-
-// MARK: - ImagePickerDelegate
-extension ProfileVC: ImagePickerDelegate {
-    
-    func didUpdateAvatar(image: UIImage) {
-        upload(image: image) { url in
-            guard let avatarUrl = url?.absoluteString else { return }
-            ManagerUser.shared.updateAvatar(avatarUrl: avatarUrl)
-            self.delegate?.didUpdateAvatar()
         }
     }
 }
 
 // MARK: IBAction
-private extension ProfileVC {
-    
-    @IBAction func actionToggle(_ sender: Any) {
-        switch currentSection {
-        case MProfileSection.organizer:
-            performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
-        case MProfileSection.informations:
-            guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InformationsCell,
-                  let nickName = cell.nickName else {
-                      return
-            }
-            nickNameLabel.text = nickName
-            ManagerUser.shared.updateNickName(nickName: nickName)
-        default:
-            break
-        }
-    }
-    
-    @IBAction func settingsToggle(_ sender: Any) {
-        // todo implement settings
-        ManagerUser.shared.signOut()
-        dismiss(animated: true)
-        HelperRouting.shared.routeToOnBoarding()
-    }
+private extension OtherProfileVC {
     
     @IBAction func backToggle(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-    }
-}
-
-// MARK: - UITextFieldDelegate
-extension ProfileVC: UITextFieldDelegate {
-        
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
 

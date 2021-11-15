@@ -8,6 +8,7 @@
 import FirebaseAuth
 import MapKit
 import SDWebImage
+import FirebaseMessaging
 
 class ManagerUser {
     
@@ -44,6 +45,12 @@ class ManagerUser {
     
     func clear() {
         try? Auth.auth().signOut()
+        (UIApplication.shared.delegate as? AppDelegate)?.unregisterForRemoteNotifications()
+        Messaging.messaging().token { token, error in
+            if let token = token, error == nil {
+                ServiceDeviceToken.shared.unregister(token: token)
+            }
+        }
         user = nil
         favoriteSportIds = []
         currentCity = PlaceHolderCity.dubai.city

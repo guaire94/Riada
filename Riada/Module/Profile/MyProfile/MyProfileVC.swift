@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-protocol MyProfileVCDelegate: class {
+protocol MyProfileVCDelegate: AnyObject {
     func didUpdateAvatar()
 }
 

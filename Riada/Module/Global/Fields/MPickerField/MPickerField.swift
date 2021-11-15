@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MPickerFieldDelegate: class {
+protocol MPickerFieldDelegate: AnyObject {
     func didTogglePicker(sender: MPickerField)
 }
 

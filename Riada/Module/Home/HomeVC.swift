@@ -28,6 +28,7 @@ class HomeVC: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        (UIApplication.shared.delegate as? AppDelegate)?.registerForPushNotifications()
         ManagerUser.shared.synchronise {
             self.setUpView()
             self.syncSports()

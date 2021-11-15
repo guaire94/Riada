@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import Firebase
 
-protocol EditEventVCDelegate: class {
+protocol EditEventVCDelegate: AnyObject {
     func didUpdateEvent(event: Event)
     func didCancelEvent()
 }

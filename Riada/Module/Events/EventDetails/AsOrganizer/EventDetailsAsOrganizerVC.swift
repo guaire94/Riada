@@ -92,7 +92,6 @@ class EventDetailsAsOrganizerVC: UIViewController {
             guard let vc = segue.destination as? EditEventVC else { return }
             vc.delegate = self
             vc.event = event
-            vc.isParticipate = participants.contains(where: {$0.userId == ManagerUser.shared.user?.id})
         } else if segue.identifier == OtherProfileVC.Constants.identifier {
             guard let vc = segue.destination as? OtherProfileVC,
                   let user = sender as? User else {

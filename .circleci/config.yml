@@ -1,0 +1,52 @@
+version: 2.1
+jobs:
+  deploy_appstore:
+    macos:
+      xcode: 13.0.0
+    environment:
+      FL_OUTPUT_DIR: output
+    steps:
+      - checkout
+      - restore_cache:
+          key: 1-gems-{{ checksum "Gemfile.lock" }}
+      - run: bundle check || bundle install --path vendor/bundle
+      - save_cache:
+          key: 1-gems-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - deploy:
+          name: Deploy AppStore
+          command: bundle exec fastlane prod
+      - store_artifacts:
+          path: output
+  deploy_staging:
+    macos:
+      xcode: 13.0.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: 1-gems-{{ checksum "Gemfile.lock" }}
+      - run: bundle check || bundle install --path vendor/bundle
+      - save_cache:
+          key: 1-gems-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - deploy:
+          name: Deploy Staging
+          command: bundle exec fastlane staging
+
+workflows:
+  deploy_release:
+    jobs:
+      - deploy_appstore:
+          filters:
+            branches:
+              only: 
+                - master
+
+  deploy_staging:
+    jobs:
+      - deploy_staging:
+          filters:
+            branches:
+              only:  develop

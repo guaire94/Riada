@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ImagePickerDelegate: class {
+protocol ImagePickerDelegate: AnyObject {
     func didUpdateAvatar(image: UIImage)
 }
 

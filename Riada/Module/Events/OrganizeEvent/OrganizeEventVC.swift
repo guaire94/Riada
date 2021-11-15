@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import Firebase
 
-protocol OrganizeEventVCDelegate: class {
+protocol OrganizeEventVCDelegate: AnyObject {
     func didCreateEvent(event: Event)
 }
 

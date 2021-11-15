@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-protocol GuestVCDelegate: class {
+protocol GuestVCDelegate: AnyObject {
     func didTapOnGuestProfile(userId: String)
     func didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: Int)
 }

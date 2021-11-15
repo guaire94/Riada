@@ -10,7 +10,7 @@ import AuthenticationServices
 import Firebase
 import GoogleSignIn
 
-protocol SignUpVCDelegate: class {
+protocol SignUpVCDelegate: AnyObject {
     func didSignUp()
 }
 

@@ -90,6 +90,7 @@ private extension AddGuestVC {
             return
         }
         
+        HelperTracking.track(item: .guestAddNickname)
         ServiceEvent.addGuest(eventId: eventId, nickName: nickName, asOrganizer: asOrganizer)
         if asOrganizer {
             ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: event.nbAcceptedPlayer+1)

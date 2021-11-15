@@ -38,7 +38,7 @@ class EventsVC: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setUpView()
         syncEvents()
     }
     
@@ -63,8 +63,10 @@ class EventsVC: UIViewController {
     }
     
     // MARK: - Privates
-    private func setupView() {
+    private func setUpView() {
         guard let sport = ManagerSport.shared.selectedSport else { return }
+        HelperTracking.track(item: .events(sportName: sport.name))
+        
         sportLabel.text = sport.localizedName
         cityLabel.text = ManagerUser.shared.currentCity.name
         
@@ -137,10 +139,12 @@ extension EventsVC: ServiceNextEventDelegate  {
 private extension EventsVC {
 
     @IBAction func backToggle(_ sender: Any) {
+        ManagerSport.shared.selectedSport = nil
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func organizeEventToggle(_ sender: Any) {
+        HelperTracking.track(item: .eventsOrganizeEvent)
         if let _ = ManagerUser.shared.user?.nickName {
             performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
         } else {

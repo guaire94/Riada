@@ -103,15 +103,15 @@ extension SignUpVC: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case .anonymously:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? AnonymouslyCell else {
-                      return UITableViewCell()
-                  }
+                  return UITableViewCell()
+              }
             cell.delegate = self
             cell.setUp()
             return cell
         case .signIn:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? SignInCell else {
-                      return UITableViewCell()
-                  }
+                  return UITableViewCell()
+              }
             cell.delegate = self
             cell.setUp()
             return cell
@@ -128,9 +128,11 @@ extension SignUpVC: AnonymouslyCellDelegate {
             showError(title: L10N.signUp.form.signUp, message: L10N.signUp.form.error.unfill)
             return
         }
+        HelperTracking.track(item: .signUpWithNickname)
         ManagerUser.shared.updateNickName(nickName: nickName)
-        dismiss(animated: true)
-        delegate?.didSignUp()
+        dismiss(animated: true) {
+            self.delegate?.didSignUp()
+        }
     }
 }
 
@@ -146,6 +148,8 @@ extension SignUpVC: SignInCellDelegate {
         request.requestedScopes = [.fullName, .email]
         request.nonce = nonce.sha256
         
+        HelperTracking.track(item: .signUpWithApple)
+        
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
@@ -155,6 +159,8 @@ extension SignUpVC: SignInCellDelegate {
     func didSignInWithGoogleToggle() {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 
+        HelperTracking.track(item: .signUpWithGoogle)
+        
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
           guard error == nil, let authentication = user?.authentication, let idToken = authentication.idToken else { return }

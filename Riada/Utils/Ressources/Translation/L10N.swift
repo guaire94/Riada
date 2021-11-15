@@ -158,6 +158,24 @@ struct L10N {
        }
     }
     
+    struct setting {
+        static let title: String = NSLocalizedString("SETTING_TITLE", comment: "")
+        struct list {
+            static let notifications: String = NSLocalizedString("SETTING_LIST_NOTIFICATIONS", comment: "")
+            static let rateApp: String = NSLocalizedString("SETTING_LIST_RATE_APP", comment: "")
+            static let contactUs: String = NSLocalizedString("SETTING_LIST_CONTACT_US", comment: "")
+            static let privacyPolicy: String = NSLocalizedString("SETTING_LIST_PRIVACY_POLICY", comment: "")
+            static let termsAndConditions: String = NSLocalizedString("SETTING_LIST_TERMS_AND_CONDITIONS", comment: "")
+            static let logout: String = NSLocalizedString("SETTING_LIST_LOGOUT", comment: "")
+        }
+        struct noContactEmail {
+            static let title: String = NSLocalizedString("SETTING_NO_EMAIL_TITLE", comment: "")
+            static func message(_ email: String) -> String {
+                String(format: NSLocalizedString("SETTING_NO_EMAIL_MESSAGE", comment: ""), email)
+            }
+        }
+    }
+    
     struct otherProfile {
         static let organizer: String = NSLocalizedString("OTHER_PROFILE_ORGANIZER", comment: "")
         static let organizerEmptyPlaceHolder: String = NSLocalizedString("OTHER_PROFILE_ORGANIZER_EMPTY_PLACEHOLDER", comment: "")

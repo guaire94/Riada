@@ -1264,7 +1264,7 @@
         <!--SignUpVC-->
         <scene sceneID="nA1-Y9-f7W">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="SignUpVC" id="wpr-rf-lYh" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="MyProfile" referencedIdentifier="SignUpVC" id="wpr-rf-lYh" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="bY1-YV-IFf"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="or3-BK-HbY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1283,7 +1283,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dPl-0I-Agp"/>
+        <segue reference="LDZ-ud-kU3"/>
         <segue reference="b3W-dn-es6"/>
         <segue reference="DDw-Ar-Ctc"/>
     </inferredMetricsTieBreakers>

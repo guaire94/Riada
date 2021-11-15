@@ -228,26 +228,32 @@ extension OtherProfileVC: UITableViewDelegate {
         switch currentSection {
         case .organizer:
             let relatedEvent = eventsByDate[indexPath.section].events[indexPath.row]
-            guard let eventId = relatedEvent.id else { return }
-            ServiceEvent.getEventDetails(eventId: eventId) { event in
-                guard let event = event else { return }
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
-                }
-            }
-        case .participate:
-            let relatedEvent = eventsByDate[indexPath.section].events[indexPath.row]
-            
-            guard let cell = tableView.cellForRow(at: indexPath) as? RelatedEventCell,
-                  let eventId = relatedEvent.id,
-                  let organizer = cell.organizer else {
-                      return
-            }
+            guard let eventId = relatedEvent.id, let organizer = user?.toOrganizer else { return }
+            HelperTracking.track(item: .otherProfileOrganizerEventDetails)
             ServiceEvent.getEventDetails(eventId: eventId) { event in
                 guard let event = event else { return }
                 DispatchQueue.main.async {
                     let tuple = (event: event, organizer: organizer)
                     self.performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: tuple)
+                }
+            }
+        case .participate:
+            let relatedEvent = eventsByDate[indexPath.section].events[indexPath.row]
+            guard let cell = tableView.cellForRow(at: indexPath) as? RelatedEventCell,
+                  let eventId = relatedEvent.id,
+                  let organizer = cell.organizer else {
+                      return
+            }
+            HelperTracking.track(item: .otherProfileParticipateEventDetails)
+            ServiceEvent.getEventDetails(eventId: eventId) { event in
+                guard let event = event else { return }
+                DispatchQueue.main.async {
+                    if organizer.userId == ManagerUser.shared.user?.id {
+                        self.performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
+                    } else {
+                        let tuple = (event: event, organizer: organizer)
+                        self.performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: tuple)
+                    }
                 }
             }
         }

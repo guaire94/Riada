@@ -28,9 +28,4 @@ class ManagerSport {
             completion()
         }
     }
-    
-    func clear() {
-        selectedSport = nil
-        sports = []
-    }
 }

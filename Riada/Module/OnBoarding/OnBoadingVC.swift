@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppTrackingTransparency
 
 class OnBoardingVC: UIViewController {
     
@@ -26,6 +27,7 @@ class OnBoardingVC: UIViewController {
         setupTableView()
         ServiceUser.signUpAnonymously()
         syncSports()
+        requestTrackingAuthorization()
     }
     
     private func setupTranslations() {
@@ -47,12 +49,27 @@ class OnBoardingVC: UIViewController {
         favoriteSportTableView.reloadData()
     }
     
+    private func requestTrackingAuthorization() {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization  { status in
+                let trackingItem: Tracking
+                switch status {
+                case .authorized:
+                    trackingItem = .trackingConsentAuthorized
+                default:
+                    trackingItem = .trackingConsentRejected
+                }
+                HelperTracking.track(item: trackingItem)
+            }
+        }
+    }
 }
 
 // MARK: - IBAction
 private extension OnBoardingVC {
         
     @IBAction func letsPlayToggle(_ sender: Any) {
+        HelperTracking.track(item: .welcomeLetsPlay)
         HelperRouting.shared.routeToHome()
     }
 }
@@ -87,8 +104,10 @@ extension OnBoardingVC: UITableViewDelegate {
         cell.isMark = !cell.isMark
         let sport = sports[indexPath.row]
         if cell.isMark {
+            HelperTracking.track(item: .welcomeAddFavoriteSport(sportName: sport.name))
             ManagerUser.shared.addFavoriteSport(sport: sport)
         } else {
+            HelperTracking.track(item: .welcomeRemoveFavoriteSport(sportName: sport.name))
             ManagerUser.shared.removeFavoriteSport(sport: sport)
         }
     }

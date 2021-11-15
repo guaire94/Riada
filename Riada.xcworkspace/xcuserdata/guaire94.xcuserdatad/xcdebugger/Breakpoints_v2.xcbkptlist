@@ -18,6 +18,38 @@
             endingLineNumber = "268"
             landmarkName = "-storeImageToMemory:forKey:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FFABA501-DF41-4A70-AB47-280C23AEA12A - ccdeec1bdd1fab6f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDImageCache storeImageToMemory:forKey:]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guaire94/Documents/projects/perso/Riada/Pods/SDWebImage/SDWebImage/Core/SDImageCache.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "268"
+                  endingLineNumber = "268"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "FFABA501-DF41-4A70-AB47-280C23AEA12A - ccdeec1bdd1fab6f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDImageCache storeImageToMemory:forKey:]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guaire94/Documents/projects/perso/Riada/Pods/SDWebImage/SDWebImage/Core/SDImageCache.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "268"
+                  endingLineNumber = "268"
+                  offsetFromSymbolStart = "69">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -34,6 +66,38 @@
             endingLineNumber = "277"
             landmarkName = "-storeImageDataToDisk:forKey:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4FB70950-EA7E-4B96-9C2F-81FAD9E6F591 - 9f97f26849c30e10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDImageCache storeImageDataToDisk:forKey:]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guaire94/Documents/projects/perso/Riada/Pods/SDWebImage/SDWebImage/Core/SDImageCache.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "4FB70950-EA7E-4B96-9C2F-81FAD9E6F591 - 9f97f26849c30e10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDImageCache storeImageDataToDisk:forKey:]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guaire94/Documents/projects/perso/Riada/Pods/SDWebImage/SDWebImage/Core/SDImageCache.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -50,6 +114,38 @@
             endingLineNumber = "626"
             landmarkName = "-removeImageFromDiskForKey:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3824C9A1-EC16-4AAF-A856-6661E1A3C68F - 1040c19ae97e33b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDImageCache removeImageFromDiskForKey:]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guaire94/Documents/projects/perso/Riada/Pods/SDWebImage/SDWebImage/Core/SDImageCache.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "626"
+                  endingLineNumber = "626"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "3824C9A1-EC16-4AAF-A856-6661E1A3C68F - 1040c19ae97e33b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDImageCache removeImageFromDiskForKey:]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guaire94/Documents/projects/perso/Riada/Pods/SDWebImage/SDWebImage/Core/SDImageCache.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "626"
+                  endingLineNumber = "626"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -66,6 +162,38 @@
             endingLineNumber = "636"
             landmarkName = "-_removeImageFromDiskForKey:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7E581F8E-832A-4A35-8A97-9A80580701DA - 2a74840e2d659085"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDImageCache _removeImageFromDiskForKey:]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guaire94/Documents/projects/perso/Riada/Pods/SDWebImage/SDWebImage/Core/SDImageCache.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "636"
+                  endingLineNumber = "636"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "7E581F8E-832A-4A35-8A97-9A80580701DA - 2a74840e2d659085"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDImageCache _removeImageFromDiskForKey:]"
+                  moduleName = "SDWebImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guaire94/Documents/projects/perso/Riada/Pods/SDWebImage/SDWebImage/Core/SDImageCache.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "636"
+                  endingLineNumber = "636"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

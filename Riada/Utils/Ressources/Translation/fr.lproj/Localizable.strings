@@ -95,6 +95,16 @@
 "PROFILE_IMAGE_PICKER_GALLERY" = "Importer depuis la galerie";
 "PROFILE_IMAGE_PICKER_TAKE_A_PHOTO" = "Prendre une photo";
 
+"SETTING_TITLE"="Réglages";
+"SETTING_LIST_NOTIFICATIONS"="Notifications";
+"SETTING_LIST_RATE_APP"="Noter l'application";
+"SETTING_LIST_CONTACT_US"="Contacter nous";
+"SETTING_LIST_PRIVACY_POLICY"="Politique de confidentialité";
+"SETTING_LIST_TERMS_AND_CONDITIONS"="CGU";
+"SETTING_LIST_LOGOUT"="Déconnexion";
+"SETTING_NO_EMAIL_TITLE" = "Feedback";
+"SETTING_NO_EMAIL_MESSAGE" = "Transmettez-nous vos feedbacks sur %@. Nous ferrons notre possible pour les intégrer et améliorer votre expérience sur l'app.";
+
 "OTHER_PROFILE_ORGANIZER"="Organisateur";
 "OTHER_PROFILE_ORGANIZER_EMPTY_PLACEHOLDER"="Cet utilisateur n'a pas encore organiser d'évènements";
 "OTHER_PROFILE_PARTICIPATE"="Participe";

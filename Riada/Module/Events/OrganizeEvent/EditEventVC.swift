@@ -171,6 +171,7 @@ extension EditEventVC {
                           createdDate: createdDate,
                           isPrivate: isPrivateSwitchField.isOn)
         
+        HelperTracking.track(item: .editEventSave)
         ServiceEvent.edit(event: event)
                 
         let feedbackGenerator = UINotificationFeedbackGenerator()
@@ -189,6 +190,7 @@ extension EditEventVC {
             let alert = UIAlertController(title: L10N.event.edit.form.cancelEvent,
                                           message: L10N.event.edit.form.cancelMessageEvent, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: L10N.global.action.confirm, style: .destructive, handler: { _ in
+                HelperTracking.track(item: .editEventCancel)
                 ServiceEvent.cancel(event: event)
                 self.navigationController?.popViewController(animated: true)
                 self.delegate?.didCancelEvent()

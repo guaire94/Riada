@@ -66,8 +66,10 @@ private extension SportCell {
         guard let sport = sport else { return }
 
         if isFavoriteSport {
+            HelperTracking.track(item: .homeRemoveFavoriteSport(sportName: sport.name))
             ManagerUser.shared.removeFavoriteSport(sport: sport)
         } else {
+            HelperTracking.track(item: .homeAddFavoriteSport(sportName: sport.name))
             ManagerUser.shared.addFavoriteSport(sport: sport)
         }
         isFavoriteSport = !isFavoriteSport

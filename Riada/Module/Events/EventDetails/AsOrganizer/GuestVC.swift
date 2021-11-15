@@ -79,7 +79,11 @@ private extension GuestVC {
     
     @IBAction func profileToggle() {
         guard let userId = guest?.associatedUserId else { return }
-        delegate?.didTapOnGuestProfile(userId: userId)
+        
+        HelperTracking.track(item: .guestProfile)
+        dismiss(animated: true) {
+            self.delegate?.didTapOnGuestProfile(userId: userId)
+        }
     }
     
     @IBAction func acceptToggle() {
@@ -91,6 +95,7 @@ private extension GuestVC {
             return
         }
         
+        HelperTracking.track(item: .guestAccept)
         ServiceEvent.acceptGuest(eventId: eventId, guest: guest)
 
         let nbAcceptedPlayer = event.nbAcceptedPlayer+1
@@ -109,6 +114,7 @@ private extension GuestVC {
             return
         }
 
+        HelperTracking.track(item: .guestRefuse)
         ServiceEvent.refuseGuest(eventId: eventId, guest: guest)
         if guest.status == ParticipationStatus.accepted.rawValue {
             let nbAcceptedPlayer = event.nbAcceptedPlayer-1

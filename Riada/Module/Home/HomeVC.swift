@@ -43,14 +43,16 @@ class HomeVC: UIViewController {
         } else if segue.identifier == OrganizeEventVC.Constants.identifier {
             guard let vc = segue.destination as? OrganizeEventVC else { return }
             vc.delegate = self
-        } else if segue.identifier == ProfileVC.Constants.identifier {
-            guard let vc = segue.destination as? ProfileVC else { return }
+        } else if segue.identifier == MyProfileVC.Constants.identifier {
+            guard let vc = segue.destination as? MyProfileVC else { return }
             vc.delegate = self
         }
     }
     
     // MARK: - Privates
     private func setUpView() {
+        HelperTracking.track(item: .home)
+
         cityButton.setTitle(ManagerUser.shared.currentCity.name, for: .normal)
         userProfileButton.layer.cornerRadius = Constants.cornerRadius
         userProfileButton.clipsToBounds = true
@@ -94,18 +96,21 @@ class HomeVC: UIViewController {
 private extension HomeVC {
 
     @IBAction func locationToggle(_ sender: Any) {
+        HelperTracking.track(item: .homeSearchCity)
         performSegue(withIdentifier: SearchLocationVC.Constants.identifier, sender: self)
     }
     
     @IBAction func profileToggle(_ sender: Any) {
+        HelperTracking.track(item: .homeProfile)
         if let _ = ManagerUser.shared.user?.nickName {
-            performSegue(withIdentifier: ProfileVC.Constants.identifier, sender: self)
+            performSegue(withIdentifier: MyProfileVC.Constants.identifier, sender: self)
         } else {
             performSegue(withIdentifier: SignUpVC.Constants.identifier, sender: self)
         }
     }
 
     @IBAction func organizeEventToggle(_ sender: Any) {
+        HelperTracking.track(item: .homeOrganizeEvent)
         if let _ = ManagerUser.shared.user?.nickName {
             performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
         } else {
@@ -169,12 +174,12 @@ extension HomeVC: OrganizeEventVCDelegate {
 extension HomeVC: SignUpVCDelegate {
 
     func didSignUp() {
-        performSegue(withIdentifier: ProfileVC.Constants.identifier, sender: self)
+        performSegue(withIdentifier: MyProfileVC.Constants.identifier, sender: self)
     }
 }
 
 // MARK: - SignUpVCDelegate
-extension HomeVC: ProfileVCDelegate {
+extension HomeVC: MyProfileVCDelegate {
 
     func didUpdateAvatar() {
         setUpProfileInformations()

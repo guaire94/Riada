@@ -93,11 +93,19 @@ class EventDetailsAsOrganizerVC: UIViewController {
             vc.delegate = self
             vc.event = event
             vc.isParticipate = participants.contains(where: {$0.userId == ManagerUser.shared.user?.id})
+        } else if segue.identifier == OtherProfileVC.Constants.identifier {
+            guard let vc = segue.destination as? OtherProfileVC,
+                  let user = sender as? User else {
+                      return
+                  }
+            vc.user = user
         }
     }
     
     //MARK: - Privates
     private func setUpView() {
+        HelperTracking.track(item: .eventDetails)
+
         titleLabel.text = event?.title
         setUpTableView()
         setUpButtons()
@@ -133,6 +141,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
     private func addEventToCalendar() {
         guard let event = self.event else { return }
         
+        HelperTracking.track(item: .eventDetailsAddToCalendar)
         let eventStore = EKEventStore()
         eventStore.requestAccess( to: EKEntityType.event, completion:{ granted, error in
             HelperDynamicLink.generateEventDetails(event: event, completion: { url in
@@ -158,6 +167,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
     func goTo() {
         guard let event = self.event else { return }
         
+        HelperTracking.track(item: .eventDetailsGoTo)
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: event.placeName, message: L10N.event.details.goTo.title, preferredStyle: UIAlertController.Style.alert)
             if let url = Constants.url.waze(coordinate: event.location.coordinate), UIApplication.shared.canOpenURL(url) {
@@ -206,6 +216,9 @@ extension EventDetailsAsOrganizerVC: ServiceEventParticipantDelegate  {
     func dataRemoved(participant: Participant) {
         guard let index = participants.firstIndex(where: { $0.id == participant.id }) else { return }
         participants.remove(at: index)
+    }
+
+    func didFinishLoading() {
     }
 }
 
@@ -321,8 +334,10 @@ extension EventDetailsAsOrganizerVC: UITableViewDelegate {
                   participant.userId != userId else {
                       return
             }
+            HelperTracking.track(item: .eventDetailsParticipant)
             performSegue(withIdentifier: ParticipantVC.Constants.identifier, sender: participant)
         case .guests:
+            HelperTracking.track(item: .eventDetailsGuest)
             performSegue(withIdentifier: GuestVC.Constants.identifier, sender: guests[indexPath.row])
         }
     }
@@ -405,6 +420,7 @@ extension EventDetailsAsOrganizerVC {
     @IBAction func shareToggle(_ sender: Any) {
         guard let event = event else { return }
         
+        HelperTracking.track(item: .eventDetailsShare)
         HelperDynamicLink.generateEventDetails(event: event, completion: { url in
             guard let url = url else { return }
             DispatchQueue.main.async {
@@ -417,10 +433,12 @@ extension EventDetailsAsOrganizerVC {
     }
     
     @IBAction func addGuestToggle(_ sender: Any) {
+        HelperTracking.track(item: .eventDetailsAddGuest)
         performSegue(withIdentifier: AddGuestVC.Constants.identifier, sender: nil)
     }
     
     @IBAction func editToggle(_ sender: Any) {
+        HelperTracking.track(item: .eventDetailsEdit)
         performSegue(withIdentifier: EditEventVC.Constants.identifier, sender: nil)
     }
 }

@@ -87,7 +87,11 @@ private extension ParticipateVC {
               let nickName = nickNameTextField.text else {
             return
         }
+        
+        HelperTracking.track(item: .participateAddNickname)
         ManagerUser.shared.updateNickName(nickName: nickName)
+
+        HelperTracking.track(item: .eventDetailsParticipate)
         ServiceEvent.participate(event: event)
         dismiss(animated: true, completion: nil)
     }

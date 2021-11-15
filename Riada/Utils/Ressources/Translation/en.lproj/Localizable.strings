@@ -92,6 +92,16 @@
 "PROFILE_IMAGE_PICKER_GALLERY" = "Load from gallery";
 "PROFILE_IMAGE_PICKER_TAKE_A_PHOTO" = "Take a picture";
 
+"SETTING_TITLE"="Settings";
+"SETTING_LIST_NOTIFICATIONS"="Notifications";
+"SETTING_LIST_RATE_APP"="Rate app";
+"SETTING_LIST_CONTACT_US"="Contact us";
+"SETTING_LIST_PRIVACY_POLICY"="Privacy Policy";
+"SETTING_LIST_TERMS_AND_CONDITIONS"="Terms & Conditions";
+"SETTING_LIST_LOGOUT"="Log out";
+"SETTING_NO_EMAIL_TITLE" = "Feedback";
+"SETTING_NO_EMAIL_MESSAGE" = "Please  share your feedback on %@, We will do our best to integrate this in next release";
+
 "OTHER_PROFILE_ORGANIZER"="Organizer";
 "OTHER_PROFILE_ORGANIZER_EMPTY_PLACEHOLDER"="No events organized yet";
 "OTHER_PROFILE_PARTICIPATE"="Participate";

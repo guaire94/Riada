@@ -21,6 +21,7 @@ protocol ServiceEventParticipantDelegate {
     func dataAdded(participant: Participant)
     func dataModified(participant: Participant)
     func dataRemoved(participant: Participant)
+    func didFinishLoading()
 }
 
 protocol ServiceEventGuestDelegate {
@@ -40,7 +41,9 @@ class ServiceEvent {
     
     // MARK: - Properties
     private static var nextEventsListener: ListenerRegistration?
-    
+    private static var eventParticipantsListener: ListenerRegistration?
+    private static var eventGuestsListener: ListenerRegistration?
+
     // MARK: - GET
     static func getEventDetails(eventId: String, completion: @escaping (Event?) -> Void) {
         FFirestoreReference.events.document(eventId).getDocument { (document, error) in
@@ -107,8 +110,13 @@ class ServiceEvent {
     }
     
     static func getEventParticipants(eventId: String, delegate: ServiceEventParticipantDelegate) {
-        FFirestoreReference.eventParticipants(eventId).addSnapshotListener { query, error in
+        eventParticipantsListener?.remove()
+        eventParticipantsListener = FFirestoreReference.eventParticipants(eventId).addSnapshotListener { query, error in
             guard let snapshot = query else { return }
+            var numberOfItems = snapshot.count
+            if numberOfItems == .zero {
+                delegate.didFinishLoading()
+            }
             snapshot.documentChanges.forEach { diff in
                 if let participant = try? diff.document.data(as: Participant.self) {
                     switch diff.type {
@@ -120,12 +128,17 @@ class ServiceEvent {
                         delegate.dataRemoved(participant: participant)
                     }
                 }
+                numberOfItems -= 1
+                if numberOfItems == .zero {
+                    delegate.didFinishLoading()
+                }
             }
         }
     }
     
     static func getEventGuests(eventId: String, delegate: ServiceEventGuestDelegate) {
-        FFirestoreReference.eventGuests(eventId).addSnapshotListener { query, error in
+        eventGuestsListener?.remove()
+        eventGuestsListener = FFirestoreReference.eventGuests(eventId).addSnapshotListener { query, error in
             guard let snapshot = query else { return }
             snapshot.documentChanges.forEach { diff in
                 if let guest = try? diff.document.data(as: Guest.self) {

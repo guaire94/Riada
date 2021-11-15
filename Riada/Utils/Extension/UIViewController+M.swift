@@ -12,6 +12,8 @@ import FirebaseAnalytics
 extension UIViewController {
     
     func showError(title: String, message: String) {
+        HelperTracking.track(item: .alertError(title: title, message: message))
+        
         let feedBackGenerator = UINotificationFeedbackGenerator()
         feedBackGenerator.notificationOccurred(.error)
         

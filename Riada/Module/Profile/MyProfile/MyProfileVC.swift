@@ -8,15 +8,15 @@
 import UIKit
 import Firebase
 
-protocol ProfileVCDelegate: class {
+protocol MyProfileVCDelegate: class {
     func didUpdateAvatar()
 }
 
-class ProfileVC: UIViewController {
+class MyProfileVC: UIViewController {
     
     //MARK: - Constant
     enum Constants {
-        static let identifier: String = "ProfileVC"
+        static let identifier: String = "MyProfileVC"
         fileprivate static let bottomContentInset: CGFloat = 8.0
         fileprivate static let imageContentType = "image/jpeg"
     }
@@ -29,7 +29,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak private var actionButton: UIButton!
     
     //MARK: - Properties
-    weak var delegate: ProfileVCDelegate?
+    weak var delegate: MyProfileVCDelegate?
     private var sections = MProfileSection.toDisplay()
     private var currentSection = MProfileSection.organizer {
         didSet {
@@ -186,7 +186,7 @@ class ProfileVC: UIViewController {
 }
 
 // MARK: - IBAction
-extension ProfileVC: ServiceUserEventsDelegate  {
+extension MyProfileVC: ServiceUserEventsDelegate  {
     func dataAdded(event: RelatedEvent) {
         events.append(event)
     }
@@ -205,7 +205,7 @@ extension ProfileVC: ServiceUserEventsDelegate  {
 }
 
 // MARK: - CustomSegmentedControlDelegate
-extension ProfileVC: CustomSegmentedControlDelegate {
+extension MyProfileVC: CustomSegmentedControlDelegate {
     
     func change(to index: Int) {
         guard let section = MProfileSection(rawValue: index) else { return }
@@ -214,7 +214,7 @@ extension ProfileVC: CustomSegmentedControlDelegate {
 }
 
 // MARK: - UITableViewDataSource
-extension ProfileVC: UITableViewDataSource {
+extension MyProfileVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         switch currentSection {
@@ -286,7 +286,7 @@ extension ProfileVC: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension ProfileVC: UITableViewDelegate {
+extension MyProfileVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch currentSection {
@@ -295,6 +295,7 @@ extension ProfileVC: UITableViewDelegate {
             guard let eventId = relatedEvent.id else { return }
             ServiceEvent.getEventDetails(eventId: eventId) { event in
                 guard let event = event else { return }
+                HelperTracking.track(item: .myProfileOrganizerEventDetails)
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
                 }
@@ -309,6 +310,7 @@ extension ProfileVC: UITableViewDelegate {
             }
             ServiceEvent.getEventDetails(eventId: eventId) { event in
                 guard let event = event else { return }
+                HelperTracking.track(item: .myProfileParticipateEventDetails)
                 DispatchQueue.main.async {
                     let tuple = (event: event, organizer: organizer)
                     self.performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: tuple)
@@ -322,7 +324,7 @@ extension ProfileVC: UITableViewDelegate {
 
 
 // MARK: - OrganizeEventVCDelegate
-extension ProfileVC: OrganizeEventVCDelegate {
+extension MyProfileVC: OrganizeEventVCDelegate {
 
     func didCreateEvent(event: Event) {
         if currentSection == MProfileSection.organizer {
@@ -334,7 +336,7 @@ extension ProfileVC: OrganizeEventVCDelegate {
 }
 
 // MARK: - ImagePickerDelegate
-extension ProfileVC: ImagePickerDelegate {
+extension MyProfileVC: ImagePickerDelegate {
     
     func didUpdateAvatar(image: UIImage) {
         upload(image: image) { url in
@@ -346,38 +348,33 @@ extension ProfileVC: ImagePickerDelegate {
 }
 
 // MARK: IBAction
-private extension ProfileVC {
+private extension MyProfileVC {
     
     @IBAction func actionToggle(_ sender: Any) {
         switch currentSection {
         case MProfileSection.organizer:
+            HelperTracking.track(item: .myProfileOrganizeEvent)
             performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
         case MProfileSection.informations:
             guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InformationsCell,
                   let nickName = cell.nickName else {
                       return
             }
+            HelperTracking.track(item: .myProfileSaveInformation)
             nickNameLabel.text = nickName
             ManagerUser.shared.updateNickName(nickName: nickName)
         default:
             break
         }
     }
-    
-    @IBAction func settingsToggle(_ sender: Any) {
-        // todo implement settings
-        ManagerUser.shared.signOut()
-        dismiss(animated: true)
-        HelperRouting.shared.routeToOnBoarding()
-    }
-    
+        
     @IBAction func backToggle(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 }
 
 // MARK: - UITextFieldDelegate
-extension ProfileVC: UITextFieldDelegate {
+extension MyProfileVC: UITextFieldDelegate {
         
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

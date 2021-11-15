@@ -66,4 +66,13 @@ struct User: Identifiable, Codable {
         }
         return data
     }
+    
+    var toOrganizer: Organizer? {
+        guard let userId = self.id, let nickName = self.nickName else { return nil }
+        var organizer = Organizer(id: userId, userId: userId, userNickName: nickName)
+        if let avatar = avatar {
+            organizer.userAvatar = avatar
+        }
+        return organizer
+    }
 }

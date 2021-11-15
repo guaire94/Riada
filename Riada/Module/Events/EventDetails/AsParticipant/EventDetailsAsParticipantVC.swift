@@ -51,10 +51,6 @@ class EventDetailsAsParticipantVC: UIViewController {
         didSet {
             let section = MEventSectionAsParticipant.participants.rawValue
             eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
-            
-            guard let userId = ManagerUser.shared.user?.id else { return }
-            let participant = participants.filter({ $0.userId == userId}).first
-            currentUserParticipationStatus = participant?.participationStatus
         }
     }
     var guests: [Guest] = [] {
@@ -100,6 +96,8 @@ class EventDetailsAsParticipantVC: UIViewController {
     
     //MARK: - Privates
     private func setUpView() {
+        HelperTracking.track(item: .eventDetails)
+
         titleLabel.text = event?.title
         statusBar.isHidden = true
         actionBar.isHidden = true
@@ -152,6 +150,7 @@ class EventDetailsAsParticipantVC: UIViewController {
     private func addEventToCalendar() {
         guard let event = self.event else { return }
         
+        HelperTracking.track(item: .eventDetailsAddToCalendar)
         let eventStore = EKEventStore()
         eventStore.requestAccess( to: EKEntityType.event, completion:{ granted, error in
             HelperDynamicLink.generateEventDetails(event: event, completion: { url in
@@ -177,6 +176,7 @@ class EventDetailsAsParticipantVC: UIViewController {
     func goTo() {
         guard let event = self.event else { return }
         
+        HelperTracking.track(item: .eventDetailsGoTo)
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: event.placeName, message: "Go To", preferredStyle: UIAlertController.Style.alert)
             if let url = Constants.url.waze(coordinate: event.location.coordinate), UIApplication.shared.canOpenURL(url) {
@@ -213,6 +213,7 @@ class EventDetailsAsParticipantVC: UIViewController {
 
 // MARK: - ServiceEventParticipantDelegate
 extension EventDetailsAsParticipantVC: ServiceEventParticipantDelegate  {
+    
     func dataAdded(participant: Participant) {
         participants.append(participant)
     }
@@ -225,6 +226,12 @@ extension EventDetailsAsParticipantVC: ServiceEventParticipantDelegate  {
     func dataRemoved(participant: Participant) {
         guard let index = participants.firstIndex(where: { $0.id == participant.id }) else { return }
         participants.remove(at: index)
+    }
+    
+    func didFinishLoading() {
+        guard let userId = ManagerUser.shared.user?.id else { return }
+        let participant = participants.filter({ $0.userId == userId}).first
+        currentUserParticipationStatus = participant?.participationStatus
     }
 }
 
@@ -338,6 +345,7 @@ extension EventDetailsAsParticipantVC: UITableViewDelegate {
         switch section {
         case .organizer:
             guard let userId = organizer?.userId else { return }
+            HelperTracking.track(item: .eventDetailsOrganizer)
             ServiceUser.getOtherProfile(userId: userId) { user in
                 self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
             }
@@ -348,12 +356,14 @@ extension EventDetailsAsParticipantVC: UITableViewDelegate {
         case .participants:
             let userId = participants[indexPath.row].userId
             guard userId != ManagerUser.shared.user?.id else { return }
+            HelperTracking.track(item: .eventDetailsParticipant)
             ServiceUser.getOtherProfile(userId: userId) { user in
                 self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
             }
         case .guests:
             let userId = guests[indexPath.row].associatedUserId
             guard userId != ManagerUser.shared.user?.id else { return }
+            HelperTracking.track(item: .eventDetailsGuest)
             ServiceUser.getOtherProfile(userId: userId) { user in
                 self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
             }
@@ -378,6 +388,7 @@ extension EventDetailsAsParticipantVC {
     @IBAction func shareToggle(_ sender: Any) {
         guard let event = event else { return }
         
+        HelperTracking.track(item: .eventDetailsShare)
         HelperDynamicLink.generateEventDetails(event: event, completion: { url in
             guard let url = url else { return }
             DispatchQueue.main.async {
@@ -397,10 +408,12 @@ extension EventDetailsAsParticipantVC {
                   return
               }
         
+        HelperTracking.track(item: .eventDetailsParticipate)
         ServiceEvent.participate(event: event)
     }
     
     @IBAction func addGuestToggle(_ sender: Any) {
+        HelperTracking.track(item: .eventDetailsAddGuest)
         performSegue(withIdentifier: AddGuestVC.Constants.identifier, sender: nil)
     }
     
@@ -409,6 +422,8 @@ extension EventDetailsAsParticipantVC {
               let eventId = event.id else {
             return
         }
+        
+        HelperTracking.track(item: .eventDetailsDecline)
         ServiceEvent.decline(eventId: eventId)
         let nbAcceptedPlayer = event.nbAcceptedPlayer-1
         self.event?.nbAcceptedPlayer = nbAcceptedPlayer

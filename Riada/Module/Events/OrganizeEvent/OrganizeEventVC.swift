@@ -155,6 +155,7 @@ extension OrganizeEventVC {
                           createdDate: Date().timestamp,
                           isPrivate: isPrivateSwitchField.isOn)
         
+        HelperTracking.track(item: .organizeCreateEvent)
         ServiceEvent.create(event: event)
         
         if isParticipateSwitchField.isOn {

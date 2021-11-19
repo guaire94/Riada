@@ -125,23 +125,5 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 //        NotificationHelper.shared.updateDisplay()
         completionHandler([.alert, .sound])
     }
-    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                                didReceive response: UNNotificationResponse,
-//                                withCompletionHandler completionHandler: @escaping () -> Void) {
-//        guard let info = response.notification.request.content.userInfo as? [String: Any] else {
-//            completionHandler()
-//            return
-//        }
-//        switch response.actionIdentifier {
-//        case UNNotificationDefaultActionIdentifier:
-//            ManagerDeepLink.shared.setDeeplinkFromNotification(info: info)
-//            //            NotificationCenter.default.post(name: .OpenRemoteNotification, object: nil)
-//            print("Open Action")
-//        default:
-//            print("default")
-//        }
-//        completionHandler()
-//    }
 }
 

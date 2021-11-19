@@ -14,6 +14,14 @@
 "SPORT_TENNIS"="Tennis";
 "SPORT_GYM"="Musculation";
 "SPORT_GOLF"="Golf";
+"SPORT_RUNNING"="Running";
+"SPORT_YOGA"="Yoga";
+"SPORT_BASKET"="BasketBall";
+"SPORT_SQUASH"="Squash";
+"SPORT_PADEL"="Padel";
+"SPORT_CLIMBING"="Escalade";
+"SPORT_KARTING"="Karting";
+"SPORT_JETSKI"="Jetski";
 
 "ONBOARDING_TITLE"="Bienvenue sur Riada";
 "ONBOARDING_APP_DESCRIPTION"="Nous souhaitons aider l'organisation des évènements sportifs\n&\nt'aider a rencontrer de nouvelles personnes";

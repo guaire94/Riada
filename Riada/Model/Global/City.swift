@@ -6,6 +6,7 @@
 //
 
 import MapKit
+import FirebaseFirestore
 
 struct City {
     var name: String
@@ -14,6 +15,10 @@ struct City {
 
     var location: CLLocationCoordinate2D {
         CLLocation(latitude: lat, longitude: lng).coordinate
+    }
+    
+    var geoPoint: GeoPoint {
+        GeoPoint(latitude: lat, longitude: lng)
     }
 }
 

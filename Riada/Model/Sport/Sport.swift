@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 struct Sport: Identifiable, Codable {
     @DocumentID var id: String?
     var name: String
+    var emoticon: String
     var image: String
     var rank: Int
     

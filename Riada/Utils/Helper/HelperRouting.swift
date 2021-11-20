@@ -29,16 +29,17 @@ class HelperRouting {
         UIViewController.display(sb: .OnBoarding)
     }
     
-    // MARK: - Private
-    private func handleRedirect() {
+    func handleRedirect() {
         guard let currentDeepLink = ManagerDeepLink.shared.currentDeepLink else { return }
         ManagerDeepLink.shared.clear()
         
         switch currentDeepLink {
         case let .eventDetails(eventId: eventId):
             ServiceEvent.getEventOrganizer(eventId: eventId) { organizer in
+                guard let organizer = organizer else { return }
                 ServiceEvent.getEventDetails(eventId: eventId) { event in
-                    if let userId = organizer?.userId, userId == ManagerUser.shared.user?.id {
+                    guard let event = event else { return }
+                    if organizer.userId == ManagerUser.shared.user?.id {
                         let eventDetailsVC = UIViewController.eventDetailsAsOrganizerVC
                         eventDetailsVC.event = event
                         self.routeToVC(vc: eventDetailsVC)
@@ -53,6 +54,7 @@ class HelperRouting {
         }
     }
     
+    // MARK: - Private
     private func routeToVC(vc: UIViewController) {
         guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
         rootViewController.presentedViewController?.dismiss(animated: false, completion: nil)

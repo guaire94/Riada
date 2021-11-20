@@ -124,7 +124,3 @@ enum FStorageReference {
         env.child(FirebaseCollection.user).child(userId)
     }
 }
-
-enum FFunctions {
-    static var sendNotification: String = "sendNotification"
-}

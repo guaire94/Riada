@@ -106,7 +106,10 @@ enum Tracking {
     // MARK: OtherProfile
     case otherProfileOrganizerEventDetails
     case otherProfileParticipateEventDetails
-    
+
+    // MARK: Notifications
+    case notifications
+
     // MARK: Settings
     case settingsNotifications
     case settingsRateApp
@@ -259,6 +262,10 @@ enum Tracking {
         case .otherProfileParticipateEventDetails:
             return ("OtherProfileParticipateEventDetails", nil)
         
+        // MARK: Notifications
+        case .notifications:
+            return ("Notifications", nil)
+            
         // MARK: Settings
         case .settingsNotifications:
             return ("SettingsNotifications", nil)

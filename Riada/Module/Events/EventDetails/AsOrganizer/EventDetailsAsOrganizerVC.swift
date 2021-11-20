@@ -70,6 +70,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
             vc.event = event
         } else if segue.identifier == AddGuestVC.Constants.identifier {
             guard let vc = segue.destination as? AddGuestVC else { return }
+            vc.delegate = self
             vc.event = event
             vc.asOrganizer = true
         } else if segue.identifier == ParticipantVC.Constants.identifier {
@@ -360,6 +361,10 @@ extension EventDetailsAsOrganizerVC: EditEventVCDelegate {
         self.event = event
         titleLabel.text = event.title
         eventTableView.reloadData()
+        
+        guard let userId = ManagerUser.shared.user?.id else { return }
+        let participants = participants.filter({ $0.userId != userId && [.accepted, .pending].contains($0.participationStatus) })
+        ServiceNotification.editEvent(event: event, participants: participants)
     }
     
     func didCancelEvent() {
@@ -386,6 +391,22 @@ extension EventDetailsAsOrganizerVC: ParticipantVCDelegate {
         let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
         participantSectionCell?.setUp(desc: desc)
     }
+    
+    func didAcceptParticipation(participant: Participant) {
+        guard let event = self.event else { return }
+        let participants = participants.filter({ $0.userId != participant.userId && $0.participationStatus == .accepted })
+        ServiceNotification.acceptNewParticipation(event: event, participants: participants, joiner: participant)
+    }
+}
+
+// MARK: - AddGuestVCDelegate
+extension EventDetailsAsOrganizerVC: AddGuestVCDelegate {
+    
+    func didAddGuest(guest: Guest) {
+        guard let event = self.event else { return }
+        let participants = participants.filter({ $0.userId != guest.associatedUserId && $0.participationStatus == .accepted })
+        ServiceNotification.acceptNewGuest(event: event, participants: participants, joiner: guest)
+    }
 }
 
 // MARK: - GuestVCDelegate
@@ -406,6 +427,12 @@ extension EventDetailsAsOrganizerVC: GuestVCDelegate {
         }
         let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
         participantSectionCell?.setUp(desc: desc)
+    }
+    
+    func didAcceptGuest(guest: Guest) {
+        guard let event = self.event else { return }
+        let participants = participants.filter({ $0.userId != guest.associatedUserId && $0.participationStatus == .accepted })
+        ServiceNotification.acceptNewGuest(event: event, participants: participants, joiner: guest)
     }
 }
 

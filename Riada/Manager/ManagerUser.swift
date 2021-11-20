@@ -18,7 +18,11 @@ class ManagerUser {
     
     var user: User?
     var favoriteSportIds: [String] = []
-    var currentCity: City = PlaceHolderCity.dubai.city
+    var currentCity: City = PlaceHolderCity.dubai.city {
+        didSet {
+            ServiceUser.updateLocation(city: currentCity)
+        }
+    }
     
     var isConnected: Bool {
         Auth.auth().currentUser != nil
@@ -30,6 +34,8 @@ class ManagerUser {
         ManagerUserPreferences.shared.load()
         if let city = ManagerUserPreferences.shared.city {
             currentCity = city
+        } else {
+            currentCity = PlaceHolderCity.dubai.city
         }
         
         ServiceUser.getProfile() { (user) in

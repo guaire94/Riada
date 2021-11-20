@@ -69,4 +69,8 @@ class ManagerDeepLink {
             currentDeepLink = nil
         }
     }
+    
+    func createDeeplinkFrom(eventId: String) -> String {
+        Constants.host.eventDetails + "?" + Constants.id.event + "=" + eventId
+    }
 }

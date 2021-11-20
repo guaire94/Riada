@@ -118,7 +118,34 @@
 "OTHER_PROFILE_PARTICIPATE"="Participe";
 "OTHER_PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER"="Cet utilisateur n'a pas encore participer à des évènements";
 
+"NOTIFICATIONS_TITLE"="Notifications";
+"NOTIFICATIONS_EMPTY_PLACEHOLDER"="Tu n'as pas encore reçu de notifications";
+
 "VERSION_NEW" = "Nouvelle version";
 "VERSION_AVAILABLE" = "Une nouvelle version de l'application est disponible";
 "VERSION_REDIRECT_APPSTORE" = "Aller sur l'Appstore";
 "VERSION_UPDATE_LATER" = "Mettre à jour plus tard";
+
+// iOS Notification
+"NOTIFICATION_ORGANIZE_EVENT_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_ORGANIZE_EVENT_BODY"="%@ organise un évènement proche de toi"; // owner nickname
+"NOTIFICATION_ACCEPT_YOUR_PARTICIPATION_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_ACCEPT_YOUR_PARTICIPATION_BODY"="Ta participation a été accepté";
+"NOTIFICATION_ACCEPT_NEW_PARTICIPATION_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_ACCEPT_NEW_PARTICIPATION_BODY"="%@ a rejoint la partie"; // participant nickname
+"NOTIFICATION_ACCEPT_YOUR_GUEST_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_ACCEPT_YOUR_GUEST_BODY"="Ton invité a été accepté";
+"NOTIFICATION_ACCEPT_NEW_GUEST_TITLE"="%@ - %@ - %@";// Sport localized - title - description
+"NOTIFICATION_ACCEPT_NEW_GUEST_BODY"="L'invité de %@ a rejoint la partie"; // guest associated user nickname
+"NOTIFICATION_REFUSE_YOUR_PARTICIPATION_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_REFUSE_YOUR_PARTICIPATION_BODY"="Ta participation a été refusé";
+"NOTIFICATION_REFUSE_YOUR_GUEST_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_REFUSE_YOUR_GUEST_BODY"="Ton invité a été refusé";
+"NOTIFICATION_EDIT_EVENT_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_EDIT_EVENT_BODY"="%@ a modifié l'évènement"; // owner nickname
+"NOTIFICATION_PARTICIPATE_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_PARTICIPATE_BODY"="%@ souhaite participé"; // participant nickname
+"NOTIFICATION_ADD_GUEST_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_ADD_GUEST_BODY"="%@ a ajouté un invité"; // participant nickname
+"NOTIFICATION_DECLINE_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
+"NOTIFICATION_DECLINE_BODY"="%@ ne pourra pas participer"; // participant nickname

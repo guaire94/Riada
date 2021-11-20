@@ -11,6 +11,7 @@ import Firebase
 protocol GuestVCDelegate: AnyObject {
     func didTapOnGuestProfile(userId: String)
     func didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: Int)
+    func didAcceptGuest(guest: Guest)
 }
 
 class GuestVC: UIViewController {
@@ -97,6 +98,8 @@ private extension GuestVC {
         
         HelperTracking.track(item: .guestAccept)
         ServiceEvent.acceptGuest(eventId: eventId, guest: guest)
+        ServiceNotification.acceptYourGuest(event: event, guest: guest)
+        delegate?.didAcceptGuest(guest: guest)
 
         let nbAcceptedPlayer = event.nbAcceptedPlayer+1
         delegate?.didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: nbAcceptedPlayer)
@@ -118,6 +121,7 @@ private extension GuestVC {
         ServiceEvent.refuseGuest(eventId: eventId, guest: guest)
         if guest.status == ParticipationStatus.accepted.rawValue {
             let nbAcceptedPlayer = event.nbAcceptedPlayer-1
+            ServiceNotification.refuseYourGuest(event: event, guest: guest)
             delegate?.didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: nbAcceptedPlayer)
             ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
         }

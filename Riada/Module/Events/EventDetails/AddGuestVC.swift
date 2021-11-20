@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddGuestVCDelegate: AnyObject {
+    func didAddGuest(guest: Guest)
+}
+
 class AddGuestVC: MKeyboardVC {
     
     //MARK: - Constant
@@ -21,6 +25,7 @@ class AddGuestVC: MKeyboardVC {
     @IBOutlet weak private var addGuestButton: MButton!
 
     // MARK: - Properties
+    weak var delegate: AddGuestVCDelegate?
     var event: Event?
     var asOrganizer: Bool = false
 
@@ -86,15 +91,28 @@ private extension AddGuestVC {
         guard let event = event,
               let eventId = event.id,
               addGuestButtonIsEnabled,
-              let nickName = nickNameTextField.text else {
+              let guestNickName = nickNameTextField.text,
+              let user = ManagerUser.shared.user,
+              let userId = user.id,
+              let userNickname = user.nickName else {
             return
         }
         
         HelperTracking.track(item: .guestAddNickname)
-        ServiceEvent.addGuest(eventId: eventId, nickName: nickName, asOrganizer: asOrganizer)
+        ServiceEvent.addGuest(eventId: eventId, nickName: guestNickName, asOrganizer: asOrganizer)
         if asOrganizer {
             ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: event.nbAcceptedPlayer+1)
         }
+        
+        let guest = Guest(id: "",
+                          associatedUserId: userId,
+                          associatedNickName: userNickname,
+                          associatedAvatar: user.avatar,
+                          guestNickName: guestNickName,
+                          status: ParticipationStatus.accepted.rawValue)
+        
+        delegate?.didAddGuest(guest: guest)
+        
         dismiss(animated: true, completion: nil)
     }
 }

@@ -165,6 +165,7 @@ extension EditEventVC {
                           placeAddress: placeAddress,
                           placeCoordinate: GeoPoint(latitude: placeLocation.coordinate.latitude, longitude: placeLocation.coordinate.longitude),
                           sportId: sportId,
+                          sportEmoticon: sport.emoticon,
                           sportName: sport.name,
                           createdDate: createdDate,
                           isPrivate: isPrivateSwitchField.isOn)

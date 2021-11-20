@@ -183,6 +183,55 @@ struct L10N {
         static let participateEmptyPlaceHolder: String = NSLocalizedString("OTHER_PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER", comment: "")
     }
     
+    struct notifications {
+        static let title: String = NSLocalizedString("NOTIFICATIONS_TITLE", comment: "")
+        static let emptyPlaceHolder: String = NSLocalizedString("NOTIFICATIONS_EMPTY_PLACEHOLDER", comment: "")
+        struct organize {
+            static let title: String = "NOTIFICATION_ORGANIZE_EVENT_TITLE"
+            static let body: String = "NOTIFICATION_ORGANIZE_EVENT_BODY"
+        }
+        struct acceptYourParticipation {
+            static let title: String = "NOTIFICATION_ACCEPT_YOUR_PARTICIPATION_TITLE"
+            static let body: String = "NOTIFICATION_ACCEPT_YOUR_PARTICIPATION_BODY"
+        }
+        struct acceptNewParticipation {
+            static let title: String = "NOTIFICATION_ACCEPT_NEW_PARTICIPATION_TITLE"
+            static let body: String = "NOTIFICATION_ACCEPT_NEW_PARTICIPATION_BODY"
+        }
+        struct acceptYourGuest {
+            static let title: String = "NOTIFICATION_ACCEPT_YOUR_GUEST_TITLE"
+            static let body: String = "NOTIFICATION_ACCEPT_YOUR_GUEST_BODY"
+        }
+        struct acceptNewGuest {
+            static let title: String = "NOTIFICATION_ACCEPT_NEW_GUEST_TITLE"
+            static let body: String = "NOTIFICATION_ACCEPT_NEW_GUEST_BODY"
+        }
+        struct refuseYourParticipation {
+            static let title: String = "NOTIFICATION_REFUSE_YOUR_PARTICIPATION_TITLE"
+            static let body: String = "NOTIFICATION_REFUSE_YOUR_PARTICIPATION_BODY"
+        }
+        struct refuseYourGuest {
+            static let title: String = "NOTIFICATION_REFUSE_YOUR_GUEST_TITLE"
+            static let body: String = "NOTIFICATION_REFUSE_YOUR_GUEST_BODY"
+        }
+        struct editEvent {
+            static let title: String = "NOTIFICATION_EDIT_EVENT_TITLE"
+            static let body: String = "NOTIFICATION_EDIT_EVENT_BODY"
+        }
+        struct participate {
+            static let title: String = "NOTIFICATION_PARTICIPATE_TITLE"
+            static let body: String = "NOTIFICATION_PARTICIPATE_BODY"
+        }
+        struct addGuest {
+            static let title: String = "NOTIFICATION_ADD_GUEST_TITLE"
+            static let body: String = "NOTIFICATION_ADD_GUEST_BODY"
+        }
+        struct decline {
+            static let title: String = "NOTIFICATION_DECLINE_TITLE"
+            static let body: String = "NOTIFICATION_DECLINE_BODY"
+        }
+    }
+    
     struct version {
         static let new: String = NSLocalizedString("VERSION_NEW", comment: "")
         static let available: String = NSLocalizedString("VERSION_AVAILABLE", comment: "")

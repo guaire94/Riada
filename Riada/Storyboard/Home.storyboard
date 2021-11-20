@@ -140,6 +140,7 @@
                         <segue destination="CM7-ZC-S5B" kind="presentation" identifier="OrganizeEventVC" id="shF-SK-6RZ"/>
                         <segue destination="6qd-lf-dn7" kind="presentation" identifier="SignUpVC" id="8gc-Eo-W39"/>
                         <segue destination="K59-oV-Urf" kind="show" identifier="MyProfileVC" id="JVS-cT-hjf"/>
+                        <segue destination="waU-dQ-FAQ" kind="show" identifier="EventDetailsAsOrganizerVC" id="h5Z-fh-4LI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKr-KQ-86R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,6 +328,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfF-ZQ-FB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1099" y="169"/>
+        </scene>
+        <!--EventDetailsAsOrganizerVC-->
+        <scene sceneID="uMq-rQ-sIT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Event" referencedIdentifier="EventDetailsAsOrganizerVC" id="waU-dQ-FAQ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gK5-yA-bmc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Dv-Uo-fdC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1145" y="956"/>
         </scene>
     </scenes>
     <resources>

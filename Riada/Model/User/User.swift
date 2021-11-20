@@ -15,7 +15,8 @@ struct User: Identifiable, Codable {
     var avatar: String?
     var favoritesSports: [String]
     var createdDate: Timestamp
-    
+    var location: GeoPoint
+
     var toParticipantData: [String: Any]? {
         guard let userId = self.id, let nickName = self.nickName else { return nil }
         var data = [

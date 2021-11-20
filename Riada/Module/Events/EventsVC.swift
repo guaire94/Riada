@@ -52,10 +52,10 @@ class EventsVC: UIViewController {
             vc.organizer = eventCell.organizer
         } else if segue.identifier == EventDetailsAsOrganizerVC.Constants.identifier {
             guard let vc = segue.destination as? EventDetailsAsOrganizerVC,
-                  let eventCell = sender as? EventCell else {
+                  let event = sender as? Event else {
                 return
             }
-            vc.event = eventCell.event
+            vc.event = event
         } else if segue.identifier == OrganizeEventVC.Constants.identifier {
             guard let vc = segue.destination as? OrganizeEventVC else { return }
             vc.delegate = self
@@ -199,6 +199,7 @@ extension EventsVC: UITableViewDataSource {
 extension EventsVC: OrganizeEventVCDelegate {
 
     func didCreateEvent(event: Event) {
+        performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
         shareEvent(event: event)
     }
 }
@@ -214,7 +215,7 @@ extension EventsVC: UITableViewDelegate {
         }
         
         if organizer.userId == userId {
-            performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: cell)
+            performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: cell.event)
         } else {
             performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: cell)
         }

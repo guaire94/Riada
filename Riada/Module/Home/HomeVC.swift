@@ -55,6 +55,12 @@ class HomeVC: UIViewController {
         } else if segue.identifier == NotificationsVC.Constants.identifier {
             guard let vc = segue.destination as? NotificationsVC else { return }
             vc.delegate = self
+        } else if segue.identifier == EventDetailsAsOrganizerVC.Constants.identifier {
+            guard let vc = segue.destination as? EventDetailsAsOrganizerVC,
+                  let event = sender as? Event else {
+                return
+            }
+            vc.event = event
         }
     }
     
@@ -178,6 +184,7 @@ extension HomeVC: SearchLocationVCDelegate {
 extension HomeVC: OrganizeEventVCDelegate {
 
     func didCreateEvent(event: Event) {
+        performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
         shareEvent(event: event)
     }
 }

@@ -98,7 +98,7 @@
 
 "PROFILE_ORGANIZER"="Organisateur";
 "PROFILE_ORGANIZER_EMPTY_PLACEHOLDER"="Tu n'as pas encore organiser d'évènements";
-"PROFILE_PARTICIPATE"="Participe";
+"PROFILE_PARTICIPATE"="Participant";
 "PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER"="Tu n'as pas encore participer à des évènements";
 "PROFILE_INFORMATIONS"="Informations";
 "PROFILE_IMAGE_PICKER_GALLERY" = "Importer depuis la galerie";
@@ -116,7 +116,7 @@
 
 "OTHER_PROFILE_ORGANIZER"="Organisateur";
 "OTHER_PROFILE_ORGANIZER_EMPTY_PLACEHOLDER"="Cet utilisateur n'a pas encore organiser d'évènements";
-"OTHER_PROFILE_PARTICIPATE"="Participe";
+"OTHER_PROFILE_PARTICIPATE"="Participant";
 "OTHER_PROFILE_PARTICIPATE_EMPTY_PLACEHOLDER"="Cet utilisateur n'a pas encore participer à des évènements";
 
 "NOTIFICATIONS_TITLE"="Notifications";

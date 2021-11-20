@@ -138,6 +138,9 @@ extension SearchLocationVC: UITextFieldDelegate {
         if query.count > 0 {
             search(query)
         } else {
+            if searchType == .city {
+                places = PlaceHolderCity.allCases.map({ GooglePlace(name: $0.name, id: $0.placeId) })
+            }
             citiesTableView.reloadData()
         }
         return true

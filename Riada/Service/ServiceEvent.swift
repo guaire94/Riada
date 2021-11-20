@@ -63,7 +63,7 @@ class ServiceEvent {
             if numberOfItems == .zero {
                 delegate.didFinishLoading()
             }
-            let timeStamp = Timestamp(date: Date().onlyDate)
+            let timeStamp = Timestamp(date: Date().onlyDateAndHour)
             snapshot.documentChanges.forEach { diff in
                 if let event = try? diff.document.data(as: Event.self),
                    event.date.compare(timeStamp) != .orderedAscending {

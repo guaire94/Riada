@@ -67,6 +67,11 @@ extension Date {
     }
     
     var onlyDate: Date {
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        return Calendar.current.date(from: components) ?? Date()
+    }
+    
+    var onlyDateAndHour: Date {
         let components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: self)
         return Calendar.current.date(from: components) ?? Date()
     }

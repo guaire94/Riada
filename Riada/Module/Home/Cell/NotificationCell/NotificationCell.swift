@@ -23,8 +23,8 @@ class NotificationCell: UITableViewCell {
     @IBOutlet weak private var content: UIView!
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var bodyLabel: UILabel!
-    @IBOutlet weak private var deeplinkRedirectionImageView: UIImageView!
-
+    @IBOutlet weak private var timeLabel: UILabel!
+    
     // MARK: - LifeCycle
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -44,11 +44,7 @@ class NotificationCell: UITableViewCell {
 
         titleLabel.text = title
         bodyLabel.text = body
-        guard let _ = notification.deeplink else {
-            deeplinkRedirectionImageView.isHidden = true
-            return
-        }
-        deeplinkRedirectionImageView.isHidden = false
+        timeLabel.text = notification.createdDate.hour
     }
     
     // MARK: - Private

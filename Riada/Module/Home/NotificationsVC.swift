@@ -67,12 +67,12 @@ class NotificationsVC: UIViewController {
     
     private func sortNotificationsByDate() {
         var sortedNotifications: [(date: Date, notifications: [Notification])] = []
-        let dict = Dictionary(grouping: notifications, by: { $0.createdDate })
-        let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedAscending })
+        let dict = Dictionary(grouping: notifications, by: { $0.createdDate.dateValue().onlyDate })
+        let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedDescending })
         
         for key in sortedKeys {
-            if let notifications = dict[key] {
-                sortedNotifications.append((date: key.dateValue(), notifications: notifications))
+            if let notifications = dict[key]?.sorted(by: { $0.createdDate.compare($1.createdDate) == .orderedDescending }) {
+                sortedNotifications.append((date: key, notifications: notifications))
             }
         }
         self.notificationsByDate = sortedNotifications

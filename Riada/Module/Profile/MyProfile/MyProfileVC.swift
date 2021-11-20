@@ -156,7 +156,7 @@ class MyProfileVC: UIViewController {
     private func sortEventByDate() {
         var sortedEvent: [(date: Date, events: [RelatedEvent])] = []
         let dict = Dictionary(grouping: events, by: { $0.date })
-        let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedAscending })
+        let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedDescending })
         
         for key in sortedKeys {
             if let events = dict[key] {

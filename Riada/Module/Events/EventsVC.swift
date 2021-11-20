@@ -90,12 +90,13 @@ class EventsVC: UIViewController {
     
     private func sortEventByDate() {
         var sortedEvent: [(date: Date, events: [Event])] = []
-        let dict = Dictionary(grouping: events, by: { $0.date })
+        let dict = Dictionary(grouping: events, by: { $0.date.dateValue().onlyDate })
         let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedAscending })
         
         for key in sortedKeys {
-            if let events = dict[key] {
-                sortedEvent.append((date: key.dateValue(), events: events))
+            if let events = dict[key]?.sorted(by: { $0.date.compare($1.date) == .orderedAscending }) {
+//            if let events = dict[key] {
+                sortedEvent.append((date: key, events: events))
             }
         }
         self.eventsByDate = sortedEvent

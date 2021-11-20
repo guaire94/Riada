@@ -27,6 +27,14 @@ extension Date {
     var timestamp: Timestamp {
         Timestamp(date: self)
     }
+    
+    var sectionDesc: String {
+        if onlyDate == Date().onlyDate {
+            return L10N.global.date.today
+        } else {
+            return long
+        }
+    }
 
     var long: String {
         let dateFormatter = DateFormatter()

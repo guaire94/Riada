@@ -52,6 +52,7 @@ class SignUpVC: UIViewController {
             tableView.register(section.cellNib, forCellReuseIdentifier: section.cellIdentifier)
         }
         tableView.dataSource = self
+        tableView.delegate = self
     }
         
     private func handleSignIn(credential: AuthCredential, nickName: String) {

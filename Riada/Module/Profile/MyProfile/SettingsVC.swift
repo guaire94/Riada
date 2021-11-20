@@ -171,6 +171,7 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
         case .logout:
             HelperTracking.track(item: .settingsLogout)
             ManagerUser.shared.signOut()
+            ManagerUserPreferences.shared.clear()
             dismiss(animated: true)
             HelperRouting.shared.routeToOnBoarding()
         }

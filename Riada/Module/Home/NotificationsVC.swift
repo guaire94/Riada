@@ -128,7 +128,7 @@ extension NotificationsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionCell.Constants.identifier) as? SectionCell else { return nil }
-        header.setUp(desc: notificationsByDate[section].date.long)
+        header.setUp(desc: notificationsByDate[section].date.sectionDesc)
         return header
     }
     

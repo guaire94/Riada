@@ -15,6 +15,9 @@ struct L10N {
             static let cancel: String = NSLocalizedString("GLOBAL_ACTION_CANCEL", comment: "")
             static let confirm: String = NSLocalizedString("GLOBAL_ACTION_CONFIRM", comment: "")
         }
+        struct date {
+            static let today: String = NSLocalizedString("GLOBAL_DATE_TODAY", comment: "")
+        }
     }
     
     struct onBoarding {

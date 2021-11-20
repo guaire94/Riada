@@ -19,7 +19,7 @@ class SignInCell: UITableViewCell {
 
     //MARK: - Constant
     enum Constants {
-        static let height: CGFloat = 78
+        static let height: CGFloat = 138
         static let identifier: String = "SignInCell"
         static let nib = UINib(nibName: Constants.identifier, bundle: nil)
         fileprivate static let contentCornerRadius: CGFloat = 10

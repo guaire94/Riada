@@ -9,6 +9,7 @@
 "GLOBAL_ACTION_OK"="Ok";
 "GLOBAL_ACTION_CANCEL"="Cancel";
 "GLOBAL_ACTION_CONFIRM"="Confirm";
+"GLOBAL_DATE_TODAY"="Today";
 
 "SPORT_SOCCER"="Soccer";
 "SPORT_TENNIS"="Tennis";

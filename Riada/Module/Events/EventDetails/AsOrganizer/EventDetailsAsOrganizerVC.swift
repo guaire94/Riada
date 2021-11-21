@@ -363,8 +363,8 @@ extension EventDetailsAsOrganizerVC: EditEventVCDelegate {
         eventTableView.reloadData()
         
         guard let userId = ManagerUser.shared.user?.id else { return }
-        let participants = participants.filter({ $0.userId != userId && [.accepted, .pending].contains($0.participationStatus) })
-        ServiceNotification.editEvent(event: event, participants: participants)
+        let filteredParticipants = participants.filter({ $0.userId != userId && [.accepted, .pending].contains($0.participationStatus) })
+        ServiceNotification.editEvent(event: event, participants: filteredParticipants)
     }
     
     func didCancelEvent() {
@@ -394,8 +394,8 @@ extension EventDetailsAsOrganizerVC: ParticipantVCDelegate {
     
     func didAcceptParticipation(participant: Participant) {
         guard let event = self.event else { return }
-        let participants = participants.filter({ $0.userId != participant.userId && $0.participationStatus == .accepted })
-        ServiceNotification.acceptNewParticipation(event: event, participants: participants, joiner: participant)
+        let filteredParticipants = participants.filter({ $0.userId != participant.userId && $0.participationStatus == .accepted })
+        ServiceNotification.acceptNewParticipation(event: event, participants: filteredParticipants, joiner: participant)
     }
 }
 
@@ -404,8 +404,8 @@ extension EventDetailsAsOrganizerVC: AddGuestVCDelegate {
     
     func didAddGuest(guest: Guest) {
         guard let event = self.event else { return }
-        let participants = participants.filter({ $0.userId != guest.associatedUserId && $0.participationStatus == .accepted })
-        ServiceNotification.acceptNewGuest(event: event, participants: participants, joiner: guest)
+        let filteredParticipants = participants.filter({ $0.userId != guest.associatedUserId && $0.participationStatus == .accepted })
+        ServiceNotification.acceptNewGuest(event: event, participants: filteredParticipants, joiner: guest)
     }
 }
 
@@ -431,8 +431,8 @@ extension EventDetailsAsOrganizerVC: GuestVCDelegate {
     
     func didAcceptGuest(guest: Guest) {
         guard let event = self.event else { return }
-        let participants = participants.filter({ $0.userId != guest.associatedUserId && $0.participationStatus == .accepted })
-        ServiceNotification.acceptNewGuest(event: event, participants: participants, joiner: guest)
+        let filteredParticipants = participants.filter({ $0.userId != guest.associatedUserId && $0.participationStatus == .accepted })
+        ServiceNotification.acceptNewGuest(event: event, participants: filteredParticipants, joiner: guest)
     }
 }
 

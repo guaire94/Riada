@@ -22,6 +22,7 @@ struct Event: Identifiable, Codable {
     var placeAddress: String
     var placeCoordinate: GeoPoint
     var sportId: String
+    var sportEmoticon: String
     var sportName: String
     var createdDate: Timestamp
     var isPrivate: Bool
@@ -80,6 +81,7 @@ struct Event: Identifiable, Codable {
            "placeAddress": placeAddress,
            "placeCoordinate": placeCoordinate,
            "sportId": sportId,
+           "sportEmoticon": sportEmoticon,
            "sportName": sportName,
            "createdDate": createdDate,
            "isPrivate": isPrivate,
@@ -99,6 +101,7 @@ struct Event: Identifiable, Codable {
            "placeAddress": placeAddress,
            "placeCoordinate": placeCoordinate,
            "sportId": sportId,
+           "sportEmoticon": sportEmoticon,
            "sportName": sportName,
            "createdDate": createdDate,
            "isPrivate": isPrivate,

@@ -47,6 +47,10 @@
 		B8FDE3B9253F79B800BD29B2 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */; };
 		E31E442F6F04E2E9F9202CE0 /* Pods_Riada.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */; };
 		EE20263626F617B50094D87C /* ManagerUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20263526F617B50094D87C /* ManagerUserPreferences.swift */; };
+		EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3942747E08900F484F4 /* NotificationsVC.swift */; };
+		EE21C3992747E27A00F484F4 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3972747E27A00F484F4 /* NotificationCell.swift */; };
+		EE21C39A2747E27A00F484F4 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE21C3982747E27A00F484F4 /* NotificationCell.xib */; };
+		EE21C39C2747F42E00F484F4 /* HelperDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C39B2747F42E00F484F4 /* HelperDistance.swift */; };
 		EE27193926EBD21100A3F281 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27193826EBD21100A3F281 /* Notification.swift */; };
 		EE27193D26EBD2E000A3F281 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27193C26EBD2E000A3F281 /* User.swift */; };
 		EE27196726EBD42000A3F281 /* RelatedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27196626EBD42000A3F281 /* RelatedEvent.swift */; };
@@ -189,6 +193,10 @@
 		B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Riada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE20263526F617B50094D87C /* ManagerUserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerUserPreferences.swift; sourceTree = "<group>"; };
+		EE21C3942747E08900F484F4 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		EE21C3972747E27A00F484F4 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		EE21C3982747E27A00F484F4 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
+		EE21C39B2747F42E00F484F4 /* HelperDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDistance.swift; sourceTree = "<group>"; };
 		EE27193826EBD21100A3F281 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		EE27193C26EBD2E000A3F281 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE27196626EBD42000A3F281 /* RelatedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedEvent.swift; sourceTree = "<group>"; };
@@ -323,6 +331,7 @@
 				EE5836D926ECE35100ED203D /* HelperRouting.swift */,
 				EE75D5672707481F004B7973 /* HelperDynamicLink.swift */,
 				EE8951E62741211F0081AE09 /* HelperTracking.swift */,
+				EE21C39B2747F42E00F484F4 /* HelperDistance.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -561,6 +570,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		EE21C3962747E23100F484F4 /* NotificationCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE21C3972747E27A00F484F4 /* NotificationCell.swift */,
+				EE21C3982747E27A00F484F4 /* NotificationCell.xib */,
+			);
+			path = NotificationCell;
+			sourceTree = "<group>";
+		};
 		EE27193B26EBD2C700A3F281 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +623,7 @@
 				EEE1F47826F3BED500754DDD /* Cell */,
 				EE5836EF26ECF8BF00ED203D /* HomeVC.swift */,
 				EEE1F46926F23D0700754DDD /* SearchLocationVC.swift */,
+				EE21C3942747E08900F484F4 /* NotificationsVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -939,6 +958,7 @@
 		EEE1F47826F3BED500754DDD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EE21C3962747E23100F484F4 /* NotificationCell */,
 				EEE1F46C26F23DDF00754DDD /* CityCell */,
 				EE5836F526ECF95B00ED203D /* SportCell */,
 			);
@@ -1032,6 +1052,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE21C39A2747E27A00F484F4 /* NotificationCell.xib in Resources */,
 				EEDC9AB126FDEA7D00627C73 /* EventParticipantCell.xib in Resources */,
 				EEDC9AA726FDCBE700627C73 /* PhotoCell.xib in Resources */,
 				EEE1F48226F3C0C400754DDD /* SectionCell.xib in Resources */,
@@ -1139,6 +1160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE5836F026ECF8BF00ED203D /* HomeVC.swift in Sources */,
+				EE21C3992747E27A00F484F4 /* NotificationCell.swift in Sources */,
 				EE5836E326ECE55700ED203D /* OnBoadingVC.swift in Sources */,
 				EE5A0B1B271B638E009A951B /* ParticipantVC.swift in Sources */,
 				EEBBD46E27184DF600519EBC /* OrganizeEventVC.swift in Sources */,
@@ -1179,6 +1201,7 @@
 				EE5A0B19271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift in Sources */,
 				EEDC9A9C26FDCB5E00627C73 /* UICollectionView+M.swift in Sources */,
 				EE5A0B13271B27B2009A951B /* MSwitchField.swift in Sources */,
+				EE21C39C2747F42E00F484F4 /* HelperDistance.swift in Sources */,
 				EEE1F48F26F3CCFC00754DDD /* UITableView+M.swift in Sources */,
 				EEE1F46626F23A4900754DDD /* MTextField.swift in Sources */,
 				EEBBD4742718638D00519EBC /* MPickerField.swift in Sources */,
@@ -1199,6 +1222,7 @@
 				B8F71AD1254B985B00D686B4 /* UIView+M.swift in Sources */,
 				B83BF57B255EED99006903A2 /* CollectionReference+M.swift in Sources */,
 				B84ECBBA254036CF007F8E9E /* FirebaseConfig.swift in Sources */,
+				EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */,
 				EEBBD47F271863FB00519EBC /* SportPickerSource.swift in Sources */,
 				EE6E43182736D6DE00A48B84 /* UIImage+M.swift in Sources */,
 				EE6B7F6B270077C800E44B7C /* ManagerDeepLink.swift in Sources */,
@@ -1386,21 +1410,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Riada/Riada.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B5GUA887WN;
+				DEVELOPMENT_TEAM = 662SLAFBT4;
 				INFOPLIST_FILE = Riada/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.socialSport.app.SocialSport;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.socialSport.app.SocialSport 1633793797";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1414,18 +1438,18 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B5GUA887WN;
+				DEVELOPMENT_TEAM = 662SLAFBT4;
 				INFOPLIST_FILE = Riada/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.socialSport.app.SocialSport;
+				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.socialSport.app.SocialSport 1633793849";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

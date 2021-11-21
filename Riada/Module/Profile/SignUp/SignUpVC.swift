@@ -10,7 +10,7 @@ import AuthenticationServices
 import Firebase
 import GoogleSignIn
 
-protocol SignUpVCDelegate: class {
+protocol SignUpVCDelegate: AnyObject {
     func didSignUp()
 }
 
@@ -52,6 +52,7 @@ class SignUpVC: UIViewController {
             tableView.register(section.cellNib, forCellReuseIdentifier: section.cellIdentifier)
         }
         tableView.dataSource = self
+        tableView.delegate = self
     }
         
     private func handleSignIn(credential: AuthCredential, nickName: String) {

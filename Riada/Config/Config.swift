@@ -16,7 +16,7 @@ enum Config {
 
     #if DEBUG
         static var WormholyIsEnabled = true
-        static var UpdateAppLangua = true
+        static var UpdateAppLangua = false
     #else
         static var WormholyIsEnabled = false
         static var UpdateAppLangua = false

@@ -31,14 +31,7 @@ protocol ServiceEventGuestDelegate {
 }
 
 class ServiceEvent {
-    
-    // MARK: - Constants
-    enum Constant {
-        static var maxMilesDistance: Double = 20
-        static var OneMileLat: Double = 0.0144927536231884
-        static var OneMileLng: Double = 0.0181818181818182
-    }
-    
+        
     // MARK: - Properties
     private static var nextEventsListener: ListenerRegistration?
     private static var eventParticipantsListener: ListenerRegistration?
@@ -59,15 +52,9 @@ class ServiceEvent {
     static func getNextEvents(sportId: String, delegate: ServiceNextEventDelegate) {
         let lat = ManagerUser.shared.currentCity.lat
         let lng = ManagerUser.shared.currentCity.lng
-        
-        let lowerLat = lat - (Constant.OneMileLat * Constant.maxMilesDistance)
-        let lowerLon = lng - (Constant.OneMileLng * Constant.maxMilesDistance)
-        
-        let greaterLat = lat + (Constant.OneMileLat * Constant.maxMilesDistance)
-        let greaterLon = lng + (Constant.OneMileLng * Constant.maxMilesDistance)
-        
-        let lesserGeopoint = GeoPoint(latitude: lowerLat, longitude: lowerLon)
-        let greaterGeopoint = GeoPoint(latitude: greaterLat, longitude: greaterLon)
+
+        let lesserGeopoint = HelperDistance.shared.computeLesserGeoPoint(lat: lat, lng: lng)
+        let greaterGeopoint = HelperDistance.shared.computeGreatestGeoPoint(lat: lat, lng: lng)
         
         nextEventsListener?.remove()
         nextEventsListener = FFirestoreReference.events.order(by: "placeCoordinate").whereField("placeCoordinate", isGreaterThan: lesserGeopoint).whereField("placeCoordinate", isLessThan: greaterGeopoint).whereField("sportId", isEqualTo: sportId).whereField("isPrivate", isEqualTo: false).addSnapshotListener { query, error in
@@ -76,7 +63,7 @@ class ServiceEvent {
             if numberOfItems == .zero {
                 delegate.didFinishLoading()
             }
-            let timeStamp = Timestamp(date: Date().onlyDate)
+            let timeStamp = Timestamp(date: Date().onlyDateAndHour)
             snapshot.documentChanges.forEach { diff in
                 if let event = try? diff.document.data(as: Event.self),
                    event.date.compare(timeStamp) != .orderedAscending {

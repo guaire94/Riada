@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FirebaseDeepLinkPasteboardRetrievalEnabled</key>
-	<false/>
-	<key>FirebaseDynamicLinksCustomDomains</key>
-	<array>
-		<string>https://socialsport.page.link</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -24,12 +18,37 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.889872739996-9t8a4i2pfal1em6bqv80divt29vd9r0i</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FirebaseDeepLinkPasteboardRetrievalEnabled</key>
+	<false/>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://socialsport.page.link</string>
+	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>We need calendar permission to allow you to add event in your personal calendar</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need camera permission to allow you to change your avatar</string>
+	<key>NSContactsUsageDescription</key>
+	<string>We need contact permission to allow you to specify a contact when adding an event</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>App collect anonymised data to have a better understanding on user experience and make update relevant</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Bold.ttf</string>
@@ -50,8 +69,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -62,24 +79,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>We need calendar permission to allow you to add event in your personal calendar</string>
-	<key>NSContactsUsageDescription</key>
-	<string>We need contact permission to allow you to specify a contact when adding an event</string>
-	<key>NSCameraUsageDescription</key>
-	<string>We need camera permission to allow you to change your avatar</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>App collect anonymised data to have a better understanding on user experience and make update relevant</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.889872739996-3svle3fdolegpku8216neitc5i1rqgpj</string>
-			</array>
-		</dict>
-	</array>
 </dict>
 </plist>

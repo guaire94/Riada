@@ -8,6 +8,7 @@
 import FirebaseAuth
 import MapKit
 import SDWebImage
+import FirebaseMessaging
 
 class ManagerUser {
     
@@ -17,7 +18,11 @@ class ManagerUser {
     
     var user: User?
     var favoriteSportIds: [String] = []
-    var currentCity: City = PlaceHolderCity.dubai.city
+    var currentCity: City = PlaceHolderCity.dubai.city {
+        didSet {
+            ServiceUser.updateLocation(city: currentCity)
+        }
+    }
     
     var isConnected: Bool {
         Auth.auth().currentUser != nil
@@ -29,6 +34,8 @@ class ManagerUser {
         ManagerUserPreferences.shared.load()
         if let city = ManagerUserPreferences.shared.city {
             currentCity = city
+        } else {
+            currentCity = PlaceHolderCity.dubai.city
         }
         
         ServiceUser.getProfile() { (user) in
@@ -44,6 +51,12 @@ class ManagerUser {
     
     func clear() {
         try? Auth.auth().signOut()
+        (UIApplication.shared.delegate as? AppDelegate)?.unregisterForRemoteNotifications()
+        Messaging.messaging().token { token, error in
+            if let token = token, error == nil {
+                ServiceDeviceToken.shared.unregister(token: token)
+            }
+        }
         user = nil
         favoriteSportIds = []
         currentCity = PlaceHolderCity.dubai.city

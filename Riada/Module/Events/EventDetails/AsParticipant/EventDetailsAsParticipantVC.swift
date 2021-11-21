@@ -83,6 +83,7 @@ class EventDetailsAsParticipantVC: UIViewController {
             vc.event = event
         } else if segue.identifier == AddGuestVC.Constants.identifier {
             guard let vc = segue.destination as? AddGuestVC else { return }
+            vc.delegate = self
             vc.event = event
             vc.asOrganizer = false
         } else if segue.identifier == OtherProfileVC.Constants.identifier {
@@ -141,6 +142,10 @@ class EventDetailsAsParticipantVC: UIViewController {
     }
     
     private func updateButtonsState() {
+        guard currentUserParticipationStatus != .refused else {
+            actionBar.isHidden = true
+            return
+        }
         participateButton.isHidden = currentUserParticipate
         addGuestButton.isHidden = !currentUserParticipate
         declineButton.isHidden = !currentUserParticipate
@@ -216,16 +221,32 @@ extension EventDetailsAsParticipantVC: ServiceEventParticipantDelegate  {
     
     func dataAdded(participant: Participant) {
         participants.append(participant)
+        guard let userId = ManagerUser.shared.user?.id,
+              participant.userId == userId else {
+                  return
+        }
+        currentUserParticipationStatus = participant.participationStatus
     }
     
     func dataModified(participant: Participant) {
         guard let index = participants.firstIndex(where: { $0.id == participant.id }) else { return }
         participants[index] = participant
+        guard let userId = ManagerUser.shared.user?.id,
+              participant.userId == userId else {
+                  return
+        }
+        currentUserParticipationStatus = participant.participationStatus
     }
     
     func dataRemoved(participant: Participant) {
         guard let index = participants.firstIndex(where: { $0.id == participant.id }) else { return }
         participants.remove(at: index)
+        
+        guard let userId = ManagerUser.shared.user?.id,
+              participant.userId == userId else {
+                  return
+        }
+        currentUserParticipationStatus = nil
     }
     
     func didFinishLoading() {
@@ -378,6 +399,18 @@ extension EventDetailsAsParticipantVC: EKEventEditViewDelegate {
     }
 }
 
+// MARK: - AddGuestVCDelegate
+extension EventDetailsAsParticipantVC: AddGuestVCDelegate {
+    
+    func didAddGuest(guest: Guest) {
+        guard let event = self.event,
+            let organizer = organizer else {
+            return
+        }
+        ServiceNotification.addGuest(event: event, organizer: organizer)
+    }
+}
+
 // MARK: IBAction
 extension EventDetailsAsParticipantVC {
     
@@ -403,13 +436,15 @@ extension EventDetailsAsParticipantVC {
     
     @IBAction func participateToggle(_ sender: Any) {
         guard let event = self.event,
-              ManagerUser.shared.user?.nickName != nil else {
+              ManagerUser.shared.user?.nickName != nil,
+              let organizer = organizer else {
                   performSegue(withIdentifier: ParticipateVC.Constants.identifier, sender: nil)
                   return
               }
         
         HelperTracking.track(item: .eventDetailsParticipate)
         ServiceEvent.participate(event: event)
+        ServiceNotification.participate(event: event, organizer: organizer)
     }
     
     @IBAction func addGuestToggle(_ sender: Any) {
@@ -419,7 +454,8 @@ extension EventDetailsAsParticipantVC {
     
     @IBAction func declineToggle(_ sender: Any) {
         guard let event = event,
-              let eventId = event.id else {
+              let eventId = event.id,
+              let organizer = organizer else {
             return
         }
         
@@ -428,5 +464,6 @@ extension EventDetailsAsParticipantVC {
         let nbAcceptedPlayer = event.nbAcceptedPlayer-1
         self.event?.nbAcceptedPlayer = nbAcceptedPlayer
         ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
+        ServiceNotification.decline(event: event, organizer: organizer)
     }
 }

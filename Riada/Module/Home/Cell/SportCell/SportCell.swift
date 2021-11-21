@@ -32,7 +32,7 @@ class SportCell: UITableViewCell {
     private var sport: Sport? {
         didSet {
             guard let sport = sport else { return }
-            nameLabel.text = sport.localizedName
+            nameLabel.text = sport.localizedName.uppercased()
             let storage = Storage.storage().reference(forURL: sport.image)
             backgroundImage.sd_setImage(with: storage)
         }

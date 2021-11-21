@@ -8,9 +8,10 @@
 import UIKit
 import Firebase
 
-protocol ParticipantVCDelegate: class {
+protocol ParticipantVCDelegate: AnyObject {
     func didTapOnParticipantProfile(userId: String)
     func didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: Int)
+    func didAcceptParticipation(participant: Participant)
 }
 
 class ParticipantVC: UIViewController {
@@ -91,6 +92,8 @@ private extension ParticipantVC {
         
         HelperTracking.track(item: .participantAccept)
         ServiceEvent.acceptParticipant(eventId: eventId, participant: participant)
+        ServiceNotification.acceptYourParticipation(event: event, participant: participant)
+        delegate?.didAcceptParticipation(participant: participant)
 
         let nbAcceptedPlayer = event.nbAcceptedPlayer+1
         delegate?.didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: nbAcceptedPlayer)
@@ -112,6 +115,7 @@ private extension ParticipantVC {
         ServiceEvent.refuseParticipant(eventId: eventId, participant: participant)
         if participant.status == ParticipationStatus.accepted.rawValue {
             let nbAcceptedPlayer = event.nbAcceptedPlayer-1
+            ServiceNotification.refuseYourParticipation(event: event, participant: participant)
             delegate?.didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: nbAcceptedPlayer)
             ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
         }

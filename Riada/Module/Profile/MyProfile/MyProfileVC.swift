@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-protocol MyProfileVCDelegate: class {
+protocol MyProfileVCDelegate: AnyObject {
     func didUpdateAvatar()
 }
 
@@ -156,7 +156,7 @@ class MyProfileVC: UIViewController {
     private func sortEventByDate() {
         var sortedEvent: [(date: Date, events: [RelatedEvent])] = []
         let dict = Dictionary(grouping: events, by: { $0.date })
-        let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedAscending })
+        let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedDescending })
         
         for key in sortedKeys {
             if let events = dict[key] {
@@ -246,7 +246,7 @@ extension MyProfileVC: UITableViewDataSource {
         switch currentSection {
         case .organizer, .participate:
             guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionCell.Constants.identifier) as? SectionCell else { return nil }
-            header.setUp(desc: eventsByDate[section].date.long)
+            header.setUp(desc: eventsByDate[section].date.sectionDesc)
             return header
         case .informations:
             return nil

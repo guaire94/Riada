@@ -24,13 +24,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="330" height="72"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="MGP-JP-Av3">
-                            <rect key="frame" x="0.0" y="0.0" width="330" height="72"/>
+                            <rect key="frame" x="0.0" y="0.0" width="328" height="72"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G0D-qH-azR">
-                                    <rect key="frame" x="0.0" y="0.0" width="330" height="72"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="72"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSz-Ds-74e">
-                                            <rect key="frame" x="0.0" y="24" width="273" height="24"/>
+                                            <rect key="frame" x="0.0" y="24" width="271" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="e7K-rx-qDN"/>
                                             </constraints>
@@ -39,7 +39,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ed1-Qp-pAq">
-                                            <rect key="frame" x="281" y="20.5" width="51" height="31"/>
+                                            <rect key="frame" x="279" y="20.5" width="51" height="31"/>
                                         </switch>
                                     </subviews>
                                 </stackView>
@@ -50,7 +50,7 @@
                     <constraints>
                         <constraint firstItem="MGP-JP-Av3" firstAttribute="top" secondItem="dBY-Zi-pKc" secondAttribute="top" id="BTe-98-RrP"/>
                         <constraint firstAttribute="bottom" secondItem="MGP-JP-Av3" secondAttribute="bottom" id="DDq-uN-e8t"/>
-                        <constraint firstAttribute="trailing" secondItem="MGP-JP-Av3" secondAttribute="trailing" id="VHR-sb-0v2"/>
+                        <constraint firstAttribute="trailing" secondItem="MGP-JP-Av3" secondAttribute="trailing" constant="2" id="VHR-sb-0v2"/>
                         <constraint firstItem="MGP-JP-Av3" firstAttribute="leading" secondItem="dBY-Zi-pKc" secondAttribute="leading" id="rEC-kU-qP8"/>
                     </constraints>
                 </view>

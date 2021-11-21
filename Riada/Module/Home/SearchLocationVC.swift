@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-protocol SearchLocationVCDelegate: class {
+protocol SearchLocationVCDelegate: AnyObject {
     func didSelectCity(city: City)
     func didSelectPlace(place: GooglePlace, address: String, location: CLLocation)
 }
@@ -138,6 +138,9 @@ extension SearchLocationVC: UITextFieldDelegate {
         if query.count > 0 {
             search(query)
         } else {
+            if searchType == .city {
+                places = PlaceHolderCity.allCases.map({ GooglePlace(name: $0.name, id: $0.placeId) })
+            }
             citiesTableView.reloadData()
         }
         return true

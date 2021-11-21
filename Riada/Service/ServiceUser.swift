@@ -16,10 +16,18 @@ protocol ServiceUserEventsDelegate {
     func didFinishLoading()
 }
 
+protocol ServiceUserNotificationDelegate {
+    func dataAdded(notification: Notification)
+    func dataModified(notification: Notification)
+    func dataRemoved(notification: Notification)
+    func didFinishLoading()
+}
+
 class ServiceUser {
     
     // MARK: - Properties
     private static var eventsListener: ListenerRegistration?
+    private static var notificationsListener: ListenerRegistration?
 
     // MARK: Set
     static func signUpAnonymously() {
@@ -48,6 +56,14 @@ class ServiceUser {
                 completion()
             }
         }
+    }
+    
+    static func updateLocation(city: City) {
+        guard let user = Auth.auth().currentUser else { return }
+        let data: [String : Any] = [
+            "location": city.geoPoint
+        ]
+        FFirestoreReference.users.document(user.uid).setData(data, merge: true)
     }
     
     static func updateNickName(nickName: String) {
@@ -116,28 +132,6 @@ class ServiceUser {
         FFirestoreReference.users.document(user.uid).setData(data, merge: true)
     }
     
-    // MARK: get
-//    static func getUserByFavoriteSport(completion: @escaping ([User]) -> Void) {
-//        guard let user = Auth.auth().currentUser else {
-//            completion([])
-//            return
-//        }
-//        FFirestoreReference.users.whereField("favoritesSports.favoriteSportId", isEqualTo: "SPORT_SOCCER").getDocuments { (querySnapshot, err) in
-//            var users: [User] = []
-//            guard err == nil, let documents = querySnapshot?.documents else {
-//                completion(users)
-//                return
-//            }
-//            for document in documents {
-//                if document.exists,
-//                   let event = try? document.data(as: User.self) {
-//                    users.append(event)
-//                }
-//            }
-//            completion(users)
-//        }
-//    }
-    
     // MARK: - Get
     static func getProfile(completion: @escaping (User?) -> Void) {
         guard let user = Auth.auth().currentUser else {
@@ -151,6 +145,35 @@ class ServiceUser {
                 return
             }
             completion(user)
+        }
+    }
+    
+    static func getNotifications(delegate: ServiceUserNotificationDelegate) {
+        guard let userId = ManagerUser.shared.user?.id else { return }
+        
+        notificationsListener?.remove()
+        notificationsListener = FFirestoreReference.userNotifications(userId).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            var numberOfItems = snapshot.count
+            if numberOfItems == .zero {
+                delegate.didFinishLoading()
+            }
+            snapshot.documentChanges.forEach { diff in
+                if let notification = try? diff.document.data(as: Notification.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(notification: notification)
+                    case .modified:
+                        delegate.dataModified(notification: notification)
+                    case .removed:
+                        delegate.dataRemoved(notification: notification)
+                    }
+                }
+                numberOfItems -= 1
+                if numberOfItems == .zero {
+                    delegate.didFinishLoading()
+                }
+            }
         }
     }
     
@@ -276,27 +299,29 @@ class ServiceUser {
             }
         }
     }
-
     
-    static func getFavoriteSports(completion: @escaping ([FavoriteSport]) -> Void) {
-        completion([])
-        return
-        guard let user = Auth.auth().currentUser else {
-            completion([])
-            return
+    static func getUserByFavoriteSport(event: Event, completion: @escaping ([User]) -> Void) {
+        guard let userId = ManagerUser.shared.user?.id else { return }
+
+        let lat = event.placeCoordinate.latitude
+        let lng = event.placeCoordinate.longitude
+        
+        let lesserGeopoint = HelperDistance.shared.computeLesserGeoPoint(lat: lat, lng: lng)
+        let greaterGeopoint = HelperDistance.shared.computeGreatestGeoPoint(lat: lat, lng: lng)
+
+        FFirestoreReference.users.order(by: "location").whereField("location", isGreaterThan: lesserGeopoint).whereField("location", isLessThan: greaterGeopoint).getDocuments { (querySnapshot, err) in
+            var users: [User] = []
+            guard err == nil, let documents = querySnapshot?.documents else {
+                completion(users)
+                return
+            }
+            for document in documents {
+                if document.exists,
+                   let user = try? document.data(as: User.self), user.id != userId, user.favoritesSports.contains(event.sportId) {
+                    users.append(user)
+                }
+            }
+            completion(users)
         }
-//        FFirestoreReference.userFavoriteSports(user.uid).getDocuments() { (querySnapshot, err) in
-//            var favoriteSports: [FavoriteSport] = []
-//            guard err == nil, let documents = querySnapshot?.documents else {
-//                completion(favoriteSports)
-//                return
-//            }
-//            for document in documents {
-//                if let favoriteSport = try? document.data(as: FavoriteSport.self) {
-//                    favoriteSports.append(favoriteSport)
-//                }
-//            }
-//            completion(favoriteSports)
-//        }
     }
 }

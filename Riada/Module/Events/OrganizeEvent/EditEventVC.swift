@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import Firebase
 
-protocol EditEventVCDelegate: class {
+protocol EditEventVCDelegate: AnyObject {
     func didUpdateEvent(event: Event)
     func didCancelEvent()
 }
@@ -42,7 +42,6 @@ class EditEventVC: UIViewController {
     private var selectedPlaceLocation: CLLocation?
 
     var event: Event?
-    var isParticipate: Bool?
     weak var delegate: EditEventVCDelegate?
     
     // MARK: - LifeCycle
@@ -104,8 +103,7 @@ class EditEventVC: UIViewController {
     
     private func setUpEvent() {
         guard let event = self.event,
-              let sportIndex = ManagerSport.shared.sports.firstIndex(where: {$0.id == event.sportId}),
-              let isParticipate = self.isParticipate else {
+              let sportIndex = ManagerSport.shared.sports.firstIndex(where: {$0.id == event.sportId}) else {
             return
         }
         
@@ -167,6 +165,7 @@ extension EditEventVC {
                           placeAddress: placeAddress,
                           placeCoordinate: GeoPoint(latitude: placeLocation.coordinate.latitude, longitude: placeLocation.coordinate.longitude),
                           sportId: sportId,
+                          sportEmoticon: sport.emoticon,
                           sportName: sport.name,
                           createdDate: createdDate,
                           isPrivate: isPrivateSwitchField.isOn)

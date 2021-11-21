@@ -75,14 +75,14 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mxf-TK-L3K">
-                                        <rect key="frame" x="20" y="40" width="374" height="656"/>
+                                        <rect key="frame" x="20" y="41" width="374" height="655"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="PYB-V6-n8E" firstAttribute="leading" secondItem="MVt-G1-S40" secondAttribute="leading" id="4tN-Hu-RA7"/>
-                                    <constraint firstItem="Mxf-TK-L3K" firstAttribute="top" secondItem="PYB-V6-n8E" secondAttribute="bottom" id="6O2-eR-HQH"/>
+                                    <constraint firstItem="Mxf-TK-L3K" firstAttribute="top" secondItem="PYB-V6-n8E" secondAttribute="bottom" constant="1" id="6O2-eR-HQH"/>
                                     <constraint firstAttribute="bottom" secondItem="Mxf-TK-L3K" secondAttribute="bottom" id="EzF-EI-6eK"/>
                                     <constraint firstAttribute="trailing" secondItem="PYB-V6-n8E" secondAttribute="trailing" id="GSd-xC-dQo"/>
                                     <constraint firstItem="PYB-V6-n8E" firstAttribute="top" secondItem="MVt-G1-S40" secondAttribute="top" id="V33-xO-LuF"/>

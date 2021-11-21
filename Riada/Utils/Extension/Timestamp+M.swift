@@ -27,6 +27,14 @@ extension Date {
     var timestamp: Timestamp {
         Timestamp(date: self)
     }
+    
+    var sectionDesc: String {
+        if onlyDate == Date().onlyDate {
+            return L10N.global.date.today
+        } else {
+            return long
+        }
+    }
 
     var long: String {
         let dateFormatter = DateFormatter()
@@ -67,6 +75,11 @@ extension Date {
     }
     
     var onlyDate: Date {
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        return Calendar.current.date(from: components) ?? Date()
+    }
+    
+    var onlyDateAndHour: Date {
         let components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: self)
         return Calendar.current.date(from: components) ?? Date()
     }

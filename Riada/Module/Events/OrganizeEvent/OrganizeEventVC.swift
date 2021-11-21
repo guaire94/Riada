@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import Firebase
 
-protocol OrganizeEventVCDelegate: class {
+protocol OrganizeEventVCDelegate: AnyObject {
     func didCreateEvent(event: Event)
 }
 
@@ -151,6 +151,7 @@ extension OrganizeEventVC {
                           placeAddress: placeAddress,
                           placeCoordinate: GeoPoint(latitude: placeLocation.coordinate.latitude, longitude: placeLocation.coordinate.longitude),
                           sportId: sportId,
+                          sportEmoticon: sport.emoticon,
                           sportName: sport.name,
                           createdDate: Date().timestamp,
                           isPrivate: isPrivateSwitchField.isOn)
@@ -162,6 +163,8 @@ extension OrganizeEventVC {
             ServiceEvent.participateAsOrganizer(event: event)
         }
         
+        ServiceNotification.organize(event: event)
+
         let feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator.notificationOccurred(.success)
         dismiss(animated: true)

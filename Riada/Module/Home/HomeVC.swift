@@ -20,6 +20,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var cityButton: UIButton!
     @IBOutlet weak private var userProfileButton: UIButton!
+    @IBOutlet weak private var notificationsButton: UIButton!
     @IBOutlet weak private var sportsTableView: UITableView!
     
     // MARK: - Properties
@@ -28,6 +29,8 @@ class HomeVC: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        (UIApplication.shared.delegate as? AppDelegate)?.registerForPushNotifications()
+        notificationsButton.isHidden = true
         ManagerUser.shared.synchronise {
             self.setUpView()
             self.syncSports()
@@ -43,9 +46,21 @@ class HomeVC: UIViewController {
         } else if segue.identifier == OrganizeEventVC.Constants.identifier {
             guard let vc = segue.destination as? OrganizeEventVC else { return }
             vc.delegate = self
+        } else if segue.identifier == SignUpVC.Constants.identifier {
+            guard let vc = segue.destination as? SignUpVC else { return }
+            vc.delegate = self
         } else if segue.identifier == MyProfileVC.Constants.identifier {
             guard let vc = segue.destination as? MyProfileVC else { return }
             vc.delegate = self
+        } else if segue.identifier == NotificationsVC.Constants.identifier {
+            guard let vc = segue.destination as? NotificationsVC else { return }
+            vc.delegate = self
+        } else if segue.identifier == EventDetailsAsOrganizerVC.Constants.identifier {
+            guard let vc = segue.destination as? EventDetailsAsOrganizerVC,
+                  let event = sender as? Event else {
+                return
+            }
+            vc.event = event
         }
     }
     
@@ -61,6 +76,9 @@ class HomeVC: UIViewController {
     }
     
     private func setUpProfileInformations() {
+        if let _ = ManagerUser.shared.user?.nickName {
+            notificationsButton.isHidden = false
+        }
         if let avatar = ManagerUser.shared.user?.avatar, let url = URL(string: avatar) {
             userProfileButton.sd_setImage(with: url, for: .normal, completed: nil)
         } else {
@@ -166,6 +184,7 @@ extension HomeVC: SearchLocationVCDelegate {
 extension HomeVC: OrganizeEventVCDelegate {
 
     func didCreateEvent(event: Event) {
+        performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
         shareEvent(event: event)
     }
 }
@@ -174,6 +193,7 @@ extension HomeVC: OrganizeEventVCDelegate {
 extension HomeVC: SignUpVCDelegate {
 
     func didSignUp() {
+        notificationsButton.isHidden = false
         performSegue(withIdentifier: MyProfileVC.Constants.identifier, sender: self)
     }
 }
@@ -183,5 +203,15 @@ extension HomeVC: MyProfileVCDelegate {
 
     func didUpdateAvatar() {
         setUpProfileInformations()
+    }
+}
+
+// MARK: - NotificationsVCDelegate
+extension HomeVC: NotificationsVCDelegate {
+
+    func didTapNotification(deeplink: String) {
+        guard let url = URL(string: deeplink) else { return }
+        ManagerDeepLink.shared.setDeeplinkFromDeepLink(url: url)
+        HelperRouting.shared.handleRedirect()
     }
 }

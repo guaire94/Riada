@@ -52,10 +52,10 @@ class EventsVC: UIViewController {
             vc.organizer = eventCell.organizer
         } else if segue.identifier == EventDetailsAsOrganizerVC.Constants.identifier {
             guard let vc = segue.destination as? EventDetailsAsOrganizerVC,
-                  let eventCell = sender as? EventCell else {
+                  let event = sender as? Event else {
                 return
             }
-            vc.event = eventCell.event
+            vc.event = event
         } else if segue.identifier == OrganizeEventVC.Constants.identifier {
             guard let vc = segue.destination as? OrganizeEventVC else { return }
             vc.delegate = self
@@ -90,12 +90,13 @@ class EventsVC: UIViewController {
     
     private func sortEventByDate() {
         var sortedEvent: [(date: Date, events: [Event])] = []
-        let dict = Dictionary(grouping: events, by: { $0.date })
+        let dict = Dictionary(grouping: events, by: { $0.date.dateValue().onlyDate })
         let sortedKeys = Array(dict.keys).sorted(by: { $0.compare($1) == .orderedAscending })
         
         for key in sortedKeys {
-            if let events = dict[key] {
-                sortedEvent.append((date: key.dateValue(), events: events))
+            if let events = dict[key]?.sorted(by: { $0.date.compare($1.date) == .orderedAscending }) {
+//            if let events = dict[key] {
+                sortedEvent.append((date: key, events: events))
             }
         }
         self.eventsByDate = sortedEvent
@@ -172,7 +173,7 @@ extension EventsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionCell.Constants.identifier) as? SectionCell else { return nil }
-        header.setUp(desc: eventsByDate[section].date.long)
+        header.setUp(desc: eventsByDate[section].date.sectionDesc)
         return header
     }
     
@@ -199,6 +200,7 @@ extension EventsVC: UITableViewDataSource {
 extension EventsVC: OrganizeEventVCDelegate {
 
     func didCreateEvent(event: Event) {
+        performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
         shareEvent(event: event)
     }
 }
@@ -214,7 +216,7 @@ extension EventsVC: UITableViewDelegate {
         }
         
         if organizer.userId == userId {
-            performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: cell)
+            performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: cell.event)
         } else {
             performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: cell)
         }

@@ -93,6 +93,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
     }
     
+    func unregisterForRemoteNotifications() {
+        UIApplication.shared.unregisterForRemoteNotifications()
+    }
+ 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
         ServiceDeviceToken.shared.register()
@@ -118,25 +122,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             completionHandler([.alert, .sound])
             return
         }
+//        NotificationHelper.shared.updateDisplay()
         completionHandler([.alert, .sound])
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
-        guard let info = response.notification.request.content.userInfo as? [String: Any] else {
-            completionHandler()
-            return
-        }
-        switch response.actionIdentifier {
-        case UNNotificationDefaultActionIdentifier:
-            HelperNotification.shared.setCurrentNotification(info: info)
-            //            NotificationCenter.default.post(name: .OpenRemoteNotification, object: nil)
-            print("Open Action")
-        default:
-            print("default")
-        }
-        completionHandler()
     }
 }
 

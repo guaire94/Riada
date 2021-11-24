@@ -30,6 +30,11 @@ class AnonymouslyCell: UITableViewCell {
 
     // MARK: - Properties
     weak var delegate: AnonymouslyCellDelegate?
+    var isLoading: Bool = false {
+        didSet {
+            signUpButton.loadingIndicator(show: isLoading)
+        }
+    }
 
     // MARK: - LifeCycle
     override func prepareForReuse() {
@@ -42,12 +47,13 @@ class AnonymouslyCell: UITableViewCell {
         setUpTranslation()
         setUpField()
     }
-
+    
     // MARK: - Private
     private func setUpUI() {
         selectionStyle = .none
         content.layer.cornerRadius = Constants.contentCornerRadius
         content.clipsToBounds = true
+        nickNameTextField.delegate = self
     }
     
     private func setUpTranslation() {
@@ -65,8 +71,18 @@ class AnonymouslyCell: UITableViewCell {
 // MARK: - @IBAction
 private extension AnonymouslyCell {
     
-    @IBAction func signUpToggle(_ sender: Any) {
-        signUpButton.loadingIndicator(show: true)
+    @IBAction func signUpToggle() {
         delegate?.didSignUpToggle(nickName: nickNameTextField.text)
     }
 }
+
+// MARK: - UITextFieldDelegate
+extension AnonymouslyCell: UITextFieldDelegate {
+        
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        signUpToggle()
+        return true
+    }
+}
+

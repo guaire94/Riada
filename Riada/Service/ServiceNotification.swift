@@ -42,7 +42,7 @@ class ServiceNotification {
         let type: MNotificationType = .acceptYourParticipation
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         let data: [String : Any] = [
-                    "env": firebaseEnv,
+                    "env": Config.firebaseEnv,
                     "title_loc_key": type.title,
                     "title_loc_args": [event.sportEmoticon, event.title, event.description],
                     "body_loc_key": type.body,
@@ -61,7 +61,7 @@ class ServiceNotification {
         
         for participant in participants {
             let data: [String : Any] = [
-                        "env": firebaseEnv,
+                        "env": Config.firebaseEnv,
                         "title_loc_key": type.title,
                         "title_loc_args": [event.sportEmoticon, event.title, event.description],
                         "body_loc_key": type.body,
@@ -79,7 +79,7 @@ class ServiceNotification {
         let type: MNotificationType = .acceptYourGuest
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         let data: [String : Any] = [
-                    "env": firebaseEnv,
+                    "env": Config.firebaseEnv,
                     "title_loc_key": type.title,
                     "title_loc_args": [event.sportEmoticon, event.title, event.description],
                     "body_loc_key": type.body,
@@ -98,7 +98,7 @@ class ServiceNotification {
         
         for participant in participants {
             let data: [String : Any] = [
-                        "env": firebaseEnv,
+                        "env": Config.firebaseEnv,
                         "title_loc_key": type.title,
                         "title_loc_args": [event.sportEmoticon, event.title, event.description],
                         "body_loc_key": type.body,
@@ -116,7 +116,7 @@ class ServiceNotification {
         let type: MNotificationType = .refuseYourParticipation
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         let data: [String : Any] = [
-                    "env": firebaseEnv,
+                    "env": Config.firebaseEnv,
                     "title_loc_key": type.title,
                     "title_loc_args": [event.sportEmoticon, event.title, event.description],
                     "body_loc_key": type.body,
@@ -133,7 +133,7 @@ class ServiceNotification {
         let type: MNotificationType = .refuseYourGuest
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         let data: [String : Any] = [
-                    "env": firebaseEnv,
+                    "env": Config.firebaseEnv,
                     "title_loc_key": type.title,
                     "title_loc_args": [event.sportEmoticon, event.title, event.description],
                     "body_loc_key": type.body,
@@ -155,7 +155,7 @@ class ServiceNotification {
         
         for participant in participants {
             let data: [String : Any] = [
-                        "env": firebaseEnv,
+                        "env": Config.firebaseEnv,
                         "title_loc_key": type.title,
                         "title_loc_args": [event.sportEmoticon, event.title, event.description],
                         "body_loc_key": type.body,
@@ -177,7 +177,7 @@ class ServiceNotification {
         let type: MNotificationType = .participate
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         let data: [String : Any] = [
-                    "env": firebaseEnv,
+                    "env": Config.firebaseEnv,
                     "title_loc_key": type.title,
                     "title_loc_args": [event.sportEmoticon, event.title, event.description],
                     "body_loc_key": type.body,
@@ -197,7 +197,7 @@ class ServiceNotification {
         let type: MNotificationType = .decline
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         let data: [String : Any] = [
-                    "env": firebaseEnv,
+                    "env": Config.firebaseEnv,
                     "title_loc_key": type.title,
                     "title_loc_args": [event.sportEmoticon, event.title, event.description],
                     "body_loc_key": type.body,
@@ -217,7 +217,7 @@ class ServiceNotification {
         let type: MNotificationType = .addGuest
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         let data: [String : Any] = [
-                    "env": firebaseEnv,
+                    "env": Config.firebaseEnv,
                     "title_loc_key": type.title,
                     "title_loc_args": [event.sportEmoticon, event.title, event.description],
                     "body_loc_key": type.body,

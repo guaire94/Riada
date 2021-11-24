@@ -31,6 +31,16 @@ class SignInCell: UITableViewCell {
 
     // MARK: - Properties
     weak var delegate: SignInCellDelegate?
+    var isAppleLoading: Bool = false {
+        didSet {
+            signInWithAppleButton.loadingIndicator(show: isAppleLoading)
+        }
+    }
+    var isGoogleLoading: Bool = false {
+        didSet {
+            signInWithGoogleButton.loadingIndicator(show: isGoogleLoading, color: .black)
+        }
+    }
 
     // MARK: - LifeCycle
     override func prepareForReuse() {
@@ -69,11 +79,9 @@ extension SignInCell {
     @available(iOS 13, *)
     @IBAction func signInWithAppleToggle() {
         delegate?.didSignInWithAppleToggle()
-        signInWithAppleButton.loadingIndicator(show: true)
     }
     
     @IBAction func signInWithGoogleToggle() {
         delegate?.didSignInWithGoogleToggle()
-        signInWithGoogleButton.loadingIndicator(show: true, color: .black)
     }
 }

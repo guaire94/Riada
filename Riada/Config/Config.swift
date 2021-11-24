@@ -8,17 +8,19 @@
 import UIKit
 
 enum Config {
-    static var AppStoreId = "1596416057"
-    static var AppStoreLink = "itms-apps://itunes.apple.com/app/id\(Config.AppStoreId)"
-    static var googleAPIKey = "AIzaSyDTIlQBgK72dpao2XPISx1U60psDeshcGc"
+    static let AppStoreId = "1596416057"
+    static let AppStoreLink = "itms-apps://itunes.apple.com/app/id\(Config.AppStoreId)"
+    static let googleAPIKey = "AIzaSyDTIlQBgK72dpao2XPISx1U60psDeshcGc"
     static let jpegCompressionQuality: CGFloat = 0.7
     static let defaultAvatar = UIImage(named: "avatar")
 
     #if DEBUG
-        static var WormholyIsEnabled = true
-        static var UpdateAppLangua = false
+        static let WormholyIsEnabled = true
+        static let UpdateAppLangua = false
+        static let firebaseEnv = "Staging"
     #else
         static var WormholyIsEnabled = false
         static var UpdateAppLangua = false
+        static let firebaseEnv = "Release"
     #endif
 }

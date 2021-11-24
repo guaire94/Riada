@@ -21,13 +21,10 @@ enum Tracking {
     
     // MARK: - Constants
     private enum Constants {
-        enum Alert {
-            static let title = "title"
-            static let message = "message"
-        }
-        enum Sport {
-            static let name = "name"
-        }
+        static let title = "title"
+        static let message = "message"
+        static let name = "name"
+        static let url = "url"
     }
     
     // MARK: - Alert
@@ -117,14 +114,18 @@ enum Tracking {
     case settingsPrivacyPolicy
     case settingsTermsAndConditions
     case settingsLogout
-    
+
+    // MARK: Temporary
+    case openDeeplinkTest(url: String)
+    case openDeeplinkSuccess(url: String)
+
     // MARK: - Property
     var values: (name: String, parameters: [String : Any]?) {
         switch self {
         case let .alertError(title, message):
             let parameters: [String: Any] = [
-                Constants.Alert.title: title,
-                Constants.Alert.message: message
+                Constants.title: title,
+                Constants.message: message
             ]
             return ("AlertError", parameters)
             
@@ -136,12 +137,12 @@ enum Tracking {
         // MARK: Welcome
         case let .welcomeAddFavoriteSport(sportName):
             let parameters: [String: Any] = [
-                Constants.Sport.name: sportName
+                Constants.name: sportName
             ]
             return ("WelcomeAddFavoriteSport", parameters)
         case let .welcomeRemoveFavoriteSport(sportName):
             let parameters: [String: Any] = [
-                Constants.Sport.name: sportName
+                Constants.name: sportName
             ]
             return ("WelcomeRemoveFavoriteSport", parameters)
         case .welcomeLetsPlay:
@@ -158,12 +159,12 @@ enum Tracking {
             return ("HomeProfile", nil)
         case let .homeAddFavoriteSport(sportName):
             let parameters: [String: Any] = [
-                Constants.Sport.name: sportName
+                Constants.name: sportName
             ]
             return ("HomeAddFavoriteSport", parameters)
         case let .homeRemoveFavoriteSport(sportName):
             let parameters: [String: Any] = [
-                Constants.Sport.name: sportName
+                Constants.name: sportName
             ]
             return ("HomeRemoveFavoriteSport", parameters)
         case .homeOrganizeEvent:
@@ -172,7 +173,7 @@ enum Tracking {
         // MARK: Events
         case let .events(sportName):
             let parameters: [String: Any] = [
-                Constants.Sport.name: sportName
+                Constants.name: sportName
             ]
             return ("Events", parameters)
         case .eventsOrganizeEvent:
@@ -279,6 +280,18 @@ enum Tracking {
             return ("SettingsTermsAndConditions", nil)
         case .settingsLogout:
             return ("SettingsLogout", nil)
+            
+        // MARK: - Temporary
+        case let .openDeeplinkTest(url):
+            let parameters: [String: Any] = [
+                Constants.url: url
+            ]
+            return ("OpenDeeplinkTest", parameters)
+        case let .openDeeplinkSuccess(url):
+            let parameters: [String: Any] = [
+                Constants.url: url
+            ]
+            return ("OpenDeeplinkSuccess", parameters)
         }
     }
 }

@@ -50,7 +50,7 @@ class ServiceUser {
     static func linkAccount(credential: AuthCredential, completion: @escaping () -> Void) {
         guard let user = Auth.auth().currentUser else { return }
         user.link(with: credential) { (authResult, error) in
-            if let error = error, error.localizedDescription.contains("This credential is already associated with a different user account.") {
+            if let _ = error {
                 signInWithCredential(credential: credential, completion: completion)
             } else {
                 completion()

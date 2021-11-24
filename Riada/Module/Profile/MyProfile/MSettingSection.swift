@@ -57,7 +57,7 @@ enum MSettingSection: Int {
     }
 
     static func toDisplay() -> [MSettingSection] {
-        [.notifications, .contactUs, .privacyPolicy, .termsAndConditions, .logout]
+        [.notifications, .contactUs, .rateApp, .privacyPolicy, .termsAndConditions, .logout]
     }
 }
 

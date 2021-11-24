@@ -5,7 +5,6 @@
 //  Created by P995987 on 12/12/2020.
 //
 
-// TODO: Defined MNotificationType
 enum MNotificationType: String {
     case organize
     case acceptYourParticipation

@@ -25,6 +25,7 @@ class HomeVC: UIViewController {
     
     // MARK: - Properties
     private var sports: [Sport] = []
+    private var wantToOrganize = false
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -132,6 +133,7 @@ private extension HomeVC {
         if let _ = ManagerUser.shared.user?.nickName {
             performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
         } else {
+            wantToOrganize = true
             performSegue(withIdentifier: SignUpVC.Constants.identifier, sender: self)
         }
     }
@@ -194,7 +196,12 @@ extension HomeVC: SignUpVCDelegate {
 
     func didSignUp() {
         notificationsButton.isHidden = false
-        performSegue(withIdentifier: MyProfileVC.Constants.identifier, sender: self)
+        if wantToOrganize {
+            wantToOrganize = false
+            performSegue(withIdentifier: OrganizeEventVC.Constants.identifier, sender: self)
+        } else {
+            performSegue(withIdentifier: MyProfileVC.Constants.identifier, sender: self)
+        }
     }
 }
 

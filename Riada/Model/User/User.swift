@@ -14,7 +14,7 @@ struct User: Identifiable, Codable {
     var nickName: String?
     var avatar: String?
     var favoritesSports: [String]
-    var createdDate: Timestamp
+    var createdDate: Timestamp?
     var location: GeoPoint
 
     var toParticipantData: [String: Any]? {

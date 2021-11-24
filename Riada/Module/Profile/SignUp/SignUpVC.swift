@@ -20,6 +20,8 @@ class SignUpVC: UIViewController {
     enum Constants {
         static let identifier: String = "SignUpVC"
         static let bottomContentInset: CGFloat = 8.0
+        static let googleProvider = "google.com"
+        static let appleProvider = "apple.com"
     }
     
     //MARK: - IBOutlet
@@ -27,6 +29,9 @@ class SignUpVC: UIViewController {
     @IBOutlet weak private var tableView: UITableView!
     
     //MARK: - Properties
+    private var anonymouslyCell: AnonymouslyCell?
+    private var signInCell: SignInCell?
+
     private var sections = MSignUpSection.toDisplay()
     private var currentNonce: String?
     weak var delegate: SignUpVCDelegate?
@@ -60,6 +65,11 @@ class SignUpVC: UIViewController {
             ManagerUser.shared.synchronise {
                 if !nickName.isEmpty {
                     ManagerUser.shared.updateNickName(nickName: nickName)
+                }
+                if credential.provider == Constants.googleProvider {
+                    self.signInCell?.isGoogleLoading = false
+                } else if credential.provider == Constants.appleProvider {
+                    self.signInCell?.isAppleLoading = false
                 }
                 self.dismiss(animated: true)
                 self.delegate?.didSignUp()
@@ -108,6 +118,7 @@ extension SignUpVC: UITableViewDataSource, UITableViewDelegate {
               }
             cell.delegate = self
             cell.setUp()
+            anonymouslyCell = cell
             return cell
         case .signIn:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? SignInCell else {
@@ -115,6 +126,7 @@ extension SignUpVC: UITableViewDataSource, UITableViewDelegate {
               }
             cell.delegate = self
             cell.setUp()
+            signInCell = cell
             return cell
         }
     }
@@ -129,9 +141,11 @@ extension SignUpVC: AnonymouslyCellDelegate {
             showError(title: L10N.signUp.form.signUp, message: L10N.signUp.form.error.unfill)
             return
         }
+        anonymouslyCell?.isLoading = true
         HelperTracking.track(item: .signUpWithNickname)
         ManagerUser.shared.updateNickName(nickName: nickName)
         dismiss(animated: true) {
+            self.anonymouslyCell?.isLoading = false
             self.delegate?.didSignUp()
         }
     }
@@ -151,6 +165,7 @@ extension SignUpVC: SignInCellDelegate {
         
         HelperTracking.track(item: .signUpWithApple)
         
+        signInCell?.isAppleLoading = true
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
@@ -161,14 +176,19 @@ extension SignUpVC: SignInCellDelegate {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 
         HelperTracking.track(item: .signUpWithGoogle)
-        
+
+        signInCell?.isGoogleLoading = true
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
-          guard error == nil, let authentication = user?.authentication, let idToken = authentication.idToken else { return }
+            guard error == nil,
+                let authentication = user?.authentication,
+                let idToken = authentication.idToken else {
+                    self.signInCell?.isGoogleLoading = false
+                    return
+                }
 
-          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                          accessToken: authentication.accessToken)
-            
             let nickName = user?.profile?.name ?? ""
             self.handleSignIn(credential: credential, nickName: nickName)            
         }
@@ -184,8 +204,9 @@ extension SignUpVC: ASAuthorizationControllerDelegate {
             guard let nonce = currentNonce,
                   let appleIDToken = appleIDCredential.identityToken,
                   let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                showError(title: L10N.signUp.signInWithApple, message: L10N.signUp.error.withApple)
-                return
+                      signInCell?.isAppleLoading = false
+                      showError(title: L10N.signUp.signInWithApple, message: L10N.signUp.error.withApple)
+                      return
             }
             let credential = OAuthProvider.credential(withProviderID: "apple.com",
                                                       idToken: idTokenString,
@@ -196,6 +217,7 @@ extension SignUpVC: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        signInCell?.isAppleLoading = false
         showError(title: L10N.signUp.signInWithApple, message: error.localizedDescription)
     }
     

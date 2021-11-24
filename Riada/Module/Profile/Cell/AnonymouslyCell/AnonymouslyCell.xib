@@ -44,7 +44,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="signUpToggle:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Gas-vf-yBL"/>
+                                    <action selector="signUpToggle" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TIh-JH-HqN"/>
                                 </connections>
                             </button>
                         </subviews>

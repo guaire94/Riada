@@ -39,17 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:] ) -> Bool {
-        if let scheme = url.scheme, scheme.localizedCaseInsensitiveCompare("social-sport") == .orderedSame {
             return application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: "")
-        } else {
-            return GIDSignIn.sharedInstance.handle(url)
-        }
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?,
                      annotation: Any) -> Bool {
-        if let url = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)?.url {
-            ManagerDeepLink.shared.setDeeplinkFromDeepLink(url: url)
+        HelperTracking.track(item: .openDeeplinkTest(url: url.absoluteString))
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url),
+           let deeplink = dynamicLink.url {
+            HelperTracking.track(item: .openDeeplinkSuccess(url: deeplink.absoluteString))
+            ManagerDeepLink.shared.setDeeplinkFromDeepLink(url: deeplink)
             HelperRouting.shared.routeToHome()
             return true
         }

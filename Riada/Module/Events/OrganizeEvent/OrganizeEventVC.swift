@@ -162,8 +162,9 @@ extension OrganizeEventVC {
         if isParticipateSwitchField.isOn {
             ServiceEvent.participateAsOrganizer(event: event)
         }
-        
-        ServiceNotification.organize(event: event)
+        if !isPrivateSwitchField.isOn {
+            ServiceNotification.organize(event: event)
+        }
 
         let feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator.notificationOccurred(.success)

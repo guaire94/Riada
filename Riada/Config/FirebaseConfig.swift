@@ -8,12 +8,6 @@
 import FirebaseFirestore
 import FirebaseStorage
 
-#if DEBUG
-   let firebaseEnv = "Staging"
-#else
-   let firebaseEnv = "Release"
-#endif
-
 let db = Firestore.firestore()
 
 enum FirebaseCollection {
@@ -44,7 +38,7 @@ enum FFirestoreReference {
 
     // MARK: - ENV
     static var env: DocumentReference {
-        db.collection(FirebaseCollection.env).document(firebaseEnv)
+        db.collection(FirebaseCollection.env).document(Config.firebaseEnv)
     }
     
     // MARK: - VERSION
@@ -116,7 +110,7 @@ enum FStorageReference {
     
     // MARK: - ENV
     static var env: StorageReference {
-        Storage.storage().reference(withPath: FirebaseCollection.env).child(firebaseEnv)
+        Storage.storage().reference(withPath: FirebaseCollection.env).child(Config.firebaseEnv)
     }
     
     // MARK: - COACH

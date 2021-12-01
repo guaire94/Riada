@@ -181,10 +181,14 @@ extension EventsVC: UITableViewDataSource {
         eventsByDate[section].events.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         EventCell.Constants.height
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: EventCell.Constants.identifier, for: indexPath)
         guard let cell = reusableCell as? EventCell else {

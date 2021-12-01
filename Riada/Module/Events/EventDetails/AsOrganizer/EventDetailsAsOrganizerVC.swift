@@ -287,7 +287,7 @@ extension EventDetailsAsOrganizerVC: UITableViewDataSource {
         let eventSection = sections[section]
         
         switch eventSection {
-        case .informations, .place:
+        case .informations, .place, .placeWithPictures:
             header.setUp(desc: sectionDesc)
         case .participants:
             let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])

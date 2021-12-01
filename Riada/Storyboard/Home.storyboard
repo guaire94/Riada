@@ -103,11 +103,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zm8-Vb-9Pi">
-                                <rect key="frame" x="334" y="782" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="KOr-Ty-frB"/>
-                                    <constraint firstAttribute="width" constant="60" id="nAk-2m-Bse"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="818" width="414" height="78"/>
                                 <state key="normal" image="add"/>
                                 <connections>
                                     <action selector="organizeEventToggle:" destination="q0X-OM-hkf" eventType="touchUpInside" id="ebA-hB-sCL"/>
@@ -118,13 +114,14 @@
                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="VSd-r1-Oxc" secondAttribute="bottom" constant="8" id="EsW-6q-Dbc"/>
-                            <constraint firstItem="5H5-Wp-lp3" firstAttribute="bottom" secondItem="Zm8-Vb-9Pi" secondAttribute="bottom" constant="20" id="FSB-lj-JQL"/>
+                            <constraint firstAttribute="bottom" secondItem="Zm8-Vb-9Pi" secondAttribute="bottom" id="FSB-lj-JQL"/>
                             <constraint firstItem="yaC-7T-x09" firstAttribute="leading" secondItem="5H5-Wp-lp3" secondAttribute="leading" id="Fte-Ml-y9c"/>
                             <constraint firstItem="VSd-r1-Oxc" firstAttribute="leading" secondItem="5H5-Wp-lp3" secondAttribute="leading" constant="16" id="JBA-Ox-abz"/>
                             <constraint firstItem="5H5-Wp-lp3" firstAttribute="trailing" secondItem="VSd-r1-Oxc" secondAttribute="trailing" constant="16" id="OGI-S0-M5l"/>
                             <constraint firstItem="5H5-Wp-lp3" firstAttribute="trailing" secondItem="yaC-7T-x09" secondAttribute="trailing" id="RvY-VH-Smn"/>
                             <constraint firstItem="yaC-7T-x09" firstAttribute="top" secondItem="FPz-ZP-9PY" secondAttribute="top" id="Uq6-ab-Iuu"/>
-                            <constraint firstItem="5H5-Wp-lp3" firstAttribute="trailing" secondItem="Zm8-Vb-9Pi" secondAttribute="trailing" constant="20" id="sWg-vY-ut7"/>
+                            <constraint firstItem="Zm8-Vb-9Pi" firstAttribute="leading" secondItem="5H5-Wp-lp3" secondAttribute="leading" id="oM0-w2-sdd"/>
+                            <constraint firstItem="5H5-Wp-lp3" firstAttribute="trailing" secondItem="Zm8-Vb-9Pi" secondAttribute="trailing" id="sWg-vY-ut7"/>
                             <constraint firstItem="VSd-r1-Oxc" firstAttribute="top" secondItem="yaC-7T-x09" secondAttribute="bottom" id="vle-3o-Hmb"/>
                         </constraints>
                     </view>
@@ -341,7 +338,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="60" height="60"/>
+        <image name="add" width="375" height="78"/>
         <image name="avatar" width="50" height="50"/>
         <image name="back_white" width="20" height="10"/>
         <image name="notification" width="20" height="20"/>

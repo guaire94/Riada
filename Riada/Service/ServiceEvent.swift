@@ -66,7 +66,8 @@ class ServiceEvent {
             let timeStamp = Timestamp(date: Date().onlyDateAndHour)
             snapshot.documentChanges.forEach { diff in
                 if let event = try? diff.document.data(as: Event.self),
-                   event.date.compare(timeStamp) != .orderedAscending {
+                   event.date.compare(timeStamp) != .orderedAscending,
+                   event.eventStatus != .canceled {
                     switch diff.type {
                     case .added:
                         delegate.dataAdded(event: event)

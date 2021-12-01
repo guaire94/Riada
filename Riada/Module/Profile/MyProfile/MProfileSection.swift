@@ -14,9 +14,7 @@ enum MProfileSection: Int {
 
     var cellIdentifier: String {
         switch self {
-        case .organizer:
-            return RelatedEventCell.Constants.identifier
-        case .participate:
+        case .organizer, .participate:
             return RelatedEventCell.Constants.identifier
         case .informations:
             return InformationsCell.Constants.identifier
@@ -25,20 +23,16 @@ enum MProfileSection: Int {
 
     var cellNib: UINib? {
         switch self {
-        case .organizer:
-            return RelatedEventCell.Constants.nib
-        case .participate:
+        case .organizer, .participate:
             return RelatedEventCell.Constants.nib
         case .informations:
             return InformationsCell.Constants.nib
         }
     }
         
-    var cellHeight: CGFloat {
+    var estimatedCellHeight: CGFloat {
         switch self {
-        case .organizer:
-            return RelatedEventCell.Constants.height
-        case .participate:
+        case .organizer, .participate:
             return RelatedEventCell.Constants.height
         case .informations:
             return InformationsCell.Constants.height

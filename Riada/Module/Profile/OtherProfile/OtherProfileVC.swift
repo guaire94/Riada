@@ -206,10 +206,14 @@ extension OtherProfileVC: UITableViewDataSource {
         eventsByDate[section].events.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        currentSection.cellHeight
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        currentSection.estimatedCellHeight
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: currentSection.cellIdentifier, for: indexPath) as? RelatedEventCell else {
             return UITableViewCell()

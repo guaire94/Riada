@@ -10,13 +10,15 @@ import FirebaseFirestoreSwift
 
 struct RelatedEvent: Identifiable, Codable {
     @DocumentID var id: String?
+    var eventId: String
     var title: String
     var nbPlayer: Int
     var date: Timestamp
     var sportName: String
     var placeAddress: String
     var placeCoordinate: GeoPoint
-    
+    var isPrivate: Bool
+
     var sportLocalizedName: String {
         NSLocalizedString(sportName, comment: "")
     }

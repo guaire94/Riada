@@ -64,6 +64,7 @@ struct Event: Identifiable, Codable {
            "sportName": sportName,
            "placeAddress": placeAddress,
            "placeCoordinate": placeCoordinate,
+           "isPrivate": isPrivate,
         ]
         return data
     }

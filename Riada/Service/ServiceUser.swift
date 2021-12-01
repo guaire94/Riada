@@ -248,7 +248,7 @@ class ServiceUser {
     
     static func getOtherProfileOrganizeEvents(userId: String, delegate: ServiceUserEventsDelegate) {
         eventsListener?.remove()
-        eventsListener = FFirestoreReference.userOrganizeEvents(userId).addSnapshotListener { query, error in
+        eventsListener = FFirestoreReference.userOrganizeEvents(userId).whereField("isPrivate", isEqualTo: false).addSnapshotListener { query, error in
             guard let snapshot = query else { return }
             var numberOfItems = snapshot.count
             if numberOfItems == .zero {
@@ -275,7 +275,7 @@ class ServiceUser {
     
     static func getOtherProfileParticipateEvents(userId: String, delegate: ServiceUserEventsDelegate) {
         eventsListener?.remove()
-        eventsListener = FFirestoreReference.userParticipateEvents(userId).addSnapshotListener { query, error in
+        eventsListener = FFirestoreReference.userParticipateEvents(userId).whereField("isPrivate", isEqualTo: false).addSnapshotListener { query, error in
             guard let snapshot = query else { return }
             var numberOfItems = snapshot.count
             if numberOfItems == .zero {
@@ -309,19 +309,19 @@ class ServiceUser {
         let lesserGeopoint = HelperDistance.shared.computeLesserGeoPoint(lat: lat, lng: lng)
         let greaterGeopoint = HelperDistance.shared.computeGreatestGeoPoint(lat: lat, lng: lng)
 
-        FFirestoreReference.users.order(by: "location").whereField("location", isGreaterThan: lesserGeopoint).whereField("location", isLessThan: greaterGeopoint).getDocuments { (querySnapshot, err) in
-            var users: [User] = []
-            guard err == nil, let documents = querySnapshot?.documents else {
-                completion(users)
-                return
-            }
-            for document in documents {
-                if document.exists,
-                   let user = try? document.data(as: User.self), user.id != userId, user.favoritesSports.contains(event.sportId) {
-                    users.append(user)
+            FFirestoreReference.users.order(by: "location").whereField("location", isGreaterThan: lesserGeopoint).whereField("location", isLessThan: greaterGeopoint).getDocuments { (querySnapshot, err) in
+                var users: [User] = []
+                guard err == nil, let documents = querySnapshot?.documents else {
+                    completion(users)
+                    return
                 }
+                for document in documents {
+                    if document.exists,
+                       let user = try? document.data(as: User.self), user.id != userId, user.favoritesSports.contains(event.sportId) {
+                        users.append(user)
+                    }
+                }
+                completion(users)
             }
-            completion(users)
-        }
     }
 }

@@ -30,6 +30,7 @@ class HomeVC: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         (UIApplication.shared.delegate as? AppDelegate)?.registerForPushNotifications()
         notificationsButton.isHidden = true
         setUpView()
@@ -219,5 +220,14 @@ extension HomeVC: NotificationsVCDelegate {
         guard let url = URL(string: deeplink) else { return }
         ManagerDeepLink.shared.setDeeplinkFromDeepLink(url: url)
         HelperRouting.shared.handleRedirect()
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension HomeVC: UIGestureRecognizerDelegate {
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
     }
 }

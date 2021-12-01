@@ -51,6 +51,7 @@
 		EE1202AF2757C5930068F0F3 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202AD2757C5930068F0F3 /* PhotoCell.swift */; };
 		EE1202B02757C5930068F0F3 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1202AE2757C5930068F0F3 /* PhotoCell.xib */; };
 		EE1202B22757D6B00068F0F3 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202B12757D6B00068F0F3 /* PhotoVC.swift */; };
+		EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202BA2757E6B60068F0F3 /* NavigationController.swift */; };
 		EE20263626F617B50094D87C /* ManagerUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20263526F617B50094D87C /* ManagerUserPreferences.swift */; };
 		EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3942747E08900F484F4 /* NotificationsVC.swift */; };
 		EE21C3992747E27A00F484F4 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3972747E27A00F484F4 /* NotificationCell.swift */; };
@@ -200,6 +201,7 @@
 		EE1202AD2757C5930068F0F3 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		EE1202AE2757C5930068F0F3 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		EE1202B12757D6B00068F0F3 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
+		EE1202BA2757E6B60068F0F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		EE20263526F617B50094D87C /* ManagerUserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerUserPreferences.swift; sourceTree = "<group>"; };
 		EE21C3942747E08900F484F4 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		EE21C3972747E27A00F484F4 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
@@ -937,6 +939,7 @@
 				EEB8F1EB26FE05D0005ABC27 /* Buttons */,
 				EEE1F48726F3C36D00754DDD /* SectionCell */,
 				EEE1F46326F23A3200754DDD /* Fields */,
+				EE1202BA2757E6B60068F0F3 /* NavigationController.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1292,6 +1295,7 @@
 				EE20263626F617B50094D87C /* ManagerUserPreferences.swift in Sources */,
 				EE8951DB274111570081AE09 /* SettingsVC.swift in Sources */,
 				B8FDE37D253F730F00BD29B2 /* L10N.swift in Sources */,
+				EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */,
 				EE27198226EBD77000A3F281 /* ParticipationStatus.swift in Sources */,
 				EE5836DA26ECE35100ED203D /* HelperRouting.swift in Sources */,
 				EEE1F48326F3C0C400754DDD /* SectionCell.swift in Sources */,

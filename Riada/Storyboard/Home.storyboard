@@ -17,7 +17,7 @@
         <!--Navigation Controller-->
         <scene sceneID="WQf-nF-sNc">
             <objects>
-                <navigationController navigationBarHidden="YES" id="b1M-uk-kKs" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" navigationBarHidden="YES" id="b1M-uk-kKs" customClass="NavigationController" customModule="Riada" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="buP-V8-cxi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -38,11 +38,17 @@ class EventDetailsAsOrganizerVC: UIViewController {
     var participantSectionCell: SectionCell?
     
     //MARK: - Properties
-    private var sections = MEventSectionAsOrganizer.toDisplay()
+    private var sections: [MEventSectionAsOrganizer] = [.informations, .place, .participants, .guests]
     var event: Event?
     var photoUrls: [URL] = [] {
         didSet {
-            let section = MEventSectionAsOrganizer.place.rawValue
+            if photoUrls.isEmpty {
+                self.sections = [.informations, .place, .participants, .guests]
+            } else {
+                self.sections = [.informations, .placeWithPictures, .participants, .guests]
+            }
+
+            guard let section = sections.firstIndex(where: { $0 == .place || $0 == .placeWithPictures }) else { return }
             DispatchQueue.main.async {
                 self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
             }
@@ -50,7 +56,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
     }
     var participants: [Participant] = [] {
         didSet {
-            let section = MEventSectionAsOrganizer.participants.rawValue
+            guard let section = sections.firstIndex(where: { $0 == .participants }) else { return }
             DispatchQueue.main.async {
                 self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
             }
@@ -58,7 +64,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
     }
     var guests: [Guest] = [] {
         didSet {
-            let section = MEventSectionAsOrganizer.guests.rawValue
+            guard let section = sections.firstIndex(where: { $0 == .guests }) else { return }
             DispatchQueue.main.async {
                 self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
             }
@@ -129,7 +135,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
         eventTableView.register(SectionCell.Constants.nib,
                                 forHeaderFooterViewReuseIdentifier: SectionCell.Constants.identifier)
         
-        for section in sections {
+        for section in MEventSectionAsOrganizer.all {
             eventTableView.register(section.cellNib, forCellReuseIdentifier: section.cellIdentifier)
         }
         eventTableView.dataSource = self
@@ -293,13 +299,17 @@ extension EventDetailsAsOrganizerVC: UITableViewDataSource {
         return header
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        sections[indexPath.section].estimatedCellHeight
+    }
+        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        sections[indexPath.section].cellHeight
+        UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sections[section] {
-        case .informations, .place:
+        case .informations, .place, .placeWithPictures:
             return 1
         case .participants:
             return participants.count
@@ -321,6 +331,13 @@ extension EventDetailsAsOrganizerVC: UITableViewDataSource {
         case .place:
             guard let event = event,
                   let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventPlaceCell else {
+                      return UITableViewCell()
+                  }
+            cell.setUp(name: event.placeName, address: event.placeAddress)
+            return cell
+        case .placeWithPictures:
+            guard let event = event,
+                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventPlaceWithPicturesCell else {
                       return UITableViewCell()
                   }
             cell.setUp(name: event.placeName, address: event.placeAddress, photos: photoUrls)
@@ -349,7 +366,7 @@ extension EventDetailsAsOrganizerVC: UITableViewDelegate {
         switch section {
         case .informations:
             addEventToCalendar()
-        case .place:
+        case .place, .placeWithPictures:
             goTo()
         case .participants:
             let participant = participants[indexPath.row]

@@ -706,11 +706,30 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tyX-ug-Kfa">
                                 <rect key="frame" x="0.0" y="135" width="414" height="707"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rr9-Y2-aE7">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQO-KN-e9C">
+                                                <rect key="frame" x="18" y="10" width="378" height="20"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2v6-ex-Ba3"/>
+                                            <constraint firstAttribute="trailing" secondItem="mQO-KN-e9C" secondAttribute="trailing" constant="18" id="5E8-GO-ty7"/>
+                                            <constraint firstItem="mQO-KN-e9C" firstAttribute="top" secondItem="Rr9-Y2-aE7" secondAttribute="top" constant="10" id="5Gy-Ma-aze"/>
+                                            <constraint firstItem="mQO-KN-e9C" firstAttribute="leading" secondItem="Rr9-Y2-aE7" secondAttribute="leading" constant="18" id="8wF-ES-T5D"/>
+                                            <constraint firstAttribute="bottom" secondItem="mQO-KN-e9C" secondAttribute="bottom" constant="10" id="ggi-1x-aLV"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lt9-Ha-TQt">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="609"/>
+                                        <rect key="frame" x="0.0" y="40" width="414" height="569"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="usP-eR-WQZ">
-                                                <rect key="frame" x="20" y="0.0" width="374" height="609"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="569"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                         </subviews>
@@ -784,6 +803,8 @@
                         <outlet property="editButton" destination="ulf-7h-4XC" id="bf4-uq-qMi"/>
                         <outlet property="eventTableView" destination="usP-eR-WQZ" id="OBM-nf-5O4"/>
                         <outlet property="sportLabel" destination="8ko-bO-rN1" id="6mJ-xU-Cn9"/>
+                        <outlet property="statusBar" destination="Rr9-Y2-aE7" id="W7D-tc-BUV"/>
+                        <outlet property="statusDesc" destination="mQO-KN-e9C" id="w8N-4w-6ju"/>
                         <outlet property="titleLabel" destination="xYg-Gp-bj0" id="rOw-jM-jUp"/>
                         <segue destination="rw4-ps-H46" kind="presentation" identifier="AddGuestVC" id="Uqu-8o-Qrg"/>
                         <segue destination="s6d-Du-VRS" kind="presentation" identifier="ParticipantVC" id="rio-N3-d1B"/>
@@ -1283,9 +1304,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LDZ-ud-kU3"/>
+        <segue reference="dPl-0I-Agp"/>
         <segue reference="b3W-dn-es6"/>
-        <segue reference="DDw-Ar-Ctc"/>
+        <segue reference="Uqu-8o-Qrg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="60" height="60"/>

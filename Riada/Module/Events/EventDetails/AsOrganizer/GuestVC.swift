@@ -59,7 +59,7 @@ class GuestVC: UIViewController {
         guard let guest = self.guest else { return }
         nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedUserNickName])
 
-        if guest.associatedUserId == ManagerUser.shared.user?.id {
+        if guest.associatedUserId == ManagerUser.shared.userId {
             goToProfileImageView.image = nil
         } else {
             goToProfileImageView.image = Constants.goToProfileImage

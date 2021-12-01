@@ -147,7 +147,7 @@ class ServiceEvent {
         guard let eventId = event.id,
               let eventData = event.toCreateData,
               let relatedEventData = event.toRelatedData,
-              let userId = ManagerUser.shared.user?.id,
+              let userId = ManagerUser.shared.userId,
               let organizerData = ManagerUser.shared.user?.toOrganizerData else {
             return
         }
@@ -162,7 +162,7 @@ class ServiceEvent {
         guard let eventId = event.id,
               let eventData = event.toUpdateData,
               let relatedEventData = event.toRelatedData,
-              let userId = ManagerUser.shared.user?.id,
+              let userId = ManagerUser.shared.userId,
               let organizerData = ManagerUser.shared.user?.toOrganizerData else {
             return
         }
@@ -187,7 +187,7 @@ class ServiceEvent {
     static func participate(event: Event) {
         guard let eventId = event.id,
               let relatedEventData = event.toRelatedData,
-              let userId = ManagerUser.shared.user?.id,
+              let userId = ManagerUser.shared.userId,
               let data = ManagerUser.shared.user?.toParticipantData else {
             return
         }
@@ -199,7 +199,7 @@ class ServiceEvent {
     static func participateAsOrganizer(event: Event) {
         guard let eventId = event.id,
               let relatedEventData = event.toRelatedData,
-              let userId = ManagerUser.shared.user?.id,
+              let userId = ManagerUser.shared.userId,
               let data = ManagerUser.shared.user?.toParticipantAsOrganizerData else {
             return
         }
@@ -209,7 +209,7 @@ class ServiceEvent {
     }
     
     static func unParticipateAsOrganizer(eventId: String) {
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
         
         FFirestoreReference.eventParticipants(eventId).document(userId).delete()
         FFirestoreReference.userParticipateEvents(userId).document(eventId).delete()
@@ -228,7 +228,7 @@ class ServiceEvent {
     }
     
     static func decline(eventId: String) {
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
         let data = [
            "status": ParticipationStatus.declined.rawValue
         ]
@@ -271,11 +271,10 @@ class ServiceEvent {
     // MARK: DELETE
     static func cancel(event: Event) {
         guard let eventId = event.id,
-              let userId = ManagerUser.shared.user?.id else {
+              let eventData = event.toUpdateData else {
             return
         }
         
-        FFirestoreReference.events.document(eventId).delete()
-        FFirestoreReference.eventOrganizer(eventId).document(userId).delete()
+        FFirestoreReference.events.document(eventId).setData(eventData, merge: true)
     }
 }

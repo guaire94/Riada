@@ -167,6 +167,26 @@ class ServiceNotification {
         }
     }
     
+    static func cancelEvent(event: Event, participants: [Participant]) {
+        guard let eventId = event.id else { return }
+
+        let type: MNotificationType = .cancelEvent
+        let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
+        
+        for participant in participants {
+            let data: [String : Any] = [
+                        "env": Config.firebaseEnv,
+                        "title_loc_key": type.title,
+                        "title_loc_args": [event.sportEmoticon, event.title, event.description],
+                        "body_loc_key": type.body,
+                        "body_loc_args": [],
+                        "deeplink": deeplink,
+                        "createdDate": Timestamp()]
+
+            FFirestoreReference.userNotifications(participant.userId).addDocument(data: data)
+        }
+    }
+    
     // MARK: - Participant
     static func participate(event: Event, organizer: Organizer) {
         guard let nickName = ManagerUser.shared.user?.nickName,

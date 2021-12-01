@@ -247,7 +247,7 @@ extension OtherProfileVC: UITableViewDelegate {
             ServiceEvent.getEventDetails(eventId: eventId) { event in
                 guard let event = event else { return }
                 DispatchQueue.main.async {
-                    if organizer.userId == ManagerUser.shared.user?.id {
+                    if organizer.userId == ManagerUser.shared.userId {
                         self.performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
                     } else {
                         let tuple = (event: event, organizer: organizer)

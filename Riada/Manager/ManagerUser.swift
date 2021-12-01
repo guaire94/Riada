@@ -24,8 +24,12 @@ class ManagerUser {
         }
     }
     
+    var userId: String? {
+        Auth.auth().currentUser?.uid
+    }
+    
     var isConnected: Bool {
-        Auth.auth().currentUser != nil
+        user != nil
     }
 
     func synchronise(completion: @escaping () -> Void) {

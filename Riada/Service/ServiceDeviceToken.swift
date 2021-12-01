@@ -14,12 +14,12 @@ class ServiceDeviceToken {
     static let shared = ServiceDeviceToken()
     
     func register() {
-        guard let userId = ManagerUser.shared.user?.id, let token = Messaging.messaging().fcmToken else { return }
+        guard let userId = ManagerUser.shared.userId, let token = Messaging.messaging().fcmToken else { return }
         FFirestoreReference.users.document(userId).updateData(["devices": FieldValue.arrayUnion([token])])
     }
     
     func unregister(token: String) {
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
         FFirestoreReference.users.document(userId).updateData(["devices": FieldValue.arrayRemove([token])])
     }
 }

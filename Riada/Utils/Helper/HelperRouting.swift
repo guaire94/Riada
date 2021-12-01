@@ -39,7 +39,7 @@ class HelperRouting {
                 guard let organizer = organizer else { return }
                 ServiceEvent.getEventDetails(eventId: eventId) { event in
                     guard let event = event else { return }
-                    if organizer.userId == ManagerUser.shared.user?.id {
+                    if organizer.userId == ManagerUser.shared.userId {
                         let eventDetailsVC = UIViewController.eventDetailsAsOrganizerVC
                         eventDetailsVC.event = event
                         self.routeToVC(vc: eventDetailsVC)

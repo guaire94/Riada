@@ -14,6 +14,7 @@ enum MNotificationType: String {
     case refuseYourParticipation
     case refuseYourGuest
     case editEvent
+    case cancelEvent
     case participate
     case decline
     case addGuest
@@ -36,6 +37,8 @@ enum MNotificationType: String {
             return L10N.notifications.refuseYourGuest.title
         case .editEvent:
             return L10N.notifications.editEvent.title
+        case .cancelEvent:
+            return L10N.notifications.cancelEvent.title
         case .participate:
             return L10N.notifications.participate.title
         case .decline:
@@ -63,6 +66,8 @@ enum MNotificationType: String {
             return L10N.notifications.refuseYourGuest.body
         case .editEvent:
             return L10N.notifications.editEvent.body
+        case .cancelEvent:
+            return L10N.notifications.cancelEvent.body
         case .participate:
             return L10N.notifications.participate.body
         case .decline:

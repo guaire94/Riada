@@ -57,6 +57,10 @@ struct L10N {
                 static let edit: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_EDIT", comment: "")
             }
             
+            struct status {
+                static let canceled: String = NSLocalizedString("EVENT_DETAILS_STATUS_CANCELED", comment: "")
+            }
+            
             struct participationStatus {
                 static let accepted: String = NSLocalizedString("EVENT_DETAILS_PARTICIPATION_STATUS_ACCEPTED", comment: "")
                 static let refused: String = NSLocalizedString("EVENT_DETAILS_PARTICIPATION_STATUS_REFUSED", comment: "")
@@ -224,6 +228,10 @@ struct L10N {
         struct editEvent {
             static let title: String = "NOTIFICATION_EDIT_EVENT_TITLE"
             static let body: String = "NOTIFICATION_EDIT_EVENT_BODY"
+        }
+        struct cancelEvent {
+            static let title: String = "NOTIFICATION_CANCEL_EVENT_TITLE"
+            static let body: String = "NOTIFICATION_CANCEL_EVENT_BODY"
         }
         struct participate {
             static let title: String = "NOTIFICATION_PARTICIPATE_TITLE"

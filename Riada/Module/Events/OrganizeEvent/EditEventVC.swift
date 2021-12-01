@@ -11,7 +11,7 @@ import Firebase
 
 protocol EditEventVCDelegate: AnyObject {
     func didUpdateEvent(event: Event)
-    func didCancelEvent()
+    func didCancelEvent(event: Event)
 }
 
 class EditEventVC: UIViewController {
@@ -167,9 +167,10 @@ extension EditEventVC {
                           sportId: sportId,
                           sportEmoticon: sport.emoticon,
                           sportName: sport.name,
-                          createdDate: createdDate,
-                          isPrivate: isPrivateSwitchField.isOn)
-        
+                          isPrivate: isPrivateSwitchField.isOn,
+                          status: EventStatus.open.rawValue,
+                          createdDate: createdDate)
+
         HelperTracking.track(item: .editEventSave)
         ServiceEvent.edit(event: event)
                 
@@ -180,7 +181,7 @@ extension EditEventVC {
     }
     
     @IBAction func cancelToggle() {
-        guard let event = event else { return }
+        guard var event = event else { return }
         
         let feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator.notificationOccurred(.warning)
@@ -190,9 +191,10 @@ extension EditEventVC {
                                           message: L10N.event.edit.form.cancelMessageEvent, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: L10N.global.action.confirm, style: .destructive, handler: { _ in
                 HelperTracking.track(item: .editEventCancel)
+                event.status = EventStatus.canceled.rawValue
                 ServiceEvent.cancel(event: event)
                 self.navigationController?.popViewController(animated: true)
-                self.delegate?.didCancelEvent()
+                self.delegate?.didCancelEvent(event: event)
             }))
             alert.addAction(UIAlertAction(title: L10N.global.action.cancel, style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)

@@ -136,13 +136,30 @@ class EventDetailsAsParticipantVC: UIViewController {
     }
     
     private func updateStatusBarState() {
-        guard let currentUserParticipationStatus = currentUserParticipationStatus else { return }
-        statusBar.backgroundColor = currentUserParticipationStatus.color
-        statusDesc.text = currentUserParticipationStatus.desc
-        statusBar.isHidden = false
+        guard let event = event,
+              let currentUserParticipationStatus = currentUserParticipationStatus else {
+            statusBar.isHidden = true
+            return
+        }
+        switch event.eventStatus {
+        case .open:
+            statusBar.backgroundColor = currentUserParticipationStatus.color
+            statusDesc.text = currentUserParticipationStatus.desc
+            statusBar.isHidden = false
+        case .canceled:
+            statusBar.backgroundColor = event.eventStatus.color
+            statusDesc.text = event.eventStatus.desc
+            statusBar.isHidden = false
+        }
     }
     
     private func updateButtonsState() {
+        guard let event = event,
+              event.eventStatus == .open else {
+                  actionBar.isHidden = true
+            return
+        }
+        
         guard currentUserParticipationStatus != .refused else {
             actionBar.isHidden = true
             return
@@ -222,7 +239,7 @@ extension EventDetailsAsParticipantVC: ServiceEventParticipantDelegate  {
     
     func dataAdded(participant: Participant) {
         participants.append(participant)
-        guard let userId = ManagerUser.shared.user?.id,
+        guard let userId = ManagerUser.shared.userId,
               participant.userId == userId else {
                   return
         }
@@ -232,7 +249,7 @@ extension EventDetailsAsParticipantVC: ServiceEventParticipantDelegate  {
     func dataModified(participant: Participant) {
         guard let index = participants.firstIndex(where: { $0.id == participant.id }) else { return }
         participants[index] = participant
-        guard let userId = ManagerUser.shared.user?.id,
+        guard let userId = ManagerUser.shared.userId,
               participant.userId == userId else {
                   return
         }
@@ -243,7 +260,7 @@ extension EventDetailsAsParticipantVC: ServiceEventParticipantDelegate  {
         guard let index = participants.firstIndex(where: { $0.id == participant.id }) else { return }
         participants.remove(at: index)
         
-        guard let userId = ManagerUser.shared.user?.id,
+        guard let userId = ManagerUser.shared.userId,
               participant.userId == userId else {
                   return
         }
@@ -251,7 +268,7 @@ extension EventDetailsAsParticipantVC: ServiceEventParticipantDelegate  {
     }
     
     func didFinishLoading() {
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
         let participant = participants.filter({ $0.userId == userId}).first
         currentUserParticipationStatus = participant?.participationStatus
     }
@@ -377,14 +394,14 @@ extension EventDetailsAsParticipantVC: UITableViewDelegate {
             goTo()
         case .participants:
             let userId = participants[indexPath.row].userId
-            guard userId != ManagerUser.shared.user?.id else { return }
+            guard userId != ManagerUser.shared.userId else { return }
             HelperTracking.track(item: .eventDetailsParticipant)
             ServiceUser.getOtherProfile(userId: userId) { user in
                 self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
             }
         case .guests:
             let userId = guests[indexPath.row].associatedUserId
-            guard userId != ManagerUser.shared.user?.id else { return }
+            guard userId != ManagerUser.shared.userId else { return }
             HelperTracking.track(item: .eventDetailsGuest)
             ServiceUser.getOtherProfile(userId: userId) { user in
                 self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)

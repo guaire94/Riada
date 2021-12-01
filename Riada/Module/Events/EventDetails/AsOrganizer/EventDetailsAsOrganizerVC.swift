@@ -29,6 +29,8 @@ class EventDetailsAsOrganizerVC: UIViewController {
     //MARK: - IBOutlet
     @IBOutlet weak private var sportLabel: UILabel!
     @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var statusBar: UIView!
+    @IBOutlet weak private var statusDesc: UILabel!
     @IBOutlet weak private var eventTableView: UITableView!
     @IBOutlet weak private var actionBar: UIView!
     @IBOutlet weak private var addGuestButton: MButton!
@@ -104,11 +106,16 @@ class EventDetailsAsOrganizerVC: UIViewController {
     
     //MARK: - Privates
     private func setUpView() {
+        guard let event = event else { return }
         HelperTracking.track(item: .eventDetails)
+        
+        actionBar.isHidden = event.eventStatus == .canceled
 
-        titleLabel.text = event?.title
+        titleLabel.text = event.title
         setUpTableView()
+        
         setUpButtons()
+        setUpStatusBar()
     }
     
     private func setUpTableView() {
@@ -126,6 +133,16 @@ class EventDetailsAsOrganizerVC: UIViewController {
     private func setUpButtons() {
         addGuestButton.setTitle(L10N.event.details.buttons.addGuest.uppercased(), for: .normal)
         editButton.setTitle(L10N.event.details.buttons.edit.uppercased(), for: .normal)
+    }
+    
+    private func setUpStatusBar() {
+        guard let event = event, event.eventStatus == .canceled else {
+            statusBar.isHidden = true
+            return
+        }
+        statusBar.isHidden = false
+        statusBar.backgroundColor = event.eventStatus.color
+        statusDesc.text = event.eventStatus.desc
     }
     
     private func syncEvent() {
@@ -330,7 +347,7 @@ extension EventDetailsAsOrganizerVC: UITableViewDelegate {
             goTo()
         case .participants:
             let participant = participants[indexPath.row]
-            guard let userId = ManagerUser.shared.user?.id,
+            guard let userId = ManagerUser.shared.userId,
                   participant.userId != userId else {
                       return
             }
@@ -367,13 +384,21 @@ extension EventDetailsAsOrganizerVC: EditEventVCDelegate {
         titleLabel.text = event.title
         eventTableView.reloadData()
         
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
         let filteredParticipants = participants.filter({ $0.userId != userId && [.accepted, .pending].contains($0.participationStatus) })
         ServiceNotification.editEvent(event: event, participants: filteredParticipants)
     }
     
-    func didCancelEvent() {
-        navigationController?.popViewController(animated: true)
+    func didCancelEvent(event: Event) {
+        guard let userId = ManagerUser.shared.userId else { return }
+        let filteredParticipants = participants.filter({ $0.userId != userId && [.accepted, .pending].contains($0.participationStatus) })
+        ServiceNotification.cancelEvent(event: event, participants: filteredParticipants)
+        
+        self.event = event
+        statusBar.isHidden = false
+        statusBar.backgroundColor = EventStatus.canceled.color
+        statusDesc.text = EventStatus.canceled.desc
+        actionBar.isHidden = true
     }
 }
 

@@ -32,10 +32,8 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         (UIApplication.shared.delegate as? AppDelegate)?.registerForPushNotifications()
         notificationsButton.isHidden = true
-        ManagerUser.shared.synchronise {
-            self.setUpView()
-            self.syncSports()
-        }
+        setUpView()
+        syncSports()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -39,7 +39,7 @@ class EventParticipantCell: UITableViewCell {
     
     func setUp(participant: Participant) {
         setUpUI()
-        if participant.userId == ManagerUser.shared.user?.id {
+        if participant.userId == ManagerUser.shared.userId {
             nameLabel.text = String(format: L10N.event.details.currentUserParticipate, arguments: [participant.userNickName])
             goToProfileImageView.image = nil
         } else {
@@ -57,7 +57,7 @@ class EventParticipantCell: UITableViewCell {
     func setUp(guest: Guest) {
         setUpUI()
         
-        if guest.associatedUserId == ManagerUser.shared.user?.id {
+        if guest.associatedUserId == ManagerUser.shared.userId {
             goToProfileImageView.image = nil
         } else {
             goToProfileImageView.image = Constants.goToProfileImage

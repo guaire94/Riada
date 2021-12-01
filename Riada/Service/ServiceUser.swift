@@ -149,7 +149,7 @@ class ServiceUser {
     }
     
     static func getNotifications(delegate: ServiceUserNotificationDelegate) {
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
         
         notificationsListener?.remove()
         notificationsListener = FFirestoreReference.userNotifications(userId).addSnapshotListener { query, error in
@@ -178,7 +178,7 @@ class ServiceUser {
     }
     
     static func getOrganizeEvents(delegate: ServiceUserEventsDelegate) {
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
 
         eventsListener?.remove()
         eventsListener = FFirestoreReference.userOrganizeEvents(userId).addSnapshotListener { query, error in
@@ -207,7 +207,7 @@ class ServiceUser {
     }
     
     static func getParticipateEvents(delegate: ServiceUserEventsDelegate) {
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
 
         eventsListener?.remove()
         eventsListener = FFirestoreReference.userParticipateEvents(userId).addSnapshotListener { query, error in
@@ -301,7 +301,7 @@ class ServiceUser {
     }
     
     static func getUserByFavoriteSport(event: Event, completion: @escaping ([User]) -> Void) {
-        guard let userId = ManagerUser.shared.user?.id else { return }
+        guard let userId = ManagerUser.shared.userId else { return }
 
         let lat = event.placeCoordinate.latitude
         let lng = event.placeCoordinate.longitude
@@ -317,7 +317,8 @@ class ServiceUser {
                 }
                 for document in documents {
                     if document.exists,
-                       let user = try? document.data(as: User.self), user.id != userId, user.favoritesSports.contains(event.sportId) {
+                       let user = try? document.data(as: User.self),
+                       user.id != userId, user.favoritesSports.contains(event.sportId) {
                         users.append(user)
                     }
                 }

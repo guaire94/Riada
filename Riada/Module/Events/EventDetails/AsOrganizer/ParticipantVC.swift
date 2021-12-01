@@ -54,7 +54,7 @@ class ParticipantVC: UIViewController {
     
     func setUpParticipant() {
         guard let participant = self.participant else { return }
-        if participant.userId == ManagerUser.shared.user?.id {
+        if participant.userId == ManagerUser.shared.userId {
             nameLabel.text = String(format: L10N.event.details.currentUserParticipate, arguments: [participant.userNickName])
         } else {
             nameLabel.text = participant.userNickName

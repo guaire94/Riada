@@ -210,7 +210,7 @@ extension EventsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = eventsTableView.cellForRow(at: indexPath) as? EventCell,
-              let userId = ManagerUser.shared.user?.id,
+              let userId = ManagerUser.shared.userId,
               let organizer = cell.organizer else {
                   return
         }

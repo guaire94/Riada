@@ -193,6 +193,7 @@ extension HomeVC: OrganizeEventVCDelegate {
 extension HomeVC: SignUpVCDelegate {
 
     func didSignUp() {
+        setUpProfileInformations()
         notificationsButton.isHidden = false
         if wantToOrganize {
             wantToOrganize = false

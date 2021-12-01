@@ -106,8 +106,8 @@ private extension AddGuestVC {
         
         let guest = Guest(id: "",
                           associatedUserId: userId,
-                          associatedNickName: userNickname,
-                          associatedAvatar: user.avatar,
+                          associatedUserNickName: userNickname,
+                          associatedUserAvatar: user.avatar,
                           guestNickName: guestNickName,
                           status: ParticipationStatus.accepted.rawValue)
         

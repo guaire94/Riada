@@ -102,7 +102,7 @@ class ServiceNotification {
                         "title_loc_key": type.title,
                         "title_loc_args": [event.sportEmoticon, event.title, event.description],
                         "body_loc_key": type.body,
-                        "body_loc_args": [joiner.associatedNickName],
+                        "body_loc_args": [joiner.associatedUserNickName],
                         "deeplink": deeplink,
                         "createdDate": Timestamp()]
 

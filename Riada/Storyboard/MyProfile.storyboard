@@ -192,7 +192,7 @@
                                     <constraint firstItem="Mxf-TK-L3K" firstAttribute="leading" secondItem="MVt-G1-S40" secondAttribute="leading" constant="20" id="wBN-xV-aze"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9f-M2-qOe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9f-M2-qOe">
                                 <rect key="frame" x="0.0" y="818" width="414" height="78"/>
                                 <state key="normal" image="add"/>
                                 <connections>

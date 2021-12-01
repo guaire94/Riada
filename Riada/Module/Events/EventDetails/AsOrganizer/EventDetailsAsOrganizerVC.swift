@@ -43,19 +43,25 @@ class EventDetailsAsOrganizerVC: UIViewController {
     var photoUrls: [URL] = [] {
         didSet {
             let section = MEventSectionAsOrganizer.place.rawValue
-            eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+            DispatchQueue.main.async {
+                self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+            }
         }
     }
     var participants: [Participant] = [] {
         didSet {
             let section = MEventSectionAsOrganizer.participants.rawValue
-            eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+            DispatchQueue.main.async {
+                self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+            }
         }
     }
     var guests: [Guest] = [] {
         didSet {
             let section = MEventSectionAsOrganizer.guests.rawValue
-            eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+            DispatchQueue.main.async {
+                self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+            }
         }
     }
     

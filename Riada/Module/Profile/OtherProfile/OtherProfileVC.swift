@@ -82,9 +82,8 @@ class OtherProfileVC: UIViewController {
         guard let user = self.user else { return }
         
         nickNameLabel.text = user.nickName
-        if let userAvatar = user.avatar, !userAvatar.isEmpty {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatarImageView.sd_setImage(with: storage)
+        if let userAvatar = user.avatar, let url = URL(string: userAvatar) {
+            avatarImageView.sd_setImage(with: url)
         } else {
             avatarImageView.image = #imageLiteral(resourceName: "avatar")
         }

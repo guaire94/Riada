@@ -59,9 +59,8 @@ class ParticipantVC: UIViewController {
         } else {
             nameLabel.text = participant.userNickName
         }
-        if let userAvatar = participant.userAvatar {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatar.sd_setImage(with: storage)
+        if let userAvatar = participant.userAvatar, let url = URL(string: userAvatar) {
+            avatar.sd_setImage(with: url)
         } else {
             avatar.image = #imageLiteral(resourceName: "avatar")
         }

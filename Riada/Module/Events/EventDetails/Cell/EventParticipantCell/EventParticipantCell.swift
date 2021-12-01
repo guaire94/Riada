@@ -46,9 +46,8 @@ class EventParticipantCell: UITableViewCell {
             nameLabel.text = participant.userNickName
             goToProfileImageView.image = Constants.goToProfileImage
         }
-        if let userAvatar = participant.userAvatar {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatar.sd_setImage(with: storage)
+        if let userAvatar = participant.userAvatar, let url = URL(string: userAvatar) {
+            avatar.sd_setImage(with: url)
         } else {
             avatar.image = #imageLiteral(resourceName: "avatar")
         }
@@ -63,11 +62,10 @@ class EventParticipantCell: UITableViewCell {
         } else {
             goToProfileImageView.image = Constants.goToProfileImage
         }
-        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedNickName])
+        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedUserNickName])
 
-        if let userAvatar = guest.associatedAvatar {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatar.sd_setImage(with: storage)
+        if let userAvatar = guest.associatedUserAvatar, let url = URL(string: userAvatar) {
+            avatar.sd_setImage(with: url)
         } else {
             avatar.image = #imageLiteral(resourceName: "avatar")
         }

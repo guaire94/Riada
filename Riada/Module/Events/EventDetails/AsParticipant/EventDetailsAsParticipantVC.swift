@@ -99,6 +99,12 @@ class EventDetailsAsParticipantVC: UIViewController {
                       return
                   }
             vc.user = user
+        } else if segue.identifier == PhotoVC.Constants.identifier {
+            guard let vc = segue.destination as? PhotoVC,
+                  let photoUrl = sender as? URL else {
+                      return
+                  }
+            vc.photoUrl = photoUrl
         }
     }
     
@@ -376,6 +382,7 @@ extension EventDetailsAsParticipantVC: UITableViewDataSource {
                   let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventPlaceWithPicturesCell else {
                       return UITableViewCell()
                   }
+            cell.delegate = self
             cell.setUp(name: event.placeName, address: event.placeAddress, photos: photoUrls)
             return cell
         case .participants:
@@ -448,6 +455,15 @@ extension EventDetailsAsParticipantVC: AddGuestVCDelegate {
     
     func didUpdateNbAcceptedPlayerFromAddGuest(nbAcceptedPlayer: Int) {}
 }
+
+// MARK: - EventPlaceWithPicturesCellDelegate
+extension EventDetailsAsParticipantVC: EventPlaceWithPicturesCellDelegate {
+    
+    func didTogglePicture(photoUrl: URL) {
+        performSegue(withIdentifier: PhotoVC.Constants.identifier, sender: photoUrl)
+    }
+}
+
 
 // MARK: IBAction
 extension EventDetailsAsParticipantVC {

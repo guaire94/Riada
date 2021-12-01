@@ -310,6 +310,7 @@
                         <segue destination="3xZ-DW-EzW" kind="presentation" identifier="ParticipateVC" id="VxZ-8S-UK1"/>
                         <segue destination="rw4-ps-H46" kind="presentation" identifier="AddGuestVC" id="DDw-Ar-Ctc"/>
                         <segue destination="rf4-Ml-4vF" kind="show" identifier="OtherProfileVC" id="LDZ-ud-kU3"/>
+                        <segue destination="6uD-aY-EQE" kind="presentation" identifier="PhotoVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="FWb-2b-hWH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJF-Sf-DZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -811,6 +812,7 @@
                         <segue destination="ccM-dy-3sS" kind="presentation" identifier="GuestVC" id="b6z-Fr-LaX"/>
                         <segue destination="vdM-gm-dfM" kind="show" identifier="EditEventVC" id="Ozu-hS-ja2"/>
                         <segue destination="rf4-Ml-4vF" kind="show" identifier="OtherProfileVC" id="dPl-0I-Agp"/>
+                        <segue destination="6uD-aY-EQE" kind="presentation" identifier="PhotoVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="4on-LS-MBQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mrr-ba-anq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1302,8 +1304,55 @@
             </objects>
             <point key="canvasLocation" x="180" y="1379"/>
         </scene>
+        <!--PhotoVC-->
+        <scene sceneID="A1B-Bf-DGZ">
+            <objects>
+                <viewController storyboardIdentifier="PhotoVC" id="6uD-aY-EQE" customClass="PhotoVC" customModule="Riada" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uTH-hW-a8u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j4l-P2-v7K">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-eB-878">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="backToggle" destination="6uD-aY-EQE" eventType="touchUpInside" id="dwi-4Y-Ddh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bNk-15-Cu1"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.69853427114803623" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="j4l-P2-v7K" firstAttribute="centerX" secondItem="bNk-15-Cu1" secondAttribute="centerX" id="6UQ-Le-5oG"/>
+                            <constraint firstItem="j4l-P2-v7K" firstAttribute="centerY" secondItem="bNk-15-Cu1" secondAttribute="centerY" id="KcP-Ma-NqR"/>
+                            <constraint firstItem="j4l-P2-v7K" firstAttribute="top" secondItem="bNk-15-Cu1" secondAttribute="top" id="LnQ-Uk-yga"/>
+                            <constraint firstItem="xwv-eB-878" firstAttribute="top" secondItem="bNk-15-Cu1" secondAttribute="top" id="QHX-ds-VFg"/>
+                            <constraint firstItem="j4l-P2-v7K" firstAttribute="trailing" secondItem="bNk-15-Cu1" secondAttribute="trailing" id="SDs-r9-9Sf"/>
+                            <constraint firstItem="bNk-15-Cu1" firstAttribute="trailing" secondItem="xwv-eB-878" secondAttribute="trailing" id="VXY-nJ-x90"/>
+                            <constraint firstItem="j4l-P2-v7K" firstAttribute="trailing" secondItem="bNk-15-Cu1" secondAttribute="trailing" id="Y0P-gg-YgC"/>
+                            <constraint firstItem="j4l-P2-v7K" firstAttribute="leading" secondItem="bNk-15-Cu1" secondAttribute="leading" id="YpY-vf-hTe"/>
+                            <constraint firstItem="bNk-15-Cu1" firstAttribute="bottom" secondItem="xwv-eB-878" secondAttribute="bottom" id="gs8-mY-6dm"/>
+                            <constraint firstItem="bNk-15-Cu1" firstAttribute="bottom" secondItem="j4l-P2-v7K" secondAttribute="bottom" id="j6u-6W-4GC"/>
+                            <constraint firstItem="j4l-P2-v7K" firstAttribute="leading" secondItem="bNk-15-Cu1" secondAttribute="leading" id="o34-FU-fru"/>
+                            <constraint firstItem="xwv-eB-878" firstAttribute="leading" secondItem="bNk-15-Cu1" secondAttribute="leading" id="oeo-p9-gqL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="idI-mc-dKb"/>
+                    <connections>
+                        <outlet property="photoImageView" destination="j4l-P2-v7K" id="pLz-8b-OOL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="goO-ke-hD8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1693" y="1290"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="4on-LS-MBQ"/>
         <segue reference="dPl-0I-Agp"/>
         <segue reference="b3W-dn-es6"/>
         <segue reference="Uqu-8o-Qrg"/>

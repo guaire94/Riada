@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol EventPlaceWithPicturesCellDelegate: AnyObject {
+    func didTogglePicture(photoUrl: URL)
+}
+
 class EventPlaceWithPicturesCell: UITableViewCell {
 
     //MARK: - Constant
@@ -27,6 +31,7 @@ class EventPlaceWithPicturesCell: UITableViewCell {
     @IBOutlet weak private var photosCollectionView: UICollectionView!
 
     // MARK: - Properties
+    weak var delegate: EventPlaceWithPicturesCellDelegate?
     var photoUrls: [URL] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -99,6 +104,7 @@ extension EventPlaceWithPicturesCell: UICollectionViewDataSource {
 extension EventPlaceWithPicturesCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: display image in fullscreen
+        let photoUrl = photoUrls[indexPath.row]
+        delegate?.didTogglePicture(photoUrl: photoUrl)
     }
 }

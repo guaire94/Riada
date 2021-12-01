@@ -13,7 +13,6 @@
 		6562729D2584B2AC00CDA0F9 /* MNotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6562729C2584B2AC00CDA0F9 /* MNotificationType.swift */; };
 		656272A52586535100CDA0F9 /* HelperNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656272A42586535100CDA0F9 /* HelperNotification.swift */; };
 		656272A92586537C00CDA0F9 /* CurrentNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656272A82586537C00CDA0F9 /* CurrentNotification.swift */; };
-		658720F42594ABFF00775520 /* HelperOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658720F32594ABFF00775520 /* HelperOnBoarding.swift */; };
 		B811E8A7254F6835008DB735 /* Timestamp+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = B811E8A6254F6835008DB735 /* Timestamp+M.swift */; };
 		B82FE3BF255DFB4800B52099 /* ServiceGooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FE3BE255DFB4800B52099 /* ServiceGooglePlace.swift */; };
 		B836B61B2548D94100AAF48A /* ManagerUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B836B61A2548D94100AAF48A /* ManagerUser.swift */; };
@@ -46,6 +45,7 @@
 		B8FDE3B8253F79B800BD29B2 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8FDE3B2253F79AC00BD29B2 /* Lato-Regular.ttf */; };
 		B8FDE3B9253F79B800BD29B2 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */; };
 		E31E442F6F04E2E9F9202CE0 /* Pods_Riada.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */; };
+		EE1202A527578B7E0068F0F3 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202A427578B7E0068F0F3 /* EventStatus.swift */; };
 		EE20263626F617B50094D87C /* ManagerUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20263526F617B50094D87C /* ManagerUserPreferences.swift */; };
 		EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3942747E08900F484F4 /* NotificationsVC.swift */; };
 		EE21C3992747E27A00F484F4 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3972747E27A00F484F4 /* NotificationCell.swift */; };
@@ -154,7 +154,6 @@
 		6562729C2584B2AC00CDA0F9 /* MNotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNotificationType.swift; sourceTree = "<group>"; };
 		656272A42586535100CDA0F9 /* HelperNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperNotification.swift; sourceTree = "<group>"; };
 		656272A82586537C00CDA0F9 /* CurrentNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentNotification.swift; sourceTree = "<group>"; };
-		658720F32594ABFF00775520 /* HelperOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperOnBoarding.swift; sourceTree = "<group>"; };
 		6788B25E4DA64D52DFED40C8 /* Pods-Riada.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Riada.release.xcconfig"; path = "Target Support Files/Pods-Riada/Pods-Riada.release.xcconfig"; sourceTree = "<group>"; };
 		74EB47B79B92112AC4818753 /* Pods-Riada.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Riada.debug.xcconfig"; path = "Target Support Files/Pods-Riada/Pods-Riada.debug.xcconfig"; sourceTree = "<group>"; };
 		B811E8A6254F6835008DB735 /* Timestamp+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timestamp+M.swift"; sourceTree = "<group>"; };
@@ -192,6 +191,7 @@
 		B8FDE3B4253F79AC00BD29B2 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Riada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE1202A427578B7E0068F0F3 /* EventStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		EE20263526F617B50094D87C /* ManagerUserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerUserPreferences.swift; sourceTree = "<group>"; };
 		EE21C3942747E08900F484F4 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		EE21C3972747E27A00F484F4 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
@@ -327,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				656272A42586535100CDA0F9 /* HelperNotification.swift */,
-				658720F32594ABFF00775520 /* HelperOnBoarding.swift */,
 				EE5836D926ECE35100ED203D /* HelperRouting.swift */,
 				EE75D5672707481F004B7973 /* HelperDynamicLink.swift */,
 				EE8951E62741211F0081AE09 /* HelperTracking.swift */,
@@ -355,6 +354,7 @@
 				EE27197E26EBD70400A3F281 /* Participant.swift */,
 				EE27198526EBD7F500A3F281 /* Guest.swift */,
 				EE27198126EBD77000A3F281 /* ParticipationStatus.swift */,
+				EE1202A427578B7E0068F0F3 /* EventStatus.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -1004,6 +1004,7 @@
 				B8CE19BB253DBAE5002AC5A5 /* Resources */,
 				F1FD288B792BFAB69EFDF58E /* [CP] Embed Pods Frameworks */,
 				B8CE1AAA253F57DE002AC5A5 /* FirebaseCrashlytics run */,
+				EE1202A62757BE630068F0F3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1135,6 +1136,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
+		EE1202A62757BE630068F0F3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		F1FD288B792BFAB69EFDF58E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1179,7 +1198,6 @@
 				EE6B7F6926FF7B6A00E44B7C /* MKeyboardVC.swift in Sources */,
 				EE5A0B18271B5D2B009A951B /* MEventSectionAsOrganizer.swift in Sources */,
 				EE5836F826ECF97300ED203D /* SportCell.swift in Sources */,
-				658720F42594ABFF00775520 /* HelperOnBoarding.swift in Sources */,
 				B84ECBB725403235007F8E9E /* ServiceUser.swift in Sources */,
 				EEAE66072725A50F0048F559 /* AnonymouslyCell.swift in Sources */,
 				EE75D5682707481F004B7973 /* HelperDynamicLink.swift in Sources */,
@@ -1221,6 +1239,7 @@
 				B87B264C254232C6007D4A4D /* AnimatedLaunchScreenVC.swift in Sources */,
 				B8F71AD1254B985B00D686B4 /* UIView+M.swift in Sources */,
 				B83BF57B255EED99006903A2 /* CollectionReference+M.swift in Sources */,
+				EE1202A527578B7E0068F0F3 /* EventStatus.swift in Sources */,
 				B84ECBBA254036CF007F8E9E /* FirebaseConfig.swift in Sources */,
 				EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */,
 				EEBBD47F271863FB00519EBC /* SportPickerSource.swift in Sources */,
@@ -1413,6 +1432,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 662SLAFBT4;
 				INFOPLIST_FILE = Riada/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

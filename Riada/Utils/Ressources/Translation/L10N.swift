@@ -90,6 +90,10 @@ struct L10N {
                 static let plan: String = NSLocalizedString("EVENT_DETAILS_GO_TO_PLAN", comment: "")
                 static let notNecessary: String = NSLocalizedString("EVENT_DETAILS_GO_TO_NOT_NECESSARY", comment: "")
             }
+            struct error {
+               static let userDeclineAlready: String = NSLocalizedString("EVENT_DETAILS_ERROR_USER_DECLINED_ALREADY", comment: "")
+           }
+
         }
         struct organize {
             static let title: String = NSLocalizedString("EVENT_ORGANIZE_TITLE", comment: "")

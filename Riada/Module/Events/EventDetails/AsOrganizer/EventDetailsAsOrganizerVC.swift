@@ -334,8 +334,13 @@ extension EventDetailsAsOrganizerVC: UITableViewDelegate {
                   participant.userId != userId else {
                       return
             }
-            HelperTracking.track(item: .eventDetailsParticipant)
-            performSegue(withIdentifier: ParticipantVC.Constants.identifier, sender: participant)
+            
+            if participant.participationStatus == .declined {
+                showError(title: participant.userNickName, message: L10N.event.details.error.userDeclineAlready)
+            } else {
+                HelperTracking.track(item: .eventDetailsParticipant)
+                performSegue(withIdentifier: ParticipantVC.Constants.identifier, sender: participant)
+            }
         case .guests:
             HelperTracking.track(item: .eventDetailsGuest)
             performSegue(withIdentifier: GuestVC.Constants.identifier, sender: guests[indexPath.row])

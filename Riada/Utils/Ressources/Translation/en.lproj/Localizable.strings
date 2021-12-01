@@ -81,6 +81,7 @@
 "EVENT_EDIT_FORM_CANCEL_EVENT"="Cancel";
 "EVENT_EDIT_FORM_CANCEL_MESSAGE_EVENT"="Are you sure you want to cancel this event?";
 "EVENT_EDIT_FORM_ERROR_UNFILL"="Please fill all field before confirm";
+"EVENT_DETAILS_ERROR_USER_DECLINED_ALREADY"="User already decline";
 
 "SIGNUP_WELCOME"="Welcome";
 "SIGNUP_ANONYMOUSLY"="Sign Up Anonymously";

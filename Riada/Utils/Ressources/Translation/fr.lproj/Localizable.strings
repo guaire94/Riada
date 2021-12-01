@@ -84,6 +84,7 @@
 "EVENT_EDIT_FORM_CANCEL_EVENT"="Annuler";
 "EVENT_EDIT_FORM_CANCEL_MESSAGE_EVENT"="Es-tu sur de vouloir annuler cet évènement?";
 "EVENT_EDIT_FORM_ERROR_UNFILL"="Renseigne tous les champs avant de valider";
+"EVENT_DETAILS_ERROR_USER_DECLINED_ALREADY"="L'utilisateur a annulé sa participation";
 
 "SIGNUP_WELCOME"="Bienvenue";
 "SIGNUP_ANONYMOUSLY"="S'inscrire anonymement";

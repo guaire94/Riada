@@ -180,9 +180,15 @@ class ServiceEvent {
         }
     }
     
-    static func updateNbAcceptedPlayer(eventId: String, nbAcceptedPlayer: Int) {
-        let eventData = ["nbAcceptedPlayer": nbAcceptedPlayer]
-        FFirestoreReference.events.document(eventId).setData(eventData, merge: true)
+    static func increaseNbAcceptedPlayer(eventId: String) {
+        FFirestoreReference.events.document(eventId).updateData([
+            "nbAcceptedPlayer": FieldValue.increment(Int64(1))
+        ])
+    }
+    static func decreaseNbAcceptedPlayer(eventId: String) {
+        FFirestoreReference.events.document(eventId).updateData([
+            "nbAcceptedPlayer": FieldValue.increment(Int64(-1))
+        ])
     }
 
     static func participate(event: Event) {

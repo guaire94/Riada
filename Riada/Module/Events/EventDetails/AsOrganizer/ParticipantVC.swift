@@ -96,7 +96,7 @@ private extension ParticipantVC {
 
         let nbAcceptedPlayer = event.nbAcceptedPlayer+1
         delegate?.didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: nbAcceptedPlayer)
-        ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
+        ServiceEvent.increaseNbAcceptedPlayer(eventId: eventId)
 
         dismiss(animated: true, completion: nil)
     }
@@ -116,7 +116,7 @@ private extension ParticipantVC {
             let nbAcceptedPlayer = event.nbAcceptedPlayer-1
             ServiceNotification.refuseYourParticipation(event: event, participant: participant)
             delegate?.didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: nbAcceptedPlayer)
-            ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
+            ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
         }
         dismiss(animated: true, completion: nil)
     }

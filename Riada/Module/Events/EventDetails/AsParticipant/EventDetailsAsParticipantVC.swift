@@ -427,6 +427,8 @@ extension EventDetailsAsParticipantVC: AddGuestVCDelegate {
         }
         ServiceNotification.addGuest(event: event, organizer: organizer)
     }
+    
+    func didUpdateNbAcceptedPlayerFromAddGuest(nbAcceptedPlayer: Int) {}
 }
 
 // MARK: IBAction
@@ -481,7 +483,7 @@ extension EventDetailsAsParticipantVC {
         ServiceEvent.decline(eventId: eventId)
         let nbAcceptedPlayer = event.nbAcceptedPlayer-1
         self.event?.nbAcceptedPlayer = nbAcceptedPlayer
-        ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
+        ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
         ServiceNotification.decline(event: event, organizer: organizer)
     }
 }

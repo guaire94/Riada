@@ -437,6 +437,17 @@ extension EventDetailsAsOrganizerVC: AddGuestVCDelegate {
         let filteredParticipants = participants.filter({ $0.userId != guest.associatedUserId && $0.participationStatus == .accepted })
         ServiceNotification.acceptNewGuest(event: event, participants: filteredParticipants, joiner: guest)
     }
+    
+    func didUpdateNbAcceptedPlayerFromAddGuest(nbAcceptedPlayer: Int) {
+        event?.nbAcceptedPlayer = nbAcceptedPlayer
+        
+        guard let sectionDesc = sections[MEventSectionAsOrganizer.participants.rawValue].desc,
+                let event = self.event else {
+                    return
+        }
+        let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
+        participantSectionCell?.setUp(desc: desc)
+    }
 }
 
 // MARK: - GuestVCDelegate

@@ -99,6 +99,7 @@ class EventDetailsAsParticipantVC: UIViewController {
     private func setUpView() {
         HelperTracking.track(item: .eventDetails)
 
+        sportLabel.text = event?.sportLocalizedName
         titleLabel.text = event?.title
         statusBar.isHidden = true
         actionBar.isHidden = true

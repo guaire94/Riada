@@ -52,17 +52,15 @@ class EventDetailsAsParticipantVC: UIViewController {
     var organizer: Organizer?
     var participants: [Participant] = [] {
         didSet {
-            guard let section = sections.firstIndex(where: { $0 == .participants }) else { return }
             DispatchQueue.main.async {
-                self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+                self.eventTableView.reloadData()
             }
         }
     }
     var guests: [Guest] = [] {
         didSet {
-            guard let section = sections.firstIndex(where: { $0 == .guests }) else { return }
             DispatchQueue.main.async {
-                self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+                self.eventTableView.reloadData()
             }
         }
     }

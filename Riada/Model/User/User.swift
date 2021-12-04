@@ -15,7 +15,7 @@ struct User: Identifiable, Codable {
     var avatar: String?
     var favoritesSports: [String]
     var createdDate: Timestamp?
-    var location: GeoPoint
+    var location: GeoPoint?
 
     var toParticipantData: [String: Any]? {
         guard let userId = self.id, let nickName = self.nickName else { return nil }
@@ -59,11 +59,11 @@ struct User: Identifiable, Codable {
         guard let userId = self.id, let nickName = self.nickName else { return nil }
         var data = [
            "associatedUserId": userId,
-           "associatedNickName": nickName,
+           "associatedUserNickName": nickName,
            "status": ParticipationStatus.pending.rawValue
         ]
         if let avatar = self.avatar {
-            data["associatedAvatar"] = avatar
+            data["associatedUserAvatar"] = avatar
         }
         return data
     }

@@ -39,16 +39,15 @@ class EventParticipantCell: UITableViewCell {
     
     func setUp(participant: Participant) {
         setUpUI()
-        if participant.userId == ManagerUser.shared.user?.id {
+        if participant.userId == ManagerUser.shared.userId {
             nameLabel.text = String(format: L10N.event.details.currentUserParticipate, arguments: [participant.userNickName])
             goToProfileImageView.image = nil
         } else {
             nameLabel.text = participant.userNickName
             goToProfileImageView.image = Constants.goToProfileImage
         }
-        if let userAvatar = participant.userAvatar {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatar.sd_setImage(with: storage)
+        if let userAvatar = participant.userAvatar, let url = URL(string: userAvatar) {
+            avatar.sd_setImage(with: url)
         } else {
             avatar.image = #imageLiteral(resourceName: "avatar")
         }
@@ -58,16 +57,15 @@ class EventParticipantCell: UITableViewCell {
     func setUp(guest: Guest) {
         setUpUI()
         
-        if guest.associatedUserId == ManagerUser.shared.user?.id {
+        if guest.associatedUserId == ManagerUser.shared.userId {
             goToProfileImageView.image = nil
         } else {
             goToProfileImageView.image = Constants.goToProfileImage
         }
-        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedNickName])
+        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedUserNickName])
 
-        if let userAvatar = guest.associatedAvatar {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatar.sd_setImage(with: storage)
+        if let userAvatar = guest.associatedUserAvatar, let url = URL(string: userAvatar) {
+            avatar.sd_setImage(with: url)
         } else {
             avatar.image = #imageLiteral(resourceName: "avatar")
         }

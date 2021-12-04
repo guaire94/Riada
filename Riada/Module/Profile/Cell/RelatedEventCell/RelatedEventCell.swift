@@ -38,9 +38,8 @@ class RelatedEventCell: UITableViewCell {
     var organizer: Organizer? {
         didSet {
             organizerNameLabel.text = organizer?.userNickName
-            if let userAvatar = organizer?.userAvatar {
-                let storage = Storage.storage().reference(forURL: userAvatar)
-                organizerAvatar.sd_setImage(with: storage)
+            if let userAvatar = organizer?.userAvatar, let url = URL(string: userAvatar) {
+                organizerAvatar.sd_setImage(with: url)
             } else {
                 organizerAvatar.image = #imageLiteral(resourceName: "avatar")
             }

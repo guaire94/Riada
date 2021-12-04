@@ -54,12 +54,13 @@ class ServiceNotification {
     }
     
     static func acceptNewParticipation(event: Event, participants: [Participant], joiner: Participant) {
-        guard let eventId = event.id else { return }
+        guard let eventId = event.id, let userId = ManagerUser.shared.userId else { return }
 
         let type: MNotificationType = .acceptNewParticipation
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         
         for participant in participants {
+            guard participant.userId != userId else { continue }
             let data: [String : Any] = [
                         "env": Config.firebaseEnv,
                         "title_loc_key": type.title,
@@ -91,18 +92,20 @@ class ServiceNotification {
     }
     
     static func acceptNewGuest(event: Event, participants: [Participant], joiner: Guest) {
-        guard let eventId = event.id else { return }
+        guard let eventId = event.id, let userId = ManagerUser.shared.userId else { return }
 
         let type: MNotificationType = .acceptNewGuest
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         
         for participant in participants {
+            guard participant.userId != userId else { continue }
+
             let data: [String : Any] = [
                         "env": Config.firebaseEnv,
                         "title_loc_key": type.title,
                         "title_loc_args": [event.sportEmoticon, event.title, event.description],
                         "body_loc_key": type.body,
-                        "body_loc_args": [joiner.associatedNickName],
+                        "body_loc_args": [joiner.associatedUserNickName],
                         "deeplink": deeplink,
                         "createdDate": Timestamp()]
 
@@ -160,6 +163,26 @@ class ServiceNotification {
                         "title_loc_args": [event.sportEmoticon, event.title, event.description],
                         "body_loc_key": type.body,
                         "body_loc_args": [nickName],
+                        "deeplink": deeplink,
+                        "createdDate": Timestamp()]
+
+            FFirestoreReference.userNotifications(participant.userId).addDocument(data: data)
+        }
+    }
+    
+    static func cancelEvent(event: Event, participants: [Participant]) {
+        guard let eventId = event.id else { return }
+
+        let type: MNotificationType = .cancelEvent
+        let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
+        
+        for participant in participants {
+            let data: [String : Any] = [
+                        "env": Config.firebaseEnv,
+                        "title_loc_key": type.title,
+                        "title_loc_args": [event.sportEmoticon, event.title, event.description],
+                        "body_loc_key": type.body,
+                        "body_loc_args": [],
                         "deeplink": deeplink,
                         "createdDate": Timestamp()]
 

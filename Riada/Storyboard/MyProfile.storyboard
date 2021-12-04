@@ -123,7 +123,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="cW4-9T-OQo">
-                                        <rect key="frame" x="62" y="63" width="290" height="123"/>
+                                        <rect key="frame" x="62" y="62" width="290" height="124"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shF-Uz-HKe" customClass="ImagePicker" customModule="Riada" customModuleProvider="target">
                                                 <rect key="frame" x="115" y="0.0" width="60" height="60"/>
@@ -134,7 +134,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stg-1X-W23">
-                                                <rect key="frame" x="114" y="90" width="62" height="33"/>
+                                                <rect key="frame" x="115.5" y="90" width="59.5" height="34"/>
                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -192,12 +192,8 @@
                                     <constraint firstItem="Mxf-TK-L3K" firstAttribute="leading" secondItem="MVt-G1-S40" secondAttribute="leading" constant="20" id="wBN-xV-aze"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9f-M2-qOe">
-                                <rect key="frame" x="334" y="782" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="KAi-YW-AWK"/>
-                                    <constraint firstAttribute="width" constant="60" id="aQS-3l-awj"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9f-M2-qOe">
+                                <rect key="frame" x="0.0" y="818" width="414" height="78"/>
                                 <state key="normal" image="add"/>
                                 <connections>
                                     <action selector="actionToggle:" destination="Y34-Z6-Xv4" eventType="touchUpInside" id="gAO-eS-hj9"/>
@@ -207,13 +203,14 @@
                         <viewLayoutGuide key="safeArea" id="gJZ-aq-asP"/>
                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="gJZ-aq-asP" firstAttribute="trailing" secondItem="z9f-M2-qOe" secondAttribute="trailing" constant="20" id="9b5-MZ-Vwh"/>
+                            <constraint firstItem="gJZ-aq-asP" firstAttribute="trailing" secondItem="z9f-M2-qOe" secondAttribute="trailing" id="9b5-MZ-Vwh"/>
                             <constraint firstItem="gJZ-aq-asP" firstAttribute="trailing" secondItem="0Qd-2M-gWD" secondAttribute="trailing" id="KBj-dz-XMF"/>
                             <constraint firstItem="0Qd-2M-gWD" firstAttribute="top" secondItem="gG2-5K-pIk" secondAttribute="top" id="KuX-p7-cuh"/>
                             <constraint firstItem="MVt-G1-S40" firstAttribute="top" secondItem="0Qd-2M-gWD" secondAttribute="bottom" id="TKv-g5-lmx"/>
+                            <constraint firstItem="z9f-M2-qOe" firstAttribute="leading" secondItem="gJZ-aq-asP" secondAttribute="leading" id="ax2-Ir-bfd"/>
                             <constraint firstItem="0Qd-2M-gWD" firstAttribute="leading" secondItem="gJZ-aq-asP" secondAttribute="leading" id="dhT-D1-I2i"/>
                             <constraint firstItem="MVt-G1-S40" firstAttribute="trailing" secondItem="gJZ-aq-asP" secondAttribute="trailing" id="fIN-5G-g9k"/>
-                            <constraint firstItem="gJZ-aq-asP" firstAttribute="bottom" secondItem="z9f-M2-qOe" secondAttribute="bottom" constant="20" id="itU-o8-P8r"/>
+                            <constraint firstAttribute="bottom" secondItem="z9f-M2-qOe" secondAttribute="bottom" id="itU-o8-P8r"/>
                             <constraint firstItem="MVt-G1-S40" firstAttribute="leading" secondItem="gJZ-aq-asP" secondAttribute="leading" id="mIb-dz-myM"/>
                             <constraint firstAttribute="bottom" secondItem="MVt-G1-S40" secondAttribute="bottom" id="ra5-Jt-HW6"/>
                         </constraints>
@@ -351,7 +348,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="60" height="60"/>
+        <image name="add" width="375" height="78"/>
         <image name="back" width="10" height="20"/>
         <image name="back_white" width="20" height="10"/>
         <image name="settings" width="24" height="24"/>

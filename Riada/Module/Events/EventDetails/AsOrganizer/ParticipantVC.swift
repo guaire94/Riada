@@ -54,14 +54,13 @@ class ParticipantVC: UIViewController {
     
     func setUpParticipant() {
         guard let participant = self.participant else { return }
-        if participant.userId == ManagerUser.shared.user?.id {
+        if participant.userId == ManagerUser.shared.userId {
             nameLabel.text = String(format: L10N.event.details.currentUserParticipate, arguments: [participant.userNickName])
         } else {
             nameLabel.text = participant.userNickName
         }
-        if let userAvatar = participant.userAvatar {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatar.sd_setImage(with: storage)
+        if let userAvatar = participant.userAvatar, let url = URL(string: userAvatar) {
+            avatar.sd_setImage(with: url)
         } else {
             avatar.image = #imageLiteral(resourceName: "avatar")
         }
@@ -97,7 +96,7 @@ private extension ParticipantVC {
 
         let nbAcceptedPlayer = event.nbAcceptedPlayer+1
         delegate?.didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: nbAcceptedPlayer)
-        ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
+        ServiceEvent.increaseNbAcceptedPlayer(eventId: eventId)
 
         dismiss(animated: true, completion: nil)
     }
@@ -117,7 +116,7 @@ private extension ParticipantVC {
             let nbAcceptedPlayer = event.nbAcceptedPlayer-1
             ServiceNotification.refuseYourParticipation(event: event, participant: participant)
             delegate?.didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: nbAcceptedPlayer)
-            ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
+            ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
         }
         dismiss(animated: true, completion: nil)
     }

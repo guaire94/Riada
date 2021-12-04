@@ -36,7 +36,7 @@ class HelperDynamicLink {
         if let myBundleId = Bundle.main.bundleIdentifier {
           linkBuilder.iOSParameters = DynamicLinkIOSParameters(bundleID: myBundleId)
         }
-        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "com.riada")
+        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: Config.androidPackageName)
         linkBuilder.iOSParameters?.appStoreID = Config.AppStoreId
         linkBuilder.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
         linkBuilder.socialMetaTagParameters?.title = "\(event.sportLocalizedName) - \(event.title)"

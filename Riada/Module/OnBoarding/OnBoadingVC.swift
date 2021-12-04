@@ -69,8 +69,10 @@ class OnBoardingVC: UIViewController {
 private extension OnBoardingVC {
         
     @IBAction func letsPlayToggle(_ sender: Any) {
-        HelperTracking.track(item: .welcomeLetsPlay)
-        HelperRouting.shared.routeToHome()
+        ManagerUser.shared.synchronise {
+            HelperTracking.track(item: .welcomeLetsPlay)
+            HelperRouting.shared.routeToHome()
+        }
     }
 }
 

@@ -48,6 +48,7 @@
 "EVENT_DETAILS_BUTTONS_ADD_GUEST"="Add guest";
 "EVENT_DETAILS_BUTTONS_DECLINE"="Decline";
 "EVENT_DETAILS_BUTTONS_EDIT"="Edit";
+"EVENT_DETAILS_STATUS_CANCELED"="Event have been canceled by the organizer";
 "EVENT_DETAILS_PARTICIPATION_STATUS_ACCEPTED"="You are in!";
 "EVENT_DETAILS_PARTICIPATION_STATUS_REFUSED"="So sorry, the organizer refused your participation";
 "EVENT_DETAILS_PARTICIPATION_STATUS_DECLINED"="You cancelled your participation to this event";
@@ -81,6 +82,7 @@
 "EVENT_EDIT_FORM_CANCEL_EVENT"="Cancel";
 "EVENT_EDIT_FORM_CANCEL_MESSAGE_EVENT"="Are you sure you want to cancel this event?";
 "EVENT_EDIT_FORM_ERROR_UNFILL"="Please fill all field before confirm";
+"EVENT_DETAILS_ERROR_USER_DECLINED_ALREADY"="User already decline";
 
 "SIGNUP_WELCOME"="Welcome";
 "SIGNUP_ANONYMOUSLY"="Sign Up Anonymously";
@@ -147,3 +149,5 @@
 "NOTIFICATION_ADD_GUEST_BODY"="%@ add a guest to particpate"; // participant nickname
 "NOTIFICATION_DECLINE_TITLE"="%@ - %@ - %@"; // Sport localized - title - description
 "NOTIFICATION_DECLINE_BODY"="%@ decline"; // participant nickname
+"NOTIFICATION_CANCEL_EVENT_TITLE"="%@ - %@ - %@"; // Sport localized - title - description
+"NOTIFICATION_CANCEL_EVENT_BODY"="Event is canceled";

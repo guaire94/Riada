@@ -33,8 +33,10 @@ class SportCell: UITableViewCell {
         didSet {
             guard let sport = sport else { return }
             nameLabel.text = sport.localizedName.uppercased()
-            let storage = Storage.storage().reference(forURL: sport.image)
-            backgroundImage.sd_setImage(with: storage)
+
+            if let url = URL(string: sport.image) {
+                backgroundImage.sd_setImage(with: url)
+            }
         }
     }
     private var isFavoriteSport: Bool = false {

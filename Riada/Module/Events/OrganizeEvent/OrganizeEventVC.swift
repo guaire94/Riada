@@ -153,8 +153,9 @@ extension OrganizeEventVC {
                           sportId: sportId,
                           sportEmoticon: sport.emoticon,
                           sportName: sport.name,
-                          createdDate: Date().timestamp,
-                          isPrivate: isPrivateSwitchField.isOn)
+                          isPrivate: isPrivateSwitchField.isOn,
+                          status: EventStatus.open.rawValue,
+                          createdDate: Date().timestamp)
         
         HelperTracking.track(item: .organizeCreateEvent)
         ServiceEvent.create(event: event)

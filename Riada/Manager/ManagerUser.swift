@@ -20,12 +20,16 @@ class ManagerUser {
     var favoriteSportIds: [String] = []
     var currentCity: City = PlaceHolderCity.dubai.city {
         didSet {
-            ServiceUser.updateLocation(city: currentCity)
+            updateLocation(city: currentCity)
         }
     }
     
+    var userId: String? {
+        Auth.auth().currentUser?.uid
+    }
+    
     var isConnected: Bool {
-        Auth.auth().currentUser != nil
+        user != nil
     }
 
     func synchronise(completion: @escaping () -> Void) {
@@ -78,6 +82,12 @@ extension ManagerUser {
         SDImageCache.shared.clearDisk(onCompletion: nil)
 
         ServiceUser.updateAvatar(avatarUrl: avatarUrl)
+    }
+
+    func updateLocation(city: City) {
+        ManagerUserPreferences.shared.save(city: city)
+        user?.location = city.geoPoint
+        ServiceUser.updateLocation(city: city)
     }
 }
 

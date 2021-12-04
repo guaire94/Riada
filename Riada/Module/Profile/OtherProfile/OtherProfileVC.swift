@@ -82,9 +82,8 @@ class OtherProfileVC: UIViewController {
         guard let user = self.user else { return }
         
         nickNameLabel.text = user.nickName
-        if let userAvatar = user.avatar, !userAvatar.isEmpty {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatarImageView.sd_setImage(with: storage)
+        if let userAvatar = user.avatar, let url = URL(string: userAvatar) {
+            avatarImageView.sd_setImage(with: url)
         } else {
             avatarImageView.image = #imageLiteral(resourceName: "avatar")
         }
@@ -207,10 +206,14 @@ extension OtherProfileVC: UITableViewDataSource {
         eventsByDate[section].events.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        currentSection.cellHeight
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        currentSection.estimatedCellHeight
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: currentSection.cellIdentifier, for: indexPath) as? RelatedEventCell else {
             return UITableViewCell()
@@ -248,7 +251,7 @@ extension OtherProfileVC: UITableViewDelegate {
             ServiceEvent.getEventDetails(eventId: eventId) { event in
                 guard let event = event else { return }
                 DispatchQueue.main.async {
-                    if organizer.userId == ManagerUser.shared.user?.id {
+                    if organizer.userId == ManagerUser.shared.userId {
                         self.performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
                     } else {
                         let tuple = (event: event, organizer: organizer)

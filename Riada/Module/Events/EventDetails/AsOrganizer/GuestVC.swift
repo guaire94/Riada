@@ -57,17 +57,16 @@ class GuestVC: UIViewController {
     
     func setUpGuest() {
         guard let guest = self.guest else { return }
-        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedNickName])
+        nameLabel.text = String(format: L10N.event.details.guestBy, arguments: [guest.guestNickName, guest.associatedUserNickName])
 
-        if guest.associatedUserId == ManagerUser.shared.user?.id {
+        if guest.associatedUserId == ManagerUser.shared.userId {
             goToProfileImageView.image = nil
         } else {
             goToProfileImageView.image = Constants.goToProfileImage
         }
         
-        if let userAvatar = guest.associatedAvatar {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatar.sd_setImage(with: storage)
+        if let userAvatar = guest.associatedUserAvatar, let url = URL(string: userAvatar) {
+            avatar.sd_setImage(with: url)
         } else {
             avatar.image = #imageLiteral(resourceName: "avatar")
         }
@@ -103,7 +102,7 @@ private extension GuestVC {
 
         let nbAcceptedPlayer = event.nbAcceptedPlayer+1
         delegate?.didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: nbAcceptedPlayer)
-        ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
+        ServiceEvent.increaseNbAcceptedPlayer(eventId: eventId)
 
         dismiss(animated: true, completion: nil)
     }
@@ -123,7 +122,7 @@ private extension GuestVC {
             let nbAcceptedPlayer = event.nbAcceptedPlayer-1
             ServiceNotification.refuseYourGuest(event: event, guest: guest)
             delegate?.didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: nbAcceptedPlayer)
-            ServiceEvent.updateNbAcceptedPlayer(eventId: eventId, nbAcceptedPlayer: nbAcceptedPlayer)
+            ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
         }
         dismiss(animated: true, completion: nil)
     }

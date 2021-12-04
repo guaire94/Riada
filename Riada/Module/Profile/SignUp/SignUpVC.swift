@@ -22,6 +22,7 @@ class SignUpVC: UIViewController {
         static let bottomContentInset: CGFloat = 8.0
         static let googleProvider = "google.com"
         static let appleProvider = "apple.com"
+        static let googleAvatarSize: UInt = 50
     }
     
     //MARK: - IBOutlet
@@ -60,11 +61,14 @@ class SignUpVC: UIViewController {
         tableView.delegate = self
     }
         
-    private func handleSignIn(credential: AuthCredential, nickName: String) {
+    private func handleSignIn(credential: AuthCredential, nickName: String, avatarUrl: String? = nil) {
         ServiceUser.linkAccount(credential: credential) {
             ManagerUser.shared.synchronise {
                 if !nickName.isEmpty {
                     ManagerUser.shared.updateNickName(nickName: nickName)
+                }
+                if let avatarUrl = avatarUrl, !avatarUrl.isEmpty {
+                    ManagerUser.shared.updateAvatar(avatarUrl: avatarUrl)
                 }
                 if credential.provider == Constants.googleProvider {
                     self.signInCell?.isGoogleLoading = false
@@ -190,7 +194,8 @@ extension SignUpVC: SignInCellDelegate {
             let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                          accessToken: authentication.accessToken)
             let nickName = user?.profile?.name ?? ""
-            self.handleSignIn(credential: credential, nickName: nickName)            
+            let avatarUrl = user?.profile?.imageURL(withDimension: Constants.googleAvatarSize)?.absoluteString
+            self.handleSignIn(credential: credential, nickName: nickName, avatarUrl: avatarUrl)
         }
     }
 }

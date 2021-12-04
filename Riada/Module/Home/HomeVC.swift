@@ -30,12 +30,11 @@ class HomeVC: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         (UIApplication.shared.delegate as? AppDelegate)?.registerForPushNotifications()
         notificationsButton.isHidden = true
-        ManagerUser.shared.synchronise {
-            self.setUpView()
-            self.syncSports()
-        }
+        setUpView()
+        syncSports()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -176,7 +175,6 @@ extension HomeVC: UITableViewDelegate {
 extension HomeVC: SearchLocationVCDelegate {
     
     func didSelectCity(city: City) {
-        ManagerUserPreferences.shared.save(city: city)
         ManagerUser.shared.currentCity = city
         cityButton.setTitle(ManagerUser.shared.currentCity.name, for: .normal)
     }
@@ -195,6 +193,7 @@ extension HomeVC: OrganizeEventVCDelegate {
 extension HomeVC: SignUpVCDelegate {
 
     func didSignUp() {
+        setUpProfileInformations()
         notificationsButton.isHidden = false
         if wantToOrganize {
             wantToOrganize = false
@@ -220,5 +219,14 @@ extension HomeVC: NotificationsVCDelegate {
         guard let url = URL(string: deeplink) else { return }
         ManagerDeepLink.shared.setDeeplinkFromDeepLink(url: url)
         HelperRouting.shared.handleRedirect()
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension HomeVC: UIGestureRecognizerDelegate {
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
     }
 }

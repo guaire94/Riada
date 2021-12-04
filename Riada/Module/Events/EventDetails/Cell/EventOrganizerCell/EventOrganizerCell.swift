@@ -58,9 +58,8 @@ class EventOrganizerCell: UITableViewCell {
     
     private func setOrganizer() {
         nameLabel.text = organizer?.userNickName
-        if let userAvatar = organizer?.userAvatar {
-            let storage = Storage.storage().reference(forURL: userAvatar)
-            avatar.sd_setImage(with: storage)
+        if let userAvatar = organizer?.userAvatar, let url = URL(string: userAvatar) {
+            avatar.sd_setImage(with: url)
         } else {
             avatar.image = #imageLiteral(resourceName: "avatar")
         }

@@ -51,6 +51,7 @@
 "EVENT_DETAILS_BUTTONS_ADD_GUEST"="+1";
 "EVENT_DETAILS_BUTTONS_DECLINE"="Se retirer";
 "EVENT_DETAILS_BUTTONS_EDIT"="Modifer";
+"EVENT_DETAILS_STATUS_CANCELED"="L'événement a été annulé par l'organisateur";
 "EVENT_DETAILS_PARTICIPATION_STATUS_ACCEPTED"="L'organisateur a accepté ta participation";
 "EVENT_DETAILS_PARTICIPATION_STATUS_REFUSED"="Désolé, L'organisateur a refusé ta participation";
 "EVENT_DETAILS_PARTICIPATION_STATUS_DECLINED"="Tu as annulé ta participation";
@@ -84,6 +85,7 @@
 "EVENT_EDIT_FORM_CANCEL_EVENT"="Annuler";
 "EVENT_EDIT_FORM_CANCEL_MESSAGE_EVENT"="Es-tu sur de vouloir annuler cet évènement?";
 "EVENT_EDIT_FORM_ERROR_UNFILL"="Renseigne tous les champs avant de valider";
+"EVENT_DETAILS_ERROR_USER_DECLINED_ALREADY"="L'utilisateur a annulé sa participation";
 
 "SIGNUP_WELCOME"="Bienvenue";
 "SIGNUP_ANONYMOUSLY"="S'inscrire anonymement";
@@ -150,3 +152,5 @@
 "NOTIFICATION_ADD_GUEST_BODY"="%@ a ajouté un invité"; // participant nickname
 "NOTIFICATION_DECLINE_TITLE"="%@ - %@ - %@"; // Sport emoticon - title - description
 "NOTIFICATION_DECLINE_BODY"="%@ ne pourra pas participer"; // participant nickname
+"NOTIFICATION_CANCEL_EVENT_TITLE"="%@ - %@ - %@"; // Sport localized - title - description
+"NOTIFICATION_CANCEL_EVENT_BODY"="L'événement est annulé";

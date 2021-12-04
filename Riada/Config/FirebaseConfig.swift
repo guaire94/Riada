@@ -46,7 +46,6 @@ enum FFirestoreReference {
         env.collection(FirebaseCollection.version).document("iOS")
     }
     
-    
     // MARK: - SPORT
     static var sports: CollectionReference {
         env.collection(FirebaseCollection.sport)

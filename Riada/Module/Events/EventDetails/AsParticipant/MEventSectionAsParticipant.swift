@@ -11,6 +11,7 @@ enum MEventSectionAsParticipant: Int {
     case organizer
     case informations
     case place
+    case placeWithPictures
     case participants
     case guests
 
@@ -22,6 +23,8 @@ enum MEventSectionAsParticipant: Int {
             return EventInformationsCell.Constants.identifier
         case .place:
             return EventPlaceCell.Constants.identifier
+        case .placeWithPictures:
+            return EventPlaceWithPicturesCell.Constants.identifier
         case .participants, .guests:
             return EventParticipantCell.Constants.identifier
         }
@@ -35,12 +38,14 @@ enum MEventSectionAsParticipant: Int {
             return EventInformationsCell.Constants.nib
         case .place:
             return EventPlaceCell.Constants.nib
+        case .placeWithPictures:
+            return EventPlaceWithPicturesCell.Constants.nib
         case .participants, .guests:
             return EventParticipantCell.Constants.nib
         }
     }
         
-    var cellHeight: CGFloat {
+    var estimatedCellHeight: CGFloat {
         switch self {
         case .organizer:
             return EventOrganizerCell.Constants.height
@@ -48,6 +53,8 @@ enum MEventSectionAsParticipant: Int {
             return EventInformationsCell.Constants.height
         case .place:
             return EventPlaceCell.Constants.height
+        case .placeWithPictures:
+            return EventPlaceWithPicturesCell.Constants.height
         case .participants, .guests:
             return EventParticipantCell.Constants.height
         }
@@ -59,7 +66,7 @@ enum MEventSectionAsParticipant: Int {
             return L10N.event.details.organizer
         case .informations:
             return L10N.event.details.informations
-        case .place:
+        case .place, .placeWithPictures:
             return L10N.event.details.place
         case .participants:
             return L10N.event.details.participants
@@ -67,9 +74,6 @@ enum MEventSectionAsParticipant: Int {
             return nil
         }
     }
-
     
-    static func toDisplay() -> [MEventSectionAsParticipant] {
-        [organizer, informations, place, participants, guests]
-    }
+    static let all: [MEventSectionAsParticipant] = [.organizer, .informations, .place, .placeWithPictures, .guests]
 }

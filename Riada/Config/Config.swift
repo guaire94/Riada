@@ -13,7 +13,8 @@ enum Config {
     static let googleAPIKey = "AIzaSyDTIlQBgK72dpao2XPISx1U60psDeshcGc"
     static let jpegCompressionQuality: CGFloat = 0.7
     static let defaultAvatar = UIImage(named: "avatar")
-
+    static let androidPackageName = "com.riada.app"
+    
     #if DEBUG
         static let WormholyIsEnabled = true
         static let UpdateAppLangua = false

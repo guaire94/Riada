@@ -24,8 +24,9 @@ struct Event: Identifiable, Codable {
     var sportId: String
     var sportEmoticon: String
     var sportName: String
-    var createdDate: Timestamp
     var isPrivate: Bool
+    var status: String
+    var createdDate: Timestamp
 
     var location: CLLocation {
         CLLocation(latitude: placeCoordinate.latitude, longitude: placeCoordinate.longitude)
@@ -33,6 +34,10 @@ struct Event: Identifiable, Codable {
     
     var sportLocalizedName: String {
         NSLocalizedString(sportName, comment: "")
+    }
+    
+    var eventStatus: EventStatus {
+        EventStatus(rawValue: status) ?? .open
     }
     
     func toCalendarEvent(deeplink: URL, with eventStore: EKEventStore) -> EKEvent {
@@ -64,6 +69,7 @@ struct Event: Identifiable, Codable {
            "sportName": sportName,
            "placeAddress": placeAddress,
            "placeCoordinate": placeCoordinate,
+           "isPrivate": isPrivate,
         ]
         return data
     }
@@ -83,8 +89,9 @@ struct Event: Identifiable, Codable {
            "sportId": sportId,
            "sportEmoticon": sportEmoticon,
            "sportName": sportName,
-           "createdDate": createdDate,
            "isPrivate": isPrivate,
+           "status": status,
+           "createdDate": createdDate
         ]
         return data
     }
@@ -103,8 +110,9 @@ struct Event: Identifiable, Codable {
            "sportId": sportId,
            "sportEmoticon": sportEmoticon,
            "sportName": sportName,
-           "createdDate": createdDate,
            "isPrivate": isPrivate,
+           "status": status,
+           "createdDate": createdDate
         ]
         return data
     }

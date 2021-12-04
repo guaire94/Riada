@@ -13,7 +13,6 @@
 		6562729D2584B2AC00CDA0F9 /* MNotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6562729C2584B2AC00CDA0F9 /* MNotificationType.swift */; };
 		656272A52586535100CDA0F9 /* HelperNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656272A42586535100CDA0F9 /* HelperNotification.swift */; };
 		656272A92586537C00CDA0F9 /* CurrentNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656272A82586537C00CDA0F9 /* CurrentNotification.swift */; };
-		658720F42594ABFF00775520 /* HelperOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658720F32594ABFF00775520 /* HelperOnBoarding.swift */; };
 		B811E8A7254F6835008DB735 /* Timestamp+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = B811E8A6254F6835008DB735 /* Timestamp+M.swift */; };
 		B82FE3BF255DFB4800B52099 /* ServiceGooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FE3BE255DFB4800B52099 /* ServiceGooglePlace.swift */; };
 		B836B61B2548D94100AAF48A /* ManagerUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B836B61A2548D94100AAF48A /* ManagerUser.swift */; };
@@ -46,6 +45,13 @@
 		B8FDE3B8253F79B800BD29B2 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8FDE3B2253F79AC00BD29B2 /* Lato-Regular.ttf */; };
 		B8FDE3B9253F79B800BD29B2 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */; };
 		E31E442F6F04E2E9F9202CE0 /* Pods_Riada.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */; };
+		EE1202A527578B7E0068F0F3 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202A427578B7E0068F0F3 /* EventStatus.swift */; };
+		EE1202AB2757C58B0068F0F3 /* EventPlaceWithPicturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202A92757C58B0068F0F3 /* EventPlaceWithPicturesCell.swift */; };
+		EE1202AC2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1202AA2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib */; };
+		EE1202AF2757C5930068F0F3 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202AD2757C5930068F0F3 /* PhotoCell.swift */; };
+		EE1202B02757C5930068F0F3 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1202AE2757C5930068F0F3 /* PhotoCell.xib */; };
+		EE1202B22757D6B00068F0F3 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202B12757D6B00068F0F3 /* PhotoVC.swift */; };
+		EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202BA2757E6B60068F0F3 /* NavigationController.swift */; };
 		EE20263626F617B50094D87C /* ManagerUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20263526F617B50094D87C /* ManagerUserPreferences.swift */; };
 		EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3942747E08900F484F4 /* NotificationsVC.swift */; };
 		EE21C3992747E27A00F484F4 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3972747E27A00F484F4 /* NotificationCell.swift */; };
@@ -127,8 +133,6 @@
 		EEDC9A9826FDC0C100627C73 /* EventPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC9A9626FDC0C100627C73 /* EventPlaceCell.swift */; };
 		EEDC9A9926FDC0C100627C73 /* EventPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDC9A9726FDC0C100627C73 /* EventPlaceCell.xib */; };
 		EEDC9A9C26FDCB5E00627C73 /* UICollectionView+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC9A9B26FDCB5E00627C73 /* UICollectionView+M.swift */; };
-		EEDC9AA626FDCBE700627C73 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC9AA426FDCBE600627C73 /* PhotoCell.swift */; };
-		EEDC9AA726FDCBE700627C73 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDC9AA526FDCBE700627C73 /* PhotoCell.xib */; };
 		EEDC9AB026FDEA7D00627C73 /* EventParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC9AAE26FDEA7C00627C73 /* EventParticipantCell.swift */; };
 		EEDC9AB126FDEA7D00627C73 /* EventParticipantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDC9AAF26FDEA7C00627C73 /* EventParticipantCell.xib */; };
 		EEE1F46626F23A4900754DDD /* MTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE1F46426F23A4900754DDD /* MTextField.swift */; };
@@ -154,7 +158,6 @@
 		6562729C2584B2AC00CDA0F9 /* MNotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNotificationType.swift; sourceTree = "<group>"; };
 		656272A42586535100CDA0F9 /* HelperNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperNotification.swift; sourceTree = "<group>"; };
 		656272A82586537C00CDA0F9 /* CurrentNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentNotification.swift; sourceTree = "<group>"; };
-		658720F32594ABFF00775520 /* HelperOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperOnBoarding.swift; sourceTree = "<group>"; };
 		6788B25E4DA64D52DFED40C8 /* Pods-Riada.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Riada.release.xcconfig"; path = "Target Support Files/Pods-Riada/Pods-Riada.release.xcconfig"; sourceTree = "<group>"; };
 		74EB47B79B92112AC4818753 /* Pods-Riada.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Riada.debug.xcconfig"; path = "Target Support Files/Pods-Riada/Pods-Riada.debug.xcconfig"; sourceTree = "<group>"; };
 		B811E8A6254F6835008DB735 /* Timestamp+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timestamp+M.swift"; sourceTree = "<group>"; };
@@ -192,6 +195,13 @@
 		B8FDE3B4253F79AC00BD29B2 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Riada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE1202A427578B7E0068F0F3 /* EventStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
+		EE1202A92757C58B0068F0F3 /* EventPlaceWithPicturesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPlaceWithPicturesCell.swift; sourceTree = "<group>"; };
+		EE1202AA2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventPlaceWithPicturesCell.xib; sourceTree = "<group>"; };
+		EE1202AD2757C5930068F0F3 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		EE1202AE2757C5930068F0F3 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		EE1202B12757D6B00068F0F3 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
+		EE1202BA2757E6B60068F0F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		EE20263526F617B50094D87C /* ManagerUserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerUserPreferences.swift; sourceTree = "<group>"; };
 		EE21C3942747E08900F484F4 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		EE21C3972747E27A00F484F4 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
@@ -274,8 +284,6 @@
 		EEDC9A9626FDC0C100627C73 /* EventPlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPlaceCell.swift; sourceTree = "<group>"; };
 		EEDC9A9726FDC0C100627C73 /* EventPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventPlaceCell.xib; sourceTree = "<group>"; };
 		EEDC9A9B26FDCB5E00627C73 /* UICollectionView+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+M.swift"; sourceTree = "<group>"; };
-		EEDC9AA426FDCBE600627C73 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		EEDC9AA526FDCBE700627C73 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		EEDC9AAE26FDEA7C00627C73 /* EventParticipantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventParticipantCell.swift; sourceTree = "<group>"; };
 		EEDC9AAF26FDEA7C00627C73 /* EventParticipantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventParticipantCell.xib; sourceTree = "<group>"; };
 		EEE1F46426F23A4900754DDD /* MTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTextField.swift; sourceTree = "<group>"; };
@@ -327,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				656272A42586535100CDA0F9 /* HelperNotification.swift */,
-				658720F32594ABFF00775520 /* HelperOnBoarding.swift */,
 				EE5836D926ECE35100ED203D /* HelperRouting.swift */,
 				EE75D5672707481F004B7973 /* HelperDynamicLink.swift */,
 				EE8951E62741211F0081AE09 /* HelperTracking.swift */,
@@ -355,6 +362,7 @@
 				EE27197E26EBD70400A3F281 /* Participant.swift */,
 				EE27198526EBD7F500A3F281 /* Guest.swift */,
 				EE27198126EBD77000A3F281 /* ParticipationStatus.swift */,
+				EE1202A427578B7E0068F0F3 /* EventStatus.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -570,6 +578,25 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		EE1202A72757C5420068F0F3 /* EventPlaceCellWithPictures */ = {
+			isa = PBXGroup;
+			children = (
+				EE1202A92757C58B0068F0F3 /* EventPlaceWithPicturesCell.swift */,
+				EE1202AA2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib */,
+				EE1202A82757C5580068F0F3 /* Cell */,
+			);
+			path = EventPlaceCellWithPictures;
+			sourceTree = "<group>";
+		};
+		EE1202A82757C5580068F0F3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EE1202AD2757C5930068F0F3 /* PhotoCell.swift */,
+				EE1202AE2757C5930068F0F3 /* PhotoCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EE21C3962747E23100F484F4 /* NotificationCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +691,7 @@
 				EEB8F1F026FF629E005ABC27 /* AsParticipant */,
 				EE603BB726F634E9008D2E41 /* Cell */,
 				EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */,
+				EE1202B12757D6B00068F0F3 /* PhotoVC.swift */,
 			);
 			path = EventDetails;
 			sourceTree = "<group>";
@@ -674,6 +702,7 @@
 				EE603BC426F63579008D2E41 /* EventOrganizerCell */,
 				EE603BC126F6356F008D2E41 /* EventInformationsCell */,
 				EEDC9A9526FDC09B00627C73 /* EventPlaceCell */,
+				EE1202A72757C5420068F0F3 /* EventPlaceCellWithPictures */,
 				EEDC9AAD26FDEA6500627C73 /* EventParticipantCell */,
 			);
 			path = Cell;
@@ -886,20 +915,10 @@
 		EEDC9A9526FDC09B00627C73 /* EventPlaceCell */ = {
 			isa = PBXGroup;
 			children = (
-				EEDC9A9E26FDCBC600627C73 /* Cell */,
 				EEDC9A9626FDC0C100627C73 /* EventPlaceCell.swift */,
 				EEDC9A9726FDC0C100627C73 /* EventPlaceCell.xib */,
 			);
 			path = EventPlaceCell;
-			sourceTree = "<group>";
-		};
-		EEDC9A9E26FDCBC600627C73 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				EEDC9AA426FDCBE600627C73 /* PhotoCell.swift */,
-				EEDC9AA526FDCBE700627C73 /* PhotoCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		EEDC9AAD26FDEA6500627C73 /* EventParticipantCell */ = {
@@ -920,6 +939,7 @@
 				EEB8F1EB26FE05D0005ABC27 /* Buttons */,
 				EEE1F48726F3C36D00754DDD /* SectionCell */,
 				EEE1F46326F23A3200754DDD /* Fields */,
+				EE1202BA2757E6B60068F0F3 /* NavigationController.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1004,6 +1024,7 @@
 				B8CE19BB253DBAE5002AC5A5 /* Resources */,
 				F1FD288B792BFAB69EFDF58E /* [CP] Embed Pods Frameworks */,
 				B8CE1AAA253F57DE002AC5A5 /* FirebaseCrashlytics run */,
+				EE1202A62757BE630068F0F3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1054,7 +1075,6 @@
 			files = (
 				EE21C39A2747E27A00F484F4 /* NotificationCell.xib in Resources */,
 				EEDC9AB126FDEA7D00627C73 /* EventParticipantCell.xib in Resources */,
-				EEDC9AA726FDCBE700627C73 /* PhotoCell.xib in Resources */,
 				EEE1F48226F3C0C400754DDD /* SectionCell.xib in Resources */,
 				B8B7DAEE255857AC00B33BDB /* Home.storyboard in Resources */,
 				EE5836E926ECEC6A00ED203D /* OnBoardingCell.xib in Resources */,
@@ -1071,6 +1091,7 @@
 				EEE1F47B26F3BEF200754DDD /* Event.storyboard in Resources */,
 				EEE1F46726F23A4900754DDD /* MTextField.xib in Resources */,
 				EEE1F48526F3C0C400754DDD /* EventCell.xib in Resources */,
+				EE1202AC2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib in Resources */,
 				EEBBD479271863A500519EBC /* MDatePickerField.xib in Resources */,
 				EE5836DE26ECE50500ED203D /* OnBoarding.storyboard in Resources */,
 				EEBBD4752718638D00519EBC /* MPickerField.xib in Resources */,
@@ -1078,6 +1099,7 @@
 				EE8951E3274112440081AE09 /* SettingCell.xib in Resources */,
 				B8FDE3B9253F79B800BD29B2 /* Lato-Light.ttf in Resources */,
 				EEDC9A9926FDC0C100627C73 /* EventPlaceCell.xib in Resources */,
+				EE1202B02757C5930068F0F3 /* PhotoCell.xib in Resources */,
 				B8FDE3AC253F780F00BD29B2 /* Localizable.strings in Resources */,
 				B8CE19CA253DBAE7002AC5A5 /* Assets.xcassets in Resources */,
 				EE5836F926ECF97300ED203D /* SportCell.xib in Resources */,
@@ -1135,6 +1157,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
+		EE1202A62757BE630068F0F3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		F1FD288B792BFAB69EFDF58E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1179,9 +1219,9 @@
 				EE6B7F6926FF7B6A00E44B7C /* MKeyboardVC.swift in Sources */,
 				EE5A0B18271B5D2B009A951B /* MEventSectionAsOrganizer.swift in Sources */,
 				EE5836F826ECF97300ED203D /* SportCell.swift in Sources */,
-				658720F42594ABFF00775520 /* HelperOnBoarding.swift in Sources */,
 				B84ECBB725403235007F8E9E /* ServiceUser.swift in Sources */,
 				EEAE66072725A50F0048F559 /* AnonymouslyCell.swift in Sources */,
+				EE1202AF2757C5930068F0F3 /* PhotoCell.swift in Sources */,
 				EE75D5682707481F004B7973 /* HelperDynamicLink.swift in Sources */,
 				B87BDA0C253F8E0A00252B96 /* UIViewController+M.swift in Sources */,
 				656272A92586537C00CDA0F9 /* CurrentNotification.swift in Sources */,
@@ -1221,8 +1261,10 @@
 				B87B264C254232C6007D4A4D /* AnimatedLaunchScreenVC.swift in Sources */,
 				B8F71AD1254B985B00D686B4 /* UIView+M.swift in Sources */,
 				B83BF57B255EED99006903A2 /* CollectionReference+M.swift in Sources */,
+				EE1202A527578B7E0068F0F3 /* EventStatus.swift in Sources */,
 				B84ECBBA254036CF007F8E9E /* FirebaseConfig.swift in Sources */,
 				EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */,
+				EE1202B22757D6B00068F0F3 /* PhotoVC.swift in Sources */,
 				EEBBD47F271863FB00519EBC /* SportPickerSource.swift in Sources */,
 				EE6E43182736D6DE00A48B84 /* UIImage+M.swift in Sources */,
 				EE6B7F6B270077C800E44B7C /* ManagerDeepLink.swift in Sources */,
@@ -1241,6 +1283,7 @@
 				EE603BBC26F6356C008D2E41 /* EventOrganizerCell.swift in Sources */,
 				EEBBD482271866C900519EBC /* ManagerSport.swift in Sources */,
 				6562728F2581432C00CDA0F9 /* ServiceDeviceToken.swift in Sources */,
+				EE1202AB2757C58B0068F0F3 /* EventPlaceWithPicturesCell.swift in Sources */,
 				6562729A2584B01D00CDA0F9 /* ServiceNotification.swift in Sources */,
 				EEABEE2B2725BA9F00F3E64C /* PersonNameComponents+M.swift in Sources */,
 				B87B2655254234B9007D4A4D /* Version.swift in Sources */,
@@ -1252,9 +1295,9 @@
 				EE20263626F617B50094D87C /* ManagerUserPreferences.swift in Sources */,
 				EE8951DB274111570081AE09 /* SettingsVC.swift in Sources */,
 				B8FDE37D253F730F00BD29B2 /* L10N.swift in Sources */,
+				EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */,
 				EE27198226EBD77000A3F281 /* ParticipationStatus.swift in Sources */,
 				EE5836DA26ECE35100ED203D /* HelperRouting.swift in Sources */,
-				EEDC9AA626FDCBE700627C73 /* PhotoCell.swift in Sources */,
 				EEE1F48326F3C0C400754DDD /* SectionCell.swift in Sources */,
 				EEB8F1EA26FE01AC005ABC27 /* UIColor+M.swift in Sources */,
 				EE5A0B1D271B6837009A951B /* GuestVC.swift in Sources */,
@@ -1413,13 +1456,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 662SLAFBT4;
 				INFOPLIST_FILE = Riada/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";
@@ -1444,7 +1488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";

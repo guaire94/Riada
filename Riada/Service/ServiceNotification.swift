@@ -54,12 +54,13 @@ class ServiceNotification {
     }
     
     static func acceptNewParticipation(event: Event, participants: [Participant], joiner: Participant) {
-        guard let eventId = event.id else { return }
+        guard let eventId = event.id, let userId = ManagerUser.shared.userId else { return }
 
         let type: MNotificationType = .acceptNewParticipation
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         
         for participant in participants {
+            guard participant.userId != userId else { continue }
             let data: [String : Any] = [
                         "env": Config.firebaseEnv,
                         "title_loc_key": type.title,
@@ -91,12 +92,14 @@ class ServiceNotification {
     }
     
     static func acceptNewGuest(event: Event, participants: [Participant], joiner: Guest) {
-        guard let eventId = event.id else { return }
+        guard let eventId = event.id, let userId = ManagerUser.shared.userId else { return }
 
         let type: MNotificationType = .acceptNewGuest
         let deeplink = ManagerDeepLink.shared.createDeeplinkFrom(eventId: eventId)
         
         for participant in participants {
+            guard participant.userId != userId else { continue }
+
             let data: [String : Any] = [
                         "env": Config.firebaseEnv,
                         "title_loc_key": type.title,

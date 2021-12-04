@@ -175,7 +175,6 @@ extension HomeVC: UITableViewDelegate {
 extension HomeVC: SearchLocationVCDelegate {
     
     func didSelectCity(city: City) {
-        ManagerUserPreferences.shared.save(city: city)
         ManagerUser.shared.currentCity = city
         cityButton.setTitle(ManagerUser.shared.currentCity.name, for: .normal)
     }

@@ -105,6 +105,7 @@ class OrganizeEventVC: UIViewController {
         }
         sportPickerField.text = ManagerSport.shared.selectedSport?.localizedName
         sportPickerSource.currentIndexSelected = index
+        sportPickerField.isEnabled = false
     }
     
     private func didSelectSport(index: Int) {
@@ -178,6 +179,8 @@ extension OrganizeEventVC {
 extension OrganizeEventVC: MPickerFieldDelegate {
     
     func didTogglePicker(sender: MPickerField) {
+        guard sender.isEnabled else { return }
+        
         descTextField.textField.resignFirstResponder()
         switch sender {
         case sportPickerField:

@@ -43,6 +43,12 @@ class EventDetailsAsParticipantVC: UIViewController {
     var event: Event?
     var photoUrls: [URL] = [] {
         didSet {
+            if photoUrls.isEmpty {
+                self.sections = [.organizer, .informations, .place, .participants, .guests]
+            } else {
+                self.sections = [.organizer, .informations, .placeWithPictures, .participants, .guests]
+            }
+            
             guard let section = sections.firstIndex(where: { $0 == .place || $0 == .placeWithPictures }) else { return }
             DispatchQueue.main.async {
                 self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)

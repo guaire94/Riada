@@ -519,9 +519,11 @@ extension EventDetailsAsParticipantVC {
         
         HelperTracking.track(item: .eventDetailsDecline)
         ServiceEvent.decline(eventId: eventId)
+        ServiceNotification.decline(event: event, organizer: organizer)
+        
+        guard currentUserParticipationStatus == .accepted else { return }
         let nbAcceptedPlayer = event.nbAcceptedPlayer-1
         self.event?.nbAcceptedPlayer = nbAcceptedPlayer
         ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
-        ServiceNotification.decline(event: event, organizer: organizer)
     }
 }

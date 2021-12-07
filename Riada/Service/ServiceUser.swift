@@ -86,7 +86,7 @@ class ServiceUser {
         
         // related Guest
         let relatedGuestData: [String : Any] = [
-            "associatedNickName": nickName
+            "associatedUserNickName": nickName
         ]
         for collectionGroup in FFireStoreCollectionGroup.relatedGuest(userId: user.uid) {
             collectionGroup.getDocuments { (snapshot, err) in
@@ -116,7 +116,7 @@ class ServiceUser {
         
         // related Guest
         let relatedGuestData: [String : Any] = [
-            "associatedAvatar": avatarUrl
+            "associatedUserAvatar": avatarUrl
         ]
         for collectionGroup in FFireStoreCollectionGroup.relatedGuest(userId: user.uid) {
             collectionGroup.getDocuments { (snapshot, err) in

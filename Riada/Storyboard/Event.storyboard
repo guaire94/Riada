@@ -1312,12 +1312,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j4l-P2-v7K">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-eB-878">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gi0-SI-Ldf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" "/>
                                 <connections>
-                                    <action selector="backToggle" destination="6uD-aY-EQE" eventType="touchUpInside" id="dwi-4Y-Ddh"/>
+                                    <action selector="backToggle" destination="6uD-aY-EQE" eventType="touchUpInside" id="u3D-VL-bre"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1325,17 +1324,17 @@
                         <color key="backgroundColor" white="0.0" alpha="0.69853427114803623" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="j4l-P2-v7K" firstAttribute="centerX" secondItem="bNk-15-Cu1" secondAttribute="centerX" id="6UQ-Le-5oG"/>
+                            <constraint firstItem="bNk-15-Cu1" firstAttribute="trailing" secondItem="gi0-SI-Ldf" secondAttribute="trailing" id="Ii0-5A-Fra"/>
                             <constraint firstItem="j4l-P2-v7K" firstAttribute="centerY" secondItem="bNk-15-Cu1" secondAttribute="centerY" id="KcP-Ma-NqR"/>
                             <constraint firstItem="j4l-P2-v7K" firstAttribute="top" secondItem="bNk-15-Cu1" secondAttribute="top" id="LnQ-Uk-yga"/>
-                            <constraint firstItem="xwv-eB-878" firstAttribute="top" secondItem="bNk-15-Cu1" secondAttribute="top" id="QHX-ds-VFg"/>
+                            <constraint firstItem="gi0-SI-Ldf" firstAttribute="top" secondItem="bNk-15-Cu1" secondAttribute="top" id="QbW-5Y-2DJ"/>
                             <constraint firstItem="j4l-P2-v7K" firstAttribute="trailing" secondItem="bNk-15-Cu1" secondAttribute="trailing" id="SDs-r9-9Sf"/>
-                            <constraint firstItem="bNk-15-Cu1" firstAttribute="trailing" secondItem="xwv-eB-878" secondAttribute="trailing" id="VXY-nJ-x90"/>
                             <constraint firstItem="j4l-P2-v7K" firstAttribute="trailing" secondItem="bNk-15-Cu1" secondAttribute="trailing" id="Y0P-gg-YgC"/>
                             <constraint firstItem="j4l-P2-v7K" firstAttribute="leading" secondItem="bNk-15-Cu1" secondAttribute="leading" id="YpY-vf-hTe"/>
-                            <constraint firstItem="bNk-15-Cu1" firstAttribute="bottom" secondItem="xwv-eB-878" secondAttribute="bottom" id="gs8-mY-6dm"/>
+                            <constraint firstItem="gi0-SI-Ldf" firstAttribute="leading" secondItem="bNk-15-Cu1" secondAttribute="leading" id="dMO-t7-X6c"/>
                             <constraint firstItem="bNk-15-Cu1" firstAttribute="bottom" secondItem="j4l-P2-v7K" secondAttribute="bottom" id="j6u-6W-4GC"/>
+                            <constraint firstItem="bNk-15-Cu1" firstAttribute="bottom" secondItem="gi0-SI-Ldf" secondAttribute="bottom" id="new-ml-E8l"/>
                             <constraint firstItem="j4l-P2-v7K" firstAttribute="leading" secondItem="bNk-15-Cu1" secondAttribute="leading" id="o34-FU-fru"/>
-                            <constraint firstItem="xwv-eB-878" firstAttribute="leading" secondItem="bNk-15-Cu1" secondAttribute="leading" id="oeo-p9-gqL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="idI-mc-dKb"/>

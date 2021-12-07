@@ -111,19 +111,26 @@ private extension GuestVC {
         guard let event = self.event,
               let eventId = event.id,
               let guest = self.guest,
-              guest.status != ParticipationStatus.refused.rawValue else {
+              guest.participationStatus != ParticipationStatus.refused else {
             dismiss(animated: true, completion: nil)
             return
         }
 
         HelperTracking.track(item: .guestRefuse)
         ServiceEvent.refuseGuest(eventId: eventId, guest: guest)
-        if guest.status == ParticipationStatus.accepted.rawValue {
+        
+        switch guest.participationStatus {
+        case .accepted:
             let nbAcceptedPlayer = event.nbAcceptedPlayer-1
-            ServiceNotification.refuseYourGuest(event: event, guest: guest)
             delegate?.didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: nbAcceptedPlayer)
             ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
+            ServiceNotification.refuseYourGuest(event: event, guest: guest)
+        case .pending:
+            ServiceNotification.refuseYourGuest(event: event, guest: guest)
+        default:
+            break
         }
+    
         dismiss(animated: true, completion: nil)
     }
 }

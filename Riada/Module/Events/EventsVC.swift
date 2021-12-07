@@ -95,7 +95,6 @@ class EventsVC: UIViewController {
         
         for key in sortedKeys {
             if let events = dict[key]?.sorted(by: { $0.date.compare($1.date) == .orderedAscending }) {
-//            if let events = dict[key] {
                 sortedEvent.append((date: key, events: events))
             }
         }

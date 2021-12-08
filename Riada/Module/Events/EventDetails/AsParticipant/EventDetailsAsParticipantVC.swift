@@ -43,6 +43,12 @@ class EventDetailsAsParticipantVC: UIViewController {
     var event: Event?
     var photoUrls: [URL] = [] {
         didSet {
+            if photoUrls.isEmpty {
+                self.sections = [.organizer, .informations, .place, .participants, .guests]
+            } else {
+                self.sections = [.organizer, .informations, .placeWithPictures, .participants, .guests]
+            }
+            
             guard let section = sections.firstIndex(where: { $0 == .place || $0 == .placeWithPictures }) else { return }
             DispatchQueue.main.async {
                 self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
@@ -513,9 +519,11 @@ extension EventDetailsAsParticipantVC {
         
         HelperTracking.track(item: .eventDetailsDecline)
         ServiceEvent.decline(eventId: eventId)
+        ServiceNotification.decline(event: event, organizer: organizer)
+        
+        guard currentUserParticipationStatus == .accepted else { return }
         let nbAcceptedPlayer = event.nbAcceptedPlayer-1
         self.event?.nbAcceptedPlayer = nbAcceptedPlayer
         ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
-        ServiceNotification.decline(event: event, organizer: organizer)
     }
 }

@@ -52,7 +52,6 @@
 		EE1202B02757C5930068F0F3 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1202AE2757C5930068F0F3 /* PhotoCell.xib */; };
 		EE1202B22757D6B00068F0F3 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202B12757D6B00068F0F3 /* PhotoVC.swift */; };
 		EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202BA2757E6B60068F0F3 /* NavigationController.swift */; };
-		EE20263626F617B50094D87C /* ManagerUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20263526F617B50094D87C /* ManagerUserPreferences.swift */; };
 		EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3942747E08900F484F4 /* NotificationsVC.swift */; };
 		EE21C3992747E27A00F484F4 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3972747E27A00F484F4 /* NotificationCell.swift */; };
 		EE21C39A2747E27A00F484F4 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE21C3982747E27A00F484F4 /* NotificationCell.xib */; };
@@ -127,6 +126,7 @@
 		EEBBD47E271863FB00519EBC /* NbPlayersPickerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD47C271863FB00519EBC /* NbPlayersPickerSource.swift */; };
 		EEBBD47F271863FB00519EBC /* SportPickerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD47D271863FB00519EBC /* SportPickerSource.swift */; };
 		EEBBD482271866C900519EBC /* ManagerSport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD481271866C900519EBC /* ManagerSport.swift */; };
+		EEC03AD3275B8BF000F0C0AD /* ManagerUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC03AD2275B8BF000F0C0AD /* ManagerUserPreferences.swift */; };
 		EED3CF0027245FC40072ED2B /* MyProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED3CEFF27245FC40072ED2B /* MyProfile.storyboard */; };
 		EED3CF03272460620072ED2B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3CF02272460620072ED2B /* SignUpVC.swift */; };
 		EED3CF07272460CC0072ED2B /* MSignUpSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3CF05272460CC0072ED2B /* MSignUpSection.swift */; };
@@ -202,7 +202,6 @@
 		EE1202AE2757C5930068F0F3 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		EE1202B12757D6B00068F0F3 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		EE1202BA2757E6B60068F0F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		EE20263526F617B50094D87C /* ManagerUserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerUserPreferences.swift; sourceTree = "<group>"; };
 		EE21C3942747E08900F484F4 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		EE21C3972747E27A00F484F4 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		EE21C3982747E27A00F484F4 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
@@ -278,6 +277,7 @@
 		EEBBD47C271863FB00519EBC /* NbPlayersPickerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NbPlayersPickerSource.swift; sourceTree = "<group>"; };
 		EEBBD47D271863FB00519EBC /* SportPickerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportPickerSource.swift; sourceTree = "<group>"; };
 		EEBBD481271866C900519EBC /* ManagerSport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSport.swift; sourceTree = "<group>"; };
+		EEC03AD2275B8BF000F0C0AD /* ManagerUserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUserPreferences.swift; sourceTree = "<group>"; };
 		EED3CEFF27245FC40072ED2B /* MyProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyProfile.storyboard; sourceTree = "<group>"; };
 		EED3CF02272460620072ED2B /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		EED3CF05272460CC0072ED2B /* MSignUpSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSignUpSection.swift; sourceTree = "<group>"; };
@@ -347,7 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				B836B61A2548D94100AAF48A /* ManagerUser.swift */,
-				EE20263526F617B50094D87C /* ManagerUserPreferences.swift */,
+				EEC03AD2275B8BF000F0C0AD /* ManagerUserPreferences.swift */,
 				EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */,
 				EEBBD481271866C900519EBC /* ManagerSport.swift */,
 			);
@@ -1210,6 +1210,7 @@
 				B87B2658254236AA007D4A4D /* MStoryboard.swift in Sources */,
 				EED3CF07272460CC0072ED2B /* MSignUpSection.swift in Sources */,
 				EEB8F1EF26FE0EC3005ABC27 /* ParticipateVC.swift in Sources */,
+				EEC03AD3275B8BF000F0C0AD /* ManagerUserPreferences.swift in Sources */,
 				B836B6212548E45B00AAF48A /* UIButton+M.swift in Sources */,
 				EEE1F48B26F3C9A600754DDD /* ServiceEvent.swift in Sources */,
 				EEAF6F742723D54B00D330C6 /* EditEventVC.swift in Sources */,
@@ -1292,7 +1293,6 @@
 				B836B61B2548D94100AAF48A /* ManagerUser.swift in Sources */,
 				EEBBD47A271863A500519EBC /* MDatePickerField.swift in Sources */,
 				B84ECBF12541AEB1007F8E9E /* ServiceSport.swift in Sources */,
-				EE20263626F617B50094D87C /* ManagerUserPreferences.swift in Sources */,
 				EE8951DB274111570081AE09 /* SettingsVC.swift in Sources */,
 				B8FDE37D253F730F00BD29B2 /* L10N.swift in Sources */,
 				EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */,
@@ -1463,7 +1463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";
@@ -1488,7 +1488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";

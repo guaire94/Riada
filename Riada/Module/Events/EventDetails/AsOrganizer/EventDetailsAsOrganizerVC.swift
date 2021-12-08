@@ -126,7 +126,8 @@ class EventDetailsAsOrganizerVC: UIViewController {
         HelperTracking.track(item: .eventDetails)
         
         actionBar.isHidden = event.eventStatus == .canceled
-        
+
+        sportLabel.text = event.sportLocalizedName
         titleLabel.text = event.title
         setUpTableView()
         

@@ -318,7 +318,9 @@ class ServiceUser {
                 for document in documents {
                     if document.exists,
                        let user = try? document.data(as: User.self),
-                       user.id != userId, user.favoritesSports.contains(event.sportId) {
+                       user.id != userId,
+                       let favoritesSports = user.favoritesSports,
+                       favoritesSports.contains(event.sportId) {
                         users.append(user)
                     }
                 }

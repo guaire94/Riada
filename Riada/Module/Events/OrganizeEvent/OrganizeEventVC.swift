@@ -24,7 +24,7 @@ class OrganizeEventVC: UIViewController {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var sportPickerField: MPickerField!
     @IBOutlet weak private var titleTextField: MTextField!
-    @IBOutlet weak private var descTextField: MTextField!
+    @IBOutlet weak private var descTextView: MTextView!
     @IBOutlet weak private var dateAndHourPickerField: MDatePickerField!
     @IBOutlet weak private var addressPickerField: MPickerField!
     @IBOutlet weak private var nbPlayerPickerField: MPickerField!
@@ -66,7 +66,8 @@ class OrganizeEventVC: UIViewController {
         }
         sportPickerField.delegate = self
         titleTextField.delegate = self
-        descTextField.delegate = self
+        descTextView.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
+        descTextView.delegate = self
         addressPickerField.delegate = self
         nbPlayerPickerField.delegate = self
         setUpTranslation()
@@ -79,8 +80,7 @@ class OrganizeEventVC: UIViewController {
         sportPickerField.labelText = L10N.event.organize.form.sport
         titleTextField.labelText = L10N.event.organize.form.title
         titleTextField.placeHolder = L10N.event.organize.form.titlePlaceHolder
-        descTextField.labelText = L10N.event.organize.form.desc
-        descTextField.placeHolder = L10N.event.organize.form.descPlaceHolder
+        descTextView.labelText = L10N.event.organize.form.desc
         dateAndHourPickerField.labelText = L10N.event.organize.form.dateAndHour
         addressPickerField.labelText = L10N.event.organize.form.address
         nbPlayerPickerField.labelText = L10N.event.organize.form.nbPlayers
@@ -93,8 +93,8 @@ class OrganizeEventVC: UIViewController {
     private func setUpField() {
         titleTextField.textContentType = .name
         titleTextField.returnKeyType = .next
-        descTextField.textContentType = .name
-        descTextField.returnKeyType = .next
+        descTextView.textContentType = .name
+        descTextView.returnKeyType = .next
         dateAndHourPickerField.mode = .dateAndTime
     }
     
@@ -123,6 +123,10 @@ class OrganizeEventVC: UIViewController {
 
 // MARK: - IBAction
 extension OrganizeEventVC {
+    
+    @objc func tapDone(sender: Any) {
+        view.endEditing(true)
+    }
 
     @IBAction func dimissToggle() {
         dismiss(animated: true, completion: nil)
@@ -132,7 +136,7 @@ extension OrganizeEventVC {
         guard let sport = sportPickerSource.selectedSport,
               let sportId = sport.id,
               let title = titleTextField.text,
-              let desc = descTextField.text,
+              let desc = descTextView.text,
               let place = selectedPlace,
               let placeAddress = selectedPlaceAddress,
               let placeLocation = selectedPlaceLocation,
@@ -181,7 +185,7 @@ extension OrganizeEventVC: MPickerFieldDelegate {
     func didTogglePicker(sender: MPickerField) {
         guard sender.isEnabled else { return }
         
-        descTextField.textField.resignFirstResponder()
+        descTextView.textView.resignFirstResponder()
         switch sender {
         case sportPickerField:
             sportPickerSource.currentIndexSelected = ManagerSport.shared.sports.firstIndex(where: {$0.id == ManagerSport.shared.selectedSport?.id})
@@ -220,12 +224,13 @@ extension OrganizeEventVC: UITextFieldDelegate {
         textField.resignFirstResponder()
 
         if textField == titleTextField.textField {
-            descTextField.textField.becomeFirstResponder()
-        } else if textField == descTextField.textField {
-            dateAndHourPickerField.becomeFirstResponder()
+            descTextView.textView.becomeFirstResponder()
         }
         return true
     }
 }
+
+// MARK: - UITextViewDelegate
+extension OrganizeEventVC: UITextViewDelegate {}
 
 

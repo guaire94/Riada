@@ -63,6 +63,15 @@ class MTextView: UIView {
         }
     }
     
+    var inputAccessory: UIView? {
+        get {
+            textView.inputAccessoryView
+        }
+        set {
+            textView.inputAccessoryView = newValue
+        }
+    }
+    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)

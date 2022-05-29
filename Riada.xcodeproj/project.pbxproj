@@ -52,6 +52,7 @@
 		EE1202B02757C5930068F0F3 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1202AE2757C5930068F0F3 /* PhotoCell.xib */; };
 		EE1202B22757D6B00068F0F3 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202B12757D6B00068F0F3 /* PhotoVC.swift */; };
 		EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202BA2757E6B60068F0F3 /* NavigationController.swift */; };
+		EE19E11E2843D0710099E539 /* UITextView+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E11D2843D0710099E539 /* UITextView+M.swift */; };
 		EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3942747E08900F484F4 /* NotificationsVC.swift */; };
 		EE21C3992747E27A00F484F4 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3972747E27A00F484F4 /* NotificationCell.swift */; };
 		EE21C39A2747E27A00F484F4 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE21C3982747E27A00F484F4 /* NotificationCell.xib */; };
@@ -204,6 +205,7 @@
 		EE1202AE2757C5930068F0F3 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		EE1202B12757D6B00068F0F3 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		EE1202BA2757E6B60068F0F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		EE19E11D2843D0710099E539 /* UITextView+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+M.swift"; sourceTree = "<group>"; };
 		EE21C3942747E08900F484F4 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		EE21C3972747E27A00F484F4 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		EE21C3982747E27A00F484F4 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */,
 				EE6E43172736D6DE00A48B84 /* UIImage+M.swift */,
 				EE8951E427411D8B0081AE09 /* UIDevice+M.swift */,
+				EE19E11D2843D0710099E539 /* UITextView+M.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1266,6 +1269,7 @@
 				6562729D2584B2AC00CDA0F9 /* MNotificationType.swift in Sources */,
 				EE603BAD26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift in Sources */,
 				EE27196B26EBD50600A3F281 /* FavoriteSport.swift in Sources */,
+				EE19E11E2843D0710099E539 /* UITextView+M.swift in Sources */,
 				EED3CF03272460620072ED2B /* SignUpVC.swift in Sources */,
 				B87B264C254232C6007D4A4D /* AnimatedLaunchScreenVC.swift in Sources */,
 				B8F71AD1254B985B00D686B4 /* UIView+M.swift in Sources */,

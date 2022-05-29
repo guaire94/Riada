@@ -85,6 +85,8 @@
 		EE603BBF26F6356C008D2E41 /* EventOrganizerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE603BBB26F6356C008D2E41 /* EventOrganizerCell.xib */; };
 		EE603BD626F6437F008D2E41 /* EventInformationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE603BD426F6437F008D2E41 /* EventInformationsCell.swift */; };
 		EE603BD726F6437F008D2E41 /* EventInformationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE603BD526F6437F008D2E41 /* EventInformationsCell.xib */; };
+		EE66EE7A2843AD9C00F24E1B /* MTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE66EE792843AD9C00F24E1B /* MTextView.swift */; };
+		EE66EE7C2843AE0200F24E1B /* MTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE66EE7B2843AE0200F24E1B /* MTextView.xib */; };
 		EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */; };
 		EE6B7F6926FF7B6A00E44B7C /* MKeyboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6826FF7B6A00E44B7C /* MKeyboardVC.swift */; };
 		EE6B7F6B270077C800E44B7C /* ManagerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */; };
@@ -236,6 +238,8 @@
 		EE603BBB26F6356C008D2E41 /* EventOrganizerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventOrganizerCell.xib; sourceTree = "<group>"; };
 		EE603BD426F6437F008D2E41 /* EventInformationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInformationsCell.swift; sourceTree = "<group>"; };
 		EE603BD526F6437F008D2E41 /* EventInformationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventInformationsCell.xib; sourceTree = "<group>"; };
+		EE66EE792843AD9C00F24E1B /* MTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTextView.swift; sourceTree = "<group>"; };
+		EE66EE7B2843AE0200F24E1B /* MTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTextView.xib; sourceTree = "<group>"; };
 		EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGuestVC.swift; sourceTree = "<group>"; };
 		EE6B7F6826FF7B6A00E44B7C /* MKeyboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKeyboardVC.swift; sourceTree = "<group>"; };
 		EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDeepLink.swift; sourceTree = "<group>"; };
@@ -868,6 +872,8 @@
 		EEBBD4702718637300519EBC /* MTextField */ = {
 			isa = PBXGroup;
 			children = (
+				EE66EE792843AD9C00F24E1B /* MTextView.swift */,
+				EE66EE7B2843AE0200F24E1B /* MTextView.xib */,
 				EEE1F46426F23A4900754DDD /* MTextField.swift */,
 				EEE1F46526F23A4900754DDD /* MTextField.xib */,
 			);
@@ -1087,6 +1093,7 @@
 				EEAE66032725A4470048F559 /* SignInCell.xib in Resources */,
 				B84ECBE72541ABD0007F8E9E /* PGCPickerViewController.storyboard in Resources */,
 				EE6E43152736C5A100A48B84 /* ImagePicker.xib in Resources */,
+				EE66EE7C2843AE0200F24E1B /* MTextView.xib in Resources */,
 				B87B2649254232B5007D4A4D /* AnimatedLaunchScreen.storyboard in Resources */,
 				EEE1F47B26F3BEF200754DDD /* Event.storyboard in Resources */,
 				EEE1F46726F23A4900754DDD /* MTextField.xib in Resources */,
@@ -1238,6 +1245,7 @@
 				EE27197B26EBD67D00A3F281 /* Organizer.swift in Sources */,
 				EE6E4325273D2D8000A48B84 /* OtherProfileVC.swift in Sources */,
 				EE27D2BF2731D7F500051743 /* MyProfileVC.swift in Sources */,
+				EE66EE7A2843AD9C00F24E1B /* MTextView.swift in Sources */,
 				EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */,
 				EE5A0B19271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift in Sources */,
 				EEDC9A9C26FDCB5E00627C73 /* UICollectionView+M.swift in Sources */,

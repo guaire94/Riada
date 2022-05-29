@@ -13,7 +13,7 @@ class EventInformationsCell: UITableViewCell {
 
     //MARK: - Constant
     enum Constants {
-        static let height: CGFloat = 78
+        static let height: CGFloat = 120
         static let identifier: String = "EventInformationsCell"
         static let nib = UINib(nibName: Constants.identifier, bundle: nil)
         fileprivate static let contentCornerRadius: CGFloat = 10
@@ -22,7 +22,7 @@ class EventInformationsCell: UITableViewCell {
     // MARK: - IBOutlet
     @IBOutlet weak private var content: UIView!
     @IBOutlet weak private var dateLabel: UILabel!
-    @IBOutlet weak private var descLabel: UILabel!
+    @IBOutlet weak private var descTextView: UITextView!
 
     // MARK: - LifeCycle
     override func prepareForReuse() {
@@ -33,7 +33,7 @@ class EventInformationsCell: UITableViewCell {
     func setUp(date: Timestamp, desc: String) {
         setUpUI()
         dateLabel.text = date.long + "-" + date.hour
-        descLabel.text = desc
+        descTextView.text = desc
     }
 
     // MARK: - Private

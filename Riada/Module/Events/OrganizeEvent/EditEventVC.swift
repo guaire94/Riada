@@ -25,7 +25,7 @@ class EditEventVC: UIViewController {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var sportPickerField: MPickerField!
     @IBOutlet weak private var titleTextField: MTextField!
-    @IBOutlet weak private var descTextField: MTextField!
+    @IBOutlet weak private var descTextField: MTextView!
     @IBOutlet weak private var dateAndHourPickerField: MDatePickerField!
     @IBOutlet weak private var addressPickerField: MPickerField!
     @IBOutlet weak private var nbPlayerPickerField: MPickerField!
@@ -69,6 +69,7 @@ class EditEventVC: UIViewController {
         sportPickerField.delegate = self
         titleTextField.delegate = self
         descTextField.delegate = self
+        descTextField.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
         addressPickerField.delegate = self
         nbPlayerPickerField.delegate = self
         setUpTranslation()
@@ -82,7 +83,6 @@ class EditEventVC: UIViewController {
         titleTextField.labelText = L10N.event.organize.form.title
         titleTextField.placeHolder = L10N.event.organize.form.titlePlaceHolder
         descTextField.labelText = L10N.event.organize.form.desc
-        descTextField.placeHolder = L10N.event.organize.form.descPlaceHolder
         dateAndHourPickerField.labelText = L10N.event.organize.form.dateAndHour
         addressPickerField.labelText = L10N.event.organize.form.address
         nbPlayerPickerField.labelText = L10N.event.organize.form.nbPlayers
@@ -135,6 +135,10 @@ class EditEventVC: UIViewController {
 
 // MARK: - IBAction
 extension EditEventVC {
+    
+    @objc func tapDone(sender: Any) {
+        view.endEditing(true)
+    }
 
     @IBAction func dimissToggle() {
         navigationController?.popViewController(animated: true)
@@ -206,7 +210,7 @@ extension EditEventVC {
 extension EditEventVC: MPickerFieldDelegate {
     
     func didTogglePicker(sender: MPickerField) {
-        descTextField.textField.resignFirstResponder()
+        descTextField.textView.resignFirstResponder()
         switch sender {
         case addressPickerField:
             performSegue(withIdentifier: SearchLocationVC.Constants.identifier, sender: self)
@@ -241,12 +245,13 @@ extension EditEventVC: UITextFieldDelegate {
         textField.resignFirstResponder()
 
         if textField == titleTextField.textField {
-            descTextField.textField.becomeFirstResponder()
-        } else if textField == descTextField.textField {
-            dateAndHourPickerField.becomeFirstResponder()
+            descTextField.textView.becomeFirstResponder()
         }
         return true
     }
 }
+
+// MARK: - UITextViewDelegate
+extension EditEventVC: UITextViewDelegate {}
 
 

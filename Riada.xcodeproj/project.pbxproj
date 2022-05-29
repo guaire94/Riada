@@ -52,6 +52,7 @@
 		EE1202B02757C5930068F0F3 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1202AE2757C5930068F0F3 /* PhotoCell.xib */; };
 		EE1202B22757D6B00068F0F3 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202B12757D6B00068F0F3 /* PhotoVC.swift */; };
 		EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202BA2757E6B60068F0F3 /* NavigationController.swift */; };
+		EE19E11E2843D0710099E539 /* UITextView+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE19E11D2843D0710099E539 /* UITextView+M.swift */; };
 		EE21C3952747E08900F484F4 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3942747E08900F484F4 /* NotificationsVC.swift */; };
 		EE21C3992747E27A00F484F4 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21C3972747E27A00F484F4 /* NotificationCell.swift */; };
 		EE21C39A2747E27A00F484F4 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE21C3982747E27A00F484F4 /* NotificationCell.xib */; };
@@ -85,6 +86,8 @@
 		EE603BBF26F6356C008D2E41 /* EventOrganizerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE603BBB26F6356C008D2E41 /* EventOrganizerCell.xib */; };
 		EE603BD626F6437F008D2E41 /* EventInformationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE603BD426F6437F008D2E41 /* EventInformationsCell.swift */; };
 		EE603BD726F6437F008D2E41 /* EventInformationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE603BD526F6437F008D2E41 /* EventInformationsCell.xib */; };
+		EE66EE7A2843AD9C00F24E1B /* MTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE66EE792843AD9C00F24E1B /* MTextView.swift */; };
+		EE66EE7C2843AE0200F24E1B /* MTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE66EE7B2843AE0200F24E1B /* MTextView.xib */; };
 		EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */; };
 		EE6B7F6926FF7B6A00E44B7C /* MKeyboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6826FF7B6A00E44B7C /* MKeyboardVC.swift */; };
 		EE6B7F6B270077C800E44B7C /* ManagerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */; };
@@ -202,6 +205,7 @@
 		EE1202AE2757C5930068F0F3 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		EE1202B12757D6B00068F0F3 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		EE1202BA2757E6B60068F0F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		EE19E11D2843D0710099E539 /* UITextView+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+M.swift"; sourceTree = "<group>"; };
 		EE21C3942747E08900F484F4 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		EE21C3972747E27A00F484F4 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		EE21C3982747E27A00F484F4 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 		EE603BBB26F6356C008D2E41 /* EventOrganizerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventOrganizerCell.xib; sourceTree = "<group>"; };
 		EE603BD426F6437F008D2E41 /* EventInformationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInformationsCell.swift; sourceTree = "<group>"; };
 		EE603BD526F6437F008D2E41 /* EventInformationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventInformationsCell.xib; sourceTree = "<group>"; };
+		EE66EE792843AD9C00F24E1B /* MTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTextView.swift; sourceTree = "<group>"; };
+		EE66EE7B2843AE0200F24E1B /* MTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTextView.xib; sourceTree = "<group>"; };
 		EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGuestVC.swift; sourceTree = "<group>"; };
 		EE6B7F6826FF7B6A00E44B7C /* MKeyboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKeyboardVC.swift; sourceTree = "<group>"; };
 		EE6B7F6A270077C800E44B7C /* ManagerDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDeepLink.swift; sourceTree = "<group>"; };
@@ -424,6 +430,7 @@
 				EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */,
 				EE6E43172736D6DE00A48B84 /* UIImage+M.swift */,
 				EE8951E427411D8B0081AE09 /* UIDevice+M.swift */,
+				EE19E11D2843D0710099E539 /* UITextView+M.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -868,6 +875,8 @@
 		EEBBD4702718637300519EBC /* MTextField */ = {
 			isa = PBXGroup;
 			children = (
+				EE66EE792843AD9C00F24E1B /* MTextView.swift */,
+				EE66EE7B2843AE0200F24E1B /* MTextView.xib */,
 				EEE1F46426F23A4900754DDD /* MTextField.swift */,
 				EEE1F46526F23A4900754DDD /* MTextField.xib */,
 			);
@@ -1087,6 +1096,7 @@
 				EEAE66032725A4470048F559 /* SignInCell.xib in Resources */,
 				B84ECBE72541ABD0007F8E9E /* PGCPickerViewController.storyboard in Resources */,
 				EE6E43152736C5A100A48B84 /* ImagePicker.xib in Resources */,
+				EE66EE7C2843AE0200F24E1B /* MTextView.xib in Resources */,
 				B87B2649254232B5007D4A4D /* AnimatedLaunchScreen.storyboard in Resources */,
 				EEE1F47B26F3BEF200754DDD /* Event.storyboard in Resources */,
 				EEE1F46726F23A4900754DDD /* MTextField.xib in Resources */,
@@ -1238,6 +1248,7 @@
 				EE27197B26EBD67D00A3F281 /* Organizer.swift in Sources */,
 				EE6E4325273D2D8000A48B84 /* OtherProfileVC.swift in Sources */,
 				EE27D2BF2731D7F500051743 /* MyProfileVC.swift in Sources */,
+				EE66EE7A2843AD9C00F24E1B /* MTextView.swift in Sources */,
 				EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */,
 				EE5A0B19271B5D2B009A951B /* EventDetailsAsOrganizerVC.swift in Sources */,
 				EEDC9A9C26FDCB5E00627C73 /* UICollectionView+M.swift in Sources */,
@@ -1258,6 +1269,7 @@
 				6562729D2584B2AC00CDA0F9 /* MNotificationType.swift in Sources */,
 				EE603BAD26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift in Sources */,
 				EE27196B26EBD50600A3F281 /* FavoriteSport.swift in Sources */,
+				EE19E11E2843D0710099E539 /* UITextView+M.swift in Sources */,
 				EED3CF03272460620072ED2B /* SignUpVC.swift in Sources */,
 				B87B264C254232C6007D4A4D /* AnimatedLaunchScreenVC.swift in Sources */,
 				B8F71AD1254B985B00D686B4 /* UIView+M.swift in Sources */,

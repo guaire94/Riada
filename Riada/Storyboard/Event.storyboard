@@ -491,7 +491,7 @@
                                                 <rect key="frame" x="20" y="8" width="374" height="601"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OGX-sO-WNE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="580"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="640"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNL-Zi-kzS" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
@@ -507,40 +507,40 @@
                                                                     <constraint firstAttribute="height" constant="60" id="cQv-TM-gWt"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHA-X0-qe3" customClass="MTextField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="160" width="374" height="60"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHA-X0-qe3" customClass="MTextView" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="160" width="374" height="120"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="60" id="4fz-0H-fxt"/>
+                                                                    <constraint firstAttribute="height" constant="120" id="4fz-0H-fxt"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2z-Xe-xVW" customClass="MDatePickerField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="240" width="374" height="60"/>
+                                                                <rect key="frame" x="0.0" y="300" width="374" height="60"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MbE-zg-RIy" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="320" width="374" height="60"/>
+                                                                <rect key="frame" x="0.0" y="380" width="374" height="60"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="60" id="xLA-2g-unp"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-7m-5vl" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="400" width="374" height="60"/>
+                                                                <rect key="frame" x="0.0" y="460" width="374" height="60"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="60" id="4MV-mZ-LI6"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w53-20-ZI6" customClass="MSwitchField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="480" width="374" height="40"/>
+                                                                <rect key="frame" x="0.0" y="540" width="374" height="40"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="4f4-pp-TTM"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJC-O0-4ZU" customClass="MSwitchField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="540" width="374" height="40"/>
+                                                                <rect key="frame" x="0.0" y="600" width="374" height="40"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="Rdh-ok-add"/>
@@ -617,7 +617,7 @@
                         <outlet property="addressPickerField" destination="MbE-zg-RIy" id="kOD-ln-zoH"/>
                         <outlet property="createEventButton" destination="sER-Kg-I4n" id="ANn-qf-Pva"/>
                         <outlet property="dateAndHourPickerField" destination="e2z-Xe-xVW" id="HFl-Rd-DYv"/>
-                        <outlet property="descTextField" destination="mHA-X0-qe3" id="fDS-xh-BWO"/>
+                        <outlet property="descTextView" destination="mHA-X0-qe3" id="WhB-ZN-2u2"/>
                         <outlet property="isParticipateSwitchField" destination="w53-20-ZI6" id="F10-rn-HNa"/>
                         <outlet property="isPrivateSwitchField" destination="JJC-O0-4ZU" id="Ccs-Bc-9is"/>
                         <outlet property="nbPlayerPickerField" destination="Jdv-7m-5vl" id="pS5-QH-Tzo"/>
@@ -1136,7 +1136,7 @@
                                                 <rect key="frame" x="20" y="8" width="374" height="601"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="g26-Vn-wj7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="520"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="580"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmd-bH-Ou2" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
@@ -1152,33 +1152,33 @@
                                                                     <constraint firstAttribute="height" constant="60" id="AAE-ha-vVZ"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAp-0m-jLf" customClass="MTextField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="160" width="374" height="60"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAp-0m-jLf" customClass="MTextView" customModule="Riada" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="160" width="374" height="120"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="60" id="vtr-FQ-TmL"/>
+                                                                    <constraint firstAttribute="height" constant="120" id="vtr-FQ-TmL"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csb-9b-pjZ" customClass="MDatePickerField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="240" width="374" height="60"/>
+                                                                <rect key="frame" x="0.0" y="300" width="374" height="60"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBb-mp-dmu" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="320" width="374" height="60"/>
+                                                                <rect key="frame" x="0.0" y="380" width="374" height="60"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="60" id="GIt-ov-czh"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Cw-3h-Z1v" customClass="MPickerField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="400" width="374" height="60"/>
+                                                                <rect key="frame" x="0.0" y="460" width="374" height="60"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="60" id="3nQ-Y4-oev"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcJ-tV-WOg" customClass="MSwitchField" customModule="Riada" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="480" width="374" height="40"/>
+                                                                <rect key="frame" x="0.0" y="540" width="374" height="40"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="z4e-Fz-FOQ"/>
@@ -1267,7 +1267,7 @@
                         <outlet property="addressPickerField" destination="GBb-mp-dmu" id="LCs-Px-2R8"/>
                         <outlet property="cancelEventButton" destination="mBr-3e-0Cc" id="vlt-Mu-3RE"/>
                         <outlet property="dateAndHourPickerField" destination="csb-9b-pjZ" id="2Hv-ui-9Da"/>
-                        <outlet property="descTextField" destination="HAp-0m-jLf" id="YZA-Tq-blc"/>
+                        <outlet property="descTextField" destination="HAp-0m-jLf" id="C5g-tG-RIR"/>
                         <outlet property="isPrivateSwitchField" destination="zcJ-tV-WOg" id="Yjh-Fq-Tfk"/>
                         <outlet property="nbPlayerPickerField" destination="8Cw-3h-Z1v" id="GtN-z0-Wdi"/>
                         <outlet property="saveEventButton" destination="WbU-d0-axy" id="dSf-V8-m7d"/>
@@ -1350,7 +1350,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="4on-LS-MBQ"/>
         <segue reference="dPl-0I-Agp"/>
-        <segue reference="b3W-dn-es6"/>
+        <segue reference="2Np-DM-Ft2"/>
         <segue reference="Uqu-8o-Qrg"/>
     </inferredMetricsTieBreakers>
     <resources>

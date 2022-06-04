@@ -18,7 +18,7 @@ enum Config {
     #if DEBUG
         static let WormholyIsEnabled = true
         static let UpdateAppLangua = false
-        static let firebaseEnv = "Staging"
+        static let firebaseEnv = "Release"
     #else
         static var WormholyIsEnabled = false
         static var UpdateAppLangua = false

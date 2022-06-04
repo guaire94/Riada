@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.147
+*Version:* 2.0.159
 
 *Website:* <https://www.applanga.com> 
 
@@ -27,7 +27,7 @@ Automatic Push Notification Localization and InfoPlist.strings
 
 1. Refer to CocoaPod’s [Getting Started Guide](http://cocoapods.org/#getstarted) for detailed instructions about CocoaPods.
 
-2. After you have created your Podfile, insert this line of code: `pod 'Applanga'`
+2. After you have created your Podfile, insert this line of code: `pod 'Applanga'`, to be able to do screenshots during ui tests insert `pod 'ApplangaUITest'` for your ui test target.
 
 3. Once you have done so, re-run **pod install** from the command line.
 
@@ -63,7 +63,7 @@ Paste the following line in this `Run Script Phase`'s script text field:
 	```
  
 ## Configuration
-1. To start iOS Localization with Applanga download the *Applanga Settings File* for your app from the App Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
+1. To start iOS Localization with Applanga download the *Applanga Settings File* for your app from the Project Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
  
 2. Add the *Applanga Settings File* to your apps resources. It will be automatically loaded.
  
@@ -452,6 +452,16 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		//called if update is complete
 	});		
 	```
+ 
+    4.5 **Enable Show ID Mode**
+
+    ```javascript
+    Applanga.setShowIdModeEnabled(true);
+    ```
+
+    If Show ID Mode is enabled, applanga will return your string ids instead of you localisations. This can become important for screenshots (especially SwiftUI as stated in automated screenshots with SwiftUI below). For instance if you have an argument string or any string which changes at runtime it is possible that this specific string won't be collected on a Screenshot. If Show ID Mode is activated, applanga can make an exact match of the string id so the screenshot string collection will be accurate. 
+
+    Don't use this flag in Production. To be able to the see changes you have to reload your UI after changing this flag.
 
 5. **Automatic Screenshot Upload**
  	
@@ -517,92 +527,46 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	
  	The Applanga SDK tries to find all IDs on the screen but you can also pass additional IDs in the **applangaIDs** parameter. 
  	
+    *Note: It's not possible to make the screenshot like this in UI-Tests. The reason is, that in UI-Tests you don't have access to the real Applanga instance. See the alternative in the next Section: `Automated during UI Tests`.*
+
  	5.4 **Automated during UITests**
+
+    To be able to use applanga test features add `ApplangaUITest` to your project and do the import as below. Refer to [Installation](#Installation) how to add the test package to your project.
+
+    ```swift
+    import ApplangaUITest
+    ```
  	
- 	To capture screenshots from UITests running in xcode you first have to add a specific launch argument in your test classes setup function:
+ 	To capture screenshots from UITests running in Xcode you first have to initialize applanga with the current app instance so it can set specific launch arguments before starting the tests:
 
-	```objc
-	//objc
-	- (void)setUp {
-			[super setUp];
-			XCUIApplication *app =[[XCUIApplication alloc] init];
-			app.launchArguments = @[@"ApplangaUITestScreenshotEnabled"];
-			[app launch];
-	}
-	```
-
-	```swift
-	//swift
-	override func setUp() {
-		super.setUp()
-		let app = XCUIApplication();
-		app.launchArguments.append("ApplangaUITestScreenshotEnabled");
-		app.launch();
-	}
+    ```swift 
+    let app = XCUIApplication()
+    let applangaUITest = ApplangaUITest(app: app)
+    app.launch()
     ```
 
- 	Now you can capture screenshots as shown in the following example:
- 	
-	```objc
-	//objc
-	- (void)testExample2 {
+    To take a screenshot specify a tag and wait for it:
+    ```swift
+    wait(for: [applangaUITest!.takeScreenshot(tag: "Home")], timeout: 10.0)
+    ```
 
-		XCUIApplication *app = [app init];
-	
-		//open screenshot menu by tapping invisible Applanga button
-		[[app.buttons[@"Applanga.ToggleDraftMenu"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
-		[[app.buttons[@"Applanga.ToggleScreenShotMenu"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
-		//toggle tag selection
-		[[app.buttons[@"Applanga.SelectTag"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
-		//select tag named "MainMenu"
-		[[app.tables.staticTexts[@"MainMenu"]coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
-		//capture screenshot
-		[[app.buttons[@"Applanga.CaptureScreen"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
-	
-		//screenshot upload takes a while so we need to wait until the screenshot menu is visible again until we can proceed
-		NSPredicate *waitPredicate = [NSPredicate predicateWithFormat:@"exists == 1"];
-		[self expectationForPredicate:waitPredicate evaluatedWithObject:app.buttons[@"Applanga.SelectTag"] handler:nil];
-		[self waitForExpectationsWithTimeout:30 handler:nil];
-		...
-	}		
-	
-	  	//if you want to then hide the draft menu again, then do the following
-        //Close the screenshot menu
-		[[app.buttons[@"Applanga.CancelScreenshot"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
-       	//Close the draft menu
-		[[app.buttons[@"Applanga.ToggleDraftMenu"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
+    Full example:
+    ```swift
+    import ApplangaUITest
+    class AutomatedScreenshotsTest: XCTestCase {
+        let app = XCUIApplication()
+        var applangaUITest: ApplangaUITest?
 
-
-	
-	```
-
-	```swift
-	//swift
-	func testExample() {
-		let app = XCUIApplication();
-        
-		//open screenshot menu by tapping invisible Applanga button
-		app.buttons["Applanga.ToggleDraftMenu"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-        app.buttons["Applanga.OpenScreenshotView"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-        app.buttons["Applanga.SelectTag"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-        app.tables.staticTexts["MainMenu"].tap();
-        app.buttons["Applanga.ConfirmScreenshot"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-
-		//screenshot upload takes a while so we need to wait until the screenshot menu is visible again until we can proceed
-		let predicate = NSPredicate(format: "exists == 1")
-        let query = XCUIApplication().buttons["Applanga.SelectTag"];
-        expectation(for: predicate, evaluatedWith: query, handler: nil)
-        waitForExpectations(timeout: 30, handler: nil)
+        func testScreenshot() {
+            // enable show id mode if you are using swift ui so the string id will be linked to the tag name correctly
+            // after that repeat the screenshot without show id mode
+            applangaUITest = ApplangaUITest(app: app, enableShowIdMode: false) 
+            app.launch()
+            wait(for: [applangaUITest!.takeScreenshot(tag: "ScreentagName")], timeout: 10.0)
+        }
     }
-    
-    	//if you want to then hide the draft menu again, then do the following
-        //Close the screenshot menu
-       	app.buttons["Applanga.CancelScreenshot"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-       	//Close the draft menu
-		app.buttons["Applanga.ToggleDraftMenu"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-
-    
     ```
+
 		
 ## Optional settings
 
@@ -656,6 +620,12 @@ You can specify a set of default groups and languages in your plist, which will 
 	bash "$SOURCE_ROOT/Carthage/Checkouts/sdk-ios/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	
+	or if you are using Swift Package Manager:
+	
+	```
+	bash "${BUILD_DIR}/../../SourcePackages/checkouts/sdk-ios/Applanga.xcframework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
+	```
+	
 	or if you are integrated the Applanga SDK manually:
 	
 	```
@@ -701,7 +671,57 @@ You can specify a set of default groups and languages in your plist, which will 
 	```
 	Applanga.setDraftModelEnabled(bool);
    ```
-This will overide the setting in the plist, but it will not override draft mode being disabled in the applanga dashboard.
+    This will overide the setting in the plist, but it will not override draft mode being disabled in the applanga dashboard.
+
+7. **Convert Placeholder**
+
+    To convert placeholders between iOS and Android style you need to enable the following in your plist: 
+	
+	```xml
+	...
+   <key>ApplangaConvertPlaceholders</key>
+	<true/>
+	...
+   ```
+
+    ***Common placeholder***
+
+    These placeholder will not be converted as they are supported on iOS and Android.
+
+    - Scientific notation `%e` and `%E`
+    - `%c` and `%C` Unicode Characters
+    - `%f` floating point number
+    - `%g` and `%G` computerized scientific notation
+    - `%a` and `%A` Floating point numbers
+    - Octal integer `%o` (for `%O` see Android to iOS conversion)
+    - `%x` and `%X` hexadecimal presentation using lowercase letters (`%x`) or uppercase letters (`%X`)
+    - `%d` will remain `%d`
+    - Positional placeholder as `%1$s` are converted to `%1$@` and vice-versa
+
+    ***Android placeholder***
+    - All instances of `%s` and `%S` will be converted to `%@`
+    - Unsupported conversion types such as `%h` and `%tY` will convert to default `%@` type.
+    - Boolean types `%b` and `%B` will be converted to `%@`
+    - `%h` and `%H` are converted to `%@`
+    - Positional strings using '<' are supported. "Duke's Birthday: `%1$tm` `%<te`,`%<tY`" results in "Duke's Birthday: `%1$@` `%1$@`,`%1$@`"
+
+8. **Language Mapping**
+
+    You can map a locale to another locale. For example if you don't have `es-CL` added to your dashboard it usually has a fallback to `es`. But if you want to treat `es-CL` as `es-MX` then you could add it to the map. Watch out for the log:
+    
+    `ApplangaLanguageMap: es-CL is mapped to es-MX`
+
+    Example:
+
+    ```xml
+    ...
+	<key>ApplangaLanguageMap</key>
+	<string>zh-Hant-HK=zh-HK,es-CL=es-MX</string>
+    ...
+    ```
+
+
+
 
 ## Automatic Push Notification Localization and InfoPlist strings
 
@@ -734,8 +754,19 @@ Although not all Applanga features are supported yet in SwiftUI, you can easily 
 
 ```
 ### SwiftUI Screenshots
-Screenshots uploaded from SwiftUI apps are proccesed server side with OCR to try and read the texts present as it is not possible yet client side. This means that in rare cases they will not be 100% accurate.
-	
+The best method to take screenshots for your translations with SwiftUI is doing your screenshots within UITests as described in [Automated during UITests](#Automated-during-UITests).
+
+To enable the collection of string positions on your screen with SwiftUI you need to enable the applanga ID mode, which means that every string will shown by its ID and not by its localization. This is the only method to be 100% accurate on linking the correct ids with their positions to the screenshot.
+To enable the applanga show ID mode pass the parameter to your ApplangaUITest instance:
+
+```swift
+    let app = XCUIApplication()
+    let applangaUITest = ApplangaUITest(app: app, enableShowIdMode: true)
+    app.launch()
+```
+
+A good practice is to take all your screenshots with show id mode enabled once and then take all screenshots without the show id mode. Then all screenshots have the correct translations linked to them and you still can see the screenshot with the actual translations.
+
 ## WatchOS 
 
 While screenshots and the draft mode menu are not availble, string upload and automatic storyboard translation work in WatchOS targets, just follow these extra steps to get it working.

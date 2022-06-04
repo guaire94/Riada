@@ -23,15 +23,15 @@ struct City {
 }
 
 enum PlaceHolderCity: CaseIterable {
-    case beaulieu
+    case paris
 //    case dubai
 //    case abuDhabi
 //    case sharjah
 
     var name: String {
         switch self {
-        case .beaulieu:
-            return "Beaulieu-sur-Loire"
+        case .paris:
+            return "Paris"
 //        case .dubai:
 //            return "Dubai"
 //        case .abuDhabi:
@@ -43,8 +43,8 @@ enum PlaceHolderCity: CaseIterable {
     
     var placeId: String {
         switch self {
-        case .beaulieu:
-            return "ChIJDRQnfUn670cRcOQ3BdfIDQQ"
+        case .paris:
+            return "ChIJD7fiBh9u5kcRYJSMaMOCCwQ"
 //        case .dubai:
 //            return "ChIJRcbZaklDXz4RYlEphFBu5r0"
 //        case .abuDhabi:
@@ -56,8 +56,8 @@ enum PlaceHolderCity: CaseIterable {
     
     var lat: Double {
         switch self {
-        case .beaulieu:
-            return 47.543520
+        case .paris:
+            return 48.856614
 //        case .dubai:
 //            return 25.276987
 //        case .abuDhabi:
@@ -69,8 +69,8 @@ enum PlaceHolderCity: CaseIterable {
     
     var lng: Double {
         switch self {
-        case .beaulieu:
-            return 2.817730
+        case .paris:
+            return 2.3522219
 //        case .dubai:
 //            return 55.296249
 //        case .abuDhabi:

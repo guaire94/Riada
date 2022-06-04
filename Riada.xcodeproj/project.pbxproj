@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -44,7 +44,20 @@
 		B8FDE3B7253F79B800BD29B2 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8FDE3B3253F79AC00BD29B2 /* Lato-Semibold.ttf */; };
 		B8FDE3B8253F79B800BD29B2 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8FDE3B2253F79AC00BD29B2 /* Lato-Regular.ttf */; };
 		B8FDE3B9253F79B800BD29B2 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */; };
-		E31E442F6F04E2E9F9202CE0 /* Pods_Riada.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */; };
+		ED3303C6C2D5B5B29D3C7511 /* Pods_Riada.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6538520FD6385F7B679CC7B2 /* Pods_Riada.framework */; };
+		EE0330D4284B582E003BB873 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330D3284B582E003BB873 /* FirebaseAnalytics */; };
+		EE0330D6284B582E003BB873 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330D5284B582E003BB873 /* FirebaseAuth */; };
+		EE0330D8284B582E003BB873 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330D7284B582E003BB873 /* FirebaseCrashlytics */; };
+		EE0330DA284B582E003BB873 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330D9284B582E003BB873 /* FirebaseDynamicLinks */; };
+		EE0330DC284B582E003BB873 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330DB284B582E003BB873 /* FirebaseFirestore */; };
+		EE0330DE284B582E003BB873 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330DD284B582E003BB873 /* FirebaseFirestoreSwift */; };
+		EE0330E0284B582E003BB873 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330DF284B582E003BB873 /* FirebaseFunctions */; };
+		EE0330E2284B582E003BB873 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330E1284B582E003BB873 /* FirebaseMessaging */; };
+		EE0330E4284B582E003BB873 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330E3284B582E003BB873 /* FirebaseStorage */; };
+		EE0330E7284B5A98003BB873 /* FirebaseStorageUI in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330E6284B5A98003BB873 /* FirebaseStorageUI */; };
+		EE0330EA284B5AE8003BB873 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330E9284B5AE8003BB873 /* SwiftKeychainWrapper */; };
+		EE0330ED284B5B25003BB873 /* CodableFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330EC284B5B25003BB873 /* CodableFirebase */; };
+		EE0330F0284B5D46003BB873 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EE0330EF284B5D46003BB873 /* GoogleSignIn */; };
 		EE1202A527578B7E0068F0F3 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202A427578B7E0068F0F3 /* EventStatus.swift */; };
 		EE1202AB2757C58B0068F0F3 /* EventPlaceWithPicturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1202A92757C58B0068F0F3 /* EventPlaceWithPicturesCell.swift */; };
 		EE1202AC2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1202AA2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib */; };
@@ -155,14 +168,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2AF1757629974E0AA9C893BC /* Pods-Riada.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Riada.debug.xcconfig"; path = "Target Support Files/Pods-Riada/Pods-Riada.debug.xcconfig"; sourceTree = "<group>"; };
+		6538520FD6385F7B679CC7B2 /* Pods_Riada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Riada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6562728B2581367300CDA0F9 /* MSettingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSettingSection.swift; sourceTree = "<group>"; };
 		6562728E2581432C00CDA0F9 /* ServiceDeviceToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDeviceToken.swift; sourceTree = "<group>"; };
 		656272992584B01D00CDA0F9 /* ServiceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceNotification.swift; sourceTree = "<group>"; };
 		6562729C2584B2AC00CDA0F9 /* MNotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNotificationType.swift; sourceTree = "<group>"; };
 		656272A42586535100CDA0F9 /* HelperNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperNotification.swift; sourceTree = "<group>"; };
 		656272A82586537C00CDA0F9 /* CurrentNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentNotification.swift; sourceTree = "<group>"; };
-		6788B25E4DA64D52DFED40C8 /* Pods-Riada.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Riada.release.xcconfig"; path = "Target Support Files/Pods-Riada/Pods-Riada.release.xcconfig"; sourceTree = "<group>"; };
-		74EB47B79B92112AC4818753 /* Pods-Riada.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Riada.debug.xcconfig"; path = "Target Support Files/Pods-Riada/Pods-Riada.debug.xcconfig"; sourceTree = "<group>"; };
 		B811E8A6254F6835008DB735 /* Timestamp+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timestamp+M.swift"; sourceTree = "<group>"; };
 		B82FE3BE255DFB4800B52099 /* ServiceGooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceGooglePlace.swift; sourceTree = "<group>"; };
 		B836B61A2548D94100AAF48A /* ManagerUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerUser.swift; sourceTree = "<group>"; };
@@ -197,7 +210,7 @@
 		B8FDE3B3253F79AC00BD29B2 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
 		B8FDE3B4253F79AC00BD29B2 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
-		CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Riada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDB8263476871DB6837AC01B /* Pods-Riada.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Riada.release.xcconfig"; path = "Target Support Files/Pods-Riada/Pods-Riada.release.xcconfig"; sourceTree = "<group>"; };
 		EE1202A427578B7E0068F0F3 /* EventStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		EE1202A92757C58B0068F0F3 /* EventPlaceWithPicturesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPlaceWithPicturesCell.swift; sourceTree = "<group>"; };
 		EE1202AA2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventPlaceWithPicturesCell.xib; sourceTree = "<group>"; };
@@ -313,27 +326,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E31E442F6F04E2E9F9202CE0 /* Pods_Riada.framework in Frameworks */,
+				EE0330E2284B582E003BB873 /* FirebaseMessaging in Frameworks */,
+				EE0330D8284B582E003BB873 /* FirebaseCrashlytics in Frameworks */,
+				EE0330E4284B582E003BB873 /* FirebaseStorage in Frameworks */,
+				EE0330F0284B5D46003BB873 /* GoogleSignIn in Frameworks */,
+				EE0330E7284B5A98003BB873 /* FirebaseStorageUI in Frameworks */,
+				EE0330E0284B582E003BB873 /* FirebaseFunctions in Frameworks */,
+				EE0330D4284B582E003BB873 /* FirebaseAnalytics in Frameworks */,
+				EE0330ED284B5B25003BB873 /* CodableFirebase in Frameworks */,
+				EE0330D6284B582E003BB873 /* FirebaseAuth in Frameworks */,
+				EE0330DC284B582E003BB873 /* FirebaseFirestore in Frameworks */,
+				EE0330DA284B582E003BB873 /* FirebaseDynamicLinks in Frameworks */,
+				EE0330EA284B5AE8003BB873 /* SwiftKeychainWrapper in Frameworks */,
+				EE0330DE284B582E003BB873 /* FirebaseFirestoreSwift in Frameworks */,
+				ED3303C6C2D5B5B29D3C7511 /* Pods_Riada.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		65244116A9816B5E8697A527 /* Frameworks */ = {
+		2EAB6F70EC6717B83D7E2BCE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CE32DA81562A2C4D94C3CBD2 /* Pods_Riada.framework */,
+				2AF1757629974E0AA9C893BC /* Pods-Riada.debug.xcconfig */,
+				BDB8263476871DB6837AC01B /* Pods-Riada.release.xcconfig */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		755443B3EB87BA2326A669D9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				74EB47B79B92112AC4818753 /* Pods-Riada.debug.xcconfig */,
-				6788B25E4DA64D52DFED40C8 /* Pods-Riada.release.xcconfig */,
-			);
+			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -449,8 +468,8 @@
 			children = (
 				B8CE19BF253DBAE5002AC5A5 /* Riada */,
 				B8CE19BE253DBAE5002AC5A5 /* Products */,
-				755443B3EB87BA2326A669D9 /* Pods */,
-				65244116A9816B5E8697A527 /* Frameworks */,
+				2EAB6F70EC6717B83D7E2BCE /* Pods */,
+				F291C86F771232317A9A39D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1020,6 +1039,14 @@
 			path = EventCell;
 			sourceTree = "<group>";
 		};
+		F291C86F771232317A9A39D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6538520FD6385F7B679CC7B2 /* Pods_Riada.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1040,6 +1067,21 @@
 			dependencies = (
 			);
 			name = Riada;
+			packageProductDependencies = (
+				EE0330D3284B582E003BB873 /* FirebaseAnalytics */,
+				EE0330D5284B582E003BB873 /* FirebaseAuth */,
+				EE0330D7284B582E003BB873 /* FirebaseCrashlytics */,
+				EE0330D9284B582E003BB873 /* FirebaseDynamicLinks */,
+				EE0330DB284B582E003BB873 /* FirebaseFirestore */,
+				EE0330DD284B582E003BB873 /* FirebaseFirestoreSwift */,
+				EE0330DF284B582E003BB873 /* FirebaseFunctions */,
+				EE0330E1284B582E003BB873 /* FirebaseMessaging */,
+				EE0330E3284B582E003BB873 /* FirebaseStorage */,
+				EE0330E6284B5A98003BB873 /* FirebaseStorageUI */,
+				EE0330E9284B5AE8003BB873 /* SwiftKeychainWrapper */,
+				EE0330EC284B5B25003BB873 /* CodableFirebase */,
+				EE0330EF284B5D46003BB873 /* GoogleSignIn */,
+			);
 			productName = Riada;
 			productReference = B8CE19BD253DBAE5002AC5A5 /* Riada.app */;
 			productType = "com.apple.product-type.application";
@@ -1068,6 +1110,13 @@
 				fr,
 			);
 			mainGroup = B8CE19B4253DBAE4002AC5A5;
+			packageReferences = (
+				EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
+				EE0330E5284B5A98003BB873 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
+				EE0330E8284B5AE8003BB873 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				EE0330EB284B5B25003BB873 /* XCRemoteSwiftPackageReference "CodableFirebase" */,
+				EE0330EE284B5D46003BB873 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = B8CE19BE253DBAE5002AC5A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1460,12 +1509,12 @@
 		};
 		B8CE19D2253DBAE7002AC5A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74EB47B79B92112AC4818753 /* Pods-Riada.debug.xcconfig */;
+			baseConfigurationReference = 2AF1757629974E0AA9C893BC /* Pods-Riada.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Riada/Riada.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1478,7 +1527,7 @@
 				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.riada.app.riada";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1486,7 +1535,7 @@
 		};
 		B8CE19D3253DBAE7002AC5A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6788B25E4DA64D52DFED40C8 /* Pods-Riada.release.xcconfig */;
+			baseConfigurationReference = BDB8263476871DB6837AC01B /* Pods-Riada.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1531,6 +1580,117 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		EE0330E5284B5A98003BB873 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/FirebaseUI-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.2.0;
+			};
+		};
+		EE0330E8284B5AE8003BB873 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		EE0330EB284B5B25003BB873 /* XCRemoteSwiftPackageReference "CodableFirebase" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alickbass/CodableFirebase";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
+		EE0330EE284B5D46003BB873 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EE0330D3284B582E003BB873 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseAnalytics;
+		};
+		EE0330D5284B582E003BB873 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseAuth;
+		};
+		EE0330D7284B582E003BB873 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseCrashlytics;
+		};
+		EE0330D9284B582E003BB873 /* FirebaseDynamicLinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseDynamicLinks;
+		};
+		EE0330DB284B582E003BB873 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseFirestore;
+		};
+		EE0330DD284B582E003BB873 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		EE0330DF284B582E003BB873 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseFunctions;
+		};
+		EE0330E1284B582E003BB873 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseMessaging;
+		};
+		EE0330E3284B582E003BB873 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseStorage;
+		};
+		EE0330E6284B5A98003BB873 /* FirebaseStorageUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330E5284B5A98003BB873 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseStorageUI;
+		};
+		EE0330E9284B5AE8003BB873 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330E8284B5AE8003BB873 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		EE0330EC284B5B25003BB873 /* CodableFirebase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330EB284B5B25003BB873 /* XCRemoteSwiftPackageReference "CodableFirebase" */;
+			productName = CodableFirebase;
+		};
+		EE0330EF284B5D46003BB873 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE0330EE284B5D46003BB873 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8CE19B5253DBAE4002AC5A5 /* Project object */;
 }

@@ -8,7 +8,6 @@
 import Firebase
 import CodableFirebase
 import CoreLocation
-import GeoFire
 
 protocol ServiceNextEventDelegate {
     func dataAdded(event: Event)

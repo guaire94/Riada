@@ -18,7 +18,7 @@ class ManagerUser {
     
     var user: User?
     var favoriteSportIds: [String] = []
-    var currentCity: City = PlaceHolderCity.beaulieu.city {
+    var currentCity: City = PlaceHolderCity.paris.city {
         didSet {
             updateLocation(city: currentCity)
         }
@@ -39,7 +39,7 @@ class ManagerUser {
         if let city = ManagerUserPreferences.shared.city {
             currentCity = city
         } else {
-            currentCity = PlaceHolderCity.beaulieu.city
+            currentCity = PlaceHolderCity.paris.city
         }
         
         ServiceUser.getProfile() { (user) in
@@ -63,7 +63,7 @@ class ManagerUser {
         }
         user = nil
         favoriteSportIds = []
-        currentCity = PlaceHolderCity.beaulieu.city
+        currentCity = PlaceHolderCity.paris.city
     }
 }
 
@@ -119,6 +119,6 @@ extension ManagerUser {
         try? Auth.auth().signOut()
         user = nil
         favoriteSportIds = []
-        currentCity = PlaceHolderCity.beaulieu.city
+        currentCity = PlaceHolderCity.paris.city
     }
 }

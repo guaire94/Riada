@@ -352,7 +352,6 @@
 				2AF1757629974E0AA9C893BC /* Pods-Riada.debug.xcconfig */,
 				BDB8263476871DB6837AC01B /* Pods-Riada.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1111,7 +1110,7 @@
 			);
 			mainGroup = B8CE19B4253DBAE4002AC5A5;
 			packageReferences = (
-				EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
+				EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EE0330E5284B5A98003BB873 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
 				EE0330E8284B5AE8003BB873 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				EE0330EB284B5B25003BB873 /* XCRemoteSwiftPackageReference "CodableFirebase" */,
@@ -1514,9 +1513,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Riada/Riada.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 19;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 662SLAFBT4;
 				INFOPLIST_FILE = Riada/Info.plist;
@@ -1524,10 +1523,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.riada.app.riada";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1542,14 +1541,14 @@
 				CODE_SIGN_ENTITLEMENTS = Riada/Riada.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 662SLAFBT4;
 				INFOPLIST_FILE = Riada/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";
@@ -1582,7 +1581,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
+		EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -1627,47 +1626,47 @@
 /* Begin XCSwiftPackageProductDependency section */
 		EE0330D3284B582E003BB873 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
 		EE0330D5284B582E003BB873 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
 		EE0330D7284B582E003BB873 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 		EE0330D9284B582E003BB873 /* FirebaseDynamicLinks */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDynamicLinks;
 		};
 		EE0330DB284B582E003BB873 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
 		EE0330DD284B582E003BB873 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
 		};
 		EE0330DF284B582E003BB873 /* FirebaseFunctions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFunctions;
 		};
 		EE0330E1284B582E003BB873 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
 		};
 		EE0330E3284B582E003BB873 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = EE0330D2284B582E003BB873 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
 		EE0330E6284B5A98003BB873 /* FirebaseStorageUI */ = {

@@ -52,19 +52,6 @@ class ManagerUser {
             completion()
         }
     }
-    
-    func clear() {
-        try? Auth.auth().signOut()
-        (UIApplication.shared.delegate as? AppDelegate)?.unregisterForRemoteNotifications()
-        Messaging.messaging().token { token, error in
-            if let token = token, error == nil {
-                ServiceDeviceToken.shared.unregister(token: token)
-            }
-        }
-        user = nil
-        favoriteSportIds = []
-        currentCity = PlaceHolderCity.dubai.city
-    }
 }
 
 // MARK: User informations
@@ -115,10 +102,17 @@ extension ManagerUser {
         ServiceUser.updateFavoriteSports(favoriteSportIds: favoriteSportIds)
     }
     
-    func signOut() {
-        try? Auth.auth().signOut()
-        user = nil
-        favoriteSportIds = []
-        currentCity = PlaceHolderCity.dubai.city
+    func signOut(completion: @escaping () -> Void) {
+        Messaging.messaging().token { [weak self] token, error in
+            if let token = token, error == nil {
+                ServiceDeviceToken.shared.unregister(token: token)
+            }
+            (UIApplication.shared.delegate as? AppDelegate)?.unregisterForRemoteNotifications()
+            try? Auth.auth().signOut()
+            self?.user = nil
+            self?.favoriteSportIds = []
+            self?.currentCity = PlaceHolderCity.dubai.city
+            completion()
+        }
     }
 }

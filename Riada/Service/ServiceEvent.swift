@@ -215,8 +215,11 @@ class ServiceEvent {
         FFirestoreReference.userParticipateEvents(userId).document(eventId).setData(relatedEventData, merge: false)
     }
     
-    static func unParticipateAsOrganizer(eventId: String) {
-        guard let userId = ManagerUser.shared.userId else { return }
+    static func unParticipateAsOrganizer(event: Event) {
+        guard let userId = ManagerUser.shared.userId,
+              let eventId = event.id else {
+            return
+        }
         
         FFirestoreReference.eventParticipants(eventId).document(userId).delete()
         FFirestoreReference.userParticipateEvents(userId).document(eventId).delete()

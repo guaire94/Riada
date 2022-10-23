@@ -102,6 +102,7 @@ struct Event: Identifiable, Codable {
            "title": title,
            "description": description,
            "nbPlayer": nbPlayer,
+           "nbAcceptedPlayer": nbAcceptedPlayer,
            "date": date,
            "placeId": placeId,
            "placeName": placeName,

@@ -62,21 +62,28 @@ class MDatePickerField: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
-            
-    // MARK: - Private
-    private func commonInit() {
+}
+
+// MARK: - Private
+private extension MDatePickerField {
+
+    func commonInit() {
         setUpView()
         setDatePicker()
     }
 
-    private func setUpView() {
+    func setUpView() {
         Bundle.main.loadNibNamed("MDatePickerField", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
-    
-    private func setDatePicker() {
-        datePicker.minimumDate = Date()
+
+    func setDatePicker() {
+        guard let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()) else {
+            datePicker.minimumDate = Date()
+            return
+        }
+        datePicker.minimumDate = tomorrow
     }
 }

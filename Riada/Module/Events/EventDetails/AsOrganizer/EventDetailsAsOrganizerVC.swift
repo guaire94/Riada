@@ -102,9 +102,11 @@ class EventDetailsAsOrganizerVC: UIViewController {
             vc.event = event
             vc.guest = guest
         } else if segue.identifier == EditEventVC.Constants.identifier {
-            guard let vc = segue.destination as? EditEventVC else { return }
+            guard let vc = segue.destination as? EditEventVC,
+                  let isOrganiserParticipate = sender as? Bool else { return }
             vc.delegate = self
             vc.event = event
+            vc.isOrganiserParticipate = isOrganiserParticipate
         } else if segue.identifier == OtherProfileVC.Constants.identifier {
             guard let vc = segue.destination as? OtherProfileVC,
                   let user = sender as? User else {
@@ -125,7 +127,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
         guard let event = event else { return }
         HelperTracking.track(item: .eventDetails)
         
-        actionBar.isHidden = event.eventStatus == .canceled
+        actionBar.isHidden = event.eventStatus == .canceled || event.date.dateValue() < Date()
 
         sportLabel.text = event.sportLocalizedName
         titleLabel.text = event.title
@@ -545,6 +547,7 @@ extension EventDetailsAsOrganizerVC {
     
     @IBAction func editToggle(_ sender: Any) {
         HelperTracking.track(item: .eventDetailsEdit)
-        performSegue(withIdentifier: EditEventVC.Constants.identifier, sender: nil)
+        let organizerParticipation = participants.first(where: { $0.userId == ManagerUser.shared.userId })
+        performSegue(withIdentifier: EditEventVC.Constants.identifier, sender: organizerParticipation != nil)
     }
 }

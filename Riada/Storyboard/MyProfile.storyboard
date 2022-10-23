@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -312,13 +312,19 @@
                                                 <rect key="frame" x="20" y="0.0" width="374" height="707"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="etx-Wl-e0A">
+                                                <rect key="frame" x="188.5" y="335" width="37" height="37"/>
+                                                <color key="color" red="0.34509803919999998" green="0.67843137249999996" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="etx-Wl-e0A" firstAttribute="centerX" secondItem="cI7-2H-Vie" secondAttribute="centerX" id="8m3-SS-hcC"/>
                                             <constraint firstItem="dUR-dO-5Ue" firstAttribute="leading" secondItem="cI7-2H-Vie" secondAttribute="leading" constant="20" id="BdW-me-TRz"/>
                                             <constraint firstItem="dUR-dO-5Ue" firstAttribute="top" secondItem="cI7-2H-Vie" secondAttribute="top" id="NQj-lr-2ZL"/>
                                             <constraint firstAttribute="trailing" secondItem="dUR-dO-5Ue" secondAttribute="trailing" constant="20" id="YB1-Df-Gyg"/>
                                             <constraint firstAttribute="bottom" secondItem="dUR-dO-5Ue" secondAttribute="bottom" id="c8k-ND-0YD"/>
+                                            <constraint firstItem="etx-Wl-e0A" firstAttribute="centerY" secondItem="cI7-2H-Vie" secondAttribute="centerY" id="i6g-3Z-s3x"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -338,6 +344,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="CtR-nC-r2X"/>
                     <connections>
+                        <outlet property="loaderView" destination="etx-Wl-e0A" id="54k-Ge-6DX"/>
                         <outlet property="tableView" destination="dUR-dO-5Ue" id="9fx-ZI-iHe"/>
                         <outlet property="titleLabel" destination="jXd-Xd-UL6" id="ZUd-k0-qgO"/>
                     </connections>

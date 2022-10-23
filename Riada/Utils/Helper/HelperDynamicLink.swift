@@ -22,7 +22,7 @@ class HelperDynamicLink {
         
         var components = URLComponents()
         components.scheme = Constants.scheme
-        components.host = Constants.domain
+        components.host = Constants.host
         components.path = Constants.eventDetailsPath
         
         let itemIDQueryItem = URLQueryItem(name: "eventId", value: eventId)

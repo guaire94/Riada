@@ -31,6 +31,7 @@ class EditEventVC: UIViewController {
     @IBOutlet weak private var nbPlayerPickerField: MPickerField!
     @IBOutlet weak private var saveEventButton: UIButton!
     @IBOutlet weak private var cancelEventButton: UIButton!
+    @IBOutlet weak private var isParticipateSwitchField: MSwitchField!
     @IBOutlet weak private var isPrivateSwitchField: MSwitchField!
 
     // MARK: - Variables
@@ -42,7 +43,23 @@ class EditEventVC: UIViewController {
     private var selectedPlaceLocation: CLLocation?
 
     var event: Event?
+    var isOrganiserParticipate: Bool?
     weak var delegate: EditEventVCDelegate?
+
+    var nbAcceptedPlayer: Int {
+        guard let nbAcceptedPlayer = event?.nbAcceptedPlayer,
+              let isOrganiserParticipate = isOrganiserParticipate else {
+            return 0
+        }
+
+        var organizerCount = 0
+        if isOrganiserParticipate && !isParticipateSwitchField.isOn {
+            organizerCount -= 1
+        } else if !isOrganiserParticipate && isParticipateSwitchField.isOn {
+            organizerCount += 1
+        }
+        return nbAcceptedPlayer + organizerCount
+    }
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -87,6 +104,7 @@ class EditEventVC: UIViewController {
         addressPickerField.labelText = L10N.event.organize.form.address
         nbPlayerPickerField.labelText = L10N.event.organize.form.nbPlayers
         addressPickerField.labelText = L10N.event.organize.form.address
+        isParticipateSwitchField.labelText = L10N.event.organize.form.isParticipate
         isPrivateSwitchField.labelText = L10N.event.organize.form.isPrivate
         saveEventButton.setTitle(L10N.event.edit.form.saveEvent.uppercased(), for: .normal)
         cancelEventButton.setTitle(L10N.event.edit.form.cancelEvent.uppercased(), for: .normal)
@@ -103,6 +121,7 @@ class EditEventVC: UIViewController {
     
     private func setUpEvent() {
         guard let event = self.event,
+              let isOrganiserParticipate = self.isOrganiserParticipate,
               let sportIndex = ManagerSport.shared.sports.firstIndex(where: {$0.id == event.sportId}) else {
             return
         }
@@ -117,6 +136,7 @@ class EditEventVC: UIViewController {
         dateAndHourPickerField.date = event.date.dateValue()
         addressPickerField.text = event.placeName
         didSelectNbTeams(index: event.nbPlayer-2)
+        isParticipateSwitchField.isOn = isOrganiserParticipate
         isPrivateSwitchField.isOn = event.isPrivate
     }
     
@@ -154,7 +174,8 @@ extension EditEventVC {
               let placeAddress = selectedPlaceAddress,
               let placeLocation = selectedPlaceLocation,
               let nbPlayers = nbPlayersPickerSource.selectedNbTeams,
-              let createdDate = event?.createdDate else {
+              let createdDate = event?.createdDate,
+              let isOrganiserParticipate = isOrganiserParticipate else {
                   showError(title: L10N.event.edit.title, message: L10N.event.edit.form.error.unfill)
             return
         }
@@ -162,7 +183,7 @@ extension EditEventVC {
                           title: title,
                           description: desc,
                           nbPlayer: nbPlayers,
-                          nbAcceptedPlayer: 0, // from updateData, not send
+                          nbAcceptedPlayer: nbAcceptedPlayer,
                           date: dateAndHourPickerField.date.timestamp,
                           placeId: place.id,
                           placeName: place.name,
@@ -177,6 +198,12 @@ extension EditEventVC {
 
         HelperTracking.track(item: .editEventSave)
         ServiceEvent.edit(event: event)
+
+        if !isOrganiserParticipate && isParticipateSwitchField.isOn {
+            ServiceEvent.participateAsOrganizer(event: event)
+        } else if isOrganiserParticipate && !isParticipateSwitchField.isOn {
+            ServiceEvent.unParticipateAsOrganizer(event: event)
+        }
                 
         let feedbackGenerator = UINotificationFeedbackGenerator()
         feedbackGenerator.notificationOccurred(.success)

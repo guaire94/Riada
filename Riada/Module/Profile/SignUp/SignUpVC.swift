@@ -217,7 +217,7 @@ extension SignUpVC: ASAuthorizationControllerDelegate {
                                                       idToken: idTokenString,
                                                       rawNonce: nonce)
             let nickName = appleIDCredential.fullName?.username ?? ""
-            self.handleSignIn(credential: credential, nickName: nickName)
+            handleSignIn(credential: credential, nickName: nickName)
         }
     }
     
@@ -225,7 +225,6 @@ extension SignUpVC: ASAuthorizationControllerDelegate {
         signInCell?.isAppleLoading = false
         showError(title: L10N.signUp.signInWithApple, message: error.localizedDescription)
     }
-    
 }
 
 // MARK: - ASAuthorizationControllerPresentationContextProviding

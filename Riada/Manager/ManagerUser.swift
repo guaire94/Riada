@@ -18,7 +18,7 @@ class ManagerUser {
     
     var user: User?
     var favoriteSportIds: [String] = []
-    var currentCity: City = PlaceHolderCity.beaulieu.city {
+    var currentCity: City = PlaceHolderCity.dubai.city {
         didSet {
             updateLocation(city: currentCity)
         }
@@ -39,7 +39,7 @@ class ManagerUser {
         if let city = ManagerUserPreferences.shared.city {
             currentCity = city
         } else {
-            currentCity = PlaceHolderCity.beaulieu.city
+            currentCity = PlaceHolderCity.dubai.city
         }
         
         ServiceUser.getProfile() { (user) in
@@ -51,19 +51,6 @@ class ManagerUser {
         dispatchGroup.notify(queue: .main) {
             completion()
         }
-    }
-    
-    func clear() {
-        try? Auth.auth().signOut()
-        (UIApplication.shared.delegate as? AppDelegate)?.unregisterForRemoteNotifications()
-        Messaging.messaging().token { token, error in
-            if let token = token, error == nil {
-                ServiceDeviceToken.shared.unregister(token: token)
-            }
-        }
-        user = nil
-        favoriteSportIds = []
-        currentCity = PlaceHolderCity.beaulieu.city
     }
 }
 
@@ -115,10 +102,17 @@ extension ManagerUser {
         ServiceUser.updateFavoriteSports(favoriteSportIds: favoriteSportIds)
     }
     
-    func signOut() {
-        try? Auth.auth().signOut()
-        user = nil
-        favoriteSportIds = []
-        currentCity = PlaceHolderCity.beaulieu.city
+    func signOut(completion: @escaping () -> Void) {
+        Messaging.messaging().token { [weak self] token, error in
+            if let token = token, error == nil {
+                ServiceDeviceToken.shared.unregister(token: token)
+            }
+            (UIApplication.shared.delegate as? AppDelegate)?.unregisterForRemoteNotifications()
+            try? Auth.auth().signOut()
+            self?.user = nil
+            self?.favoriteSportIds = []
+            self?.currentCity = PlaceHolderCity.dubai.city
+            completion()
+        }
     }
 }

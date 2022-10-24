@@ -105,7 +105,6 @@ class OrganizeEventVC: UIViewController {
         }
         sportPickerField.text = ManagerSport.shared.selectedSport?.localizedName
         sportPickerSource.currentIndexSelected = index
-        sportPickerField.isEnabled = false
     }
     
     private func didSelectSport(index: Int) {

@@ -30,9 +30,10 @@ class SettingVC: UIViewController {
     }
     
     // MARK: - IBOutlet
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-            
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var loaderView: UIActivityIndicatorView!
+
     // MARK: - Properties
     private var sections = MSettingSection.toDisplay()
     private var emailBody: String {
@@ -170,10 +171,13 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
             }
         case .logout:
             HelperTracking.track(item: .settingsLogout)
-            ManagerUser.shared.signOut()
-            ManagerUserPreferences.shared.clear()
-            dismiss(animated: true)
-            HelperRouting.shared.routeToOnBoarding()
+            loaderView.startAnimating()
+            ManagerUser.shared.signOut { [weak self] in
+                ManagerUserPreferences.shared.clear()
+                self?.loaderView.stopAnimating()
+                self?.dismiss(animated: true)
+                HelperRouting.shared.routeToOnBoarding()
+            }
         }
     }
 }

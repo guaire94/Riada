@@ -40,16 +40,24 @@ class ParticipateVC: MKeyboardVC {
     private func setupView() {
         content.layer.cornerRadius = Constants.contentCornerRadius
         content.clipsToBounds = true
-        partcipateButtonIsEnabled = false
-
-        setupTextField()
+        setUpTextField()
+        setUpButtons()
     }
-    
-    private func setupTextField() {
+}
+
+// MARK: - Privates
+private extension ParticipateVC {
+
+    func setUpTextField() {
         nickNameTextField.labelText = L10N.event.details.participate.nickName.text
         nickNameTextField.placeHolder = L10N.event.details.participate.nickName.placeHolder
         nickNameTextField.delegate = self
         nickNameTextField.returnKeyType = .done
+    }
+
+    func setUpButtons() {
+        partcipateButtonIsEnabled = false
+        participateButton.setTitle(L10N.event.details.buttons.participate, for: .normal)
     }
 }
 

@@ -47,16 +47,25 @@ class AddGuestVC: MKeyboardVC {
     private func setupView() {
         content.layer.cornerRadius = Constants.contentCornerRadius
         content.clipsToBounds = true
-        addGuestButtonIsEnabled = false
 
-        setupTextField()
+        setUpTextField()
+        setUpButtons()
     }
-    
-    private func setupTextField() {
+}
+
+// MARK: - Privates
+private extension AddGuestVC {
+
+    func setUpTextField() {
         nickNameTextField.labelText = L10N.event.details.addGuest.nickName.text
         nickNameTextField.placeHolder = L10N.event.details.addGuest.nickName.placeHolder
         nickNameTextField.delegate = self
         nickNameTextField.returnKeyType = .done
+    }
+
+    func setUpButtons() {
+        addGuestButtonIsEnabled = false
+        addGuestButton.setTitle(L10N.event.details.buttons.addGuest, for: .normal)
     }
 }
 

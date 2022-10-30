@@ -46,7 +46,7 @@ struct Event: Identifiable, Codable {
         let calendar = Calendar.current
         let endDate = calendar.date(byAdding: .hour, value: 3, to: date.dateValue())
         
-        event.title = "\(sportName) - \(title)"
+        event.title = "\(sportLocalizedName) - \(title)"
         event.startDate = date.dateValue()
         event.endDate = endDate
         event.isAllDay = false

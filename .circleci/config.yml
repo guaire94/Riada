@@ -19,6 +19,8 @@ jobs:
           command: bundle exec fastlane prod
       - store_artifacts:
           path: output
+    # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
+    resource_class: large
   deploy_staging:
     macos:
       xcode: 13.0.0
@@ -41,7 +43,7 @@ workflows:
       - deploy_appstore:
           filters:
             branches:
-              only: 
+              only:
                 - master
 
   deploy_staging:
@@ -49,4 +51,4 @@ workflows:
       - deploy_staging:
           filters:
             branches:
-              only:  develop
+              only: develop

@@ -1,11 +1,3 @@
-/* 
-  Localizable.strings
-  Riada
-
-  Created by Quentin Gallois on 20/10/2020.
-  
-*/
-
 "GLOBAL_ACTION_CANCEL" = "Cancel";
 "GLOBAL_ACTION_CONFIRM" = "Confirm";
 "GLOBAL_ACTION_OK" = "Ok";
@@ -148,4 +140,5 @@
 "NOTIFICATION_CANCEL_EVENT_TITLE" = "%@ - %@ - %@";
 "NOTIFICATION_CANCEL_EVENT_BODY" = "Event is canceled";
 "EVENT_DETAILS_STATUS_CANCELED" = "Event have been canceled by the organizer";
-
+/* Volleyball */
+"SPORT_VOLLEY" = "Volleyball\n";

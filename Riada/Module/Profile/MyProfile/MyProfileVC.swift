@@ -316,8 +316,12 @@ extension MyProfileVC: UITableViewDelegate {
                 guard let event = event else { return }
                 HelperTracking.track(item: .myProfileParticipateEventDetails)
                 DispatchQueue.main.async {
-                    let tuple = (event: event, organizer: organizer)
-                    self.performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: tuple)
+                    if organizer.userId == ManagerUser.shared.userId {
+                        self.performSegue(withIdentifier: EventDetailsAsOrganizerVC.Constants.identifier, sender: event)
+                    } else {
+                        let tuple = (event: event, organizer: organizer)
+                        self.performSegue(withIdentifier: EventDetailsAsParticipantVC.Constants.identifier, sender: tuple)
+                    }
                 }
             }
         case .informations:

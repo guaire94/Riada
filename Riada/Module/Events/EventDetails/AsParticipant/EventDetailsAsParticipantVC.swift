@@ -78,7 +78,7 @@ class EventDetailsAsParticipantVC: UIViewController {
     }
     var currentUserParticipate: Bool {
         guard let currentUserParticipationStatus = self.currentUserParticipationStatus else { return false }
-        return currentUserParticipationStatus == .pending || currentUserParticipationStatus == .accepted
+        return currentUserParticipationStatus == .accepted
     }
     
     //MARK: - LifeCycle

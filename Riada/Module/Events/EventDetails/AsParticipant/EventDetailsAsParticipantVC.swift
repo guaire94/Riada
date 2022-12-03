@@ -78,7 +78,12 @@ class EventDetailsAsParticipantVC: UIViewController {
     }
     var currentUserParticipate: Bool {
         guard let currentUserParticipationStatus = self.currentUserParticipationStatus else { return false }
-        return currentUserParticipationStatus == .pending || currentUserParticipationStatus == .accepted
+        return currentUserParticipationStatus == .accepted || currentUserParticipationStatus == .pending
+    }
+
+    var currentUserCanAddGuest: Bool {
+        guard let currentUserParticipationStatus = self.currentUserParticipationStatus else { return false }
+        return currentUserParticipationStatus == .accepted
     }
     
     //MARK: - LifeCycle
@@ -182,7 +187,7 @@ class EventDetailsAsParticipantVC: UIViewController {
             return
         }
         participateButton.isHidden = currentUserParticipate
-        addGuestButton.isHidden = !currentUserParticipate
+        addGuestButton.isHidden = !currentUserCanAddGuest
         declineButton.isHidden = !currentUserParticipate
         actionBar.isHidden = false
     }

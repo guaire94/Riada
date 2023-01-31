@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventMyGuestsCell" rowHeight="84" id="KGk-i7-Jjw" customClass="EventMyGuestsCell" customModule="Riada" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGk-i7-Jjw" id="Lng-Qd-LwN">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9c-Zy-CQl">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="0.0"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDw-mY-w5L">
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="IDw-mY-w5L" secondAttribute="trailing" id="77h-Lk-N6z"/>
+                            <constraint firstAttribute="height" id="JTf-pe-x40"/>
+                            <constraint firstAttribute="bottom" secondItem="IDw-mY-w5L" secondAttribute="bottom" id="OXS-pG-0Xh"/>
+                            <constraint firstItem="IDw-mY-w5L" firstAttribute="top" secondItem="G9c-Zy-CQl" secondAttribute="top" id="VTL-uA-h2u"/>
+                            <constraint firstItem="IDw-mY-w5L" firstAttribute="leading" secondItem="G9c-Zy-CQl" secondAttribute="leading" id="a2T-vN-80w"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="G9c-Zy-CQl" firstAttribute="leading" secondItem="Lng-Qd-LwN" secondAttribute="leading" id="Hbg-FY-FCd"/>
+                    <constraint firstItem="G9c-Zy-CQl" firstAttribute="top" secondItem="Lng-Qd-LwN" secondAttribute="top" id="Ie1-yB-ILS"/>
+                    <constraint firstAttribute="trailing" secondItem="G9c-Zy-CQl" secondAttribute="trailing" id="dar-1u-a0r"/>
+                    <constraint firstAttribute="bottom" secondItem="G9c-Zy-CQl" secondAttribute="bottom" id="eq5-Mm-4Vb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="guestsTableView" destination="IDw-mY-w5L" id="qVD-0N-7qo"/>
+                <outlet property="guestsTableViewHeight" destination="JTf-pe-x40" id="7ED-mO-Lhh"/>
+            </connections>
+            <point key="canvasLocation" x="136" y="164.6176911544228"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -30,6 +30,7 @@ enum FirebaseCollection {
     // MARK: - EVENT
     static var event: String = "Event"
     static var organizer: String = "Organizer"
+    static var team: String = "Team"
     static var participant: String = "Participant"
     static var guest: String = "Guest"
 }
@@ -71,6 +72,9 @@ enum FFirestoreReference {
     }
     static func eventOrganizer(_ eventId: String) -> CollectionReference {
         events.document(eventId).collection(FirebaseCollection.organizer)
+    }
+    static func eventTeams(_ eventId: String) -> CollectionReference {
+        events.document(eventId).collection(FirebaseCollection.team)
     }
     static func eventParticipants(_ eventId: String) -> CollectionReference {
         events.document(eventId).collection(FirebaseCollection.participant)

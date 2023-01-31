@@ -327,4 +327,25 @@ class ServiceUser {
                 completion(users)
             }
     }
+
+    static func getNbEventOrganized(userId: String, completion: @escaping (Int?) -> Void) {
+        FFirestoreReference.userOrganizeEvents(userId).getDocuments { (snapshot, err) in
+            guard let snapshot = snapshot else {
+                completion(nil)
+                return
+            }
+            completion(snapshot.count)
+        }
+    }
+
+    static func getNbEventPlayed(userId: String, completion: @escaping (Int?) -> Void) {
+        FFirestoreReference.userParticipateEvents(userId).getDocuments { (snapshot, err) in
+            guard let snapshot = snapshot else {
+                completion(nil)
+                return
+            }
+            completion(snapshot.count)
+        }
+    }
+
 }

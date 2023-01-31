@@ -14,6 +14,7 @@ struct Guest: Identifiable, Codable {
     var associatedUserNickName: String
     var associatedUserAvatar: String?
     var guestNickName: String
+    var teamId: String?
     var status: String
     
     var participationStatus: ParticipationStatus {

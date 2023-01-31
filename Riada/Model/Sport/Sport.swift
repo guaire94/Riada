@@ -14,6 +14,7 @@ struct Sport: Identifiable, Codable {
     var emoticon: String
     var image: String
     var rank: Int
+    var covers: [String]
     
     var localizedName: String {
         NSLocalizedString(name, comment: "")

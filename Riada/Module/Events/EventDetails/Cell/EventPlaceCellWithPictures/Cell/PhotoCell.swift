@@ -1,6 +1,6 @@
 //
 //  ProductCell.swift
-//  USCanteen
+//  Riada
 //
 //  Created by Quentin Gallois on 17/09/2018.
 //  Copyright © 2018 Quentin Gallois. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoCell : UICollectionViewCell {
+class PhotoCell: UICollectionViewCell {
 
     //MARK: - Constant
     enum Constants {

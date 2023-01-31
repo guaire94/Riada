@@ -22,7 +22,7 @@ class MButton: UIButton {
     
     // MARK: - Private
     private func commonInit() {
-        layer.cornerRadius = 15
+        layer.cornerRadius = 16
         clipsToBounds = true
     }    
 }

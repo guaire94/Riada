@@ -13,6 +13,7 @@ struct Participant: Identifiable, Codable {
     var userId: String
     var userNickName: String
     var userAvatar: String?
+    var teamId: String?
     var status: String
     
     var participationStatus: ParticipationStatus {

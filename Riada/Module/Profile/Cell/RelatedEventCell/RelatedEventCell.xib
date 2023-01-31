@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -82,20 +82,11 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nb players" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIE-Rk-lB3">
-                                <rect key="frame" x="280" y="77.5" width="64" height="17"/>
-                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="TIE-Rk-lB3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qfh-iu-0ze" secondAttribute="trailing" constant="16" id="0Hc-6n-4Zq"/>
                             <constraint firstItem="Lxn-vX-Sua" firstAttribute="leading" secondItem="VPc-SF-BiA" secondAttribute="leading" constant="16" id="0jd-Af-2k4"/>
-                            <constraint firstAttribute="trailing" secondItem="TIE-Rk-lB3" secondAttribute="trailing" constant="16" id="1OU-dr-DIT"/>
                             <constraint firstAttribute="bottom" secondItem="Qfh-iu-0ze" secondAttribute="bottom" constant="13" id="1lA-oY-VDe"/>
-                            <constraint firstItem="TIE-Rk-lB3" firstAttribute="centerY" secondItem="Qfh-iu-0ze" secondAttribute="centerY" id="824-zK-xgK"/>
                             <constraint firstItem="Qfh-iu-0ze" firstAttribute="leading" secondItem="VPc-SF-BiA" secondAttribute="leading" constant="16" id="cGh-MQ-QJu"/>
                             <constraint firstItem="wo2-Eg-jOX" firstAttribute="leading" secondItem="Lxn-vX-Sua" secondAttribute="trailing" constant="8" id="dEo-yc-Ptb"/>
                             <constraint firstItem="Qfh-iu-0ze" firstAttribute="top" secondItem="Lxn-vX-Sua" secondAttribute="bottom" constant="20" id="frr-Lp-8y6"/>
@@ -117,7 +108,6 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="content" destination="VPc-SF-BiA" id="6Yz-Kh-0b0"/>
-                <outlet property="numberOfPlayerLabel" destination="TIE-Rk-lB3" id="CJi-TB-Uon"/>
                 <outlet property="organizerAvatar" destination="Tpp-be-Fls" id="qnW-aY-zTP"/>
                 <outlet property="organizerNameLabel" destination="66J-tH-J6C" id="u1L-vs-ZNT"/>
                 <outlet property="placeAddressLabel" destination="t04-VO-9Bj" id="56a-g4-ZVx"/>

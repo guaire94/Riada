@@ -17,17 +17,15 @@ class EventPlaceWithPicturesCell: UITableViewCell {
 
     //MARK: - Constant
     enum Constants {
-        static let height: CGFloat = 216
+        static let height: CGFloat = 168
         static let identifier: String = "EventPlaceWithPicturesCell"
         static let nib = UINib(nibName: Constants.identifier, bundle: nil)
-        fileprivate static let contentCornerRadius: CGFloat = 10
     }
     
     // MARK: - IBOutlet
     @IBOutlet weak private var content: UIView!
     @IBOutlet weak private var nameLabel: UILabel!
     @IBOutlet weak private var addressLabel: UILabel!
-    @IBOutlet weak private var photosLabel: UILabel!
     @IBOutlet weak private var photosCollectionView: UICollectionView!
 
     // MARK: - Properties
@@ -46,13 +44,11 @@ class EventPlaceWithPicturesCell: UITableViewCell {
         selectionStyle = .none
         nameLabel.text = ""
         addressLabel.text = ""
-        photosLabel.text = ""
     }
     
     func setUp(name: String, address: String, photos: [URL]) {
         setUpUI()
-        setUpCollectionView()
-        
+
         nameLabel.text = name
         addressLabel.text = address
         photoUrls = photos
@@ -61,9 +57,6 @@ class EventPlaceWithPicturesCell: UITableViewCell {
     // MARK: - Private
     private func setUpUI() {
         selectionStyle = .none
-        content.layer.cornerRadius = Constants.contentCornerRadius
-        content.clipsToBounds = true
-        photosLabel.text = L10N.event.details.photos
         setUpCollectionView()
     }
     
@@ -77,7 +70,9 @@ class EventPlaceWithPicturesCell: UITableViewCell {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension EventPlaceWithPicturesCell: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.height * 1.3, height: collectionView.frame.height)
     }
 }

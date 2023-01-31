@@ -27,28 +27,51 @@ class EventDetailsAsParticipantVC: UIViewController {
     }
     
     //MARK: - IBOutlet
+    @IBOutlet weak private var coverImage: UIImageView!
     @IBOutlet weak private var sportLabel: UILabel!
-    @IBOutlet weak private var titleLabel: UILabel!
-    @IBOutlet weak private var statusBar: UIView!
-    @IBOutlet weak private var statusDesc: UILabel!
+    @IBOutlet weak private var radiusBar: UIView!
     @IBOutlet weak private var eventTableView: UITableView!
     @IBOutlet weak private var actionBar: UIView!
-    @IBOutlet weak private var participateButton: MButton!
-    @IBOutlet weak private var addGuestButton: MButton!
-    @IBOutlet weak private var declineButton: MButton!
+    @IBOutlet weak private var statusLabel: UILabel!
+    @IBOutlet weak private var priceLabel: UILabel!
+    @IBOutlet weak private var joinButton: MButton!
+    @IBOutlet weak private var unjoinButton: MButton!
     
     //MARK: - Properties
-    private var sections: [MEventSectionAsParticipant] = [.organizer, .informations, .place, .participants, .guests]
+    private var sections: [MEventSectionAsParticipant] = [
+        .title,
+        .desc,
+        .dateAndHour,
+        .place,
+        .organizer,
+        .team
+    ]
 
     var event: Event?
     var photoUrls: [URL] = [] {
         didSet {
             if photoUrls.isEmpty {
-                self.sections = [.organizer, .informations, .place, .participants, .guests]
+                self.sections = [
+                    .title,
+                    .desc,
+                    .dateAndHour,
+                    .place,
+                    .organizer,
+                    .team
+                ]
             } else {
-                self.sections = [.organizer, .informations, .placeWithPictures, .participants, .guests]
+                self.sections = [
+                    .title,
+                    .desc,
+                    .dateAndHour,
+                    .placeWithPictures,
+                    .organizer,
+                    .team
+                ]
             }
-            
+            if currentUserCanAddGuest {
+                self.sections.append(.myGuests)
+            }
             guard let section = sections.firstIndex(where: { $0 == .place || $0 == .placeWithPictures }) else { return }
             DispatchQueue.main.async {
                 self.eventTableView.reloadSections(IndexSet(integer: section), with: .automatic)
@@ -70,10 +93,24 @@ class EventDetailsAsParticipantVC: UIViewController {
             }
         }
     }
+    var myGuests: [Guest] {
+        guard let userId = ManagerUser.shared.userId else { return [] }
+        return guests.filter({$0.associatedUserId == userId && $0.teamId == nil})
+    }
+    var teams: [Team] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.eventTableView.reloadData()
+            }
+        }
+    }
     var currentUserParticipationStatus: ParticipationStatus? = nil {
         didSet {
             updateStatusBarState()
-            updateButtonsState()
+            updateActionBar()
+            if currentUserCanAddGuest, !sections.contains(.myGuests) {
+                sections.append(.myGuests)
+            }
         }
     }
     var currentUserParticipate: Bool {
@@ -87,6 +124,10 @@ class EventDetailsAsParticipantVC: UIViewController {
     }
     
     //MARK: - LifeCycle
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
@@ -116,85 +157,142 @@ class EventDetailsAsParticipantVC: UIViewController {
             vc.photoUrl = photoUrl
         }
     }
-    
-    //MARK: - Privates
-    private func setUpView() {
+}
+
+//MARK: - Privates
+private extension EventDetailsAsParticipantVC {
+
+    func setUpView() {
         HelperTracking.track(item: .eventDetails)
 
-        sportLabel.text = event?.sportLocalizedName
-        titleLabel.text = event?.title
-        statusBar.isHidden = true
-        actionBar.isHidden = true
         setUpTableView()
-        setUpButtons()
+        setUpActionBar()
+        setUpRadiusBar()
+
+        updateSport()
+        updateCover()
+        updatePriceIfNeeded()
     }
-    
-    private func setUpTableView() {
+
+    func setUpTableView() {
         eventTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constants.bottomContentInset, right: 0)
-        eventTableView.register(SectionCell.Constants.nib,
-                                forHeaderFooterViewReuseIdentifier: SectionCell.Constants.identifier)
-        
+
         for section in MEventSectionAsParticipant.all {
             eventTableView.register(section.cellNib, forCellReuseIdentifier: section.cellIdentifier)
         }
         eventTableView.dataSource = self
         eventTableView.delegate = self
     }
-    
-    private func setUpButtons() {
-        participateButton.setTitle(L10N.event.details.buttons.participate.uppercased(), for: .normal)
-        addGuestButton.setTitle(L10N.event.details.buttons.addGuest.uppercased(), for: .normal)
-        declineButton.setTitle(L10N.event.details.buttons.decline.uppercased(), for: .normal)
+
+    func setUpActionBar() {
+        actionBar.isHidden = true
+        actionBar.layer.shadowColor = UIColor.mDark.cgColor
+        actionBar.layer.shadowOpacity = 0.2
+        actionBar.layer.shadowOffset = .zero
+        statusLabel.isHidden = true
+        joinButton.setTitle(L10N.event.details.buttons.join.uppercased(), for: .normal)
+        unjoinButton.setTitle(L10N.event.details.buttons.unJoin.uppercased(), for: .normal)
+        unjoinButton.setTitle(L10N.event.details.buttons.unJoin.uppercased(), for: .normal)
+        unjoinButton.layer.borderWidth = 1
+        unjoinButton.layer.borderColor = UIColor.mDark.cgColor
     }
-    
-    private func syncEvent() {
+
+    func setUpRadiusBar() {
+        radiusBar.clipsToBounds = true
+        radiusBar.layer.cornerRadius = 24
+        radiusBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+    }
+
+    func syncEvent() {
         guard let eventId = event?.id, let placeId = event?.placeId else { return }
-        
+
         ServiceGooglePlace.shared.getPlacePhotos(placeId: placeId) { [weak self] (photoUrls) in
             self?.photoUrls = photoUrls
         }
         ServiceEvent.getEventParticipants(eventId: eventId, delegate: self)
         ServiceEvent.getEventGuests(eventId: eventId, delegate: self)
+        ServiceEvent.getEventTeam(eventId: eventId, delegate: self)
     }
-    
-    private func updateStatusBarState() {
+
+    func updateSport() {
+        guard let event = event else { return }
+        sportLabel.text = "\(event.sportEmoticon) \(event.sportLocalizedName)"
+    }
+
+    func updateCover() {
+        guard let event = event else { return }
+
+        if let cover = event.cover, let url = URL(string: cover) {
+            coverImage.sd_setImage(with: url)
+        } else {
+            let sport = ManagerSport.shared.sports.first(where: {$0.id == event.sportId})
+            if let cover = sport?.covers.first, let url = URL(string: cover) {
+                coverImage.sd_setImage(with: url)
+            }
+        }
+    }
+
+    func updatePriceIfNeeded() {
+        guard let event = event,
+              let price = event.price,
+              let priceCurrency = event.priceCurrency else {
+                  priceLabel.isHidden = true
+            return
+        }
+        priceLabel.isHidden = false
+
+        let fullDescription = priceCurrency + " " + price
+
+        let currencyFont = UIFont.pretitle
+        let priceFont = UIFont.bold
+
+        let attributedText = NSMutableAttributedString(string: fullDescription,
+                                                        attributes: [NSAttributedString.Key.font: priceFont])
+        attributedText.addAttribute(NSAttributedString.Key.font,
+                                      value: currencyFont,
+                                      range: NSRange(location: 0, length: priceCurrency.count))
+        priceLabel.attributedText = attributedText
+    }
+
+    func updateStatusBarState() {
         guard let event = event,
               let currentUserParticipationStatus = currentUserParticipationStatus else {
-            statusBar.isHidden = true
+            statusLabel.isHidden = true
             return
         }
         switch event.eventStatus {
         case .open:
-            statusBar.backgroundColor = currentUserParticipationStatus.color
-            statusDesc.text = currentUserParticipationStatus.desc
-            statusBar.isHidden = false
+            statusLabel.textColor = currentUserParticipationStatus.color
+            statusLabel.text = currentUserParticipationStatus.desc
+            statusLabel.isHidden = false
         case .canceled:
-            statusBar.backgroundColor = event.eventStatus.color
-            statusDesc.text = event.eventStatus.desc
-            statusBar.isHidden = false
+            statusLabel.textColor = event.eventStatus.color
+            statusLabel.text = event.eventStatus.desc
+            statusLabel.isHidden = false
         }
     }
-    
-    private func updateButtonsState() {
+
+    func updateActionBar() {
         guard let event = event,
               event.eventStatus == .open else {
                   actionBar.isHidden = true
             return
         }
-        
+
         guard currentUserParticipationStatus != .refused else {
             actionBar.isHidden = true
             return
         }
-        participateButton.isHidden = currentUserParticipate
-        addGuestButton.isHidden = !currentUserCanAddGuest
-        declineButton.isHidden = !currentUserParticipate
+
+
+        joinButton.isHidden = currentUserParticipate
+        unjoinButton.isHidden = !currentUserParticipate
         actionBar.isHidden = false
     }
-    
-    private func addEventToCalendar() {
+
+    func addEventToCalendar() {
         guard let event = self.event else { return }
-        
+
         HelperTracking.track(item: .eventDetailsAddToCalendar)
         let eventStore = EKEventStore()
         eventStore.requestAccess( to: EKEntityType.event, completion:{ granted, error in
@@ -206,7 +304,7 @@ class EventDetailsAsParticipantVC: UIViewController {
                                        message: L10N.event.details.addToCalendar.error.message)
                         return
                     }
-                    
+
 
                     let eventController = EKEventEditViewController()
                     eventController.event = event.toCalendarEvent(deeplink: url, with: eventStore)
@@ -217,10 +315,10 @@ class EventDetailsAsParticipantVC: UIViewController {
             })
         })
     }
-    
+
     func goTo() {
         guard let event = self.event else { return }
-        
+
         HelperTracking.track(item: .eventDetailsGoTo)
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: event.placeName, message: "Go To", preferredStyle: UIAlertController.Style.alert)
@@ -313,34 +411,29 @@ extension EventDetailsAsParticipantVC: ServiceEventGuestDelegate  {
     }
 }
 
+// MARK: - ServiceEventTeamDelegate
+extension EventDetailsAsParticipantVC: ServiceEventTeamDelegate  {
+    func dataAdded(team: Team) {
+        teams.append(team)
+    }
+
+    func dataModified(team: Team) {
+        guard let index = teams.firstIndex(where: { $0.id == team.id }) else { return }
+        teams[index] = team
+    }
+
+    func dataRemoved(team: Team) {
+        guard let index = teams.firstIndex(where: { $0.id == team.id }) else { return }
+        teams.remove(at: index)
+    }
+}
+
+
 // MARK: - UITableViewDataSource
 extension EventDetailsAsParticipantVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         sections.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        sections[section].desc != nil ? SectionCell.Constants.height : .zero
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionDesc = sections[section].desc,
-              let event = self.event,
-              let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionCell.Constants.identifier) as? SectionCell else { return nil
-              }
-        let eventSection = sections[section]
-        
-        switch eventSection {
-        case .organizer, .informations, .place, .placeWithPictures:
-            header.setUp(desc: sectionDesc)
-        case .participants:
-            let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
-            header.setUp(desc: desc)
-        default:
-            return nil
-        }
-        return header
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -353,31 +446,34 @@ extension EventDetailsAsParticipantVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sections[section] {
-        case .organizer, .informations, .place, .placeWithPictures:
+        case .title, .desc, .dateAndHour, .place, .placeWithPictures, .organizer, .team, .myGuests:
             return 1
-        case .participants:
-            return participants.count
-        case .guests:
-            return guests.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         switch section {
-        case .organizer:
-            guard let organizer = organizer,
-                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventOrganizerCell else {
-                      return UITableViewCell()
-                  }
-            cell.setUp(organizer: organizer)
-            return cell
-        case .informations:
+        case .title:
             guard let event = event,
-                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventInformationsCell else {
+                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventTitleCell else {
                       return UITableViewCell()
                   }
-            cell.setUp(date: event.date, desc: event.description)
+            cell.setUp(title: event.title)
+            return cell
+        case .desc:
+            guard let event = event,
+                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventDescriptionCell else {
+                      return UITableViewCell()
+                  }
+            cell.setUp(desc: event.description)
+            return cell
+        case .dateAndHour:
+            guard let event = event,
+                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventDateAndHourCell else {
+                      return UITableViewCell()
+                  }
+            cell.setUp(date: event.date)
             return cell
         case .place:
             guard let event = event,
@@ -394,17 +490,25 @@ extension EventDetailsAsParticipantVC: UITableViewDataSource {
             cell.delegate = self
             cell.setUp(name: event.placeName, address: event.placeAddress, photos: photoUrls)
             return cell
-        case .participants:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventParticipantCell else {
-                return UITableViewCell()
-            }
-            cell.setUp(participant: participants[indexPath.row])
+        case .organizer:
+            guard let organizer = organizer,
+                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventOrganizerCell else {
+                      return UITableViewCell()
+                  }
+            cell.setUp(organizer: organizer)
             return cell
-        case .guests:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventParticipantCell else {
-                return UITableViewCell()
-            }
-            cell.setUp(guest: guests[indexPath.row])
+        case .team:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventTeamsCell else {
+                      return UITableViewCell()
+                  }
+            cell.setUp(teams: teams, participants: participants, guests: guests)
+            return cell
+        case .myGuests:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventMyGuestsCell else {
+                      return UITableViewCell()
+                  }
+            cell.delegate = self
+            cell.setUp(guests: myGuests)
             return cell
         }
     }
@@ -416,30 +520,20 @@ extension EventDetailsAsParticipantVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = sections[indexPath.section]
         switch section {
+        case .title, .desc:
+            break
+        case .dateAndHour:
+            addEventToCalendar()
+        case .place, .placeWithPictures:
+            goTo()
         case .organizer:
             guard let userId = organizer?.userId else { return }
             HelperTracking.track(item: .eventDetailsOrganizer)
             ServiceUser.getOtherProfile(userId: userId) { user in
                 self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
             }
-        case .informations:
-            addEventToCalendar()
-        case .place, .placeWithPictures:
-            goTo()
-        case .participants:
-            let userId = participants[indexPath.row].userId
-            guard userId != ManagerUser.shared.userId else { return }
-            HelperTracking.track(item: .eventDetailsParticipant)
-            ServiceUser.getOtherProfile(userId: userId) { user in
-                self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
-            }
-        case .guests:
-            let userId = guests[indexPath.row].associatedUserId
-            guard userId != ManagerUser.shared.userId else { return }
-            HelperTracking.track(item: .eventDetailsGuest)
-            ServiceUser.getOtherProfile(userId: userId) { user in
-                self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
-            }
+        case .team, .myGuests:
+            break
         }
     }
 }
@@ -461,8 +555,6 @@ extension EventDetailsAsParticipantVC: AddGuestVCDelegate {
         }
         ServiceNotification.addGuest(event: event, organizer: organizer)
     }
-    
-    func didUpdateNbAcceptedPlayerFromAddGuest(nbAcceptedPlayer: Int) {}
 }
 
 // MARK: - EventPlaceWithPicturesCellDelegate
@@ -473,6 +565,18 @@ extension EventDetailsAsParticipantVC: EventPlaceWithPicturesCellDelegate {
     }
 }
 
+// MARK: - EventMyGuestsCellDelegate
+extension EventDetailsAsParticipantVC: EventMyGuestsCellDelegate {
+
+    func didToggleAddGuest() {
+        HelperTracking.track(item: .eventDetailsAddGuest)
+        performSegue(withIdentifier: AddGuestVC.Constants.identifier, sender: nil)
+    }
+
+    func didToggleGuest(guest: Guest) {
+        // TODO: ask if user want to decline guest
+    }
+}
 
 // MARK: IBAction
 extension EventDetailsAsParticipantVC {
@@ -497,7 +601,7 @@ extension EventDetailsAsParticipantVC {
         
     }
     
-    @IBAction func participateToggle(_ sender: Any) {
+    @IBAction func joinToggle(_ sender: Any) {
         guard let event = self.event,
               ManagerUser.shared.user?.nickName != nil,
               let organizer = organizer else {
@@ -509,13 +613,8 @@ extension EventDetailsAsParticipantVC {
         ServiceEvent.participate(event: event)
         ServiceNotification.participate(event: event, organizer: organizer)
     }
-    
-    @IBAction func addGuestToggle(_ sender: Any) {
-        HelperTracking.track(item: .eventDetailsAddGuest)
-        performSegue(withIdentifier: AddGuestVC.Constants.identifier, sender: nil)
-    }
-    
-    @IBAction func declineToggle(_ sender: Any) {
+
+    @IBAction func unjoinToggle(_ sender: Any) {
         guard let event = event,
               let eventId = event.id,
               let organizer = organizer else {
@@ -524,11 +623,6 @@ extension EventDetailsAsParticipantVC {
         
         HelperTracking.track(item: .eventDetailsDecline)
         ServiceEvent.decline(eventId: eventId)
-        ServiceNotification.decline(event: event, organizer: organizer)
-        
-        guard currentUserParticipationStatus == .accepted else { return }
-        let nbAcceptedPlayer = event.nbAcceptedPlayer-1
-        self.event?.nbAcceptedPlayer = nbAcceptedPlayer
-        ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
+        ServiceNotification.decline(event: event, organizer: organizer)        
     }
 }

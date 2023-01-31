@@ -27,14 +27,12 @@ class OrganizeEventVC: UIViewController {
     @IBOutlet weak private var descTextView: MTextView!
     @IBOutlet weak private var dateAndHourPickerField: MDatePickerField!
     @IBOutlet weak private var addressPickerField: MPickerField!
-    @IBOutlet weak private var nbPlayerPickerField: MPickerField!
     @IBOutlet weak private var createEventButton: UIButton!
     @IBOutlet weak private var isParticipateSwitchField: MSwitchField!
     @IBOutlet weak private var isPrivateSwitchField: MSwitchField!
 
     // MARK: - Variables
     private var sportPickerSource = SportPickerSource()
-    private var nbPlayersPickerSource = NbPlayersPickerSource()
     private var currentTextField: UITextField?
     private var selectedPlace: GooglePlace?
     private var selectedPlaceAddress: String?
@@ -69,7 +67,6 @@ class OrganizeEventVC: UIViewController {
         descTextView.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
         descTextView.delegate = self
         addressPickerField.delegate = self
-        nbPlayerPickerField.delegate = self
         setUpTranslation()
         setUpField()
         setUpSportIfNeeded()
@@ -83,7 +80,6 @@ class OrganizeEventVC: UIViewController {
         descTextView.labelText = L10N.event.organize.form.desc
         dateAndHourPickerField.labelText = L10N.event.organize.form.dateAndHour
         addressPickerField.labelText = L10N.event.organize.form.address
-        nbPlayerPickerField.labelText = L10N.event.organize.form.nbPlayers
         addressPickerField.labelText = L10N.event.organize.form.address
         isParticipateSwitchField.labelText = L10N.event.organize.form.isParticipate
         isPrivateSwitchField.labelText = L10N.event.organize.form.isPrivate
@@ -112,12 +108,6 @@ class OrganizeEventVC: UIViewController {
         guard let selectedSport = sportPickerSource.selectedSport else { return }
         sportPickerField.text = selectedSport.localizedName
     }
-    
-    private func didSelectNbTeams(index: Int) {
-        nbPlayersPickerSource.currentIndexSelected = index
-        guard let selectedNbTeams = nbPlayersPickerSource.selectedNbTeams else { return }
-        nbPlayerPickerField.text = "\(selectedNbTeams)"
-    }
 }
 
 // MARK: - IBAction
@@ -138,8 +128,7 @@ extension OrganizeEventVC {
               let desc = descTextView.text,
               let place = selectedPlace,
               let placeAddress = selectedPlaceAddress,
-              let placeLocation = selectedPlaceLocation,
-              let nbPlayers = nbPlayersPickerSource.selectedNbTeams else {
+              let placeLocation = selectedPlaceLocation else {
                   showError(title: L10N.event.organize.title, message: L10N.event.organize.form.error.unfill)
             return
         }
@@ -147,8 +136,6 @@ extension OrganizeEventVC {
         let event = Event(id: eventId,
                           title: title,
                           description: desc,
-                          nbPlayer: nbPlayers,
-                          nbAcceptedPlayer: isParticipateSwitchField.isOn ? 1 : 0,
                           date: dateAndHourPickerField.date.timestamp,
                           placeId: place.id,
                           placeName: place.name,
@@ -192,9 +179,6 @@ extension OrganizeEventVC: MPickerFieldDelegate {
             present(controller, animated: false)
         case addressPickerField:
             performSegue(withIdentifier: SearchLocationVC.Constants.identifier, sender: self)
-        case nbPlayerPickerField:
-            let controller = PGCPickerViewController.with(pickerOption: nbPlayersPickerSource, selectionHandler: didSelectNbTeams)
-            present(controller, animated: false)
         default:
             break
         }

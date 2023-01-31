@@ -10,7 +10,6 @@ import Firebase
 
 protocol ParticipantVCDelegate: AnyObject {
     func didTapOnParticipantProfile(userId: String)
-    func didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: Int)
     func didAcceptParticipation(participant: Participant)
 }
 
@@ -94,10 +93,6 @@ private extension ParticipantVC {
         ServiceNotification.acceptYourParticipation(event: event, participant: participant)
         delegate?.didAcceptParticipation(participant: participant)
 
-        let nbAcceptedPlayer = event.nbAcceptedPlayer+1
-        delegate?.didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: nbAcceptedPlayer)
-        ServiceEvent.increaseNbAcceptedPlayer(eventId: eventId)
-
         dismiss(animated: true, completion: nil)
     }
     
@@ -113,10 +108,7 @@ private extension ParticipantVC {
         HelperTracking.track(item: .participantRefuse)
         ServiceEvent.refuseParticipant(eventId: eventId, participant: participant)
         if participant.status == ParticipationStatus.accepted.rawValue {
-            let nbAcceptedPlayer = event.nbAcceptedPlayer-1
             ServiceNotification.refuseYourParticipation(event: event, participant: participant)
-            delegate?.didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: nbAcceptedPlayer)
-            ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
         }
         dismiss(animated: true, completion: nil)
     }

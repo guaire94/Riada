@@ -47,7 +47,6 @@ class EventTeamsCell: UITableViewCell {
     }
 }
 
-
 // MARK: - Privates
 private extension EventTeamsCell {
     func setUpUI() {

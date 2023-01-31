@@ -20,6 +20,7 @@ class EventMyGuestsCell: UITableViewCell {
         static let height: CGFloat = 84.0
         static let identifier: String = "EventMyGuestsCell"
         static let nib = UINib(nibName: Constants.identifier, bundle: nil)
+        static let topInset: CGFloat = 24.0
     }
 
     // MARK: - Properties
@@ -66,7 +67,7 @@ private extension EventMyGuestsCell {
     }
 
     func computeMaxHeight() {
-        guestsTableViewHeight.constant = GuestSectionCell.Constants.height + (CGFloat(guests.count) * GuestCell.Constants.height) + AddGuestCell.Constants.height + 24
+        guestsTableViewHeight.constant = GuestSectionCell.Constants.height + (CGFloat(guests.count) * GuestCell.Constants.height) + AddGuestCell.Constants.height + Constants.topInset
         guestsTableView.layoutSubviews()
     }
 }
@@ -115,7 +116,6 @@ extension EventMyGuestsCell: UITableViewDataSource {
     }
 }
 
-
 // MARK: - AddGuestCellDelegate
 extension EventMyGuestsCell: AddGuestCellDelegate {
 
@@ -123,7 +123,6 @@ extension EventMyGuestsCell: AddGuestCellDelegate {
         delegate?.didToggleAddGuest()
     }
 }
-
 
 // MARK: - UITableViewDelegate
 extension EventMyGuestsCell: UITableViewDelegate {

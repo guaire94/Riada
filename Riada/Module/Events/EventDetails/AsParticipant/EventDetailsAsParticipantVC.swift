@@ -243,8 +243,8 @@ private extension EventDetailsAsParticipantVC {
 
         let fullDescription = priceCurrency + " " + price
 
-        let currencyFont = UIFont(name: "Lato-Bold", size: 10.0)!
-        let priceFont = UIFont(name: "Lato-Bold", size: 16.0)!
+        let currencyFont = UIFont.pretitle
+        let priceFont = UIFont.bold
 
         let attributedText = NSMutableAttributedString(string: fullDescription,
                                                         attributes: [NSAttributedString.Key.font: priceFont])

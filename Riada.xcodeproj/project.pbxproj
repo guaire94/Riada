@@ -100,6 +100,7 @@
 		EE6E4324273D2D8000A48B84 /* MOtherProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E4322273D2D8000A48B84 /* MOtherProfileSection.swift */; };
 		EE6E4325273D2D8000A48B84 /* OtherProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E4323273D2D8000A48B84 /* OtherProfileVC.swift */; };
 		EE75D5682707481F004B7973 /* HelperDynamicLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75D5672707481F004B7973 /* HelperDynamicLink.swift */; };
+		EE79DF4429893B450076CDD5 /* UIFont+m.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79DF4329893B450076CDD5 /* UIFont+m.swift */; };
 		EE8951DB274111570081AE09 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8951DA274111570081AE09 /* SettingsVC.swift */; };
 		EE8951DE2741122F0081AE09 /* MProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8951DD2741122F0081AE09 /* MProfileSection.swift */; };
 		EE8951E2274112440081AE09 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8951E0274112440081AE09 /* SettingCell.swift */; };
@@ -276,6 +277,7 @@
 		EE6E4322273D2D8000A48B84 /* MOtherProfileSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOtherProfileSection.swift; sourceTree = "<group>"; };
 		EE6E4323273D2D8000A48B84 /* OtherProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherProfileVC.swift; sourceTree = "<group>"; };
 		EE75D5672707481F004B7973 /* HelperDynamicLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDynamicLink.swift; sourceTree = "<group>"; };
+		EE79DF4329893B450076CDD5 /* UIFont+m.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+m.swift"; sourceTree = "<group>"; };
 		EE8951DA274111570081AE09 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		EE8951DD2741122F0081AE09 /* MProfileSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MProfileSection.swift; sourceTree = "<group>"; };
 		EE8951E0274112440081AE09 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				EE6E43172736D6DE00A48B84 /* UIImage+M.swift */,
 				EE8951E427411D8B0081AE09 /* UIDevice+M.swift */,
 				EE19E11D2843D0710099E539 /* UITextView+M.swift */,
+				EE79DF4329893B450076CDD5 /* UIFont+m.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1370,6 +1373,7 @@
 				EE8951DE2741122F0081AE09 /* MProfileSection.swift in Sources */,
 				B84ECBF52541AFD8007F8E9E /* Sport.swift in Sources */,
 				EE6E4324273D2D8000A48B84 /* MOtherProfileSection.swift in Sources */,
+				EE79DF4429893B450076CDD5 /* UIFont+m.swift in Sources */,
 				B84ECBC025403840007F8E9E /* Config.swift in Sources */,
 				EE27197B26EBD67D00A3F281 /* Organizer.swift in Sources */,
 				EE6E4325273D2D8000A48B84 /* OtherProfileVC.swift in Sources */,

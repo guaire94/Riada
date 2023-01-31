@@ -34,8 +34,8 @@ class EventDescriptionCell: UITableViewCell {
         let prefix = L10N.event.details.about
         let fullDescription = prefix + desc
 
-        let prefixFont = UIFont(name: "Lato-Bold", size: 16.0)!
-        let font = UIFont(name: "Lato-Medium", size: 16.0)!
+        let prefixFont = UIFont.bold
+        let font = UIFont.body
 
         let attributedText = NSMutableAttributedString(string: fullDescription,
                                                         attributes: [NSAttributedString.Key.font: font])

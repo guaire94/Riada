@@ -10,7 +10,6 @@ import Firebase
 
 protocol GuestVCDelegate: AnyObject {
     func didTapOnGuestProfile(userId: String)
-    func didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: Int)
     func didAcceptGuest(guest: Guest)
 }
 
@@ -100,10 +99,6 @@ private extension GuestVC {
         ServiceNotification.acceptYourGuest(event: event, guest: guest)
         delegate?.didAcceptGuest(guest: guest)
 
-        let nbAcceptedPlayer = event.nbAcceptedPlayer+1
-        delegate?.didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: nbAcceptedPlayer)
-        ServiceEvent.increaseNbAcceptedPlayer(eventId: eventId)
-
         dismiss(animated: true, completion: nil)
     }
     
@@ -120,12 +115,7 @@ private extension GuestVC {
         ServiceEvent.refuseGuest(eventId: eventId, guest: guest)
         
         switch guest.participationStatus {
-        case .accepted:
-            let nbAcceptedPlayer = event.nbAcceptedPlayer-1
-            delegate?.didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: nbAcceptedPlayer)
-            ServiceEvent.decreaseNbAcceptedPlayer(eventId: eventId)
-            ServiceNotification.refuseYourGuest(event: event, guest: guest)
-        case .pending:
+        case .accepted, .pending:
             ServiceNotification.refuseYourGuest(event: event, guest: guest)
         default:
             break

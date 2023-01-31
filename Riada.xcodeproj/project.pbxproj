@@ -84,8 +84,8 @@
 		EE603BAD26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE603BAC26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift */; };
 		EE603BBC26F6356C008D2E41 /* EventOrganizerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE603BB826F6356B008D2E41 /* EventOrganizerCell.swift */; };
 		EE603BBF26F6356C008D2E41 /* EventOrganizerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE603BBB26F6356C008D2E41 /* EventOrganizerCell.xib */; };
-		EE603BD626F6437F008D2E41 /* EventInformationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE603BD426F6437F008D2E41 /* EventInformationsCell.swift */; };
-		EE603BD726F6437F008D2E41 /* EventInformationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE603BD526F6437F008D2E41 /* EventInformationsCell.xib */; };
+		EE603BD626F6437F008D2E41 /* EventDateAndHourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE603BD426F6437F008D2E41 /* EventDateAndHourCell.swift */; };
+		EE603BD726F6437F008D2E41 /* EventDateAndHourCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE603BD526F6437F008D2E41 /* EventDateAndHourCell.xib */; };
 		EE66EE7A2843AD9C00F24E1B /* MTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE66EE792843AD9C00F24E1B /* MTextView.swift */; };
 		EE66EE7C2843AE0200F24E1B /* MTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE66EE7B2843AE0200F24E1B /* MTextView.xib */; };
 		EE6B7F6626FF7AF500E44B7C /* AddGuestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */; };
@@ -110,6 +110,23 @@
 		EE9B6FB027352E6B00A12AF7 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FAF27352E6B00A12AF7 /* CustomSegmentControl.swift */; };
 		EE9B6FB4273581E000A12AF7 /* RelatedEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B6FB2273581E000A12AF7 /* RelatedEventCell.swift */; };
 		EE9B6FB5273581E000A12AF7 /* RelatedEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE9B6FB3273581E000A12AF7 /* RelatedEventCell.xib */; };
+		EEA5CEF2297D4787000E6BD0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CEF1297D4787000E6BD0 /* Team.swift */; };
+		EEA5CEF7297D4EAB000E6BD0 /* EventTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CEF5297D4EAB000E6BD0 /* EventTitleCell.swift */; };
+		EEA5CEF8297D4EAB000E6BD0 /* EventTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA5CEF6297D4EAB000E6BD0 /* EventTitleCell.xib */; };
+		EEA5CEFB297D4EC0000E6BD0 /* EventDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CEF9297D4EC0000E6BD0 /* EventDescriptionCell.swift */; };
+		EEA5CEFC297D4EC0000E6BD0 /* EventDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA5CEFA297D4EC0000E6BD0 /* EventDescriptionCell.xib */; };
+		EEA5CEFE297D51A0000E6BD0 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEA5CEFD297D51A0000E6BD0 /* Lato-Medium.ttf */; };
+		EEA5CF02297E7D4E000E6BD0 /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CF00297E7D4E000E6BD0 /* SectionCell.swift */; };
+		EEA5CF03297E7D4E000E6BD0 /* SectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA5CF01297E7D4E000E6BD0 /* SectionCell.xib */; };
+		EEA5CF07297FFC7B000E6BD0 /* EventTeamsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA5CF05297FFC7B000E6BD0 /* EventTeamsCell.xib */; };
+		EEA5CF08297FFC7B000E6BD0 /* EventTeamsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CF06297FFC7B000E6BD0 /* EventTeamsCell.swift */; };
+		EEA5CF0C297FFFB2000E6BD0 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CF0A297FFFB1000E6BD0 /* TeamCell.swift */; };
+		EEA5CF0D297FFFB2000E6BD0 /* TeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA5CF0B297FFFB1000E6BD0 /* TeamCell.xib */; };
+		EEA5CF1029800166000E6BD0 /* TeamMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CF0E29800166000E6BD0 /* TeamMemberCell.swift */; };
+		EEA5CF1129800166000E6BD0 /* TeamMemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA5CF0F29800166000E6BD0 /* TeamMemberCell.xib */; };
+		EEA5CF13298003E9000E6BD0 /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CF12298003E9000E6BD0 /* TeamMember.swift */; };
+		EEA5CF1729827A6F000E6BD0 /* TeamNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5CF1529827A6F000E6BD0 /* TeamNameCell.swift */; };
+		EEA5CF1829827A6F000E6BD0 /* TeamNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA5CF1629827A6F000E6BD0 /* TeamNameCell.xib */; };
 		EEABEE282725B8C800F3E64C /* String+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEABEE272725B8C800F3E64C /* String+M.swift */; };
 		EEABEE2B2725BA9F00F3E64C /* PersonNameComponents+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */; };
 		EEAE66032725A4470048F559 /* SignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAE66012725A4470048F559 /* SignInCell.xib */; };
@@ -117,6 +134,14 @@
 		EEAE66072725A50F0048F559 /* AnonymouslyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAE66052725A50F0048F559 /* AnonymouslyCell.swift */; };
 		EEAE66082725A50F0048F559 /* AnonymouslyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAE66062725A50F0048F559 /* AnonymouslyCell.xib */; };
 		EEAF6F742723D54B00D330C6 /* EditEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAF6F732723D54B00D330C6 /* EditEventVC.swift */; };
+		EEAFD6CF2983BB1A006D95CE /* GuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD6C92983BB1A006D95CE /* GuestCell.swift */; };
+		EEAFD6D02983BB1A006D95CE /* GuestSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAFD6CA2983BB1A006D95CE /* GuestSectionCell.xib */; };
+		EEAFD6D22983BB1A006D95CE /* GuestSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD6CC2983BB1A006D95CE /* GuestSectionCell.swift */; };
+		EEAFD6D32983BB1A006D95CE /* GuestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAFD6CD2983BB1A006D95CE /* GuestCell.xib */; };
+		EEAFD6D42983BB1A006D95CE /* AddGuestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAFD6CE2983BB1A006D95CE /* AddGuestCell.xib */; };
+		EEAFD6D62983BB35006D95CE /* AddGuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD6D52983BB35006D95CE /* AddGuestCell.swift */; };
+		EEAFD6D92983CF54006D95CE /* EventMyGuestsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAFD6D72983CF54006D95CE /* EventMyGuestsCell.xib */; };
+		EEAFD6DA2983CF54006D95CE /* EventMyGuestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD6D82983CF54006D95CE /* EventMyGuestsCell.swift */; };
 		EEB8F1EA26FE01AC005ABC27 /* UIColor+M.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F1E926FE01AC005ABC27 /* UIColor+M.swift */; };
 		EEB8F1ED26FE05E8005ABC27 /* MButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F1EC26FE05E8005ABC27 /* MButton.swift */; };
 		EEB8F1EF26FE0EC3005ABC27 /* ParticipateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F1EE26FE0EC3005ABC27 /* ParticipateVC.swift */; };
@@ -126,7 +151,6 @@
 		EEBBD4752718638D00519EBC /* MPickerField.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEBBD4732718638D00519EBC /* MPickerField.xib */; };
 		EEBBD479271863A500519EBC /* MDatePickerField.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEBBD477271863A500519EBC /* MDatePickerField.xib */; };
 		EEBBD47A271863A500519EBC /* MDatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD478271863A500519EBC /* MDatePickerField.swift */; };
-		EEBBD47E271863FB00519EBC /* NbPlayersPickerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD47C271863FB00519EBC /* NbPlayersPickerSource.swift */; };
 		EEBBD47F271863FB00519EBC /* SportPickerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD47D271863FB00519EBC /* SportPickerSource.swift */; };
 		EEBBD482271866C900519EBC /* ManagerSport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBD481271866C900519EBC /* ManagerSport.swift */; };
 		EEC03AD3275B8BF000F0C0AD /* ManagerUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC03AD2275B8BF000F0C0AD /* ManagerUserPreferences.swift */; };
@@ -145,8 +169,6 @@
 		EEE1F47026F23DF300754DDD /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEE1F46E26F23DF300754DDD /* CityCell.xib */; };
 		EEE1F47326F3BEB500754DDD /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE1F47226F3BEB500754DDD /* EventsVC.swift */; };
 		EEE1F47B26F3BEF200754DDD /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEE1F47A26F3BEF200754DDD /* Event.storyboard */; };
-		EEE1F48226F3C0C400754DDD /* SectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEE1F47E26F3C0C400754DDD /* SectionCell.xib */; };
-		EEE1F48326F3C0C400754DDD /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE1F47F26F3C0C400754DDD /* SectionCell.swift */; };
 		EEE1F48426F3C0C400754DDD /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE1F48026F3C0C400754DDD /* EventCell.swift */; };
 		EEE1F48526F3C0C400754DDD /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEE1F48126F3C0C400754DDD /* EventCell.xib */; };
 		EEE1F48B26F3C9A600754DDD /* ServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE1F48A26F3C9A600754DDD /* ServiceEvent.swift */; };
@@ -238,8 +260,8 @@
 		EE603BAC26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsAsParticipantVC.swift; sourceTree = "<group>"; };
 		EE603BB826F6356B008D2E41 /* EventOrganizerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventOrganizerCell.swift; sourceTree = "<group>"; };
 		EE603BBB26F6356C008D2E41 /* EventOrganizerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventOrganizerCell.xib; sourceTree = "<group>"; };
-		EE603BD426F6437F008D2E41 /* EventInformationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInformationsCell.swift; sourceTree = "<group>"; };
-		EE603BD526F6437F008D2E41 /* EventInformationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventInformationsCell.xib; sourceTree = "<group>"; };
+		EE603BD426F6437F008D2E41 /* EventDateAndHourCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDateAndHourCell.swift; sourceTree = "<group>"; };
+		EE603BD526F6437F008D2E41 /* EventDateAndHourCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDateAndHourCell.xib; sourceTree = "<group>"; };
 		EE66EE792843AD9C00F24E1B /* MTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTextView.swift; sourceTree = "<group>"; };
 		EE66EE7B2843AE0200F24E1B /* MTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTextView.xib; sourceTree = "<group>"; };
 		EE6B7F6526FF7AF500E44B7C /* AddGuestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGuestVC.swift; sourceTree = "<group>"; };
@@ -264,6 +286,23 @@
 		EE9B6FAF27352E6B00A12AF7 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		EE9B6FB2273581E000A12AF7 /* RelatedEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedEventCell.swift; sourceTree = "<group>"; };
 		EE9B6FB3273581E000A12AF7 /* RelatedEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RelatedEventCell.xib; sourceTree = "<group>"; };
+		EEA5CEF1297D4787000E6BD0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		EEA5CEF5297D4EAB000E6BD0 /* EventTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTitleCell.swift; sourceTree = "<group>"; };
+		EEA5CEF6297D4EAB000E6BD0 /* EventTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTitleCell.xib; sourceTree = "<group>"; };
+		EEA5CEF9297D4EC0000E6BD0 /* EventDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDescriptionCell.swift; sourceTree = "<group>"; };
+		EEA5CEFA297D4EC0000E6BD0 /* EventDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDescriptionCell.xib; sourceTree = "<group>"; };
+		EEA5CEFD297D51A0000E6BD0 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		EEA5CF00297E7D4E000E6BD0 /* SectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
+		EEA5CF01297E7D4E000E6BD0 /* SectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionCell.xib; sourceTree = "<group>"; };
+		EEA5CF05297FFC7B000E6BD0 /* EventTeamsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTeamsCell.xib; sourceTree = "<group>"; };
+		EEA5CF06297FFC7B000E6BD0 /* EventTeamsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTeamsCell.swift; sourceTree = "<group>"; };
+		EEA5CF0A297FFFB1000E6BD0 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		EEA5CF0B297FFFB1000E6BD0 /* TeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCell.xib; sourceTree = "<group>"; };
+		EEA5CF0E29800166000E6BD0 /* TeamMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberCell.swift; sourceTree = "<group>"; };
+		EEA5CF0F29800166000E6BD0 /* TeamMemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamMemberCell.xib; sourceTree = "<group>"; };
+		EEA5CF12298003E9000E6BD0 /* TeamMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
+		EEA5CF1529827A6F000E6BD0 /* TeamNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamNameCell.swift; sourceTree = "<group>"; };
+		EEA5CF1629827A6F000E6BD0 /* TeamNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamNameCell.xib; sourceTree = "<group>"; };
 		EEABEE272725B8C800F3E64C /* String+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+M.swift"; sourceTree = "<group>"; };
 		EEABEE2A2725BA9F00F3E64C /* PersonNameComponents+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonNameComponents+M.swift"; sourceTree = "<group>"; };
 		EEAE66012725A4470048F559 /* SignInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInCell.xib; sourceTree = "<group>"; };
@@ -271,6 +310,14 @@
 		EEAE66052725A50F0048F559 /* AnonymouslyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnonymouslyCell.swift; sourceTree = "<group>"; };
 		EEAE66062725A50F0048F559 /* AnonymouslyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnonymouslyCell.xib; sourceTree = "<group>"; };
 		EEAF6F732723D54B00D330C6 /* EditEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventVC.swift; sourceTree = "<group>"; };
+		EEAFD6C92983BB1A006D95CE /* GuestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestCell.swift; sourceTree = "<group>"; };
+		EEAFD6CA2983BB1A006D95CE /* GuestSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuestSectionCell.xib; sourceTree = "<group>"; };
+		EEAFD6CC2983BB1A006D95CE /* GuestSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestSectionCell.swift; sourceTree = "<group>"; };
+		EEAFD6CD2983BB1A006D95CE /* GuestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuestCell.xib; sourceTree = "<group>"; };
+		EEAFD6CE2983BB1A006D95CE /* AddGuestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGuestCell.xib; sourceTree = "<group>"; };
+		EEAFD6D52983BB35006D95CE /* AddGuestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGuestCell.swift; sourceTree = "<group>"; };
+		EEAFD6D72983CF54006D95CE /* EventMyGuestsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventMyGuestsCell.xib; sourceTree = "<group>"; };
+		EEAFD6D82983CF54006D95CE /* EventMyGuestsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMyGuestsCell.swift; sourceTree = "<group>"; };
 		EEB8F1E926FE01AC005ABC27 /* UIColor+M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+M.swift"; sourceTree = "<group>"; };
 		EEB8F1EC26FE05E8005ABC27 /* MButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MButton.swift; sourceTree = "<group>"; };
 		EEB8F1EE26FE0EC3005ABC27 /* ParticipateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipateVC.swift; sourceTree = "<group>"; };
@@ -280,7 +327,6 @@
 		EEBBD4732718638D00519EBC /* MPickerField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPickerField.xib; sourceTree = "<group>"; };
 		EEBBD477271863A500519EBC /* MDatePickerField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDatePickerField.xib; sourceTree = "<group>"; };
 		EEBBD478271863A500519EBC /* MDatePickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDatePickerField.swift; sourceTree = "<group>"; };
-		EEBBD47C271863FB00519EBC /* NbPlayersPickerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NbPlayersPickerSource.swift; sourceTree = "<group>"; };
 		EEBBD47D271863FB00519EBC /* SportPickerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportPickerSource.swift; sourceTree = "<group>"; };
 		EEBBD481271866C900519EBC /* ManagerSport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSport.swift; sourceTree = "<group>"; };
 		EEC03AD2275B8BF000F0C0AD /* ManagerUserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUserPreferences.swift; sourceTree = "<group>"; };
@@ -299,8 +345,6 @@
 		EEE1F46E26F23DF300754DDD /* CityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		EEE1F47226F3BEB500754DDD /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
 		EEE1F47A26F3BEF200754DDD /* Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
-		EEE1F47E26F3C0C400754DDD /* SectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionCell.xib; sourceTree = "<group>"; };
-		EEE1F47F26F3C0C400754DDD /* SectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
 		EEE1F48026F3C0C400754DDD /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		EEE1F48126F3C0C400754DDD /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		EEE1F48A26F3C9A600754DDD /* ServiceEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEvent.swift; sourceTree = "<group>"; };
@@ -369,6 +413,8 @@
 				EE27198526EBD7F500A3F281 /* Guest.swift */,
 				EE27198126EBD77000A3F281 /* ParticipationStatus.swift */,
 				EE1202A427578B7E0068F0F3 /* EventStatus.swift */,
+				EEA5CEF1297D4787000E6BD0 /* Team.swift */,
+				EEA5CF12298003E9000E6BD0 /* TeamMember.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -579,6 +625,7 @@
 			children = (
 				B8FDE3B4253F79AC00BD29B2 /* Lato-Bold.ttf */,
 				B8FDE3B5253F79AC00BD29B2 /* Lato-Light.ttf */,
+				EEA5CEFD297D51A0000E6BD0 /* Lato-Medium.ttf */,
 				B8FDE3B2253F79AC00BD29B2 /* Lato-Regular.ttf */,
 				B8FDE3B3253F79AC00BD29B2 /* Lato-Semibold.ttf */,
 			);
@@ -706,22 +753,26 @@
 		EE603BB726F634E9008D2E41 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				EE603BC426F63579008D2E41 /* EventOrganizerCell */,
-				EE603BC126F6356F008D2E41 /* EventInformationsCell */,
+				EEA5CEF3297D4E77000E6BD0 /* EventTitleCell */,
+				EEA5CEF4297D4E89000E6BD0 /* EventDescriptionCell */,
+				EE603BC126F6356F008D2E41 /* EventDateAndHourCell */,
 				EEDC9A9526FDC09B00627C73 /* EventPlaceCell */,
 				EE1202A72757C5420068F0F3 /* EventPlaceCellWithPictures */,
+				EE603BC426F63579008D2E41 /* EventOrganizerCell */,
+				EEA5CF04297FFC5D000E6BD0 /* EventTeamsCell */,
+				EEA5CF19298295E2000E6BD0 /* EventMyGuestsCell */,
 				EEDC9AAD26FDEA6500627C73 /* EventParticipantCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		EE603BC126F6356F008D2E41 /* EventInformationsCell */ = {
+		EE603BC126F6356F008D2E41 /* EventDateAndHourCell */ = {
 			isa = PBXGroup;
 			children = (
-				EE603BD426F6437F008D2E41 /* EventInformationsCell.swift */,
-				EE603BD526F6437F008D2E41 /* EventInformationsCell.xib */,
+				EE603BD426F6437F008D2E41 /* EventDateAndHourCell.swift */,
+				EE603BD526F6437F008D2E41 /* EventDateAndHourCell.xib */,
 			);
-			path = EventInformationsCell;
+			path = EventDateAndHourCell;
 			sourceTree = "<group>";
 		};
 		EE603BC426F63579008D2E41 /* EventOrganizerCell */ = {
@@ -814,6 +865,66 @@
 			path = RelatedEventCell;
 			sourceTree = "<group>";
 		};
+		EEA5CEF3297D4E77000E6BD0 /* EventTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEA5CEF5297D4EAB000E6BD0 /* EventTitleCell.swift */,
+				EEA5CEF6297D4EAB000E6BD0 /* EventTitleCell.xib */,
+			);
+			path = EventTitleCell;
+			sourceTree = "<group>";
+		};
+		EEA5CEF4297D4E89000E6BD0 /* EventDescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEA5CEF9297D4EC0000E6BD0 /* EventDescriptionCell.swift */,
+				EEA5CEFA297D4EC0000E6BD0 /* EventDescriptionCell.xib */,
+			);
+			path = EventDescriptionCell;
+			sourceTree = "<group>";
+		};
+		EEA5CEFF297E7D36000E6BD0 /* SectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEA5CF00297E7D4E000E6BD0 /* SectionCell.swift */,
+				EEA5CF01297E7D4E000E6BD0 /* SectionCell.xib */,
+			);
+			path = SectionCell;
+			sourceTree = "<group>";
+		};
+		EEA5CF04297FFC5D000E6BD0 /* EventTeamsCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEA5CF06297FFC7B000E6BD0 /* EventTeamsCell.swift */,
+				EEA5CF05297FFC7B000E6BD0 /* EventTeamsCell.xib */,
+				EEA5CF09297FFF3A000E6BD0 /* Cell */,
+			);
+			path = EventTeamsCell;
+			sourceTree = "<group>";
+		};
+		EEA5CF09297FFF3A000E6BD0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EEA5CF0A297FFFB1000E6BD0 /* TeamCell.swift */,
+				EEA5CF0B297FFFB1000E6BD0 /* TeamCell.xib */,
+				EEA5CF1529827A6F000E6BD0 /* TeamNameCell.swift */,
+				EEA5CF1629827A6F000E6BD0 /* TeamNameCell.xib */,
+				EEA5CF0E29800166000E6BD0 /* TeamMemberCell.swift */,
+				EEA5CF0F29800166000E6BD0 /* TeamMemberCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EEA5CF19298295E2000E6BD0 /* EventMyGuestsCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAFD6D82983CF54006D95CE /* EventMyGuestsCell.swift */,
+				EEAFD6D72983CF54006D95CE /* EventMyGuestsCell.xib */,
+				EEAFD6C82983BAAB006D95CE /* Cell */,
+			);
+			path = EventMyGuestsCell;
+			sourceTree = "<group>";
+		};
 		EEAE65FE2725A3660048F559 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +953,19 @@
 				EEAE66062725A50F0048F559 /* AnonymouslyCell.xib */,
 			);
 			path = AnonymouslyCell;
+			sourceTree = "<group>";
+		};
+		EEAFD6C82983BAAB006D95CE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAFD6CC2983BB1A006D95CE /* GuestSectionCell.swift */,
+				EEAFD6CA2983BB1A006D95CE /* GuestSectionCell.xib */,
+				EEAFD6C92983BB1A006D95CE /* GuestCell.swift */,
+				EEAFD6CD2983BB1A006D95CE /* GuestCell.xib */,
+				EEAFD6D52983BB35006D95CE /* AddGuestCell.swift */,
+				EEAFD6CE2983BB1A006D95CE /* AddGuestCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EEB8F1EB26FE05D0005ABC27 /* Buttons */ = {
@@ -904,7 +1028,6 @@
 		EEBBD47B271863DA00519EBC /* PickerSource */ = {
 			isa = PBXGroup;
 			children = (
-				EEBBD47C271863FB00519EBC /* NbPlayersPickerSource.swift */,
 				EEBBD47D271863FB00519EBC /* SportPickerSource.swift */,
 			);
 			path = PickerSource;
@@ -942,11 +1065,11 @@
 		EEE1F46226F23A2800754DDD /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				EEA5CEFF297E7D36000E6BD0 /* SectionCell */,
 				EE6E43122736C58B00A48B84 /* ImagePicker */,
 				EE9B6FAE27352E5900A12AF7 /* CustomSegmentControl */,
 				EE6B7F6726FF7B4700E44B7C /* VIewController */,
 				EEB8F1EB26FE05D0005ABC27 /* Buttons */,
-				EEE1F48726F3C36D00754DDD /* SectionCell */,
 				EEE1F46326F23A3200754DDD /* Fields */,
 				EE1202BA2757E6B60068F0F3 /* NavigationController.swift */,
 			);
@@ -1000,15 +1123,6 @@
 				EEE1F48826F3C37800754DDD /* EventCell */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		EEE1F48726F3C36D00754DDD /* SectionCell */ = {
-			isa = PBXGroup;
-			children = (
-				EEE1F47F26F3C0C400754DDD /* SectionCell.swift */,
-				EEE1F47E26F3C0C400754DDD /* SectionCell.xib */,
-			);
-			path = SectionCell;
 			sourceTree = "<group>";
 		};
 		EEE1F48826F3C37800754DDD /* EventCell */ = {
@@ -1084,22 +1198,28 @@
 			files = (
 				EE21C39A2747E27A00F484F4 /* NotificationCell.xib in Resources */,
 				EEDC9AB126FDEA7D00627C73 /* EventParticipantCell.xib in Resources */,
-				EEE1F48226F3C0C400754DDD /* SectionCell.xib in Resources */,
 				B8B7DAEE255857AC00B33BDB /* Home.storyboard in Resources */,
 				EE5836E926ECEC6A00ED203D /* OnBoardingCell.xib in Resources */,
 				EE603BBF26F6356C008D2E41 /* EventOrganizerCell.xib in Resources */,
+				EEAFD6D32983BB1A006D95CE /* GuestCell.xib in Resources */,
 				EEAE66082725A50F0048F559 /* AnonymouslyCell.xib in Resources */,
 				B8CE19CD253DBAE7002AC5A5 /* LaunchScreen.storyboard in Resources */,
 				EE6E431F273D2CFC00A48B84 /* OtherProfile.storyboard in Resources */,
+				EEA5CF0D297FFFB2000E6BD0 /* TeamCell.xib in Resources */,
 				EE9B6FB5273581E000A12AF7 /* RelatedEventCell.xib in Resources */,
-				EE603BD726F6437F008D2E41 /* EventInformationsCell.xib in Resources */,
+				EE603BD726F6437F008D2E41 /* EventDateAndHourCell.xib in Resources */,
 				EEAE66032725A4470048F559 /* SignInCell.xib in Resources */,
 				B84ECBE72541ABD0007F8E9E /* PGCPickerViewController.storyboard in Resources */,
+				EEAFD6D42983BB1A006D95CE /* AddGuestCell.xib in Resources */,
+				EEA5CF1129800166000E6BD0 /* TeamMemberCell.xib in Resources */,
 				EE6E43152736C5A100A48B84 /* ImagePicker.xib in Resources */,
 				EE66EE7C2843AE0200F24E1B /* MTextView.xib in Resources */,
+				EEA5CEF8297D4EAB000E6BD0 /* EventTitleCell.xib in Resources */,
 				B87B2649254232B5007D4A4D /* AnimatedLaunchScreen.storyboard in Resources */,
+				EEAFD6D02983BB1A006D95CE /* GuestSectionCell.xib in Resources */,
 				EEE1F47B26F3BEF200754DDD /* Event.storyboard in Resources */,
 				EEE1F46726F23A4900754DDD /* MTextField.xib in Resources */,
+				EEA5CEFE297D51A0000E6BD0 /* Lato-Medium.ttf in Resources */,
 				EEE1F48526F3C0C400754DDD /* EventCell.xib in Resources */,
 				EE1202AC2757C58B0068F0F3 /* EventPlaceWithPicturesCell.xib in Resources */,
 				EEBBD479271863A500519EBC /* MDatePickerField.xib in Resources */,
@@ -1108,9 +1228,11 @@
 				B8FDE3B7253F79B800BD29B2 /* Lato-Semibold.ttf in Resources */,
 				EE8951E3274112440081AE09 /* SettingCell.xib in Resources */,
 				B8FDE3B9253F79B800BD29B2 /* Lato-Light.ttf in Resources */,
+				EEA5CF1829827A6F000E6BD0 /* TeamNameCell.xib in Resources */,
 				EEDC9A9926FDC0C100627C73 /* EventPlaceCell.xib in Resources */,
 				EE1202B02757C5930068F0F3 /* PhotoCell.xib in Resources */,
 				B8FDE3AC253F780F00BD29B2 /* Localizable.strings in Resources */,
+				EEAFD6D92983CF54006D95CE /* EventMyGuestsCell.xib in Resources */,
 				B8CE19CA253DBAE7002AC5A5 /* Assets.xcassets in Resources */,
 				EE5836F926ECF97300ED203D /* SportCell.xib in Resources */,
 				EEE1F47026F23DF300754DDD /* CityCell.xib in Resources */,
@@ -1119,8 +1241,11 @@
 				EE5A0B14271B27B2009A951B /* MSwitchField.xib in Resources */,
 				B8FDE3B8253F79B800BD29B2 /* Lato-Regular.ttf in Resources */,
 				EED3CF0027245FC40072ED2B /* MyProfile.storyboard in Resources */,
+				EEA5CF07297FFC7B000E6BD0 /* EventTeamsCell.xib in Resources */,
 				B8FDE3B6253F79B800BD29B2 /* Lato-Bold.ttf in Resources */,
+				EEA5CEFC297D4EC0000E6BD0 /* EventDescriptionCell.xib in Resources */,
 				EE58372126ECFF2E00ED203D /* GoogleService-Info.plist in Resources */,
+				EEA5CF03297E7D4E000E6BD0 /* SectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1214,8 +1339,8 @@
 				EE5836E326ECE55700ED203D /* OnBoadingVC.swift in Sources */,
 				EE5A0B1B271B638E009A951B /* ParticipantVC.swift in Sources */,
 				EEBBD46E27184DF600519EBC /* OrganizeEventVC.swift in Sources */,
-				EEBBD47E271863FB00519EBC /* NbPlayersPickerSource.swift in Sources */,
 				EEE1F48426F3C0C400754DDD /* EventCell.swift in Sources */,
+				EEA5CEF7297D4EAB000E6BD0 /* EventTitleCell.swift in Sources */,
 				EE27198626EBD7F500A3F281 /* Guest.swift in Sources */,
 				B87B2658254236AA007D4A4D /* MStoryboard.swift in Sources */,
 				EED3CF07272460CC0072ED2B /* MSignUpSection.swift in Sources */,
@@ -1241,6 +1366,7 @@
 				EE6E43162736C5A100A48B84 /* ImagePicker.swift in Sources */,
 				EE8951E2274112440081AE09 /* SettingCell.swift in Sources */,
 				EE9B6FB027352E6B00A12AF7 /* CustomSegmentControl.swift in Sources */,
+				EEA5CEF2297D4787000E6BD0 /* Team.swift in Sources */,
 				EE8951DE2741122F0081AE09 /* MProfileSection.swift in Sources */,
 				B84ECBF52541AFD8007F8E9E /* Sport.swift in Sources */,
 				EE6E4324273D2D8000A48B84 /* MOtherProfileSection.swift in Sources */,
@@ -1261,7 +1387,9 @@
 				EEABEE282725B8C800F3E64C /* String+M.swift in Sources */,
 				EEDC9AB026FDEA7D00627C73 /* EventParticipantCell.swift in Sources */,
 				EEDC9A9826FDC0C100627C73 /* EventPlaceCell.swift in Sources */,
+				EEA5CF0C297FFFB2000E6BD0 /* TeamCell.swift in Sources */,
 				EE27193D26EBD2E000A3F281 /* User.swift in Sources */,
+				EEA5CF1029800166000E6BD0 /* TeamMemberCell.swift in Sources */,
 				B84ECBE02541ABB6007F8E9E /* PGCPickerUtils.swift in Sources */,
 				EEF08FE026ED274400B335FA /* ServiceVersion.swift in Sources */,
 				656272A52586535100CDA0F9 /* HelperNotification.swift in Sources */,
@@ -1270,6 +1398,7 @@
 				EE603BAD26F6337B008D2E41 /* EventDetailsAsParticipantVC.swift in Sources */,
 				EE27196B26EBD50600A3F281 /* FavoriteSport.swift in Sources */,
 				EE19E11E2843D0710099E539 /* UITextView+M.swift in Sources */,
+				EEAFD6D22983BB1A006D95CE /* GuestSectionCell.swift in Sources */,
 				EED3CF03272460620072ED2B /* SignUpVC.swift in Sources */,
 				B87B264C254232C6007D4A4D /* AnimatedLaunchScreenVC.swift in Sources */,
 				B8F71AD1254B985B00D686B4 /* UIView+M.swift in Sources */,
@@ -1285,11 +1414,14 @@
 				EE9B6FB4273581E000A12AF7 /* RelatedEventCell.swift in Sources */,
 				B82FE3BF255DFB4800B52099 /* ServiceGooglePlace.swift in Sources */,
 				EE27193926EBD21100A3F281 /* Notification.swift in Sources */,
-				EE603BD626F6437F008D2E41 /* EventInformationsCell.swift in Sources */,
+				EE603BD626F6437F008D2E41 /* EventDateAndHourCell.swift in Sources */,
 				EEAE66042725A4470048F559 /* SignInCell.swift in Sources */,
 				EE8951E72741211F0081AE09 /* HelperTracking.swift in Sources */,
+				EEA5CF02297E7D4E000E6BD0 /* SectionCell.swift in Sources */,
 				6562728C2581367300CDA0F9 /* MSettingSection.swift in Sources */,
+				EEAFD6D62983BB35006D95CE /* AddGuestCell.swift in Sources */,
 				B836B63A254B312200AAF48A /* City.swift in Sources */,
+				EEA5CF1729827A6F000E6BD0 /* TeamNameCell.swift in Sources */,
 				EE6E431C273C185400A48B84 /* InformationsCell.swift in Sources */,
 				B8CE19C1253DBAE5002AC5A5 /* AppDelegate.swift in Sources */,
 				B811E8A7254F6835008DB735 /* Timestamp+M.swift in Sources */,
@@ -1300,9 +1432,11 @@
 				6562729A2584B01D00CDA0F9 /* ServiceNotification.swift in Sources */,
 				EEABEE2B2725BA9F00F3E64C /* PersonNameComponents+M.swift in Sources */,
 				B87B2655254234B9007D4A4D /* Version.swift in Sources */,
+				EEAFD6DA2983CF54006D95CE /* EventMyGuestsCell.swift in Sources */,
 				EE8951E527411D8B0081AE09 /* UIDevice+M.swift in Sources */,
 				EEE1F46F26F23DF300754DDD /* CityCell.swift in Sources */,
 				B836B61B2548D94100AAF48A /* ManagerUser.swift in Sources */,
+				EEA5CF13298003E9000E6BD0 /* TeamMember.swift in Sources */,
 				EEBBD47A271863A500519EBC /* MDatePickerField.swift in Sources */,
 				B84ECBF12541AEB1007F8E9E /* ServiceSport.swift in Sources */,
 				EE8951DB274111570081AE09 /* SettingsVC.swift in Sources */,
@@ -1310,10 +1444,12 @@
 				EE1202BB2757E6B60068F0F3 /* NavigationController.swift in Sources */,
 				EE27198226EBD77000A3F281 /* ParticipationStatus.swift in Sources */,
 				EE5836DA26ECE35100ED203D /* HelperRouting.swift in Sources */,
-				EEE1F48326F3C0C400754DDD /* SectionCell.swift in Sources */,
+				EEA5CF08297FFC7B000E6BD0 /* EventTeamsCell.swift in Sources */,
 				EEB8F1EA26FE01AC005ABC27 /* UIColor+M.swift in Sources */,
+				EEAFD6CF2983BB1A006D95CE /* GuestCell.swift in Sources */,
 				EE5A0B1D271B6837009A951B /* GuestVC.swift in Sources */,
 				EEB8F1ED26FE05E8005ABC27 /* MButton.swift in Sources */,
+				EEA5CEFB297D4EC0000E6BD0 /* EventDescriptionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1465,7 +1601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Riada/Riada.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1475,10 +1611,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.riada.app.riada";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1500,7 +1636,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.riada.app.riada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.riada.app.riada";

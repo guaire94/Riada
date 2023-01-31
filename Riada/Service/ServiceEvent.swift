@@ -30,10 +30,18 @@ protocol ServiceEventGuestDelegate {
     func dataRemoved(guest: Guest)
 }
 
+protocol ServiceEventTeamDelegate {
+    func dataAdded(team: Team)
+    func dataModified(team: Team)
+    func dataRemoved(team: Team)
+}
+
+
 class ServiceEvent {
         
     // MARK: - Properties
     private static var nextEventsListener: ListenerRegistration?
+    private static var eventTeamsListener: ListenerRegistration?
     private static var eventParticipantsListener: ListenerRegistration?
     private static var eventGuestsListener: ListenerRegistration?
 
@@ -94,6 +102,25 @@ class ServiceEvent {
                 return
             }
             completion(organizer)
+        }
+    }
+
+    static func getEventTeam(eventId: String, delegate: ServiceEventTeamDelegate) {
+        eventTeamsListener?.remove()
+        eventTeamsListener = FFirestoreReference.eventTeams(eventId).addSnapshotListener { query, error in
+            guard let snapshot = query else { return }
+            snapshot.documentChanges.forEach { diff in
+                if let team = try? diff.document.data(as: Team.self) {
+                    switch diff.type {
+                    case .added:
+                        delegate.dataAdded(team: team)
+                    case .modified:
+                        delegate.dataModified(team: team)
+                    case .removed:
+                        delegate.dataRemoved(team: team)
+                    }
+                }
+            }
         }
     }
     
@@ -178,17 +205,6 @@ class ServiceEvent {
                 documents.forEach { $0.reference.setData(relatedEventData, merge: true) }
             }
         }
-    }
-    
-    static func increaseNbAcceptedPlayer(eventId: String) {
-        FFirestoreReference.events.document(eventId).updateData([
-            "nbAcceptedPlayer": FieldValue.increment(Int64(1))
-        ])
-    }
-    static func decreaseNbAcceptedPlayer(eventId: String) {
-        FFirestoreReference.events.document(eventId).updateData([
-            "nbAcceptedPlayer": FieldValue.increment(Int64(-1))
-        ])
     }
 
     static func participate(event: Event) {

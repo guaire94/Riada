@@ -8,72 +8,84 @@
 import UIKit
 
 enum MEventSectionAsParticipant: Int {
-    case organizer
-    case informations
+    case title
+    case desc
+    case dateAndHour
     case place
     case placeWithPictures
-    case participants
-    case guests
+    case organizer
+    case team
+    case myGuests
 
     var cellIdentifier: String {
         switch self {
-        case .organizer:
-            return EventOrganizerCell.Constants.identifier
-        case .informations:
-            return EventInformationsCell.Constants.identifier
+        case .title:
+            return EventTitleCell.Constants.identifier
+        case .desc:
+            return EventDescriptionCell.Constants.identifier
+        case .dateAndHour:
+            return EventDateAndHourCell.Constants.identifier
         case .place:
             return EventPlaceCell.Constants.identifier
         case .placeWithPictures:
             return EventPlaceWithPicturesCell.Constants.identifier
-        case .participants, .guests:
-            return EventParticipantCell.Constants.identifier
+        case .organizer:
+            return EventOrganizerCell.Constants.identifier
+        case .team:
+            return EventTeamsCell.Constants.identifier
+        case .myGuests:
+            return EventMyGuestsCell.Constants.identifier
         }
     }
 
     var cellNib: UINib? {
         switch self {
-        case .organizer:
-            return EventOrganizerCell.Constants.nib
-        case .informations:
-            return EventInformationsCell.Constants.nib
+        case .title:
+            return EventTitleCell.Constants.nib
+        case .desc:
+            return EventDescriptionCell.Constants.nib
+        case .dateAndHour:
+            return EventDateAndHourCell.Constants.nib
         case .place:
             return EventPlaceCell.Constants.nib
         case .placeWithPictures:
             return EventPlaceWithPicturesCell.Constants.nib
-        case .participants, .guests:
-            return EventParticipantCell.Constants.nib
+        case .organizer:
+            return EventOrganizerCell.Constants.nib
+        case .team:
+            return EventTeamsCell.Constants.nib
+        case .myGuests:
+            return EventMyGuestsCell.Constants.nib
         }
     }
         
     var estimatedCellHeight: CGFloat {
         switch self {
-        case .organizer:
-            return EventOrganizerCell.Constants.height
-        case .informations:
-            return EventInformationsCell.Constants.height
+        case .title:
+            return EventTitleCell.Constants.height
+        case .desc:
+            return EventDescriptionCell.Constants.height
+        case .dateAndHour:
+            return EventDateAndHourCell.Constants.height
         case .place:
             return EventPlaceCell.Constants.height
         case .placeWithPictures:
             return EventPlaceWithPicturesCell.Constants.height
-        case .participants, .guests:
-            return EventParticipantCell.Constants.height
-        }
-    }
-    
-    var desc: String? {
-        switch self {
         case .organizer:
-            return L10N.event.details.organizer
-        case .informations:
-            return L10N.event.details.informations
-        case .place, .placeWithPictures:
-            return L10N.event.details.place
-        case .participants:
-            return L10N.event.details.participants
-        case .guests:
-            return nil
+            return EventOrganizerCell.Constants.height
+        case .team:
+            return EventTeamsCell.Constants.height
+        case .myGuests:
+            return EventMyGuestsCell.Constants.height
         }
     }
     
-    static let all: [MEventSectionAsParticipant] = [.organizer, .informations, .place, .placeWithPictures, .guests]
+    static let all: [MEventSectionAsParticipant] = [.title,
+                                                    .desc,
+                                                    .dateAndHour,
+                                                    .place,
+                                                    .placeWithPictures,
+                                                    .organizer,
+                                                    .team,
+                                                    .myGuests]
 }

@@ -16,7 +16,6 @@ class EventPlaceCell: UITableViewCell {
         static let height: CGFloat = 107
         static let identifier: String = "EventPlaceCell"
         static let nib = UINib(nibName: Constants.identifier, bundle: nil)
-        fileprivate static let contentCornerRadius: CGFloat = 10
     }
     
     // MARK: - IBOutlet
@@ -33,16 +32,9 @@ class EventPlaceCell: UITableViewCell {
     }
     
     func setUp(name: String, address: String) {
-        setUpUI()
-        
+        selectionStyle = .none
+
         nameLabel.text = name
         addressLabel.text = address
-    }
-
-    // MARK: - Private
-    private func setUpUI() {
-        selectionStyle = .none
-        content.layer.cornerRadius = Constants.contentCornerRadius
-        content.clipsToBounds = true
     }
 }

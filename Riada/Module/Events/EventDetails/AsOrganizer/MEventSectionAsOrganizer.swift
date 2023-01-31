@@ -8,7 +8,7 @@
 import UIKit
 
 enum MEventSectionAsOrganizer: Int {
-    case informations
+    case dateAndHour
     case place
     case placeWithPictures
     case participants
@@ -16,8 +16,8 @@ enum MEventSectionAsOrganizer: Int {
 
     var cellIdentifier: String {
         switch self {
-        case .informations:
-            return EventInformationsCell.Constants.identifier
+        case .dateAndHour:
+            return EventDateAndHourCell.Constants.identifier
         case .place:
             return EventPlaceCell.Constants.identifier
         case .placeWithPictures:
@@ -29,8 +29,8 @@ enum MEventSectionAsOrganizer: Int {
 
     var cellNib: UINib? {
         switch self {
-        case .informations:
-            return EventInformationsCell.Constants.nib
+        case .dateAndHour:
+            return EventDateAndHourCell.Constants.nib
         case .place:
             return EventPlaceCell.Constants.nib
         case .placeWithPictures:
@@ -42,8 +42,8 @@ enum MEventSectionAsOrganizer: Int {
         
     var estimatedCellHeight: CGFloat {
         switch self {
-        case .informations:
-            return EventInformationsCell.Constants.height
+        case .dateAndHour:
+            return EventDateAndHourCell.Constants.height
         case .place:
             return EventPlaceCell.Constants.height
         case .placeWithPictures:
@@ -53,20 +53,5 @@ enum MEventSectionAsOrganizer: Int {
         }
     }
     
-    var desc: String? {
-        switch self {
-        case .informations:
-            return L10N.event.details.informations
-        case .place:
-            return L10N.event.details.place
-        case .placeWithPictures:
-            return L10N.event.details.place
-        case .participants:
-            return L10N.event.details.participants
-        case .guests:
-            return nil
-        }
-    }
-    
-    static let all: [MEventSectionAsParticipant] = [.informations, .place, .placeWithPictures, .guests]
+    static let all: [MEventSectionAsOrganizer] = [.dateAndHour, .place, .placeWithPictures, .guests]
 }

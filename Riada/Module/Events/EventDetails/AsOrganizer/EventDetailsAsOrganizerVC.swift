@@ -35,17 +35,16 @@ class EventDetailsAsOrganizerVC: UIViewController {
     @IBOutlet weak private var actionBar: UIView!
     @IBOutlet weak private var addGuestButton: MButton!
     @IBOutlet weak private var editButton: MButton!
-    var participantSectionCell: SectionCell?
     
     //MARK: - Properties
-    private var sections: [MEventSectionAsOrganizer] = [.informations, .place, .participants, .guests]
+    private var sections: [MEventSectionAsOrganizer] = [.dateAndHour, .place, .participants, .guests]
     var event: Event?
     var photoUrls: [URL] = [] {
         didSet {
             if photoUrls.isEmpty {
-                self.sections = [.informations, .place, .participants, .guests]
+                self.sections = [.dateAndHour, .place, .participants, .guests]
             } else {
-                self.sections = [.informations, .placeWithPictures, .participants, .guests]
+                self.sections = [.dateAndHour, .placeWithPictures, .participants, .guests]
             }
             
             guard let section = sections.firstIndex(where: { $0 == .place || $0 == .placeWithPictures }) else { return }
@@ -139,9 +138,7 @@ class EventDetailsAsOrganizerVC: UIViewController {
     
     private func setUpTableView() {
         eventTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constants.bottomContentInset, right: 0)
-        eventTableView.register(SectionCell.Constants.nib,
-                                forHeaderFooterViewReuseIdentifier: SectionCell.Constants.identifier)
-        
+
         for section in MEventSectionAsOrganizer.all {
             eventTableView.register(section.cellNib, forCellReuseIdentifier: section.cellIdentifier)
         }
@@ -281,31 +278,7 @@ extension EventDetailsAsOrganizerVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         sections.count
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        sections[section].desc != nil ? SectionCell.Constants.height : .zero
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionDesc = sections[section].desc,
-              let event = self.event,
-              let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionCell.Constants.identifier) as? SectionCell else { return nil
-              }
-        let eventSection = sections[section]
-        
-        switch eventSection {
-        case .informations, .place, .placeWithPictures:
-            header.setUp(desc: sectionDesc)
-        case .participants:
-            let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
-            header.setUp(desc: desc)
-            participantSectionCell = header
-        default:
-            return nil
-        }
-        return header
-    }
-    
+ 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         sections[indexPath.section].estimatedCellHeight
     }
@@ -316,7 +289,7 @@ extension EventDetailsAsOrganizerVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sections[section] {
-        case .informations, .place, .placeWithPictures:
+        case .dateAndHour, .place, .placeWithPictures:
             return 1
         case .participants:
             return participants.count
@@ -328,12 +301,12 @@ extension EventDetailsAsOrganizerVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         switch section {
-        case .informations:
+        case .dateAndHour:
             guard let event = event,
-                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventInformationsCell else {
+                  let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath) as? EventDateAndHourCell else {
                       return UITableViewCell()
                   }
-            cell.setUp(date: event.date, desc: event.description)
+            cell.setUp(date: event.date)
             return cell
         case .place:
             guard let event = event,
@@ -372,7 +345,7 @@ extension EventDetailsAsOrganizerVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = sections[indexPath.section]
         switch section {
-        case .informations:
+        case .dateAndHour:
             addEventToCalendar()
         case .place, .placeWithPictures:
             goTo()
@@ -441,18 +414,7 @@ extension EventDetailsAsOrganizerVC: ParticipantVCDelegate {
             self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
         }
     }
-    
-    func didUpdateNbAcceptedPlayerFromParticipant(nbAcceptedPlayer: Int) {
-        event?.nbAcceptedPlayer = nbAcceptedPlayer
-        guard let event = self.event,
-              let section = sections.first(where: { $0 == .participants }),
-              let sectionDesc = section.desc else {
-                  return
-              }
-        let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
-        participantSectionCell?.setUp(desc: desc)
-    }
-    
+
     func didAcceptParticipation(participant: Participant) {
         guard let event = self.event else { return }
         let filteredParticipants = participants.filter({ $0.userId != participant.userId && $0.participationStatus == .accepted })
@@ -468,19 +430,6 @@ extension EventDetailsAsOrganizerVC: AddGuestVCDelegate {
         let filteredParticipants = participants.filter({ $0.userId != guest.associatedUserId && $0.participationStatus == .accepted })
         ServiceNotification.acceptNewGuest(event: event, participants: filteredParticipants, joiner: guest)
     }
-    
-    func didUpdateNbAcceptedPlayerFromAddGuest(nbAcceptedPlayer: Int) {
-        event?.nbAcceptedPlayer = nbAcceptedPlayer
-        
-        guard let event = self.event,
-              let section = sections.first(where: { $0 == .participants }),
-              let sectionDesc = section.desc else {
-                  return
-              }
-        
-        let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
-        participantSectionCell?.setUp(desc: desc)
-    }
 }
 
 // MARK: - GuestVCDelegate
@@ -490,17 +439,6 @@ extension EventDetailsAsOrganizerVC: GuestVCDelegate {
         ServiceUser.getOtherProfile(userId: userId) { user in
             self.performSegue(withIdentifier: OtherProfileVC.Constants.identifier, sender: user)
         }
-    }
-    
-    func didUpdateNbAcceptedPlayerFromGuest(nbAcceptedPlayer: Int) {
-        event?.nbAcceptedPlayer = nbAcceptedPlayer
-        guard let event = self.event,
-              let section = sections.first(where: { $0 == .guests }),
-              let sectionDesc = section.desc else {
-                  return
-              }
-        let desc = String(format: sectionDesc, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
-        participantSectionCell?.setUp(desc: desc)
     }
     
     func didAcceptGuest(guest: Guest) {

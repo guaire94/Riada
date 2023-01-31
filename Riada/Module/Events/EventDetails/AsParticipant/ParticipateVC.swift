@@ -57,7 +57,7 @@ private extension ParticipateVC {
 
     func setUpButtons() {
         partcipateButtonIsEnabled = false
-        participateButton.setTitle(L10N.event.details.buttons.participate, for: .normal)
+        participateButton.setTitle(L10N.event.details.buttons.join, for: .normal)
     }
 }
 
@@ -101,6 +101,10 @@ private extension ParticipateVC {
 
         HelperTracking.track(item: .eventDetailsParticipate)
         ServiceEvent.participate(event: event)
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func closeToggle() {
         dismiss(animated: true, completion: nil)
     }
 }

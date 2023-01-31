@@ -28,7 +28,6 @@ class EditEventVC: UIViewController {
     @IBOutlet weak private var descTextField: MTextView!
     @IBOutlet weak private var dateAndHourPickerField: MDatePickerField!
     @IBOutlet weak private var addressPickerField: MPickerField!
-    @IBOutlet weak private var nbPlayerPickerField: MPickerField!
     @IBOutlet weak private var saveEventButton: UIButton!
     @IBOutlet weak private var cancelEventButton: UIButton!
     @IBOutlet weak private var isParticipateSwitchField: MSwitchField!
@@ -36,7 +35,6 @@ class EditEventVC: UIViewController {
 
     // MARK: - Variables
     private var sportPickerSource = SportPickerSource()
-    private var nbPlayersPickerSource = NbPlayersPickerSource()
     private var currentTextField: UITextField?
     private var selectedPlace: GooglePlace?
     private var selectedPlaceAddress: String?
@@ -45,21 +43,6 @@ class EditEventVC: UIViewController {
     var event: Event?
     var isOrganiserParticipate: Bool?
     weak var delegate: EditEventVCDelegate?
-
-    var nbAcceptedPlayer: Int {
-        guard let nbAcceptedPlayer = event?.nbAcceptedPlayer,
-              let isOrganiserParticipate = isOrganiserParticipate else {
-            return 0
-        }
-
-        var organizerCount = 0
-        if isOrganiserParticipate && !isParticipateSwitchField.isOn {
-            organizerCount -= 1
-        } else if !isOrganiserParticipate && isParticipateSwitchField.isOn {
-            organizerCount += 1
-        }
-        return nbAcceptedPlayer + organizerCount
-    }
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -88,7 +71,6 @@ class EditEventVC: UIViewController {
         descTextField.delegate = self
         descTextField.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
         addressPickerField.delegate = self
-        nbPlayerPickerField.delegate = self
         setUpTranslation()
         setUpField()
         setUpEvent()
@@ -102,7 +84,6 @@ class EditEventVC: UIViewController {
         descTextField.labelText = L10N.event.organize.form.desc
         dateAndHourPickerField.labelText = L10N.event.organize.form.dateAndHour
         addressPickerField.labelText = L10N.event.organize.form.address
-        nbPlayerPickerField.labelText = L10N.event.organize.form.nbPlayers
         addressPickerField.labelText = L10N.event.organize.form.address
         isParticipateSwitchField.labelText = L10N.event.organize.form.isParticipate
         isPrivateSwitchField.labelText = L10N.event.organize.form.isPrivate
@@ -135,7 +116,6 @@ class EditEventVC: UIViewController {
         descTextField.text = event.description
         dateAndHourPickerField.date = event.date.dateValue()
         addressPickerField.text = event.placeName
-        didSelectNbTeams(index: event.nbPlayer-2)
         isParticipateSwitchField.isOn = isOrganiserParticipate
         isPrivateSwitchField.isOn = event.isPrivate
     }
@@ -144,12 +124,6 @@ class EditEventVC: UIViewController {
         sportPickerSource.currentIndexSelected = index
         guard let selectedSport = sportPickerSource.selectedSport else { return }
         sportPickerField.text = selectedSport.localizedName
-    }
-    
-    private func didSelectNbTeams(index: Int) {
-        nbPlayersPickerSource.currentIndexSelected = index
-        guard let selectedNbTeams = nbPlayersPickerSource.selectedNbTeams else { return }
-        nbPlayerPickerField.text = "\(selectedNbTeams)"
     }
 }
 
@@ -173,7 +147,6 @@ extension EditEventVC {
               let place = selectedPlace,
               let placeAddress = selectedPlaceAddress,
               let placeLocation = selectedPlaceLocation,
-              let nbPlayers = nbPlayersPickerSource.selectedNbTeams,
               let createdDate = event?.createdDate,
               let isOrganiserParticipate = isOrganiserParticipate else {
                   showError(title: L10N.event.edit.title, message: L10N.event.edit.form.error.unfill)
@@ -182,8 +155,6 @@ extension EditEventVC {
         let event = Event(id: eventId,
                           title: title,
                           description: desc,
-                          nbPlayer: nbPlayers,
-                          nbAcceptedPlayer: nbAcceptedPlayer,
                           date: dateAndHourPickerField.date.timestamp,
                           placeId: place.id,
                           placeName: place.name,
@@ -241,9 +212,6 @@ extension EditEventVC: MPickerFieldDelegate {
         switch sender {
         case addressPickerField:
             performSegue(withIdentifier: SearchLocationVC.Constants.identifier, sender: self)
-        case nbPlayerPickerField:
-            let controller = PGCPickerViewController.with(pickerOption: nbPlayersPickerSource, selectionHandler: didSelectNbTeams)
-            present(controller, animated: false)
         default:
             break
         }

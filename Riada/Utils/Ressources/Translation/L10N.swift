@@ -39,21 +39,23 @@ struct L10N {
     }
     
     struct event {
-        static let nbPlayer: String = NSLocalizedString("EVENT_NB_PLAYER", comment: "")
-        static let nbAcceptedPlayer: String = NSLocalizedString("EVENT_NB_ACCEPTED_PLAYER", comment: "")
         static let emptyPlaceHolder: String = NSLocalizedString("EVENT_EMPTY_PLACEHOLDER", comment: "")
         struct details {
-            static let organizer: String = NSLocalizedString("EVENT_DETAILS_ORGANIZER", comment: "")
-            static let informations: String = NSLocalizedString("EVENT_DETAILS_INFORMATIONS", comment: "")
-            static let place: String = NSLocalizedString("EVENT_DETAILS_PLACE", comment: "")
-            static let photos: String = NSLocalizedString("EVENT_DETAILS_PHOTOS", comment: "")
+            static let about: String = NSLocalizedString("EVENT_DETAILS_ABOUT", comment: "")
             static let currentUserParticipate: String = NSLocalizedString("EVENT_DETAILS_CURRENT_USER_PARTICIPATE", comment: "")
             static let guestBy: String = NSLocalizedString("EVENT_DETAILS_GUEST_BY", comment: "")
-            static let participants: String = NSLocalizedString("EVENT_DETAILS_PARTICIPANTS", comment: "")
+            static let nbOrganized: String = NSLocalizedString("EVENT_DETAILS_NB_ORGANIZED", comment: "")
+            static let nbPlayed: String = NSLocalizedString("EVENT_DETAILS_NB_PLAYED", comment: "")
+
+            struct myGuests {
+                static let title: String = NSLocalizedString("EVENT_MY_GUESTS_TITLE", comment: "")
+                static let desc: String = NSLocalizedString("EVENT_MY_GUESTS_DESCRIPTION", comment: "")
+            }
+
             struct buttons {
-                static let participate: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_PARTICIPATE", comment: "")
+                static let join: String = NSLocalizedString("EVENT_PARTICIPANT_JOIN", comment: "")
                 static let addGuest: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_ADD_GUEST", comment: "")
-                static let decline: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_DECLINE", comment: "")
+                static let unJoin: String = NSLocalizedString("EVENT_PARTICIPANT_UNJOIN", comment: "")
                 static let edit: String = NSLocalizedString("EVENT_DETAILS_BUTTONS_EDIT", comment: "")
             }
             

@@ -9,7 +9,6 @@ import UIKit
 
 protocol AddGuestVCDelegate: AnyObject {
     func didAddGuest(guest: Guest)
-    func didUpdateNbAcceptedPlayerFromAddGuest(nbAcceptedPlayer: Int)
 }
 
 class AddGuestVC: MKeyboardVC {
@@ -110,11 +109,6 @@ private extension AddGuestVC {
         
         HelperTracking.track(item: .guestAddNickname)
         ServiceEvent.addGuest(eventId: eventId, nickName: guestNickName, asOrganizer: asOrganizer)
-        if asOrganizer {
-            ServiceEvent.increaseNbAcceptedPlayer(eventId: eventId)
-            let nbAcceptedPlayer = event.nbAcceptedPlayer+1
-            delegate?.didUpdateNbAcceptedPlayerFromAddGuest(nbAcceptedPlayer: nbAcceptedPlayer)
-        }
         
         let guest = Guest(id: "",
                           associatedUserId: userId,
@@ -125,6 +119,10 @@ private extension AddGuestVC {
         
         delegate?.didAddGuest(guest: guest)
         
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func closeToggle() {
         dismiss(animated: true, completion: nil)
     }
 }

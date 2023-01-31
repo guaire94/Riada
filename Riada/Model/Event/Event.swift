@@ -12,10 +12,9 @@ import EventKitUI
 
 struct Event: Identifiable, Codable {
     @DocumentID var id: String?
+    var cover: String?
     var title: String
     var description: String
-    var nbPlayer: Int
-    var nbAcceptedPlayer: Int
     var date: Timestamp
     var placeId: String
     var placeName: String
@@ -25,6 +24,8 @@ struct Event: Identifiable, Codable {
     var sportEmoticon: String
     var sportName: String
     var isPrivate: Bool
+    var price: String?
+    var priceCurrency: String?
     var status: String
     var createdDate: Timestamp
 
@@ -64,7 +65,6 @@ struct Event: Identifiable, Codable {
         let data: [String: Any] = [
            "eventId": eventId,
            "title": title,
-           "nbPlayer": nbPlayer,
            "date": date,
            "sportName": sportName,
            "placeAddress": placeAddress,
@@ -79,8 +79,6 @@ struct Event: Identifiable, Codable {
         let data: [String: Any] = [
            "title": title,
            "description": description,
-           "nbPlayer": nbPlayer,
-           "nbAcceptedPlayer": nbAcceptedPlayer,
            "date": date,
            "placeId": placeId,
            "placeName": placeName,
@@ -101,8 +99,6 @@ struct Event: Identifiable, Codable {
         let data: [String: Any] = [
            "title": title,
            "description": description,
-           "nbPlayer": nbPlayer,
-           "nbAcceptedPlayer": nbAcceptedPlayer,
            "date": date,
            "placeId": placeId,
            "placeName": placeName,

@@ -26,7 +26,6 @@ class EventCell: UITableViewCell {
     @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var organizerAvatar: UIImageView!
     @IBOutlet weak private var organizerNameLabel: UILabel!
-    @IBOutlet weak private var numberOfPlayerLabel: UILabel!
 
     // MARK: - Properties
     var event: Event? {
@@ -55,7 +54,6 @@ class EventCell: UITableViewCell {
         organizerAvatar.sd_cancelCurrentImageLoad()
         organizerAvatar.image = nil
         organizerNameLabel.text = ""
-        numberOfPlayerLabel.text = ""
     }
     
     func setUp(event: Event) {
@@ -77,7 +75,6 @@ class EventCell: UITableViewCell {
         titleLabel.text = event.title
         placeAddressLabel.text = event.placeAddress
         timeLabel.text = event.date.hour
-        numberOfPlayerLabel.text = String(format: L10N.event.nbAcceptedPlayer, arguments: [event.nbAcceptedPlayer, event.nbPlayer])
         syncOrganizer()
    }
     

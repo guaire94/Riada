@@ -52,7 +52,7 @@ class SignUpVC: UIViewController {
     private func setUpTableView() {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constants.bottomContentInset, right: 0)
         tableView.register(SectionCell.Constants.nib,
-                                forHeaderFooterViewReuseIdentifier: SectionCell.Constants.identifier)
+                           forHeaderFooterViewReuseIdentifier: SectionCell.Constants.identifier)
         
         for section in sections {
             tableView.register(section.cellNib, forCellReuseIdentifier: section.cellIdentifier)

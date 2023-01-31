@@ -9,20 +9,20 @@
 import UIKit
 import Firebase
 
-class EventInformationsCell: UITableViewCell {
+class EventDateAndHourCell: UITableViewCell {
 
     //MARK: - Constant
     enum Constants {
-        static let height: CGFloat = 120
-        static let identifier: String = "EventInformationsCell"
+        static let height: CGFloat = 84
+        static let identifier: String = "EventDateAndHourCell"
         static let nib = UINib(nibName: Constants.identifier, bundle: nil)
-        fileprivate static let contentCornerRadius: CGFloat = 10
+        fileprivate static let contentCornerRadius: CGFloat = 16
     }
     
     // MARK: - IBOutlet
     @IBOutlet weak private var content: UIView!
     @IBOutlet weak private var dateLabel: UILabel!
-    @IBOutlet weak private var descTextView: UITextView!
+    @IBOutlet weak private var hourLabel: UILabel!
 
     // MARK: - LifeCycle
     override func prepareForReuse() {
@@ -30,10 +30,10 @@ class EventInformationsCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func setUp(date: Timestamp, desc: String) {
+    func setUp(date: Timestamp) {
         setUpUI()
-        dateLabel.text = date.long + "-" + date.hour
-        descTextView.text = desc
+        dateLabel.text = date.long.uppercaseFirstLetter
+        hourLabel.text = date.hour
     }
 
     // MARK: - Private

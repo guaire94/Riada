@@ -12,13 +12,13 @@ part 'user.g.dart';
 class User {
   final String id;
   final String? nickName;
-  final List<String> favoriteSports;
+  List<String> favoriteSports;
   final String? mail;
   final String avatar;
   final GeoPoint? location;
   final Timestamp createdDate;
 
-  const User({
+  User({
     required this.id,
     required this.nickName,
     required this.favoriteSports,

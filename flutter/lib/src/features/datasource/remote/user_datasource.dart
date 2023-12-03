@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:riada/src/features/datasource/base_datasource.dart';
 import 'package:riada/src/features/datasource/exceptions/no_data_available_exception.dart';
-import 'package:riada/src/features/entity/sport.dart';
 import 'package:riada/src/features/entity/user.dart';
 
 @injectable
@@ -25,7 +24,7 @@ class UserDataSource extends BaseDataSource {
     return User.fromJson(data);
   }
 
-  Future<void> updateFavorites(List<Sport> sports) async {
+  Future<void> updateUser({required User user}) async {
     await userCollection().doc(user.id).set(user.toJson());
   }
 }

@@ -33,7 +33,9 @@ class UserRepository {
     }
   }
 
-  void updateFavorites(List<Sport> sports) {
-    _userDataSource.updateFavorites(sports);
+  void updateFavorites(List<Sport> sports) async {
+    final user = await getCurrentUser();
+    user.favoriteSports = sports.map((e) => e.id).toList();
+    _userDataSource.updateUser(user: user);
   }
 }

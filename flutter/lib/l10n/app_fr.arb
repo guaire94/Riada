@@ -1,0 +1,12 @@
+{
+    "@@locale":"fr",
+
+    "@_GLOBAL":{},
+
+    "@_FORM":{},
+    "field_required_error_message": "Le champs est requis",
+
+    "@_ONBOARDING":{},
+    "onboarding_title":"Bienvenue sur Riada",
+    "onboarding_error":"Impossible de charger l'onboarding"
+}
